@@ -79,7 +79,7 @@ The admin area can be reached at [http://localhost:3000/admin/](http://localhost
 
 There's a suite of spec tests for all models and helpers and some of the controllers. You'll need to create the test database.
 
-    $ mysql -u root -e "CREATE DATABASE scliftonstudios_test"
+    $ mysql -u root -e "CREATE DATABASE cliftonstudios_test"
     $ mysql -u root -e "GRANT ALL PRIVILEGES ON cliftonstudios_test.* TO 'cliftonstudios'@'localhost' IDENTIFIED BY 'cliftonstudios'"
     $ mysql -u root -e "FLUSH PRIVILEGES"
 

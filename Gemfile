@@ -5,7 +5,6 @@ gem 'rails', '3.0.3'
 gem 'capistrano'
 gem 'mysql2'
 gem 'haml'
-gem 'sass'
 gem 'will_paginate', ">= 3.0.pre2"
 gem 'paperclip'
 gem 'rmagick', ">= 2.13.1"
