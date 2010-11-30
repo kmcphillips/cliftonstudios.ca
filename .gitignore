@@ -1,0 +1,8 @@
+.bundle
+log/*.log
+tmp/**/*
+tmp/*
+config/database.yml
+.idea
+public/assets
+
