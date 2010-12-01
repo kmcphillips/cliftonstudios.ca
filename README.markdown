@@ -87,10 +87,6 @@ Next, clone your current database into your test database.
 
     $ rake db:test:clone
 
-Be sure you have the spec gems.
-
-    $ sudo gem install rspec rspec-rails progressbar
-
 Then run them!
 
     $ rake spec
