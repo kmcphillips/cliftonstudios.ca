@@ -33,6 +33,7 @@ class CreateMembers < ActiveRecord::Migration
     add_index :members, :receive_emails
     add_index :members, :email, :unique => true
     add_index :members, :persistence_token, :unique => true
+    add_index :members, :permalink
   end
 
   def self.down

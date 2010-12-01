@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201031658) do
+ActiveRecord::Schema.define(:version => 20101201145429) do
 
   create_table "members", :force => true do |t|
     t.string   "status",             :default => "active"
@@ -37,9 +37,30 @@ ActiveRecord::Schema.define(:version => 20101201031658) do
   end
 
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
+  add_index "members", ["permalink"], :name => "index_members_on_permalink"
   add_index "members", ["persistence_token"], :name => "index_members_on_persistence_token", :unique => true
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
   add_index "members", ["status"], :name => "index_members_on_status"
   add_index "members", ["visible"], :name => "index_members_on_visible"
+
+  create_table "posts", :force => true do |t|
+    t.integer  "member_id"
+    t.string   "title"
+    t.string   "permalink"
+    t.text     "body"
+    t.boolean  "members_only",       :default => false
+    t.string   "status",             :default => "unsent"
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.string   "image_content_type"
+    t.string   "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["created_at"], :name => "index_posts_on_created_at"
+  add_index "posts", ["member_id"], :name => "index_posts_on_member_id"
+  add_index "posts", ["permalink"], :name => "index_posts_on_permalink"
+  add_index "posts", ["status"], :name => "index_posts_on_status"
 
 end

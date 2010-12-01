@@ -1,11 +1,11 @@
 Cliftonstudios::Application.routes.draw do
 
+  resources :artists, :only => [:index, :show]
+
   resources :member_sessions
 
   match 'login' => "member_sessions#new", :as => :login
   match 'logout' => "member_sessions#destroy", :as => :logout
-
-
 
   namespace :admin do
     
