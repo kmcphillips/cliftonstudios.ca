@@ -29,6 +29,8 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     arel (2.0.5)
+    authlogic (2.1.6)
+      activesupport
     builder (2.1.2)
     capistrano (2.5.19)
       highline
@@ -90,6 +92,7 @@ GEM
       activesupport (= 3.0.3)
       bundler (~> 1.0)
       railties (= 3.0.3)
+    rails3-generators (0.14.0)
     railties (3.0.3)
       actionpack (= 3.0.3)
       activesupport (= 3.0.3)
@@ -118,6 +121,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authlogic
   capistrano
   haml
   haml-rails
@@ -126,6 +130,7 @@ DEPENDENCIES
   mysql2
   paperclip
   rails (= 3.0.3)
+  rails3-generators
   rmagick (>= 2.13.1)
   rspec (>= 2.0.0)
   rspec-rails (>= 2.0.0)

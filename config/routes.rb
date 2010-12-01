@@ -1,4 +1,16 @@
 Cliftonstudios::Application.routes.draw do
+
+  resources :member_sessions
+
+  match 'login' => "member_sessions#new", :as => :login
+  match 'logout' => "member_sessions#destroy", :as => :logout
+
+
+
+  namespace :admin do
+    
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

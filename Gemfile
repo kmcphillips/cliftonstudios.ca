@@ -8,6 +8,8 @@ gem 'haml'
 gem 'will_paginate', ">= 3.0.pre2"
 gem 'paperclip'
 gem 'rmagick', ">= 2.13.1"
+gem 'authlogic'
+gem 'rails3-generators'
 
 group :development, :test do
   gem "mongrel"
