@@ -118,5 +118,13 @@ module ApplicationHelper
   def posts_path
     "/"
   end
+  
+  def artists_path
+    members_path
+  end
+  
+  def artist_path(artist)
+    member_path(artist)
+  end
 
 end

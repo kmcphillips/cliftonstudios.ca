@@ -1,6 +1,8 @@
-%p#notice= notice
+%h1= @member.name
 
-
-= link_to 'Edit', edit_artist_path(@artist)
-\|
-= link_to 'Back', artists_path
+- if @member.visible?
+  
+  
+  
+- else
+  This artist's profile is not public.
