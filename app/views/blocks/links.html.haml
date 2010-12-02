@@ -1,0 +1,7 @@
+%h1 Links
+
+%ul
+  - @links.each do |link|
+    %li
+      %p.link= link_to link.display, link.url
+      = simple_format(link.description) unless link.description.blank?

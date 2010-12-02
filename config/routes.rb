@@ -2,14 +2,17 @@ Cliftonstudios::Application.routes.draw do
 
   root :to => "posts#index"
   match 'news/:id' => 'posts#show'
+  match 'rss.:format' => 'posts#rss'
 
   resources :artists, :only => [:index, :show]
   resources :posts, :only => [:index, :show]
+  resources :events, :only => [:index, :show]
 
-
+  ['about', 'links'].each do |block|
+    match block => "blocks##{block}"
+  end
 
   resources :member_sessions
-
   match 'login' => "member_sessions#new", :as => :login
   match 'logout' => "member_sessions#destroy", :as => :logout
 

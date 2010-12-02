@@ -1,6 +1,8 @@
 class Importer
   include ActionView::Helpers::SanitizeHelper
   
+  IMAGE_PATH = ""
+  
   def initialize(config)
     keys = %w(host username password schema)
     raise "Invalid params. Requires: #{keys.join(", ")}." unless keys.inject(true){|acc,key| acc && config[key]}
@@ -21,6 +23,7 @@ class Importer
         clear_tables
         import_members
         import_posts
+        # import_events  # Not going to import events since everything will be past
         
       end
     rescue => e
@@ -44,13 +47,16 @@ class Importer
     puts "Importing members..."
     @db.query("SELECT * FROM members AS m LEFT JOIN bio as b ON m.id = b.user WHERE m.id != 1 ORDER BY m.id ASC").each do |result|
       member = Member.new(:id => result["id"], :visible => result["visible"], :name => result["full_name"], :bio => result["description"], :receive_emails => result["email_notification"], :email => result["email"], :password => result["email"], :password_confirmation => result["email"])
+      
       member.status = case result["type"]
         when "ADMIN" then "admin"
         when "MEMBER" then "active"
         when "INACTIVE" then "inactive"
       end
       
-      # TODO: import images
+      if result["image"].present?
+        member.image = File.open("#{IMAGE_PATH}/p#{result["image"]}.jpg")
+      end
       
       member.save!
       puts "  Member ##{member.id} (#{member.name}) created"

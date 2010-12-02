@@ -1,0 +1,5 @@
+.post
+  %h2= event.title
+  %h3= event.starts_at.to_s :with_time
+  .body= event.body
+  .userstamp= link_to event.member.name, artist_path(event.member)

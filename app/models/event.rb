@@ -1,4 +1,4 @@
-class Post < ActiveRecord::Base
+class Event < ActiveRecord::Base
   STATUSES = ["unsent", "sending", "sent"]
   
   acts_as_permalink
@@ -11,13 +11,19 @@ class Post < ActiveRecord::Base
   validates :body, :presence => true
   validates :status, :inclusion => {:in => STATUSES}
   
+  before_save :set_ends_at
+  
   STATUSES.each do |status|
     scope status, where(:status => status)
   end
   
-  scope :sorted, order("created_at DESC")
+  def sort_by; starts_at; end
   
-  def sort_by; created_at; end
+  scope :upcoming, lambda{ where("ends_at > #{Time.now}").order("starts_at DESC") }
+
+  protected
   
-  
+  def set_ends_at
+    ends_at = starts_at.beginning_of_day + duration.days
+  end
 end

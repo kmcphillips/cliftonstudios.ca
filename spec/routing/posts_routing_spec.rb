@@ -11,5 +11,9 @@ describe PostsController do
       { :get => "/news/1" }.should route_to(:controller => "posts", :action => "show", :id => "1")
     end
 
+    it "recognizes and generates #rss" do
+      { :get => "/rss.xml" }.should route_to(:controller => "posts", :action => "rss", :format => "xml")
+    end
+
   end
 end
