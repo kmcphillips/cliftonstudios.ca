@@ -13,10 +13,6 @@ module ApplicationHelper
     end
   end
 
-  def pagination_params(opts={})
-    {:page => params[:page] || 1, :per_page => PAGINATION_PER_PAGE}.merge(opts)
-  end
-
   def index_entity_image(path, label=nil, args={})
     path = polymorphic_path(path) if path.is_a?(Array)
     html = link_to image_tag("/images/icons/index.png", :alt => "Index"), path, :title => "Index", :class => "action-image"

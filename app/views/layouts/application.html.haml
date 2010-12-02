@@ -22,10 +22,10 @@
     #header Clifton Studios
     #nav= render :partial => "shared/nav"
     #main
-      #sidebar= render :partail => "shared/sidebar"
+      #sidebar= render :partial => "shared/sidebar"
       #content= yield
     #footer
       %p.credits
         &copy; #{Time.now.year}
-        = obfuscated_mail_to ADMIN_EMAIL, "Kevin McPhillips"
+        = obfuscated_mail_to ADMIN_EMAIL, ADMIN_EMAIL_NAME
 

@@ -1,17 +1,5 @@
-%h1 Listing artists
+%h1 Artists
 
-%table
-  %tr
-    %th
-    %th
-    %th
-
-  - @artists.each do |artist|
-    %tr
-      %td= link_to 'Show', artist
-      %td= link_to 'Edit', edit_artist_path(artist)
-      %td= link_to 'Destroy', artist, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Artist', new_artist_path
+%ul
+  - @members.each do |member|
+    %li= member.name

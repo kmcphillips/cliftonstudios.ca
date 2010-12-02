@@ -1,3 +1,6 @@
+ADMIN_EMAIL = "admin@cliftonstudios.ca"
+ADMIN_EMAIL_NAME = "Kevin McPhillips"
+
 META = {
   :keywords => "",
   :description => ""

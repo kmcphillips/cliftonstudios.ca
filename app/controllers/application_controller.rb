@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :page_title, :current_member_session, :current_member
+  helper_method :current_member_session, :current_member
 
   private
+  
+  def pagination_params(opts={})
+    {:page => params[:page] || 1, :per_page => PAGINATION_PER_PAGE}.merge(opts)
+  end
   
   ## AuthLogic
   
