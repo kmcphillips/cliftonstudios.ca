@@ -10,6 +10,8 @@ class Member < ActiveRecord::Base
   validates :name, :presence => {:message => "must be set"}
   validates :status, :inclusion => {:in => STATUSES, :message => "is not a valid"}
 
+  before_save :set_fingerprint, :on => :create
+
   IMAGE_SIZES.each_key do |key|
     define_method key do
       self.image.url(key)
@@ -24,5 +26,9 @@ class Member < ActiveRecord::Base
     status && status != "deactive"
   end
   
+  protected
   
+  def set_fingerprint
+    fingerprint = Digest::SHA1.hexdigest(Time.now.to_s + id + email)
+  end
 end
