@@ -1,0 +1,6 @@
+%ul
+  - if current_member
+    %li= current_member.name
+    %li= link_to "Logout", "/logout"
+  - else
+    %li= link_to "Login", "/login"

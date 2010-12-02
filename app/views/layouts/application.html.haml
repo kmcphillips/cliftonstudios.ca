@@ -10,7 +10,7 @@
     = javascript_include_tag :defaults
 
     = yield :js
-
+    
     %link{:rel => "shortcut icon", :type => "image/x-icon", :href => "/favicon.ico"}
 
     = csrf_meta_tag
@@ -18,5 +18,14 @@
     %meta{:name => "description", :content => META[:description] || ""}
 
   %body
-    = yield
+    #top= render :partial => "shared/top"
+    #header Clifton Studios
+    #nav= render :partial => "shared/nav"
+    #main
+      #sidebar= render :partail => "shared/sidebar"
+      #content= yield
+    #footer
+      %p.credits
+        &copy; #{Time.now.year}
+        = obfuscated_mail_to ADMIN_EMAIL, "Kevin McPhillips"
 
