@@ -1,7 +1,16 @@
 module ApplicationHelper
 
   def page_title
-    "Clifton Studios"
+    title = "Clifton Studios"
+    title << " :: Members Area" if members_area?
+    
+    if @title
+      @title.blank? ? title : "#{title} :: #{@title}"
+    elsif params[:controller] =~ /blocks$/
+      "#{title} :: #{params[:action].humanize}"
+    else
+      title
+    end
   end
 
   def pagination_params(opts={})
@@ -114,6 +123,4 @@ module ApplicationHelper
     "/"
   end
 
-
 end
-

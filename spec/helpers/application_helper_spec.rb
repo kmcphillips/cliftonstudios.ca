@@ -5,7 +5,30 @@ describe ApplicationHelper do
 
   describe "page_title" do
     it "should generate the default title" do
+      stub!(:params).and_return({})
       page_title.should == "Clifton Studios"
+    end
+    
+    it "should generate the page title with an @title" do
+      stub!(:params).and_return({})
+      instance_variable_set('@title', "Pie")
+      page_title.should == "Clifton Studios :: Pie"
+    end
+    
+    it "should know the members area" do
+      stub!(:params).and_return(:controller => "members_area/pie")
+      page_title.should == "Clifton Studios :: Members Area"
+    end
+    
+    it "should handle the blocks controller" do
+      stub!(:params).and_return(:controller => "blocks", :action => "cake")
+      page_title.should == "Clifton Studios :: Cake"
+    end
+    
+    it "should handle the most complex case" do
+      stub!(:params).and_return(:controller => "members_area/pie")
+      instance_variable_set('@title', "Delicious")
+      page_title.should == "Clifton Studios :: Members Area :: Delicious"
     end
   end
   
