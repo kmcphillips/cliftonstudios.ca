@@ -1,18 +1,14 @@
 class Member < ActiveRecord::Base
+  STATUSES = ["active", "admin", "deactive"]
+  
   acts_as_authentic
   acts_as_permalink :from => :name
+  include AttachedImage
   
-  has_attached_file :image,
-    :styles => IMAGE_SIZES,
-    :default_style => :full,
-    :whiny => true,
-    :path => ":rails_root/public/assets/images/:class/:id/:style_:basename.:extension",
-    :url => "/assets/images/:class/:id/:style_:basename.:extension"
-
-  validates_attachment_size :image, :in => 1..6.megabytes
-  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/pjpeg", "image/png", "image/tiff", "image/x-png", "image/gif"]
-
-  validates :name, :presence => {:message => "must have a name"}
+  has_many :posts
+  
+  validates :name, :presence => {:message => "must be set"}
+  validates :status, :inclusion => {:in => STATUSES, :message => "is not a valid"}
 
   IMAGE_SIZES.each_key do |key|
     define_method key do
@@ -20,6 +16,13 @@ class Member < ActiveRecord::Base
     end
   end
   
+  def admin?
+    status == "admin"
+  end
+  
+  def active?
+    status && status != "deactive"
+  end
   
   
 end

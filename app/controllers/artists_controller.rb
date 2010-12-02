@@ -6,6 +6,4 @@ class ArtistsController < ApplicationController
   def show
     @member = Member.find_by_permalink(params[:id])
   end
-
 end
-

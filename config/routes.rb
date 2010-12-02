@@ -1,13 +1,19 @@
 Cliftonstudios::Application.routes.draw do
 
+  root :to => "posts#index"
+  match 'news/:id' => 'posts#show'
+
   resources :artists, :only => [:index, :show]
+  resources :posts, :only => [:index, :show]
+
+
 
   resources :member_sessions
 
   match 'login' => "member_sessions#new", :as => :login
   match 'logout' => "member_sessions#destroy", :as => :logout
 
-  namespace :admin do
+  namespace :members_area do
     
   end
   

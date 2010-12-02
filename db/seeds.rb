@@ -1,5 +1,4 @@
 if Rails.env.development?
-  puts "Creating test@test.com / test member"
-  Member.create!(:email => 'test@test.com', :password => 'test', :password_confirmation => 'test')
-  
+  puts "Creating test/test member"
+  Member.new(:email => 'test', :password => 'test', :password_confirmation => 'test', :name => "Test User").save!(false)
 end
