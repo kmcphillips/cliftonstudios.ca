@@ -17,6 +17,10 @@ Admin/Members area
 News
   History?
   
+About
+  Google maps integration
+  Email addresses?
+
 Images
   Images area
   Light box
@@ -35,6 +39,7 @@ Social
   Twitter?
   Etcetera?
   Mailing list sign up/remove
+  Contact form for each member?
 
 Importer
   Import images
@@ -42,3 +47,6 @@ Importer
   Import images for event/news/member
   Import your mom
   
+Bonus
+  First login wizard? (contact form, website, email/address, password, bio, photo, etc.)
+  Create clifton studios email that forwards to email in db

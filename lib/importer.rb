@@ -23,6 +23,7 @@ class Importer
         clear_tables
         import_members
         import_posts
+        import_about
         # import_events  # Not going to import events since everything will be past
         
       end
@@ -75,14 +76,19 @@ class Importer
     puts "Done"
   end
 
-  # def import_about
-  #   puts "Importing about..."
-  #   b = Block.find_by_label!("bio")
-  #   result = @db.query("SELECT * FROM bio").first
-  #   
-  #   b.body = result["body"]
-  #   b.save!
-  #   puts "Done"
-  # end
+  def import_about
+    puts "Importing about..."
+    b = Block.find_by_label!("about")
+    b.body = @db.query("SELECT * FROM about WHERE title NOT LIKE '%How to Join%' ORDER BY sort_order ASC").map{|r| r["description"] }.join("\n\n")
+    b.save!
+    puts "  Loaded 'about' block"
+
+    b = Block.find_by_label!("availability")
+    b.body = @db.query("SELECT * FROM about WHERE title LIKE '%How to Join%' LIMIT 1").first["description"]
+    b.save!
+    puts "  Loaded 'availability' block"
+    
+    puts "Done"
+  end
 
 end
