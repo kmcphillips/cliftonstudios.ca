@@ -112,19 +112,19 @@ module ApplicationHelper
 
   ## Overridden paths
   def post_path(post)
-    "/blog/#{post.permalink}"
+    "/news/#{post.permalink}"
   end
 
   def posts_path
     "/"
   end
-  
+
   def members_path
     artists_path
   end
   
   def member_path(artist)
-    artist_path(artist)
+    artist_path(artist.to_param)
   end
 
 end

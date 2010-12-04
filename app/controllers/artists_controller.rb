@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+  
   def index
     @members = Member.order("name ASC")
   end
@@ -6,4 +7,5 @@ class ArtistsController < ApplicationController
   def show
     @member = Member.find_by_permalink(params[:id])
   end
+  
 end
