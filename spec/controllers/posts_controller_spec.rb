@@ -20,7 +20,7 @@ describe PostsController do
 
   describe "GET show" do
     it "assigns the requested post as @post" do
-      Post.stub(:find).with("37") { mock_post }
+      Post.stub(:find_by_permalink).with("37") { mock_post }
       get :show, :id => "37"
       assigns(:post).should be(mock_post)
     end

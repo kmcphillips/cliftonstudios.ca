@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_permalink(params[:id])
-    @title = @post.title
+    @title = "News :: #{@post.title}"
   end
   
   def rss
