@@ -29,6 +29,6 @@ class Member < ActiveRecord::Base
   protected
   
   def set_fingerprint
-    fingerprint = Digest::SHA1.hexdigest(Time.now.to_s + id + email)
+    fingerprint = Digest::SHA1.hexdigest(Time.now.to_s + email)
   end
 end

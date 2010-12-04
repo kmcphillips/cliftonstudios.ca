@@ -19,11 +19,13 @@ class Event < ActiveRecord::Base
   
   def sort_by; starts_at; end
   
-  scope :upcoming, lambda{ where("ends_at > #{Time.now}").order("starts_at DESC") }
+  scope :upcoming, lambda{ where(["ends_at > ?", Time.now]).order("starts_at DESC") }
+
+
 
   protected
   
   def set_ends_at
-    ends_at = starts_at.beginning_of_day + duration.days
+    self.ends_at = self.starts_at.beginning_of_day + duration.days
   end
 end

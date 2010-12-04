@@ -7,6 +7,7 @@ Cliftonstudios::Application.routes.draw do
   resources :artists, :only => [:index, :show]
   resources :posts, :only => [:index, :show]
   resources :events, :only => [:index, :show]
+  resources :pictures, :only => [:index, :show]
 
   ['about', 'links'].each do |block|
     match block => "blocks##{block}"

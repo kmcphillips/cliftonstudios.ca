@@ -10,7 +10,57 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201145429) do
+ActiveRecord::Schema.define(:version => 20101204022409) do
+
+  create_table "blocks", :force => true do |t|
+    t.text     "body"
+    t.string   "label"
+    t.string   "path"
+    t.string   "description"
+    t.boolean  "accepts_image",      :default => false
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.string   "image_content_type"
+    t.string   "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blocks", ["label"], :name => "index_blocks_on_label"
+
+  create_table "events", :force => true do |t|
+    t.integer  "member_id"
+    t.string   "title"
+    t.string   "permalink"
+    t.text     "body"
+    t.boolean  "members_only",       :default => false
+    t.string   "status",             :default => "unsent"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.integer  "duration",           :default => 1
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.string   "image_content_type"
+    t.string   "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["created_at"], :name => "index_events_on_created_at"
+  add_index "events", ["member_id"], :name => "index_events_on_member_id"
+  add_index "events", ["permalink"], :name => "index_events_on_permalink"
+  add_index "events", ["starts_at"], :name => "index_events_on_starts_at"
+  add_index "events", ["status"], :name => "index_events_on_status"
+
+  create_table "links", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "links", ["created_at"], :name => "index_links_on_created_at"
 
   create_table "members", :force => true do |t|
     t.string   "status",             :default => "active"
@@ -34,6 +84,8 @@ ActiveRecord::Schema.define(:version => 20101201145429) do
     t.datetime "last_login_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "fingerprint"
+    t.string   "website"
   end
 
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
@@ -42,6 +94,20 @@ ActiveRecord::Schema.define(:version => 20101201145429) do
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
   add_index "members", ["status"], :name => "index_members_on_status"
   add_index "members", ["visible"], :name => "index_members_on_visible"
+
+  create_table "pictures", :force => true do |t|
+    t.integer  "member_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.string   "image_content_type"
+    t.string   "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pictures", ["member_id"], :name => "index_pictures_on_member_id"
 
   create_table "posts", :force => true do |t|
     t.integer  "member_id"

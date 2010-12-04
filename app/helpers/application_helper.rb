@@ -119,12 +119,12 @@ module ApplicationHelper
     "/"
   end
   
-  def artists_path
-    members_path
+  def members_path
+    artists_path
   end
   
-  def artist_path(artist)
-    member_path(artist)
+  def member_path(artist)
+    artist_path(artist)
   end
 
 end

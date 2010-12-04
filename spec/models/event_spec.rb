@@ -8,8 +8,8 @@ describe Event do
   
   describe "ends_at" do
     it "should be set on save" do
-      event = Event.create! @valid_attributes
-      event.ends_at.should == Time.now.beginning_of_day + 1.day
+      event = Event.create!(@valid_attributes)
+      event.ends_at.should == (Time.now.beginning_of_day + 1.day)
     end
   end
   
