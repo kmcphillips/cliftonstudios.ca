@@ -123,8 +123,8 @@ module ApplicationHelper
     artists_path
   end
   
-  def member_path(artist)
-    artist_path(artist.to_param)
+  def member_path(member)
+    artists_path(member.to_param)
   end
 
 end

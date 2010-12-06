@@ -57,6 +57,28 @@ describe ApplicationHelper do
       pending "new/edit/delete/index icon helpers"
     end
   end
+  
+  describe "custom routes" do
+    it "should generate post_path" do
+      post = mock_model(Post, :permalink => "pie")
+      post_path(post).should == "/news/#{post.permalink}"
+    end
+    
+    it "should generate posts_path" do
+      posts_path.should == "/"
+    end
+    
+    it "should generate members_path" do
+      should_receive(:artists_path).with(no_args).and_return("pie")
+      members_path.should == "pie"
+    end
+    
+    it "should generate member_path" do
+      member = mock_model(Member, :to_param => "delicious")
+      should_receive(:artists_path).with("delicious").and_return("pie")
+      member_path(member).should == "pie"
+    end
+  end
 
 end
 

@@ -16,18 +16,14 @@ Admin/Members area
 
 News
   History?
-  
+
 About
-  Google maps integration
   Email addresses?
 
 Images
   Images area
   Light box
   Enlarge links
-
-Members
-  Show address/contact if you are logged in
 
 Mailing
   Setup outgoing mail
@@ -46,7 +42,7 @@ Importer
   Import about?
   Import images for event/news/member
   Import your mom
-  
+
 Bonus
   First login wizard? (contact form, website, email/address, password, bio, photo, etc.)
   Create clifton studios email that forwards to email in db
