@@ -58,6 +58,30 @@ describe ApplicationHelper do
       truncate_for_index("pie").should == "delicious"
     end
   end
+  
+  describe "boolean_image" do
+    it "should generate for true" do
+      should_receive(:image_tag).with("/images/icons/true.png", :alt => "True").and_return("pie")
+      boolean_image(true).should == "pie"
+    end
+    
+    it "should generate for false" do
+      should_receive(:image_tag).with("/images/icons/false.png", :alt => "False").and_return("pie")
+      boolean_image(false).should == "pie"
+    end
+
+    it "should generate false for nil" do
+      should_receive(:image_tag).with("/images/icons/false.png", :alt => "False").and_return("pie")
+      boolean_image(nil).should == "pie"
+    end
+  end
+  
+  describe "enlarge_button" do
+    it "should generate the button and image" do
+      should_receive(:image_tag).with("/images/icons/magnify.png", :alt => "Enlarge", :class => :magnify).and_return("pie")
+      enlarge_button.should == "Enlarge&nbsp;" + "pie"
+    end
+  end
 
   describe "image link helpers" do
     it "should be tested" do
