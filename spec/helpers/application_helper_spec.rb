@@ -52,6 +52,13 @@ describe ApplicationHelper do
     end
   end
 
+  describe "truncate_for_index" do
+    it "should shorten the string" do
+      should_receive(:truncate).with("pie", :length => 120, :omission => " (more..)").and_return("delicious")
+      truncate_for_index("pie").should == "delicious"
+    end
+  end
+
   describe "image link helpers" do
     it "should be tested" do
       pending "new/edit/delete/index icon helpers"

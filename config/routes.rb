@@ -19,6 +19,8 @@ Cliftonstudios::Application.routes.draw do
 
   namespace :members_area do
     
+    
+    
   end
   
   # The priority is based upon order of creation:
