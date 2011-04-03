@@ -13,7 +13,10 @@ Admin/Members area
   Forgotten password and password reset
   Contact list
   Email list
-
+  Bi-laws
+  Print out and forms for the contact list
+  Executive listing?
+  
 News
   History?
 
@@ -21,6 +24,9 @@ Images
   Images area
   Light box
   Enlarge links
+
+Members
+  Show address/contact if you are logged in
 
 Mailing
   Setup outgoing mail
@@ -43,3 +49,6 @@ Importer
 Bonus
   First login wizard? (contact form, website, email/address, password, bio, photo, etc.)
   Create clifton studios email that forwards to email in db
+  Google Site Search inegration
+  Sitemap
+
