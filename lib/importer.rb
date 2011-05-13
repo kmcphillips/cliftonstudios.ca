@@ -24,6 +24,7 @@ class Importer
         import_members
         import_posts
         import_about
+        import_images
         # import_events  # Not going to import events since everything will be past
         
       end
@@ -50,9 +51,13 @@ class Importer
       member = Member.new(:id => result["id"], :visible => result["visible"], :name => result["full_name"], :bio => result["description"], :receive_emails => result["email_notification"], :email => result["email"], :password => result["email"], :password_confirmation => result["email"])
       
       member.status = case result["type"]
-        when "ADMIN" then "admin"
-        when "MEMBER" then "active"
-        when "INACTIVE" then "inactive"
+        when "ADMIN"
+          member.active = true
+          member.admin = true
+        when "MEMBER"
+          member.active = true
+        when "INACTIVE"
+          member.active = false
       end
       
       if result["image"].present?
@@ -89,6 +94,10 @@ class Importer
     puts "  Loaded 'availability' block"
     
     puts "Done"
+  end
+
+  def import_images
+    puts "WARNING: Importing images has not been implemented yet"
   end
 
 end
