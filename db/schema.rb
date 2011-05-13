@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101204022409) do
+ActiveRecord::Schema.define(:version => 20110508142839) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(:version => 20101204022409) do
     t.string   "permalink"
     t.text     "body"
     t.boolean  "members_only",       :default => false
-    t.string   "status",             :default => "unsent"
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer  "duration",           :default => 1
@@ -50,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20101204022409) do
   add_index "events", ["member_id"], :name => "index_events_on_member_id"
   add_index "events", ["permalink"], :name => "index_events_on_permalink"
   add_index "events", ["starts_at"], :name => "index_events_on_starts_at"
-  add_index "events", ["status"], :name => "index_events_on_status"
 
   create_table "links", :force => true do |t|
     t.string   "title"
@@ -63,36 +61,41 @@ ActiveRecord::Schema.define(:version => 20101204022409) do
   add_index "links", ["created_at"], :name => "index_links_on_created_at"
 
   create_table "members", :force => true do |t|
-    t.string   "status",             :default => "active"
-    t.boolean  "visible",            :default => false
+    t.boolean  "visible",             :default => false
     t.string   "name"
     t.string   "phone"
     t.text     "address"
     t.string   "permalink"
     t.text     "bio"
-    t.boolean  "receive_emails",     :default => true
+    t.boolean  "receive_emails",      :default => true
     t.string   "image_file_name"
     t.integer  "image_file_size"
     t.string   "image_content_type"
     t.string   "image_updated_at"
-    t.string   "email",                                    :null => false
-    t.string   "crypted_password",                         :null => false
-    t.string   "password_salt",                            :null => false
-    t.string   "persistence_token",                        :null => false
-    t.integer  "login_count",        :default => 0,        :null => false
+    t.string   "email",                                  :null => false
+    t.string   "crypted_password",                       :null => false
+    t.string   "password_salt",                          :null => false
+    t.string   "persistence_token",                      :null => false
+    t.integer  "login_count",         :default => 0,     :null => false
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "fingerprint"
     t.string   "website"
+    t.boolean  "admin",               :default => false
+    t.boolean  "active",              :default => true
+    t.boolean  "password_configured", :default => false
+    t.boolean  "account_configured",  :default => false
   end
 
+  add_index "members", ["account_configured"], :name => "index_members_on_account_configured"
+  add_index "members", ["active"], :name => "index_members_on_active"
+  add_index "members", ["admin"], :name => "index_members_on_admin"
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
+  add_index "members", ["password_configured"], :name => "index_members_on_password_configured"
   add_index "members", ["permalink"], :name => "index_members_on_permalink"
   add_index "members", ["persistence_token"], :name => "index_members_on_persistence_token", :unique => true
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
-  add_index "members", ["status"], :name => "index_members_on_status"
   add_index "members", ["visible"], :name => "index_members_on_visible"
 
   create_table "pictures", :force => true do |t|
@@ -115,7 +118,6 @@ ActiveRecord::Schema.define(:version => 20101204022409) do
     t.string   "permalink"
     t.text     "body"
     t.boolean  "members_only",       :default => false
-    t.string   "status",             :default => "unsent"
     t.string   "image_file_name"
     t.integer  "image_file_size"
     t.string   "image_content_type"
@@ -127,6 +129,5 @@ ActiveRecord::Schema.define(:version => 20101204022409) do
   add_index "posts", ["created_at"], :name => "index_posts_on_created_at"
   add_index "posts", ["member_id"], :name => "index_posts_on_member_id"
   add_index "posts", ["permalink"], :name => "index_posts_on_permalink"
-  add_index "posts", ["status"], :name => "index_posts_on_status"
 
 end

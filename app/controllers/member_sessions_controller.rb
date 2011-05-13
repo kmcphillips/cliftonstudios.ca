@@ -11,7 +11,7 @@ class MemberSessionsController < ApplicationController
     @member_session = MemberSession.new(params[:member_session])
     if @member_session.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default members_url
+      redirect_back_or_default "/"
     else
       render :action => :new
     end

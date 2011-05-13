@@ -4,8 +4,8 @@
   = form_for @member_session, :url => {:action => "create"} do |f|
     = error_messages @member_session
     %div
-      = f.label :login
-      = f.text_field :login
+      = f.label :email
+      = f.text_field :email
     %div
       = f.label :password
       = f.password_field :password

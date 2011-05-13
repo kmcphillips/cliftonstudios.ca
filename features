@@ -1,24 +1,31 @@
+Layout
+  The whole thing
+  Qtip description over nav links
+
 Admin/Members area
   The whole damn thing...
   Improved dashboard for yourself
+  Force password change
+  Forgotten password and password reset
+  First login wizard (contact form, website, email/address, password, bio, photo, etc.)
   Suggestions/hints for how to participate and contribute?
   Linking profile to website, facebook, and other things
   News
   Events
   Links
   Blocks
-  Members
+  Other Members
   Images for studio
   Images for each object
-  Forgotten password and password reset
   Contact list
   Email list
   Bi-laws
   Print out and forms for the contact list
-  Executive listing?
+  Executive listing in about (drop downs)
+
   
 News
-  History?
+  History
 
 Images
   Images area
@@ -31,7 +38,8 @@ Members
 Mailing
   Setup outgoing mail
   Script/job to mail out changes
-  Link on email to unsubscribe easily
+  Link on email to unsubscribe
+  Put email sent/unsent into its own table and object (use this to learn about observers)
 
 Social
   Facebook
@@ -39,6 +47,7 @@ Social
   Etcetera?
   Mailing list sign up/remove
   Contact form for each member?
+  Contact form for general studio/all memebers
 
 Importer
   Import images
@@ -47,8 +56,7 @@ Importer
   Import your mom
 
 Bonus
-  First login wizard? (contact form, website, email/address, password, bio, photo, etc.)
   Create clifton studios email that forwards to email in db
   Google Site Search inegration
   Sitemap
-
+  Images saves across preview
