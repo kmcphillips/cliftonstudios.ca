@@ -6,7 +6,7 @@ config = YAML.load_file("#{Rails.root}/config/mail.yml")[Rails.env]
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.perform_deliveries = true
-ActionMailer::Base.smtp_settings = config["smtp_settings"] || {}
+ActionMailer::Base.smtp_settings = config["smtp_settings"].symbolize_keys || {}
 ActionMailer::Base.default_url_options[:host] = config["host"]
 
 (config["register_interceptors"] || []).each do |i|
