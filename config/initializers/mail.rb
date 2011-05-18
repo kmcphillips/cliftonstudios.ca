@@ -1,20 +1,16 @@
-ActionMailer::Base.smtp_settings = {
-  :address => "localhost"
-}
+require 'tlsmail'    
+Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
 
-# TODO: move this out to the env files
-if Rails.env.development?
-  ActionMailer::Base.default_url_options[:host] = "localhost:3000"
-  ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor)
+
+config = YAML.load_file("#{Rails.root}/config/mail.yml")[Rails.env]
+
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.smtp_settings = config["smtp_settings"] || {}
+ActionMailer::Base.default_url_options[:host] = config["host"]
+
+(config["register_interceptors"] || []).each do |i|
+  ActionMailer::Base.register_interceptor i
 end
 
-## Gmail
-#ActionMailer::Base.smtp_settings = {
-#  :address => "smtp.gmail.com",
-#  :port => 587,
-#  :domain => "cliftonstudios.ca",
-#  :authentication => :plain,
-#  :enable_starttls_auto => true,
-#  :user_name => "kevin.mcphillips",
-#  :password => ""
-#}
+BypassMailInterceptor.email = config["bypass"] unless config["bypass"].blank?

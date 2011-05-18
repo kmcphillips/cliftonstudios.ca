@@ -1,0 +1,18 @@
+development:
+  host: localhost:3000
+  bypass: test@example.com
+  register_interceptors:
+    - BypassMailInterceptor
+  smtp_settings:
+    address: smtp.gmail.com
+    port: 587
+    domain: cliftonstudios.ca
+    authentication: plain
+    enable_starttls_auto: true
+    user_name: username
+    password: password
+    
+production:
+  host: cliftonstudios.ca
+  smtp_settings:
+    address: localhost

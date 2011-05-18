@@ -3,6 +3,7 @@ log/*.log
 tmp/**/*
 tmp/*
 config/database.yml
+config/mail.yml
 .idea
 public/assets
 public/stylesheets/base.css

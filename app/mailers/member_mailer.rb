@@ -1,10 +1,10 @@
 class MemberMailer < ActionMailer::Base
-  default :from => ""
+  default :from => "robot@cliftonstudios.ca"
 
   def reset_password(member, password)
-    @user = user
+    @member = member
     @password = password
-    mail(:to => "#{member.name} <#{member.email}>", :subject => "")
+    mail(:to => "#{member.name} <#{member.email}>", :subject => "Clifton Studios: Password reset")
   end
 
 end
