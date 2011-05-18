@@ -1,0 +1,14 @@
+%h1 Password Reset
+
+.post
+  = form_tag :url => password_reset_path do |f|
+    = error_messages
+    %div
+      = label_tag :email
+      = text_field_tag :email
+    %div
+      = submit_tag "Reset Password"
+
+  %p
+    = link_to "Forgotten password", password_reset_path
+

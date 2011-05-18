@@ -15,6 +15,7 @@ class Member < ActiveRecord::Base
 
     self.password = password
     self.password_confirmation = password
+    self.password_configured = false
 
     if save
       password

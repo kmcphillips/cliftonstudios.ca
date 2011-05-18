@@ -5,8 +5,8 @@ Layout
 Admin/Members area
   The whole damn thing...
   Improved dashboard for yourself
+  Password change
   Force password change
-  Forgotten password and password reset
   First login wizard (contact form, website, email/address, password, bio, photo, etc.)
   Suggestions/hints for how to participate and contribute?
   Linking profile to website, facebook, and other things
@@ -24,10 +24,6 @@ Admin/Members area
   Executive listing in about (drop downs)
   Password requirements written somewhere
 
-  
-News
-  History
-
 Images
   Images area
   Light box
@@ -37,7 +33,6 @@ Members
   Show address/contact if you are logged in
 
 Mailing
-  Configure for dev environment
   Script/job to mail out changes
   Link on email to unsubscribe
   Put email sent/unsent into its own table and object (use this to learn about observers)

@@ -72,9 +72,9 @@ class Importer
 
   def import_posts
     puts "Importing news posts..."
-    @db.query("SELECT * FROM news ORDER BY id ASC").each do |result|
+    @db.query("SELECT * FROM news WHERE members_only = 0 ORDER BY id ASC").each do |result|
       # no news posts have images so we get off easy by not having to import those
-      post = Post.new(:title => result["post_title"], :member_id => result["post_by"], :body => result["post"], :members_only => result["members_only"], :status => "sent", :updated_at => result["post_date"], :created_at => result["post_date"])
+      post = Post.new(:title => result["post_title"], :member_id => result["post_by"], :body => result["post"], :status => "sent", :updated_at => result["post_date"], :created_at => result["post_date"])
       post.save!
       puts "  Post ##{post.id} created"
     end

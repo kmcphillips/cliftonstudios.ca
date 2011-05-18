@@ -13,12 +13,14 @@ Cliftonstudios::Application.routes.draw do
     match block => "blocks##{block}"
   end
 
-  resources :member_sessions
+  resources :member_sessions, :only => [:new, :create, :destroy]
   match 'login' => "member_sessions#new", :as => :login
   match 'logout' => "member_sessions#destroy", :as => :logout
+  
+  resources :password_reset, :only => [:index, :create]
 
-  namespace :members_area do
-    
+
+  namespace :members do
     
     
   end

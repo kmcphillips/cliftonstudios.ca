@@ -20,7 +20,7 @@ class MemberSessionsController < ApplicationController
   def destroy
     current_member_session.destroy
     flash[:notice] = "Logout successful!"
-    redirect_back_or_default new_member_session_url
+    redirect_back_or_default "/"
   end
 
 end

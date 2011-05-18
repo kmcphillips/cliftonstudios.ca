@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110508142839) do
+ActiveRecord::Schema.define(:version => 20110518164702) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(:version => 20110508142839) do
     t.string   "title"
     t.string   "permalink"
     t.text     "body"
-    t.boolean  "members_only",       :default => false
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer  "duration",           :default => 1
@@ -117,7 +116,6 @@ ActiveRecord::Schema.define(:version => 20110508142839) do
     t.string   "title"
     t.string   "permalink"
     t.text     "body"
-    t.boolean  "members_only",       :default => false
     t.string   "image_file_name"
     t.integer  "image_file_size"
     t.string   "image_content_type"
