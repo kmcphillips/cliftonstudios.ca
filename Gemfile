@@ -11,6 +11,7 @@ gem 'paperclip'
 gem 'rmagick', ">= 2.13.1"
 gem 'authlogic'
 gem 'rails3-generators'
+gem 'memorable_password'
 
 group :development, :test do
   gem "mongrel"

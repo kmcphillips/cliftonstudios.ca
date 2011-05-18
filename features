@@ -37,7 +37,7 @@ Members
   Show address/contact if you are logged in
 
 Mailing
-  Setup outgoing mail
+  Configure for dev environment
   Script/job to mail out changes
   Link on email to unsubscribe
   Put email sent/unsent into its own table and object (use this to learn about observers)
