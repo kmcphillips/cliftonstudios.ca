@@ -16,6 +16,7 @@ class Member < ActiveRecord::Base
 
   scope :alphabetical, order("name ASC")
   scope :active, where(:active => true)
+  scope :emailable, where(:receive_emails => true, :active => true)
 
   def reset_password!
     password = MemorablePassword.generate
@@ -35,7 +36,7 @@ class Member < ActiveRecord::Base
 
   ## Class methods
 
-  def self.columns
+  def self.xls_columns
     %w[name address phone email]
   end
 end

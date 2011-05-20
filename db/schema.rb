@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110520124437) do
+ActiveRecord::Schema.define(:version => 20110520185141) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -93,6 +93,19 @@ ActiveRecord::Schema.define(:version => 20110520124437) do
   add_index "members", ["permalink"], :name => "index_members_on_permalink"
   add_index "members", ["persistence_token"], :name => "index_members_on_persistence_token", :unique => true
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
+
+  create_table "pending_emails", :force => true do |t|
+    t.string   "mailer"
+    t.string   "method"
+    t.text     "locals"
+    t.integer  "member_id"
+    t.boolean  "everyone",   :default => false
+    t.boolean  "processing", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pending_emails", ["created_at"], :name => "index_pending_emails_on_created_at"
 
   create_table "pictures", :force => true do |t|
     t.integer  "member_id"
