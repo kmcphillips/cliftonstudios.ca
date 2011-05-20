@@ -1,0 +1,12 @@
+%h3= object.name
+= simple_format object.address
+%p
+  - unless object.phone.blank?
+    = object.phone
+    %br
+  = link_to object.email, "mailto:#{object.email}"  
+  - unless object.website.blank?
+    %br
+    = link_to object.website, object.website
+%hr
+

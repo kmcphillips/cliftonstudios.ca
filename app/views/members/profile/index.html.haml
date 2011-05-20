@@ -9,8 +9,29 @@
         It looks like you haven't entered some of the required personal information. It helps the studio contact you and helps members keep in touch with you.
         All your private information stays private to everyone except Clifton Studios members. Don't worry!
 
-    %div
+    %div.required
+      = f.label :name, "Full Name"
+      = f.text_field :name
+    %div.required
+      = f.label :email, "Email Address"
+      = f.text_field :email
+    %div.required
+      = f.label :receive_emails, "Receive automated emails?"
+      = f.check_box :receive_emails
+    %div.required
       = f.label :phone, "Phone Number"
       = f.text_field :phone
+    %div.required
+      = f.label :address
+      = f.text_area :address, :rows => 5, :cols => 40
+    %div
+      = f.label :website
+      = f.text_field :website, :size => 50
+    %div
+      = f.label :bio, "A short bio about yourself"
+      = f.text_field :bio, :rows => 8, :cols => 40
+    %div
+      TODO: picture
     %div
       = f.submit "Save"
+

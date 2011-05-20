@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110520023652) do
+ActiveRecord::Schema.define(:version => 20110520124437) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(:version => 20110520023652) do
   add_index "links", ["created_at"], :name => "index_links_on_created_at"
 
   create_table "members", :force => true do |t|
-    t.boolean  "visible",             :default => false
     t.string   "name"
     t.string   "phone"
     t.text     "address"
@@ -94,7 +93,6 @@ ActiveRecord::Schema.define(:version => 20110520023652) do
   add_index "members", ["permalink"], :name => "index_members_on_permalink"
   add_index "members", ["persistence_token"], :name => "index_members_on_persistence_token", :unique => true
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
-  add_index "members", ["visible"], :name => "index_members_on_visible"
 
   create_table "pictures", :force => true do |t|
     t.integer  "member_id"

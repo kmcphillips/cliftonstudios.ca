@@ -14,6 +14,9 @@ class Member < ActiveRecord::Base
   validates :name, :presence => {:message => "is required"}
   validates :email, :presence => {:message => "is required"}
 
+  scope :alphabetical, order("name ASC")
+  scope :active, where(:active => true)
+
   def reset_password!
     password = MemorablePassword.generate
 
@@ -27,7 +30,12 @@ class Member < ActiveRecord::Base
   end
 
   def profile_configured?
-    false # TODO: check some attributes here
+    !%w[email phone address name].map(&:blank?).any?
   end
 
+  ## Class methods
+
+  def self.columns
+    %w[name address phone email]
+  end
 end
