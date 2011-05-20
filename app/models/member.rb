@@ -1,6 +1,10 @@
 class Member < ActiveRecord::Base
   
-  acts_as_authentic
+  acts_as_authentic do |config|
+    config.logged_in_timeout = 1.day
+  end
+
+
   acts_as_permalink :from => :name
   
   include AttachedImage
@@ -8,7 +12,8 @@ class Member < ActiveRecord::Base
   has_many :posts
   has_many :pictures
   
-  validates :name, :presence => {:message => "must be set"}
+  validates :name, :presence => {:message => "is required"}
+  validates :email, :presence => {:message => "is required"}
 
   def reset_password!
     password = MemorablePassword.generate
