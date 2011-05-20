@@ -1,17 +1,28 @@
 class MemberSessionsController < ApplicationController
 
-  before_filter :require_no_member, :only => [:new, :create]
   before_filter :require_member, :only => :destroy
 
   def new
-    @member_session = MemberSession.new
+    if current_member
+      redirect_to members_dashboard_index_path
+    else
+      @member_session = MemberSession.new
+    end
   end
 
   def create
     @member_session = MemberSession.new(params[:member_session])
+
     if @member_session.save
-      flash[:notice] = "Login successful!"
-      redirect_back_or_default "/"
+      flash[:notice] = "Hello #{current_member.name}!"
+      
+      if !current_member.password_configured?
+        redirect_to members_password_index_path
+      elsif !current_member.profile_configured?
+        redirect_to members_profile_index_path
+      else
+        redirect_to members_dashboard_index_path
+      end
     else
       render :action => :new
     end
@@ -19,8 +30,8 @@ class MemberSessionsController < ApplicationController
 
   def destroy
     current_member_session.destroy
-    flash[:notice] = "Logout successful!"
-    redirect_back_or_default "/"
+    flash[:notice] = "You have logged out."
+    redirect_to root_path
   end
 
 end

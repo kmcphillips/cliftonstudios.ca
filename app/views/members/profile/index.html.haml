@@ -1,0 +1,16 @@
+%h1 Setup Profile
+
+.post
+  = form_for current_member, :url => members_profile_index_path, :html => {:method => :post} do |f|
+    = f.error_messages
+
+    - if !current_member.profile_configured?
+      %p
+        It looks like you haven't entered some of the required personal information. It helps the studio contact you and helps members keep in touch with you.
+        All your private information stays private to everyone except Clifton Studios members. Don't worry!
+
+    %div
+      = f.label :phone, "Phone Number"
+      = f.text_field :phone
+    %div
+      = f.submit "Save"

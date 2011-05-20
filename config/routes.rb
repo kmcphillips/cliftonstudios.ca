@@ -21,8 +21,11 @@ Cliftonstudios::Application.routes.draw do
 
 
   namespace :members do
+    resources :dashboard, :only => [:index]
+    resources :password, :only => [:index, :create]
+    resources :profile, :only => [:index, :create]
     
-    
+
   end
   
   # The priority is based upon order of creation:

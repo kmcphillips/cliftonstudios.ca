@@ -1,8 +1,7 @@
 %h1 Password Reset
 
 .post
-  = form_tag :url => password_reset_index_path do |f|
-    = error_messages
+  = form_tag :url => password_reset_index_path do
     %div
       = label_tag :email
       = text_field_tag :email

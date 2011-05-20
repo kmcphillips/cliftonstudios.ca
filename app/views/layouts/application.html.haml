@@ -23,7 +23,9 @@
     #nav= render :partial => "shared/nav"
     #main
       #sidebar= render :partial => "shared/sidebar"
-      #content= yield
+      #content
+        = render :partial => "shared/flashes"
+        = yield
     #footer
       %p.credits
         &copy; #{Time.now.year}

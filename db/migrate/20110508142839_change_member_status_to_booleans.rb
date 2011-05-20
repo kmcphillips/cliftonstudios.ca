@@ -4,12 +4,12 @@ class ChangeMemberStatusToBooleans < ActiveRecord::Migration
     add_column :members, :admin, :boolean, :default => false
     add_column :members, :active, :boolean, :default => true
     add_column :members, :password_configured, :boolean, :default => false
-    add_column :members, :account_configured, :boolean, :default => false
+    add_column :members, :profile_configured, :boolean, :default => false
 
     add_index :members, :admin
     add_index :members, :active
     add_index :members, :password_configured
-    add_index :members, :account_configured
+    add_index :members, :profile_configured
 
     remove_column :members, :fingerprint
     remove_column :posts, :status
@@ -23,7 +23,7 @@ class ChangeMemberStatusToBooleans < ActiveRecord::Migration
     remove_column :members, :admin
     remove_column :members, :active
     remove_column :members, :password_configured
-    remove_column :members, :account_configured
+    remove_column :members, :profile_configured
 
     add_column :members, :fingerprint, :string
     add_column :posts, :status, :string, :default => "unsent"

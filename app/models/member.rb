@@ -4,7 +4,6 @@ class Member < ActiveRecord::Base
     config.logged_in_timeout = 1.day
   end
 
-
   acts_as_permalink :from => :name
   
   include AttachedImage
@@ -25,6 +24,10 @@ class Member < ActiveRecord::Base
     if save
       password
     end
+  end
+
+  def profile_configured?
+    false # TODO: check some attributes here
   end
 
 end

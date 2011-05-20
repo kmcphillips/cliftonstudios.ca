@@ -31,14 +31,6 @@ describe ApplicationHelper do
       page_title.should == "Clifton Studios :: Members Area :: Delicious"
     end
   end
-  
-  describe "error messages" do
-    it "should render the partial" do
-      obj = mock :object
-      should_receive(:render).with(:partial => "/shared/error_messages", :object => obj)
-      error_messages(obj)
-    end
-  end
 
   describe "members_area?" do
     it "should know if it is not members area" do

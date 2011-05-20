@@ -2,7 +2,8 @@
 
 .post
   = form_for @member_session, :url => {:action => "create"} do |f|
-    = error_messages @member_session
+    = f.error_messages
+    
     %div
       = f.label :email
       = f.text_field :email

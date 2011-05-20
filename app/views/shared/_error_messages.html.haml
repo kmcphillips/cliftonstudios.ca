@@ -1,10 +1,7 @@
--if !error_messages.try(:errors).blank? || flash[:error]
+-if !error_messages.try(:errors).blank?
   .error
     - if !error_messages.try(:errors).blank?
-      %h2= "Oops! There #{error_messages.errors.count == 1 ? "was a problem" : "were some problems"} saving."
+      %h2= "Sorry, there #{error_messages.errors.count == 1 ? "was a problem" : "were some problems"} with your submission."
       %ul
         - error_messages.errors.full_messages.each do |msg|
           %li= msg
-
-    - if flash[:error]
-      %h2= flash[:error]

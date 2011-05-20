@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110520011720) do
+ActiveRecord::Schema.define(:version => 20110520023652) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -84,11 +84,9 @@ ActiveRecord::Schema.define(:version => 20110520011720) do
     t.boolean  "admin",               :default => false
     t.boolean  "active",              :default => true
     t.boolean  "password_configured", :default => false
-    t.boolean  "account_configured",  :default => false
     t.datetime "last_request_at"
   end
 
-  add_index "members", ["account_configured"], :name => "index_members_on_account_configured"
   add_index "members", ["active"], :name => "index_members_on_active"
   add_index "members", ["admin"], :name => "index_members_on_admin"
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true

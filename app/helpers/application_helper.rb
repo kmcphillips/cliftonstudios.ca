@@ -97,10 +97,6 @@ module ApplicationHelper
     truncate(str, :length => 120, :omission => " (more..)")
   end
 
-  def error_messages(object=nil)
-    render :partial => "/shared/error_messages", :object => object
-  end
-
   def members_area?
     !!(params[:controller] =~ /^members_area\//)
   end
