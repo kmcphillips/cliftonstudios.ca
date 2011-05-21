@@ -5,7 +5,10 @@ class Members::PasswordController < ApplicationController
   end
 
   def create # actually update for current_user
-    if current_member.update_attributes(params[:member])
+    if params[:member].try(:[], :password).blank?
+      flash[:error] = "Password cannot be blank."
+      render :index
+    elsif current_member.update_attributes(params[:member])
       current_member.update_attribute(:password_configured, true)
       flash[:notice] = "Password has been updated."
 
