@@ -34,9 +34,21 @@ class Member < ActiveRecord::Base
     !%w[email phone address name].map(&:blank?).any?
   end
 
+  def to_csv
+    [name, address, phone, email]
+  end
+
   ## Class methods
 
-  def self.xls_columns
-    %w[name address phone email]
+  def self.contact_list_csv
+    FasterCSV.generate do |csv|
+      csv << ["Clifton Studios Contact List"]
+      csv << ["Generated: #{Time.now.to_s(:with_time)}"]
+      csv <<
+      csv << %w[name address phone email]
+      Member.active.alphabetical.each do |member|
+        csv << member.to_csv
+      end
+    end
   end
 end

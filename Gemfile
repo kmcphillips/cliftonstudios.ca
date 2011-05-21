@@ -12,7 +12,7 @@ gem 'rmagick', ">= 2.13.1"
 gem 'authlogic'
 gem 'rails3-generators'
 gem 'memorable_password'
-gem 'to_xls'
+gem 'fastercsv'
 
 group :development, :test do
   gem "mongrel"

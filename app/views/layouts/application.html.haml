@@ -20,9 +20,13 @@
   %body
     #top= render :partial => "shared/top"
     #header Clifton Studios
-    #nav= render :partial => "shared/nav"
+    #nav
+      = render :partial => "shared/nav"
+      = render :partial => "shared/members/nav" if current_member
     #main
-      #sidebar= render :partial => "shared/sidebar"
+      #sidebar
+        = render :partial => "shared/sidebar"
+        = render :partial => "shared/members/sidebar" if current_member
       #content
         = render :partial => "shared/flashes"
         = yield

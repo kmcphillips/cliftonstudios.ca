@@ -9,9 +9,9 @@
 
     %div
       = f.label :password
-      = f.text_field :password
+      = f.password_field :password, :size => 16
     %div
       = f.label :password_confirmation, "Re-type password"
-      = f.text_field :password_confirmation
+      = f.password_field :password_confirmation, :size => 16
     %div
       = f.submit "Save"

@@ -2,7 +2,7 @@
 
 .post
   %p
-    = link_to "Download spreadsheet (.xls)", members_contact_list_index_path(:format => "xls")
+    = link_to "Download spreadsheet (.csv)", members_contact_list_index_path(:format => "csv")
 
 .post= render :partial => "member", :collection => @members
 
