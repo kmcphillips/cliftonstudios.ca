@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110520185141) do
+ActiveRecord::Schema.define(:version => 20110521211708) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -95,11 +95,8 @@ ActiveRecord::Schema.define(:version => 20110520185141) do
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
 
   create_table "pending_emails", :force => true do |t|
-    t.string   "mailer"
     t.string   "method"
     t.text     "locals"
-    t.integer  "member_id"
-    t.boolean  "everyone",   :default => false
     t.boolean  "processing", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"

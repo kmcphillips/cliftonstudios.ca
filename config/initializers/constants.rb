@@ -1,6 +1,8 @@
 ADMIN_EMAIL = "admin@cliftonstudios.ca"
 ADMIN_EMAIL_NAME = "Kevin McPhillips"
 
+ROBOT_EMAIL = "Clifton Robot <robot@cliftonstudios.ca>"
+
 META = {
   :keywords => "",
   :description => ""

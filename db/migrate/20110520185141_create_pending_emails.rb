@@ -1,7 +1,6 @@
 class CreatePendingEmails < ActiveRecord::Migration
   def self.up
     create_table :pending_emails do |t|
-      t.string :mailer
       t.string :method
       t.text :locals
       t.integer :member_id

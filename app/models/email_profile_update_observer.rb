@@ -2,10 +2,9 @@ class EmailProfileUpdateObserver < ActiveRecord::Observer
   observe :member
 
   def after_save(member)
-    if member.password
-      PendingEmail.create! :mailer => "MemberMailer", :method => :reset_password, :member => member, :locals => {:password => member.password}
+    if member.password && member.notify_password_change
+      PendingEmail.create! :method => :reset_password, :locals => {:password => member.password, :member => member}
     end
   end
 
 end
-

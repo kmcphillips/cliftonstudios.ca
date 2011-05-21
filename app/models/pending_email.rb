@@ -4,12 +4,17 @@ class PendingEmail < ActiveRecord::Base
   belongs_to :member
 
   validates :method, :presence => true
-  validates :mailer, :presence => true
+
+  def deliver!
+    MemberMailer.send(method, locals).deliver
+  end
+
+  ## Class methods
 
   def self.next!
     if message = where(:processing => false).order("created_at ASC").first
       message.update_attribute :processing, true
-      message 
+      message
     end
   end
 

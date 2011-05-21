@@ -14,6 +14,8 @@ class Member < ActiveRecord::Base
   validates :name, :presence => {:message => "is required"}
   validates :email, :presence => {:message => "is required"}
 
+  attr_accessor :notify_password_change
+
   scope :alphabetical, order("name ASC")
   scope :active, where(:active => true)
   scope :emailable, where(:receive_emails => true, :active => true)
@@ -24,9 +26,12 @@ class Member < ActiveRecord::Base
     self.password = password
     self.password_confirmation = password
     self.password_configured = false
+    self.notify_password_change = true
 
     if save
       password
+    else
+      self.notify_password_change = nil
     end
   end
 
@@ -36,6 +41,10 @@ class Member < ActiveRecord::Base
 
   def to_csv
     [name, address, phone, email]
+  end
+
+  def email_with_name
+    "#{name} <#{email}>" unless email.blank?
   end
 
   ## Class methods
