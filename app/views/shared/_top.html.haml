@@ -1,6 +1,8 @@
-%ul
+%p
   - if current_member
-    %li= current_member.name
-    %li= link_to "Logout", "/logout"
+    Hello
+    = current_member.name
+    &nbsp;&nbsp;&nbsp;
+    = link_to "Logout", "/logout"
   - else
-    %li= link_to "Login", "/login"
+    = link_to "Login", "/login"

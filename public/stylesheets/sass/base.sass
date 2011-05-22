@@ -1,5 +1,24 @@
 /* cliftonstudios.ca by Kevin McPhillips */
 
+$background: #E2CB92
+$white: #FFF
+$very_light: #E6F9BC
+
+$nav_background: #5F231E
+$nav_text: #F0E0B6
+$nav_background_hover: #605245
+$nav_text_hover: #EED779
+
+$top_background: #332b30
+$top_text: $white
+$top_link: #BCDEA5
+$top_link_hover: $very_light
+
+$footer: #312C20
+$footer_text: $white
+$footer_link: #B3A176
+
+$border_radius_amount: 12px
 
 /* Reset CSS */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
@@ -34,7 +53,7 @@ body
   line-height: 1
   font-family: MuseoSans500, helvetica, sans-serif
   font-size: 100%
-  background-color: brown
+  background-color: $footer
 
 a
   text-decoration: none
@@ -65,8 +84,8 @@ a:hover
 
 #bgwrapper
   width: 100%
-  background-color: blue
-  padding-bottom: 30px
+  background: $background url('../images/background.png') no-repeat right top
+  padding-bottom: 70px
 
   #top
     width: 800px
@@ -75,44 +94,96 @@ a:hover
     height: 40px
     text-align: right
 
+    p
+      float: right
+      display: block
+      padding: 12px 22px
+      -moz-border-radius: 0 0 $border_radius_amount $border_radius_amount
+      -webkit-border-radius: 0 0 $border_radius_amount $border_radius_amount
+      border-radius: 0 0 $border_radius_amount $border_radius_amount
+      background-color: $top_background
+      color: $top_text
+      a
+        color: $top_link
+      a:hover
+        color: $top_link_hover
+
   #header
     width: 800px
     margin-left: auto
     margin-right: auto
     h1
-      font-weight: normal
-      font-color: orange
-      font-size: 2.4em
+      font-weight: bold
+      font-size: 3.2em
+      letter-spacing: -4px
+      margin-left: 10px
+      margin-bottom: -4px
 
   #main
     width: 800px
     margin-left: auto
     margin-right: auto
-    background-color: pink
+    background-color: $white
+    -moz-border-radius: $border_radius_amount
+    -webkit-border-radius: $border_radius_amount
+    border-radius: $border_radius_amount
 
     #borderwrapper
       border: 1px solid black
+      -moz-border-radius: $border_radius_amount
+      -webkit-border-radius: $border_radius_amount
+      border-radius: $border_radius_amount
+      -moz-box-shadow: 0px 6px 16px 2px #000000
+      -webkit-box-shadow: 0px 6px 16px 2px #000000
+      box-shadow: 0px 6px 16px 2px #000000
+      /* filter: progid: DXImageTransform.Microsoft.Shadow(strength=6, direction=180, color='#000000'); */
+      /* -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=6, Direction=180, Color='#000000')" */
+
 
       #nav
-        height: 60px
-        background-color: green
+        background-color: $nav_background
+        -moz-border-radius: $border_radius_amount $border_radius_amount 0 0
+        -webkit-border-radius: $border_radius_amount $border_radius_amount 0 0
+        border-radius: $border_radius_amount $border_radius_amount 0 0
+        padding: 0 20px
+
+        ul
+          list-style: none
+          li
+            float: left
+            a
+              background-color: $nav_background
+              color: $nav_text
+              float: left
+              display: block
+              padding: 12px 22px
+            a:hover
+              background-color: $nav_background_hover
+              color: $nav_text_hover
+              text-decoration: none
+            
+            
 
       #columns
         #sidebar
           float: left
           width: 200px
-          background-color: pink
 
         #content
           margin-left: 200px
-          background-color: #444
           min-height: 600px
           height: expression(this.scrollHeight > 600 ? "auto":"600px")
+          -moz-border-radius: 0 0 $border_radius_amount 0
+          -webkit-border-radius: 0 0 $border_radius_amount 0
+          border-radius: 0 0 $border_radius_amount 0
 
 
 #footer
   clear: both
-  margin: 20px 50px
+  margin: 40px
   padding: 0px
   text-align: center
-  background-color: brown
+  color: $footer_text
+
+  a
+    color: $footer_link

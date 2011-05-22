@@ -25,17 +25,13 @@
       #main
         #borderwrapper
           #nav
-            = "nav"# render :partial => "shared/nav"
+            = render :partial => "shared/nav"
           #columns
             #sidebar
-              sidebar
               = render :partial => "shared/members/nav" if current_member
               = render :partial => "shared/sidebar"
               = render :partial => "shared/members/sidebar" if current_member
             #content
               = render :partial => "shared/flashes"
               = yield
-    #footer
-      %p
-        &copy; #{Time.now.year}
-        = obfuscated_mail_to ADMIN_EMAIL, ADMIN_EMAIL_NAME
+    #footer= render :partial => "shared/footer"
