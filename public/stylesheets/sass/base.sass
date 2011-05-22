@@ -1,3 +1,6 @@
+/* cliftonstudios.ca by Kevin McPhillips */
+
+
 /* Reset CSS */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
   margin: 0
@@ -7,6 +10,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font-size: 100%
   vertical-align: baseline
   background: transparent
+  font-weight: normal
 
 ol, ul 
   list-style: none
@@ -19,23 +23,25 @@ q:before, q:after
   content: ''
   content: none
 
-/* tables still need 'cellspacing="0"' in the markup */
-table 
+table
   border-collapse: collapse
   border-spacing: 0
 
 /* Main */
 
+
 body 
   line-height: 1
   font-family: MuseoSans500, helvetica, sans-serif
+  font-size: 100%
+  background-color: brown
 
 a
   text-decoration: none
 
 a:hover
   text-decoration: underline
-  
+
 
 /* Shared */
 
@@ -55,4 +61,58 @@ a:hover
   clear: both
 
 
+/* Layout */
 
+#bgwrapper
+  width: 100%
+  background-color: blue
+  padding-bottom: 30px
+
+  #top
+    width: 800px
+    margin-left: auto
+    margin-right: auto
+    height: 40px
+    text-align: right
+
+  #header
+    width: 800px
+    margin-left: auto
+    margin-right: auto
+    h1
+      font-weight: normal
+      font-color: orange
+      font-size: 2.4em
+
+  #main
+    width: 800px
+    margin-left: auto
+    margin-right: auto
+    background-color: pink
+
+    #borderwrapper
+      border: 1px solid black
+
+      #nav
+        height: 60px
+        background-color: green
+
+      #columns
+        #sidebar
+          float: left
+          width: 200px
+          background-color: pink
+
+        #content
+          margin-left: 200px
+          background-color: #444
+          min-height: 600px
+          height: expression(this.scrollHeight > 600 ? "auto":"600px")
+
+
+#footer
+  clear: both
+  margin: 20px 50px
+  padding: 0px
+  text-align: center
+  background-color: brown

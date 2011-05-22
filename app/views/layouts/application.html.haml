@@ -18,20 +18,24 @@
     %meta{:name => "description", :content => META[:description] || ""}
 
   %body
-    #top= render :partial => "shared/top"
-    #header Clifton Studios
-    #nav
-      = render :partial => "shared/nav"
-      = render :partial => "shared/members/nav" if current_member
-    #main
-      #sidebar
-        = render :partial => "shared/sidebar"
-        = render :partial => "shared/members/sidebar" if current_member
-      #content
-        = render :partial => "shared/flashes"
-        = yield
+    #bgwrapper
+      #top= render :partial => "shared/top"
+      #header
+        %h1 Clifton Studios
+      #main
+        #borderwrapper
+          #nav
+            = "nav"# render :partial => "shared/nav"
+          #columns
+            #sidebar
+              sidebar
+              = render :partial => "shared/members/nav" if current_member
+              = render :partial => "shared/sidebar"
+              = render :partial => "shared/members/sidebar" if current_member
+            #content
+              = render :partial => "shared/flashes"
+              = yield
     #footer
-      %p.credits
+      %p
         &copy; #{Time.now.year}
         = obfuscated_mail_to ADMIN_EMAIL, ADMIN_EMAIL_NAME
-
