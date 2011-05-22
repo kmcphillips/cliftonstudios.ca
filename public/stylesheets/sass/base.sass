@@ -3,13 +3,18 @@
 $background: #E2CB92
 $white: #FFF
 $very_light: #E6F9BC
+$very_dark: #332b30
+
+$link_color: $very_dark
+$link_hover_color: #5F231E
+$link_visited_color: $very_dark
 
 $nav_background: #5F231E
 $nav_text: #F0E0B6
 $nav_background_hover: #605245
 $nav_text_hover: #EED779
 
-$top_background: #332b30
+$top_background: $very_dark
 $top_text: $white
 $top_link: #BCDEA5
 $top_link_hover: $very_light
@@ -113,13 +118,18 @@ a:hover
     margin-left: auto
     margin-right: auto
     h1
-      font-weight: bold
       font-size: 3.2em
+      font-weight: bold
       letter-spacing: -4px
-      margin-left: 10px
-      margin-bottom: -4px
+      margin: 16px 10px -4px 10px
+    h2
+      font-size: 1.2em
+      font-weight: bold
+      letter-spacing: -3px
+    table td .bottom
+      vertical-align: bottom
 
-  #main
+  #column
     width: 800px
     margin-left: auto
     margin-right: auto
@@ -146,6 +156,7 @@ a:hover
         -webkit-border-radius: $border_radius_amount $border_radius_amount 0 0
         border-radius: $border_radius_amount $border_radius_amount 0 0
         padding: 0 20px
+        margin-bottom: 16px
 
         ul
           list-style: none
@@ -156,7 +167,8 @@ a:hover
               color: $nav_text
               float: left
               display: block
-              padding: 12px 22px
+              padding: 16px 26px
+              font-size: 1em
             a:hover
               background-color: $nav_background_hover
               color: $nav_text_hover
@@ -164,18 +176,37 @@ a:hover
             
             
 
-      #columns
+      #main
+        font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', Tahoma, 'Sans Serif'
+        font-size: 1em
+        a
+          color: $link_color
+        a:hover
+          color: $link_hover_color !important
+        a:visited
+          color: $link_visited_color
+
         #sidebar
           float: left
-          width: 200px
+          width: 168px
+          padding: 0 16px 20px 16px
 
         #content
-          margin-left: 200px
+          margin: 0 20px 20px 200px
           min-height: 600px
           height: expression(this.scrollHeight > 600 ? "auto":"600px")
           -moz-border-radius: 0 0 $border_radius_amount 0
           -webkit-border-radius: 0 0 $border_radius_amount 0
           border-radius: 0 0 $border_radius_amount 0
+
+          h1
+            font-size: 1.5em
+
+          h2
+            font-size: 1.3em
+
+          h3
+            font-size: 1.2em
 
 
 #footer
