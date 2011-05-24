@@ -98,7 +98,24 @@ module ApplicationHelper
   end
 
   def members_area?
-    !!(params[:controller] =~ /^members_area\//)
+    !!(params[:controller] =~ /^members\//)
+  end
+
+  def nav_underline
+    index = case params[:controller]
+      when "posts" then 0
+      when "events" then 1
+      when "artists" then 2
+      when "pictures" then 3
+      when "blocks"
+        if params[:action] == "about"
+          4
+        elsif params[:action] == "links"
+          5
+        end
+    end
+
+    content_tag(:div, nil, :id => :navunder, :style => index ? "margin-left: #{66 + (index * 110)}px" : "background: transparent")
   end
 
 
@@ -109,14 +126,6 @@ module ApplicationHelper
 
   def posts_path
     "/"
-  end
-
-  def members_path
-    artists_path
-  end
-  
-  def member_path(member)
-    artists_path(member.to_param)
   end
 
 end

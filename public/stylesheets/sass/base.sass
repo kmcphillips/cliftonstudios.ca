@@ -156,25 +156,33 @@ a:hover
         -webkit-border-radius: $border_radius_amount $border_radius_amount 0 0
         border-radius: $border_radius_amount $border_radius_amount 0 0
         padding: 0 20px
-        margin-bottom: 16px
+        border-bottom: 12px solid $very_dark
 
         ul
           list-style: none
           li
             float: left
+            background-color: yellow
+            width: 110px
+            text-align: center
+            
             a
               background-color: $nav_background
               color: $nav_text
               float: left
               display: block
-              padding: 16px 26px
+              padding: 16px 0
               font-size: 1em
+              width: 100%
             a:hover
               background-color: $nav_background_hover
               color: $nav_text_hover
               text-decoration: none
-            
-            
+
+      #navunder
+        height: 8px
+        margin: 0 0 26px 68px
+        background: url("../images/dot.png") no-repeat scroll 0 0 transparent
 
       #main
         font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', Tahoma, 'Sans Serif'

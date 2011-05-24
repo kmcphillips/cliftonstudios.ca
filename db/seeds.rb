@@ -4,7 +4,7 @@ if Rails.env.development?
     member.destroy
   end
   puts "Creating test/test member"
-  Member.new(:email => 'test@test.test', :password => 'test', :password_confirmation => 'test', :name => "Test User").save!(false)
+  Member.new(:email => 'test@test.test', :password => 'test', :password_confirmation => 'test', :name => "Test User").save!
 end
 
 puts "Creating 'About' block"

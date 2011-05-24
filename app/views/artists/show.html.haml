@@ -1,14 +1,7 @@
 %h1= @member.name
 
 .post
-  - if @member.visible?
-    - unless @member.bio.blank?
-      = simple_format @member.bio
-    - else
-      This artist has no public profile.
-  
-  - else
-    This artist's profile is not public.
+  = simple_format @member.bio
 
   - if current_member
     .membercontact

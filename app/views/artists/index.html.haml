@@ -2,7 +2,4 @@
 
 %ul
   - @members.each do |member|
-    - if current_member
-      %li= link_to(artist_path(member), member.name)
-    - else
-      %li= member.visible? ? link_to(artist_path(member), member.name) : member.name
+    %li= link_to(member.name, artist_path(member))
