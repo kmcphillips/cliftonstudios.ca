@@ -3,3 +3,11 @@
 %ul
   - @members.each do |member|
     %li= link_to(member.name, artist_path(member))
+
+%h1 Executive
+
+.post
+  %ul
+    - @executive.each do |position|
+      %li= "#{position.title}: #{position.member.name}"
+

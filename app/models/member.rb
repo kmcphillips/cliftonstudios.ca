@@ -10,6 +10,7 @@ class Member < ActiveRecord::Base
   
   has_many :posts
   has_many :pictures
+  has_many :titles, :class_name => "Executive", :foreign_key => "member_id"
   
   validates :name, :presence => {:message => "is required"}
   validates :email, :presence => {:message => "is required"}
