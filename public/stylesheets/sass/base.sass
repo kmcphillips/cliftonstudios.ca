@@ -11,7 +11,7 @@ $link_visited_color: $very_dark
 
 $nav_background: #5F231E
 $nav_text: #F0E0B6
-$nav_background_hover: #605245
+$nav_background_hover: #666
 $nav_text_hover: #EED779
 
 $top_background: $very_dark
@@ -23,7 +23,13 @@ $footer: #312C20
 $footer_text: $white
 $footer_link: #B3A176
 
+$divider_colour: #ddd
+$heading_colour: #000
+
 $border_radius_amount: 12px
+
+$font_copy: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', Tahoma, 'Sans Serif'
+$font_decorative: MuseoSans500, helvetica, sans-serif
 
 /* Reset CSS */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
@@ -56,7 +62,7 @@ table
 
 body 
   line-height: 1
-  font-family: MuseoSans500, helvetica, sans-serif
+  font-family: $font_decorative
   font-size: 100%
   background-color: $footer
 
@@ -185,7 +191,7 @@ a:hover
         background: url("../images/dot.png") no-repeat scroll 0 0 transparent
 
       #main
-        font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', Tahoma, 'Sans Serif'
+        font-family: $font_copy
         font-size: 1em
         a
           color: $link_color
@@ -207,16 +213,6 @@ a:hover
           -webkit-border-radius: 0 0 $border_radius_amount 0
           border-radius: 0 0 $border_radius_amount 0
 
-          h1
-            font-size: 1.5em
-
-          h2
-            font-size: 1.3em
-
-          h3
-            font-size: 1.2em
-
-
 #footer
   clear: both
   margin: 40px
@@ -226,3 +222,27 @@ a:hover
 
   a
     color: $footer_link
+
+
+/* Style */
+
+#content
+  h1, h2, h3
+    font-family: $font_decorative
+    color: $heading_colour
+
+  h1
+    font-size: 1.6em
+    border-bottom: 5px solid $divider_colour
+    margin: 8px 0 22px 0
+    padding: 0 4px 4px 8px
+
+  h2
+    font-size: 1.3em
+
+  h3
+    font-size: 1.2em
+
+  form
+    label
+      

@@ -1,5 +1,5 @@
 .post
-  %h2= link_to post.title, post_path(post)
-  %h3= post.created_at.to_s :with_time
+  %h1= link_to post.title, post_path(post)
+  %h2= post.created_at.to_s :with_time
   .body= post.body
   .userstamp= link_to post.member.name, member_path(post.member)

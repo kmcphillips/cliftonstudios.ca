@@ -1,4 +1,12 @@
-%h1 Upcoming Events
+- if @events.any?
+  %h1 Upcoming Events
 
-- @events.each do |event|
-  = render :partial => "event", :object => event
+  - @events.each do |event|
+    = render :partial => "event", :object => event
+
+- else
+  %h1 No Upcoming Events
+  .post
+    %p
+      Keep an eye out for our next events or
+      = link_to "subscribe to our RSS feed", "/rss.xml"
