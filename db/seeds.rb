@@ -1,10 +1,11 @@
 if Rails.env.development?
-  if member = Member.find_by_permalink("test")
+  email = 'test@test.test'
+  if member = Member.find_by_email(email)
     puts "Deleting old test member"
     member.destroy
   end
   puts "Creating test/test member"
-  Member.new(:email => 'test@test.test', :password => 'test', :password_confirmation => 'test', :name => "Test User").save!
+  Member.new(:email => email, :password => 'test', :password_confirmation => 'test', :name => "Test User").save!
 end
 
 puts "Creating 'About' block"
