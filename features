@@ -49,5 +49,12 @@ Importer
 Bonus
   Create clifton studios email that forwards to email in db
   Google Site Search inegration
-  Sitemap
   Images saves across preview
+
+Post deploy
+  Cron job for sitemap generation. Possibly an observer?
+  Cron job to send pending emails
+  Meta information
+  Search engine reindexing
+
+

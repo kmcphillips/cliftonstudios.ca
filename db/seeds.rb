@@ -8,6 +8,9 @@ if Rails.env.development?
   Member.new(:email => email, :password => 'test', :password_confirmation => 'test', :name => "Test User").save!
 end
 
+puts "Destroying blocks"
+Block.destroy_all
+
 puts "Creating 'About' block"
 b = Block.new
 b.label = "about"

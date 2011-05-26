@@ -21,7 +21,8 @@ namespace :deploy do
   end
 end
 
-after "deploy", "symlink_shared_files"
+## Callbacks
+after "deploy", "symlink_shared_files", "generate_sitemaps"
 
 task :symlink_shared_files do
   run "ln -s #{shared_path}/assets #{release_path}/public/assets"
@@ -30,3 +31,8 @@ task :symlink_shared_files do
     run "ln -s #{shared_path}/#{config} #{release_path}/config/#{config}"
   end
 end
+
+task :generate_sitemaps do
+  run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh" 
+end
+

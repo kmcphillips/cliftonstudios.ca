@@ -13,6 +13,7 @@ gem 'authlogic'
 gem 'rails3-generators'
 gem 'memorable_password'
 gem 'fastercsv'
+gem 'sitemap_generator'
 
 group :development, :test do
   gem "mongrel"
