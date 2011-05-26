@@ -25,6 +25,7 @@ Cliftonstudios::Application.routes.draw do
     resources :password, :only => [:index, :create]
     resources :profile, :only => [:index, :create]
     resources :contact_list, :only => [:index]
+    resources :executive, :only => [:index, :create]
     
 
   end
