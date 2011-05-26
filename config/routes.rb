@@ -27,7 +27,9 @@ Cliftonstudios::Application.routes.draw do
     resources :contact_list, :only => [:index]
     resources :executive, :only => [:index, :create]
     
-
+    ['bylaws', 'emails'].each do |block|
+      match block => "blocks##{block}"
+    end
   end
   
   # The priority is based upon order of creation:

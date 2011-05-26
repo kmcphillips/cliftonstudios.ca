@@ -1,0 +1,7 @@
+%h1 Member Email List
+
+.post
+  %p This is a list of the email addresses for all active Clifton Studios members.
+
+  = text_area_tag :emails, @emails.join(", "), :cols => 40, :rows => 6, :readonly => :readonly
+
