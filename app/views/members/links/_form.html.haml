@@ -1,0 +1,10 @@
+= form_for @members_link do |f|
+  -if @members_link.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@members_link.errors.count, "error")} prohibited this members_link from being saved:"
+      %ul
+        - @members_link.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

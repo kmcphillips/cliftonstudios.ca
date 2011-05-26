@@ -1,0 +1,16 @@
+%h1 Manage Links
+
+.post
+  = link_to 'New Link', new_members_link_path
+
+  %table.data
+    %tr
+      %th Something
+
+    - @links.each do |link|
+      %tr
+        %td= link_to 'Show', members_link
+        %td= link_to 'Edit', edit_members_link_path(link)
+        %td= link_to 'Destroy', link, :confirm => 'Are you sure?', :method => :delete
+
+
