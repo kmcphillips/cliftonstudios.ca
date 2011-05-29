@@ -39,6 +39,9 @@ $border_radius_amount: 12px
 $font_copy: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', Tahoma, 'Sans Serif'
 $font_decorative: MuseoSans500, helvetica, sans-serif
 
+$column_width: 900px
+$sidebar_width: 220px
+
 
 /* Reset CSS */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
@@ -108,7 +111,7 @@ a:hover
   padding-bottom: 70px
 
   #top
-    width: 800px
+    width: $column_width
     margin-left: auto
     margin-right: auto
     height: 40px
@@ -129,7 +132,7 @@ a:hover
         color: $top_link_hover
 
   #header
-    width: 800px
+    width: $column_width
     margin-left: auto
     margin-right: auto
     h1
@@ -145,7 +148,7 @@ a:hover
       vertical-align: bottom
 
   #column
-    width: 800px
+    width: $column_width
     margin-left: auto
     margin-right: auto
     background-color: $white
@@ -211,11 +214,11 @@ a:hover
 
         #sidebar
           float: left
-          width: 168px
+          width: $sidebar_width - 32px
           padding: 0 16px 20px 16px
 
         #content
-          margin: 0 20px 20px 200px
+          margin: 0 20px 20px $sidebar_width
           min-height: 600px
           height: expression(this.scrollHeight > 600 ? "auto":"600px")
           -moz-border-radius: 0 0 $border_radius_amount 0
