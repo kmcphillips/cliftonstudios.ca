@@ -8,10 +8,12 @@ class Members::ExecutiveController < ApplicationController
 
   def create # actually update for current_user
     Executive.sorted.each do |position|
-      position.update_attribute(:member_id, params[position.id]) if params[position.id]
+      position.update_attribute(:member_id, params[position.id.to_s]) if params[position.id.to_s]
     end
 
-    redirect_to :index
+    flash[:error] = "Executive has been updated."
+
+    redirect_to members_executive_index_path
   end
 
 end

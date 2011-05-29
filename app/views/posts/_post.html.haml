@@ -1,5 +1,8 @@
 %h1= link_to post.title, post_path(post)
-.subtext_left= post.created_at.to_s :with_time
-.subtext_right= link_to post.member.name, artist_path(post.member)
+.subtext_left= post.created_at.to_s :with_time_no_minutes
+.subtext_right
+  By
+  = link_to post.member.name, artist_path(post.member)
+.clear
 .post
   = post.body

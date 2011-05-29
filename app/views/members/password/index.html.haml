@@ -4,14 +4,17 @@
   = form_for current_member, :url => members_password_index_path, :html => {:method => :post} do |f|
     = f.error_messages
 
-    - if !current_member.password_configured?
-      %p Your password is set to something temporary and must be changed.
+    %ul.form
+      - if !current_member.password_configured?
+        %li
+          %p Your password is set to something temporary and must be changed.
 
-    %div
-      = f.label :password
-      = f.password_field :password, :size => 16
-    %div
-      = f.label :password_confirmation, "Re-type password"
-      = f.password_field :password_confirmation, :size => 16
-    %div
-      = f.submit "Save"
+      %li
+        = f.label :password
+        = f.password_field :password, :size => 16
+      %li
+        = f.label :password_confirmation, "Re-type password"
+        = f.password_field :password_confirmation, :size => 16
+      %li
+        %label &nbsp;
+        = f.submit "Save"

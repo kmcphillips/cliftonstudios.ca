@@ -1,8 +1,11 @@
 %h1 Artists
 
-%ul
-  - @members.each do |member|
-    %li= link_to(member.name, artist_path(member))
+.post
+  Members of the Clifton Studios Co-op:
+
+  %ul.members
+    - @members.each do |member|
+      %li= link_to(member.name, artist_path(member))
 
 %h1 Executive
 

@@ -2,9 +2,13 @@
 
 .post
   = form_tag :url => password_reset_index_path do
-    %div
-      = label_tag :email
-      = text_field_tag :email
-    %div
-      = submit_tag "Reset Password"
-
+    %ul.form
+      %li
+        %p
+          If you cannot remember your password, enter your email below and a new passowrd will be sent to you. If you do not remember your email, contact the administrator.
+      %li
+        = label_tag :email
+        = text_field_tag :email
+      %li
+        %label &nbsp;
+        = submit_tag "Reset Password"

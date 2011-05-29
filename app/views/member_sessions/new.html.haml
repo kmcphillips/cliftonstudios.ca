@@ -3,19 +3,21 @@
 .post
   = form_for @member_session, :url => {:action => "create"} do |f|
     = f.error_messages
-    
-    %div
-      = f.label :email
-      = f.text_field :email
-    %div
-      = f.label :password
-      = f.password_field :password
-    %div
-      = f.label :remember_me
-      = f.check_box :remember_me
-    %div
-      = f.submit "Login"
+
+    %ul.form
+      %li
+        = f.label :email
+        = f.text_field :email
+      %li
+        = f.label :password
+        = f.password_field :password
+      %li
+        = f.label :remember_me
+        = f.check_box :remember_me
+      %li
+        %label &nbsp;
+        = f.submit "Login"
 
   %p
-    = link_to "Forgotten password", password_reset_index_path
+    = link_to "Click here if you have forgotten your password", password_reset_index_path
 

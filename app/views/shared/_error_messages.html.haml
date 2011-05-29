@@ -1,7 +1,7 @@
 -if !error_messages.try(:errors).blank?
   .error
     - if !error_messages.try(:errors).blank?
-      %h2= "Sorry, there #{error_messages.errors.count == 1 ? "was a problem" : "were some problems"} with your submission."
+      %h2= "Sorry, there was an error with your request."
       %ul
         - error_messages.errors.full_messages.each do |msg|
           %li= msg

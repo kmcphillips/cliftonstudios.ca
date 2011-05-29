@@ -2,11 +2,12 @@
 
 .post
   = form_tag :url => members_executive_index_path, :html => {:method => :post} do |f|
-    = f.error_messages
 
-    - @executive.each do |position|
-      %div
-        %label= position.title
-        = select_tag(position.id, options_for_select(@members.map{|m| [m.name, m.id]), :selected => position.member_id))
-    %div
-      = f.submit "Save"
+    %ul.form
+      - @executive.each do |position|
+        %li
+          %label= position.title
+          = select_tag(position.id, options_for_select([["[Vacant]", nil]] + @members.map{|m| [m.name, m.id]}, :selected => position.member_id))
+      %li
+        %label &nbsp;
+        = submit_tag "Save"

@@ -24,12 +24,21 @@ $footer_text: $white
 $footer_link: #B3A176
 
 $divider_colour: #ddd
-$heading_colour: #000
+$heading_colour: $very_dark
+
+$form_label: $very_dark
+$form_background: $very_light
+
+$notice_text: #fff
+$notice_background: green
+$error_text: #fff
+$error_background: red
 
 $border_radius_amount: 12px
 
 $font_copy: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', Tahoma, 'Sans Serif'
 $font_decorative: MuseoSans500, helvetica, sans-serif
+
 
 /* Reset CSS */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
@@ -232,9 +241,9 @@ a:hover
     color: $heading_colour
 
   h1
-    font-size: 1.6em
+    font-size: 1.8em
     border-bottom: 5px solid $divider_colour
-    margin: 8px 0 22px 0
+    margin: 8px 0 8px 0
     padding: 0 4px 4px 8px
 
   h2
@@ -244,7 +253,18 @@ a:hover
     font-size: 1.2em
 
   .post
+    margin: 28px 0 50px 0
     clear: both
+    line-height: 140%
+    font-size: 0.9em
+
+    p
+      margin: 14px 0
+
+  .subtext_left, .subtext_right
+    font-size: 0.9em
+    font-family: $font_decorative
+    padding: 0 10px
 
   .subtext_left
     float: left
@@ -252,6 +272,67 @@ a:hover
     float: right
 
 
-  form
-    label
-      
+  ul.members
+    padding-top: 20px
+
+    li
+      font-size: 1.2em
+      margin-left: 20px
+
+  ul.form
+    clear: both
+    background-color: $form_background
+    padding: 16px 0
+    -moz-border-radius: $border_radius_amount
+    -webkit-border-radius: $border_radius_amount
+    border-radius: $border_radius_amount
+    
+    li
+      padding: 4px 0
+
+      label
+        display: block
+        float: left
+        text-align: right
+        font-weight: bold
+        width: 160px
+        margin-right: 10px
+        color: $form_label
+        
+      input, textarea
+        font-family: $font_decorative
+
+      p
+        padding: 0
+        margin: 8px 16px
+
+  div.notice, div.error
+    padding: 20px
+    margin: 20px 0
+    -moz-border-radius: $border_radius_amount
+    -webkit-border-radius: $border_radius_amount
+    border-radius: $border_radius_amount
+
+    h2
+      font-size: 1.2em
+      font-family: $font_copy
+
+  div.notice
+    background-color: $notice_background
+    color: $notice_text
+
+    h2
+      color: $notice_text
+
+  div.error
+    background-color: $error_background
+    color: $error_text
+
+    h2
+      color: $error_text
+
+    ul
+      li
+        font-weight: bold
+        list-style-type: disc
+        padding-left: 12px
