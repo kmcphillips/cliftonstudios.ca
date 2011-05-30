@@ -1,7 +1,10 @@
-%h1 Editing members_link
+%h1 Edit Link
 
-= render 'form'
+.post
+  = render 'form'
 
-= link_to 'Show', @members_link
-\|
-= link_to 'Back', members_links_path
+  .image_links
+    = index_entity_image members_links_path, "Back to Links Index"
+    %br
+    = destroy_entity_image members_link_path(@link), "Delete Link"
+

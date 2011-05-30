@@ -1,5 +1,8 @@
-%h1 New members_link
+%h1 Create new link
 
-= render 'form'
+.post
+  = render 'form'
 
-= link_to 'Back', members_links_path
+  .image_links
+    = index_entity_image members_links_path, "Back to Links Index"
+

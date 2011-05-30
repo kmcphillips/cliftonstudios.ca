@@ -1,11 +1,8 @@
 Layout
   Qtip description over nav links
-  Headers
-  Posts
   Sidebar
   Images
   Links
-  About
   Admin tables
 
 Admin/Members area
@@ -17,10 +14,12 @@ Admin/Members area
   Other Members
   Images for studio
   Images for each object
-  Email list
   Bi-laws (Enter them)
   Password requirements written somewhere
   Scope things by admin user
+  Pagination for models
+  Deletion and editing should be restricted by user and type?
+  Sortable on links and things
 
 Images
   Images area
@@ -30,7 +29,6 @@ Images
 Mailing
   Script/job to mail out changes
   Link on email to unsubscribe
-  Put email sent/unsent into its own table and object (use this to learn about observers)
 
 Social
   Facebook
@@ -54,5 +52,6 @@ Post deploy
   Cron job to send pending emails
   Meta information
   Search engine reindexing
+  Update paperclip once the bug is fixed for :hash_secret
 
 

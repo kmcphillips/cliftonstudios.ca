@@ -1,16 +1,21 @@
 %h1 Manage Links
 
 .post
-  = link_to 'New Link', new_members_link_path
+  = new_entity_image 'Create new link', new_members_link_path
 
   %table.data
     %tr
-      %th Something
+      %th Title
+      %th URL
+      %th Description
+      %th Actions
 
     - @links.each do |link|
       %tr
-        %td= link_to 'Show', members_link
-        %td= link_to 'Edit', edit_members_link_path(link)
-        %td= link_to 'Destroy', link, :confirm => 'Are you sure?', :method => :delete
-
+        %td= @link.title
+        %td= link_to @link.url, @link.url
+        %td= truncate_for_index @link.description
+        %td
+          = edit_entity_image edit_member_link_path(link)
+          = destroy_entity_image members_link_path(link)
 
