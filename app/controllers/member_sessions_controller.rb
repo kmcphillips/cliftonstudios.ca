@@ -3,6 +3,8 @@ class MemberSessionsController < ApplicationController
   before_filter :require_member, :only => :destroy
 
   def new
+    @title = "Member Login"
+
     if current_member
       redirect_to members_dashboard_index_path
     else

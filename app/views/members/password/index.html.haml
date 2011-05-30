@@ -8,13 +8,8 @@
       - if !current_member.password_configured?
         %li
           %p Your password is set to something temporary and must be changed.
+      
+      = f.item :password_field, :password, :size => 16
+      = f.item :password_field, :password_confirmation, :size => 16, :label => "Re-type password"
+      = f.item :submit, "Save"
 
-      %li
-        = f.label :password
-        = f.password_field :password, :size => 16
-      %li
-        = f.label :password_confirmation, "Re-type password"
-        = f.password_field :password_confirmation, :size => 16
-      %li
-        %label &nbsp;
-        = f.submit "Save"

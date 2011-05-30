@@ -4,13 +4,13 @@ class DefaultFormBuilder < ActionView::Helpers::FormBuilder
     @template.render :partial => "/shared/error_messages", :object => self.object
   end
 
-  def li(type, name, opts={})
-    content_tag(:li) do
+  def item(type, name, opts={})
+    @template.content_tag(:li) do
       if type.to_sym == :submit
-        content_tag(:label, "&nbsp;") + 
+        @template.content_tag(:label, "&nbsp;".html_safe) + 
         self.send(type, name)
       else
-        self.label :name, opts.delete(:label) + 
+        self.label(name, opts.delete(:label)) + 
         self.send(type, name, opts) 
       end
     end
