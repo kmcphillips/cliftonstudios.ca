@@ -6,7 +6,7 @@ gem 'capistrano'
 gem 'mysql2', '<0.3.0'
 gem 'haml'
 gem 'sass'
-gem 'will_paginate', ">= 3.0.pre2"
+gem 'will_paginate'
 gem 'paperclip'
 gem 'rmagick', ">= 2.13.1"
 gem 'authlogic'

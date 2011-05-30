@@ -1,0 +1,24 @@
+%h1 Manage News Posts
+
+.post
+  = new_entity_image 'Create New News Post', new_members_post_path
+
+  %table.data
+    %tr
+      %th Title
+      %th Body
+      %th Created By
+      %th Created At
+      %th Actions
+
+    - @posts.each do |post|
+      %tr
+        %td= link_to post_path(post), post.title
+        %td= truncate_for_index post.body
+        %td= post.member.name
+        %td= post.created_at.to_s(:with_time_no_minutes)
+        %td
+          = edit_entity_image edit_member_post_path(post)
+          = destroy_entity_image members_post_path(post)
+          = show_entity_image post_path(post)
+

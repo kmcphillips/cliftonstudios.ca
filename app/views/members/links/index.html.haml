@@ -12,9 +12,9 @@
 
     - @links.each do |link|
       %tr
-        %td= @link.title
-        %td= link_to @link.url, @link.url
-        %td= truncate_for_index @link.description
+        %td= link.title
+        %td= link_to link.url, link.url
+        %td= truncate_for_index link.description
         %td
           = edit_entity_image edit_member_link_path(link)
           = destroy_entity_image members_link_path(link)

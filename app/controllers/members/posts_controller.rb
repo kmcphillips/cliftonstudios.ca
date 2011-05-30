@@ -1,14 +1,10 @@
 class Members::PostsController < ApplicationController
   def index
-    @posts = Post.sorted  # TODO: pagination
-  end
-
-  def show
-    @post = Post.find(params[:id])
+    @posts = Post.paginate(pagination_params(:order => "created_at DESC"))
   end
 
   def new
-    @post = Post.new
+    @post = Post.new :member => current_member
   end
 
   def edit
@@ -16,7 +12,8 @@ class Members::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params[:post)
+    @post = Post.new(params[:post])
+    @post.member = current_member
 
     if @post.save
       redirect_to(member_posts_path, :notice => 'News post was successfully created.')

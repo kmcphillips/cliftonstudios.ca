@@ -3,10 +3,6 @@ class Members::LinksController < ApplicationController
     @links = Link.sorted
   end
 
-  def show
-    @link = Link.find(params[:id])
-  end
-
   def new
     @link = Link.new
   end

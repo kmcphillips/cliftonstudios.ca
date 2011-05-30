@@ -26,8 +26,8 @@ Cliftonstudios::Application.routes.draw do
     resources :profile, :only => [:index, :create]
     resources :contact_list, :only => [:index]
     resources :executive, :only => [:index, :create]
-    resources :links, :except => :show
-    resources :posts
+    resources :links, :except => [:show]
+    resources :posts, :except => [:show]
     
     ['bylaws', 'emails'].each do |block|
       match block => "blocks##{block}"

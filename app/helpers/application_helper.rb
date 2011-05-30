@@ -93,6 +93,10 @@ module ApplicationHelper
     end
   end
 
+  def pagination_params(opts={})
+    {:page => params[:page] || 1, :per_page => (members_area? ? PAGINATION_PER_TABLE : PAGINATION_PER_PAGE)}.merge(opts)
+  end
+
   def truncate_for_index(str)
     truncate(str, :length => 120, :omission => " (more..)")
   end
