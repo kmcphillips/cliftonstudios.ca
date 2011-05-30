@@ -1,0 +1,13 @@
+%h1
+  Edit Event:
+  = @event.title
+
+.post
+  = render 'form'
+
+  .image_links
+    = index_entity_image members_events_path, "Back to Events Index"
+    %br
+    = destroy_entity_image members_event_path(@event), "Delete Event"
+    %br
+    = show_entity_image event_path(@event), "View Event"

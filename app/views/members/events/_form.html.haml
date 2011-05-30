@@ -1,0 +1,20 @@
+= form_for @post do |f|
+  = f.error_messages
+
+  %ul.form
+    = f.item :text_field, :title, :size => 40
+    = f.item :text_area, :body, :cols => 30, :rows => 8
+    - if f.object.permalink
+      %li
+        = f.label :permalink
+        = f.object.permalink
+    %li
+      = f.label :starts_at
+      .datetime= f.datetime_select :starts_at
+    %li
+      = f.label :duration
+      = f.select options_for_select((1..7).map{|x| [x,x]})
+      %span Days
+
+    = f.item :submit, "Save"
+

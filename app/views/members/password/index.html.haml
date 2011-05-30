@@ -8,6 +8,8 @@
       - if !current_member.password_configured?
         %li
           %p Your password is set to something temporary and must be changed.
+      %li
+        %p Passwords must be at least six characters long.
       
       = f.item :password_field, :password, :size => 16
       = f.item :password_field, :password_confirmation, :size => 16, :label => "Re-type password"

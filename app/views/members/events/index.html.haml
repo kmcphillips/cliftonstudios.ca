@@ -1,0 +1,26 @@
+%h1 Manage Events
+
+.post
+  = new_entity_image 'Create New Event', new_members_event_path
+
+  %table.data
+    %tr
+      %th Title
+      %th Description
+      %th Happens On
+      %th Created By
+      %th Created At
+      %th Actions
+
+    - @events.each do |event|
+      %tr
+        %td= link_to event_path(event), event.title
+        %td= truncate_for_index event.body
+        %td= event.starts_at.to_s(:with_time_no_minutes)
+        %td= event.member.name
+        %td= event.created_at.to_s(:with_time_no_minutes)
+        %td
+          = edit_entity_image edit_member_event_path(event)
+          = destroy_entity_image members_event_path(event)
+          = show_entity_image event_path(event)
+

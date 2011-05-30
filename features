@@ -8,16 +8,12 @@ Layout
 Admin/Members area
   Improved dashboard for yourself
   Suggestions/hints for how to participate and contribute?
-  News
-  Events
   Blocks
   Other Members
   Images for studio
   Images for each object
   Bi-laws (Enter them)
-  Password requirements written somewhere
   Scope things by admin user
-  Pagination for models
   Deletion and editing should be restricted by user and type?
   Sortable on links and things
   Fix floating problem where post slides under the sidebar

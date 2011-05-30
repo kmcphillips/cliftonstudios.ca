@@ -2,6 +2,7 @@ class Member < ActiveRecord::Base
   
   acts_as_authentic do |config|
     config.logged_in_timeout = 1.day
+    config.merge_validates_length_of_password_field_options :within => 6..20
   end
 
   acts_as_permalink :from => :name
@@ -9,6 +10,7 @@ class Member < ActiveRecord::Base
   include AttachedImage
   
   has_many :posts
+  has_many :events
   has_many :pictures
   has_many :titles, :class_name => "Executive", :foreign_key => "member_id"
   

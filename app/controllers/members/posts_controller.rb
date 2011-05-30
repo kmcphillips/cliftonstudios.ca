@@ -12,8 +12,7 @@ class Members::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params[:post])
-    @post.member = current_member
+    @post = current_member.posts.build(params[:post])
 
     if @post.save
       redirect_to(member_posts_path, :notice => 'News post was successfully created.')
