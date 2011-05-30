@@ -16,7 +16,7 @@ class Members::LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(params[:link)
+    @link = Link.new(params[:link])
 
     if @link.save
       redirect_to(member_links_path, :notice => 'Link was successfully created.')

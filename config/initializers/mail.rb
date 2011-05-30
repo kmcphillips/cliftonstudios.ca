@@ -1,4 +1,4 @@
-if File.exists?("#{Rails.root}/config/mail.yml")
+if File.exists?("#{Rails.root}/config/mail.yml") && !Rails.env.test?
   require 'tlsmail'
   Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
 
