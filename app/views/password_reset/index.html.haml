@@ -1,14 +1,14 @@
 %h1 Password Reset
 
 .post
-  = form_tag :url => password_reset_index_path do
+  = form_for Member.new, :url => password_reset_index_path do |f|
     %ul.form
       %li
         %p
           If you cannot remember your password, enter your email below and a new passowrd will be sent to you. If you do not remember your email, contact the administrator.
       %li
-        = label_tag :email
-        = text_field_tag :email
+        = f.label :email
+        = f.text_field :email
       %li
         %label &nbsp;
-        = submit_tag "Reset Password"
+        = f.submit "Reset Password"

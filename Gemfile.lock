@@ -79,9 +79,9 @@ GEM
     net-ssh (2.1.4)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    paperclip (2.3.11)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
+    paperclip (2.3.8)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -141,7 +141,7 @@ DEPENDENCIES
   memorable_password
   mongrel
   mysql2 (< 0.3.0)
-  paperclip
+  paperclip (= 2.3.8)
   rails (= 3.0.7)
   rails3-generators
   rmagick (>= 2.13.1)

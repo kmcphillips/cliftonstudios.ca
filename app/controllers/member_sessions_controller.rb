@@ -30,7 +30,7 @@ class MemberSessionsController < ApplicationController
 
   def destroy
     current_member_session.destroy
-    flash[:notice] = "You have logged out."
+    flash[:notice] = "You have been logged out."
     redirect_to root_path
   end
 
