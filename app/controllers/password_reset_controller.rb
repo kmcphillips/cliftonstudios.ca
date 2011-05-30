@@ -10,17 +10,17 @@ class PasswordResetController < ApplicationController
     if current_member
       redirect_to root_url
     else
-      @member = Member.find_by_email params[:email]
+      @member = Member.find_by_email params[:member].try(:[], :email)
 
       if @member
         password = @member.reset_password!
 
-        MemberMailer.reset_password(@member, password).deliver
+        MemberMailer.reset_password(:member => @member, :password => password).deliver
 
-        flash[:notice] = "Your password has been reset. A new password has been emailed to you."
+        flash[:notice] = "Your password has been reset. A new password has been emailed to you. Please check your email."
         redirect_to login_path
       else
-        flash[:error] = "Could not find a member with that email address"
+        flash[:error] = "Could not find a member with that email address."
         render :action => :index
       end
     end

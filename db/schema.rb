@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20110525190247) do
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
 
   create_table "pending_emails", :force => true do |t|
+    t.string   "mailer"
     t.string   "method"
     t.text     "locals"
     t.boolean  "processing", :default => false

@@ -21,7 +21,7 @@ require 'spec_helper'
 describe Members::LinksController do
 
   # This should return the minimal set of attributes required to create a valid
-  # Members::Link. As you add validations to Members::Link, be sure to
+  # Link. As you add validations to Link, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
     {}
@@ -29,7 +29,7 @@ describe Members::LinksController do
 
   describe "GET index" do
     it "assigns all members_links as @members_links" do
-      link = Members::Link.create! valid_attributes
+      link = Link.create! valid_attributes
       get :index
       assigns(:members_links).should eq([link])
     end
@@ -37,7 +37,7 @@ describe Members::LinksController do
 
   describe "GET show" do
     it "assigns the requested members_link as @members_link" do
-      link = Members::Link.create! valid_attributes
+      link = Link.create! valid_attributes
       get :show, :id => link.id.to_s
       assigns(:members_link).should eq(link)
     end
@@ -46,13 +46,13 @@ describe Members::LinksController do
   describe "GET new" do
     it "assigns a new members_link as @members_link" do
       get :new
-      assigns(:members_link).should be_a_new(Members::Link)
+      assigns(:members_link).should be_a_new(Link)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested members_link as @members_link" do
-      link = Members::Link.create! valid_attributes
+      link = Link.create! valid_attributes
       get :edit, :id => link.id.to_s
       assigns(:members_link).should eq(link)
     end
@@ -60,35 +60,35 @@ describe Members::LinksController do
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Members::Link" do
+      it "creates a new Link" do
         expect {
           post :create, :members_link => valid_attributes
-        }.to change(Members::Link, :count).by(1)
+        }.to change(Link, :count).by(1)
       end
 
       it "assigns a newly created members_link as @members_link" do
         post :create, :members_link => valid_attributes
-        assigns(:members_link).should be_a(Members::Link)
+        assigns(:members_link).should be_a(Link)
         assigns(:members_link).should be_persisted
       end
 
       it "redirects to the created members_link" do
         post :create, :members_link => valid_attributes
-        response.should redirect_to(Members::Link.last)
+        response.should redirect_to(Link.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved members_link as @members_link" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Members::Link.any_instance.stub(:save).and_return(false)
+        Link.any_instance.stub(:save).and_return(false)
         post :create, :members_link => {}
-        assigns(:members_link).should be_a_new(Members::Link)
+        assigns(:members_link).should be_a_new(Link)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Members::Link.any_instance.stub(:save).and_return(false)
+        Link.any_instance.stub(:save).and_return(false)
         post :create, :members_link => {}
         response.should render_template("new")
       end
@@ -98,23 +98,23 @@ describe Members::LinksController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested members_link" do
-        link = Members::Link.create! valid_attributes
+        link = Link.create! valid_attributes
         # Assuming there are no other members_links in the database, this
-        # specifies that the Members::Link created on the previous line
+        # specifies that the Link created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Members::Link.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+        Link.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => link.id, :members_link => {'these' => 'params'}
       end
 
       it "assigns the requested members_link as @members_link" do
-        link = Members::Link.create! valid_attributes
+        link = Link.create! valid_attributes
         put :update, :id => link.id, :members_link => valid_attributes
         assigns(:members_link).should eq(link)
       end
 
       it "redirects to the members_link" do
-        link = Members::Link.create! valid_attributes
+        link = Link.create! valid_attributes
         put :update, :id => link.id, :members_link => valid_attributes
         response.should redirect_to(link)
       end
@@ -122,17 +122,17 @@ describe Members::LinksController do
 
     describe "with invalid params" do
       it "assigns the members_link as @members_link" do
-        link = Members::Link.create! valid_attributes
+        link = Link.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Members::Link.any_instance.stub(:save).and_return(false)
+        Link.any_instance.stub(:save).and_return(false)
         put :update, :id => link.id.to_s, :members_link => {}
         assigns(:members_link).should eq(link)
       end
 
       it "re-renders the 'edit' template" do
-        link = Members::Link.create! valid_attributes
+        link = Link.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Members::Link.any_instance.stub(:save).and_return(false)
+        Link.any_instance.stub(:save).and_return(false)
         put :update, :id => link.id.to_s, :members_link => {}
         response.should render_template("edit")
       end
@@ -141,14 +141,14 @@ describe Members::LinksController do
 
   describe "DELETE destroy" do
     it "destroys the requested members_link" do
-      link = Members::Link.create! valid_attributes
+      link = Link.create! valid_attributes
       expect {
         delete :destroy, :id => link.id.to_s
-      }.to change(Members::Link, :count).by(-1)
+      }.to change(Link, :count).by(-1)
     end
 
     it "redirects to the members_links list" do
-      link = Members::Link.create! valid_attributes
+      link = Link.create! valid_attributes
       delete :destroy, :id => link.id.to_s
       response.should redirect_to(members_links_url)
     end

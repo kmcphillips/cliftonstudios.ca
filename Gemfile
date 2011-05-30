@@ -7,7 +7,7 @@ gem 'mysql2', '<0.3.0'
 gem 'haml'
 gem 'sass'
 gem 'will_paginate'
-gem 'paperclip'
+gem 'paperclip', '2.3.8'
 gem 'rmagick', ">= 2.13.1"
 gem 'authlogic'
 gem 'rails3-generators'
