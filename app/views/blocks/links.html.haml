@@ -4,5 +4,5 @@
   %ul.links
     - @links.each do |link|
       %li
-        = link_to link.display, link.url
+        %h3= link_to link.display, link.url
         %p= simple_format(link.description) unless link.description.blank?

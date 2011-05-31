@@ -34,6 +34,15 @@ $notice_background: green
 $error_text: #fff
 $error_background: red
 
+$table_head_text: white
+$table_head_background: black
+$table_text: black
+$table_text_hover: black
+$table_background: #CCC
+$table_background_alt: #DDD
+$table_background_hover: brown
+
+
 $border_radius_amount: 12px
 
 $font_copy: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', Tahoma, 'Sans Serif'
@@ -143,7 +152,7 @@ a:hover
     h2
       font-size: 1.2em
       font-weight: bold
-      letter-spacing: -3px
+      letter-spacing: -2px
     table td .bottom
       vertical-align: bottom
 
@@ -257,90 +266,127 @@ a:hover
 
   .post
     margin: 28px 0 50px 0
-    clear: both
     line-height: 140%
     font-size: 0.9em
 
     p
       margin: 14px 0
 
-  .subtext_left, .subtext_right
-    font-size: 0.9em
-    font-family: $font_decorative
-    padding: 0 10px
+    .subtext_left, .subtext_right
+      font-size: 0.9em
+      font-family: $font_decorative
+      padding: 0 10px
 
-  .subtext_left
-    float: left
-  .subtext_right
-    float: right
+    .subtext_left
+      float: left
+    .subtext_right
+      float: right
 
 
-  ul.members
-    padding-top: 20px
+    ul.members
+      padding-top: 20px
 
-    li
-      font-size: 1.2em
-      margin-left: 20px
+      li
+        font-size: 1.2em
+        margin-left: 20px
 
-  ul.form
-    clear: both
-    background-color: $form_background
-    padding: 16px 0
-    -moz-border-radius: $border_radius_amount
-    -webkit-border-radius: $border_radius_amount
-    border-radius: $border_radius_amount
-    
-    li
-      padding: 4px 0
+    ul.form
+      background-color: $form_background
+      padding: 16px 0
+      -moz-border-radius: $border_radius_amount
+      -webkit-border-radius: $border_radius_amount
+      border-radius: $border_radius_amount
 
-      label
-        display: block
-        float: left
-        text-align: right
-        font-weight: bold
-        width: 200px
-        margin-right: 10px
-        color: $form_label
-        
-      input, textarea
-        font-family: $font_decorative
+      li
+        padding: 4px 0
 
-      p
-        padding: 0
-        margin: 8px 16px
+        label
+          display: block
+          float: left
+          text-align: right
+          font-weight: bold
+          width: 200px
+          margin-right: 10px
+          color: $form_label
 
-  div.notice, div.error
-    padding: 20px
-    margin: 20px 0
-    -moz-border-radius: $border_radius_amount
-    -webkit-border-radius: $border_radius_amount
-    border-radius: $border_radius_amount
+        input, textarea
+          font-family: $font_copy
+          font-size: 1em
 
-    h2
-      font-size: 1.2em
-      font-family: $font_copy
+        p
+          padding: 0
+          margin: 8px 16px
 
-  div.notice
-    background-color: $notice_background
-    color: $notice_text
+    div.notice, div.error
+      padding: 20px
+      margin: 20px 0
+      -moz-border-radius: $border_radius_amount
+      -webkit-border-radius: $border_radius_amount
+      border-radius: $border_radius_amount
 
-    h2
+      h2
+        font-size: 1.2em
+        font-family: $font_copy
+
+    div.notice
+      background-color: $notice_background
       color: $notice_text
 
-  div.error
-    background-color: $error_background
-    color: $error_text
+      h2
+        color: $notice_text
 
-    h2
+    div.error
+      background-color: $error_background
       color: $error_text
 
-    ul
-      li
+      h2
+        color: $error_text
+
+      ul
+        margin: 10px 10px 0 18px
+
+        li
+          font-weight: bold
+          list-style-type: disc
+          padding-left: 6px
+
+    .image_links
+      padding: 10px 30px
+
+    table.data
+      border-collapse: collapse
+      margin: 24px 0
+      width: 100%
+
+      th
+        padding: 8px
         font-weight: bold
-        list-style-type: disc
-        padding-left: 12px
+        background-color: $table_head_background
+        color: $table_head_text  /* Needed to override the hover */
 
-  .image_links
-    background-color: yellow
+      td
+        padding: 8px
 
+      tr
+        background-color: $table_background
+
+      tr.even
+        background-color: $table_background_alt
+
+      tr.over
+        td
+          background-color: $table_background_hover
+
+      tbody
+        tr:hover
+          color: $table_text_hover
+          background-color: $table_background_hover
+
+        td
+          a
+            color: $table_text
+
+  ul.links
+    p
+      padding-left: 30px
 

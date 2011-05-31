@@ -1,15 +1,17 @@
-if Rails.env.development?
-  email = 'test@test.test'
-  if member = Member.find_by_email(email)
-    puts "Deleting old test member"
-    member.destroy
-  end
-  puts "Creating test/test member"
-  Member.new(:email => email, :password => 'test', :password_confirmation => 'test', :name => "Test User").save!
-end
+# Seed are destructive. Be careful.
+raise "Remove this raise to run in production mode" if Rails.env.production?
 
-puts "Destroying blocks"
-Block.destroy_all
+
+puts "Truncating members"
+ActiveRecord::Base.connection.execute("truncate members")
+
+puts "Creating test member"
+Member.new(:email => 'test@test.test', :password => 'asdfasdf', :password_confirmation => 'asdfasdf', :name => "Test User").save!
+
+
+
+puts "Truncating blocks"
+ActiveRecord::Base.connection.execute("truncate blocks")
 
 puts "Creating 'About' block"
 b = Block.new
@@ -33,8 +35,12 @@ b.path = "/about"
 b.description = "This section describes studio space availability and how to contact someone about becoming a member."
 b.save!
 
-puts "Creating the Executive positions"
-Executive.destroy_all
+
+
+puts "Truncating executive"
+ActiveRecord::Base.connection.execute("truncate executives")
+
+puts "Creating executive positions"
 Executive::TITLES.each_with_index do |title, index|
   Executive.create! :title => title, :sort_order => index
 end

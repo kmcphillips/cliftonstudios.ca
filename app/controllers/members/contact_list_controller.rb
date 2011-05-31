@@ -4,7 +4,7 @@ class Members::ContactListController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @members = Member.active.alphabetical.each
+        @members = Member.active.alphabetical
       end
       
       format.csv do

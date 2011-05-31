@@ -1,7 +1,7 @@
 %h1 Manage Links
 
 .post
-  = new_entity_image 'Create new link', new_members_link_path
+  .image_links= new_entity_image new_members_link_path, 'Create new link'
 
   %table.data
     %tr
@@ -16,6 +16,6 @@
         %td= link_to link.url, link.url
         %td= truncate_for_index link.description
         %td
-          = edit_entity_image edit_member_link_path(link)
+          = edit_entity_image edit_members_link_path(link)
           = destroy_entity_image members_link_path(link)
 

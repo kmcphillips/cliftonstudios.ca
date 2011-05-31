@@ -1,12 +1,10 @@
-%h3= object.name
-= simple_format object.address
+%h3= member.name
+%p= simple_format member.address
 %p
-  - unless object.phone.blank?
-    = object.phone
+  - unless member.phone.blank?
+    = member.phone
     %br
-  = link_to object.email, "mailto:#{object.email}"  
-  - unless object.website.blank?
+  = link_to member.email, "mailto:#{member.email}"
+  - unless member.website.blank?
     %br
-    = link_to object.website, object.website
-%hr
-
+    = link_to member.website, member.website

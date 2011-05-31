@@ -1,8 +1,4 @@
 %h1 Contact List
-
 .post
-  %p
-    = link_to "Download spreadsheet (.csv)", members_contact_list_index_path(:format => "csv")
-
-.post= render :partial => "member", :collection => @members
-
+  = render :partial => "member", :collection => @members
+  %p= link_to "Download spreadsheet (.csv)", members_contact_list_index_path(:format => "csv")

@@ -1,9 +1,24 @@
-= form_for @link do |f|
+- content_for :js do
+  :javascript
+    function preview_link()
+    {
+      if(!$("#link_url").val().match(/^http(s)?:\/\/.+/))
+        alert("URL must begin with 'http://' or 'https://'");
+      else
+        window.open($("#link_url").val());
+
+      return false;
+    }
+
+
+= form_for [:members, @link] do |f|
   = f.error_messages
 
   %ul.form
     = f.item :text_field, :title, :size => 40
-    = f.item :text_field, :url, :size => 40
-    = f.item :text_area, :description, :cols => 30, :rows => 4
+    %li
+      = f.label :url, "Link URL"
+      = f.text_field :url, :value => (f.object.url.blank? ? "http://" : f.object.url), :size => 40
+      = link_to_function(image_tag("/images/icons/link_preview.png", :alt => "Preview", :class => "no_border") + "&nbsp;Preview".html_safe, "preview_link();", :title => "Preview")
+    = f.item :text_area, :description, :cols => 40, :rows => 4
     = f.item :submit, "Save"
-

@@ -15,7 +15,7 @@ class Members::LinksController < ApplicationController
     @link = Link.new(params[:link])
 
     if @link.save
-      redirect_to(member_links_path, :notice => 'Link was successfully created.')
+      redirect_to(members_links_path, :notice => 'Link was successfully created.')
     else
       render :action => "new"
     end
@@ -25,7 +25,7 @@ class Members::LinksController < ApplicationController
     @link = Link.find(params[:id])
 
     if @link.update_attributes(params[:link])
-      redirect_to(member_links_path, :notice => 'Link was successfully updated.') 
+      redirect_to(members_links_path, :notice => 'Link was successfully updated.')
     else
       render :action => "edit"
     end
