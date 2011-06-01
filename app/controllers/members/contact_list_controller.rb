@@ -16,5 +16,11 @@ class Members::ContactListController < ApplicationController
     end
   end
 
+  def print
+    @members = Member.active.alphabetical
+
+    render :layout => "print_contact_list"
+  end
+
 end
 

@@ -24,7 +24,11 @@ Cliftonstudios::Application.routes.draw do
     resources :dashboard, :only => [:index]
     resources :password, :only => [:index, :create]
     resources :profile, :only => [:index, :create]
-    resources :contact_list, :only => [:index]
+    resources :contact_list, :only => [:index] do
+      member do
+        get 'print'
+      end
+    end
     resources :executive, :only => [:index, :create]
     resources :links, :except => [:show]
     resources :posts, :except => [:show]
