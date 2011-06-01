@@ -17,6 +17,7 @@ Admin/Members area
   Scope things by admin user
   Deletion and editing should be restricted by user and type?
   Sortable on links and things
+  When changing email, require entering it twice
 
 Images
   Index page showing members, studio pictures

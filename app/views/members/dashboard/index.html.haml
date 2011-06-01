@@ -1,2 +1,33 @@
-TODO: picture, bio, suggestions, links, etc.
+= form_for current_member, :url => members_dashboard_index_path, :method => :post do |f|
+  %h1 Your Dashboard
+  .post
+    %p
+      This is where you can manage your personal information. Please keep it up to date! It is used to generate the contact list and to email you about meetings and events at the studio.
+    %p
+      Your personal information is kept private. Phone number, email address, and home address are only shown to other members who have logged in to the website. Never to the public.
+
+    = render :partial => "form", :locals => {:f => f}
+    = f.item :submit, "Save"
+
+  %h1 Public Bio
+
+  .post
+    %p
+      This is your bio information that visitors to the Clifton Studios website will be able to see. Please fill out something about you and your work, even if it is just brief. You can also enter your website URL if you have a site where you display your work other than this one.
+
+    %ul.form
+      = f.item :text_area, :bio, :rows => 10, :cols => 50
+      = f.item :text_field, :website, :size => 50, :label => "External Website URL"
+     
+      = f.item :submit, "Save"
+
+%h1 Pictures
+.post
+  - if current_member.pictures.any?
+    %p TODO show recent pictures
+    %p= link_to "Add more pictures", members_pictures_path
+  - else
+    %p
+      Members can add pictures of their work and their studio to the site. They are visible to anyone who visits the site and are linked to your profile.
+    %p= link_to "Click here to add pictures to your profile.", members_pictures_path
 

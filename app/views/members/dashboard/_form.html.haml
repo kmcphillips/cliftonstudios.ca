@@ -1,0 +1,14 @@
+%ul.form
+  = f.item :text_field, :name, :size => 40, :label => "Full Name"
+  = f.item :text_field, :email, :label => "Email Address", :size => 30
+  = f.item :text_area, :address, :rows => 5, :cols => 40
+  = f.item :text_field, :phone, :size => 12, :label => "Phone number"
+  = f.item :checkbox, :receive_emails, :label => "Receive Emails?"
+  %li
+    %label Admin User?
+    %span= f.object.admin?.to_yesno
+  - unless f.object.active?
+    %li
+      %label Status
+      %span Inactive
+
