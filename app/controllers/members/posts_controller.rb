@@ -15,7 +15,7 @@ class Members::PostsController < ApplicationController
     @post = current_member.posts.build(params[:post])
 
     if @post.save
-      redirect_to(member_posts_path, :notice => 'News post was successfully created.')
+      redirect_to(members_posts_path, :notice => 'News post was successfully created.')
     else
       render :action => "new"
     end
@@ -25,7 +25,7 @@ class Members::PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update_attributes(params[:post])
-      redirect_to(member_posts_path, :notice => 'News post was successfully updated.') 
+      redirect_to(members_posts_path, :notice => 'News post was successfully updated.') 
     else
       render :action => "edit"
     end

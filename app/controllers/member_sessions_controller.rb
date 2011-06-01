@@ -13,6 +13,7 @@ class MemberSessionsController < ApplicationController
   end
 
   def create
+    @title = "Member Login"
     @member_session = MemberSession.new(params[:member_session])
 
     if @member_session.save

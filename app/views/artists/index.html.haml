@@ -10,7 +10,11 @@
 %h1 Executive
 
 .post
-  %ul
-    - @executive.each do |position|
-      %li= "#{position.title}: #{position.member.name}"
+  %ul.form
+    %li
+      %table
+        - @executive.each do |position|
+          %tr
+            %td.executive= position.title
+            %td= position.member.name
 

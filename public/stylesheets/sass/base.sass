@@ -111,6 +111,12 @@ a:hover
 .clear
   clear: both
 
+.clear_left
+  clear: left
+
+.clear_right
+  clear: right
+
 
 /* Layout */
 
@@ -264,24 +270,57 @@ a:hover
   h3
     font-size: 1.2em
 
+  .subtext_left, .subtext_right
+    font-size: 0.9em
+    font-family: $font_decorative
+    padding: 0 10px
+
+  .subtext_left
+    float: left
+  .subtext_right
+    float: right
+
+  div.notice, div.error
+    padding: 20px 20px 20px 100px
+    margin: 20px 0
+    -moz-border-radius: $border_radius_amount
+    -webkit-border-radius: $border_radius_amount
+    border-radius: $border_radius_amount
+
+    h2
+      font-size: 1.2em
+      font-family: $font_copy
+
+  div.notice
+    background: $notice_background url('../images/notice.png') no-repeat left center
+    color: $notice_text
+
+    h2
+      color: $notice_text
+
+  div.error
+    background: $error_background url('../images/error.png') no-repeat left center
+    color: $error_text
+
+    h2
+      color: $error_text
+
+    ul
+      margin: 10px 10px 0 18px
+
+      li
+        font-weight: bold
+        list-style-type: disc
+        padding-left: 6px
+
+
   .post
-    margin: 28px 0 50px 0
+    padding: 28px 0 56px 0
     line-height: 140%
     font-size: 0.9em
 
     p
       margin: 14px 0
-
-    .subtext_left, .subtext_right
-      font-size: 0.9em
-      font-family: $font_decorative
-      padding: 0 10px
-
-    .subtext_left
-      float: left
-    .subtext_right
-      float: right
-
 
     ul.members
       padding-top: 20px
@@ -316,39 +355,6 @@ a:hover
         p
           padding: 0
           margin: 8px 16px
-
-    div.notice, div.error
-      padding: 20px
-      margin: 20px 0
-      -moz-border-radius: $border_radius_amount
-      -webkit-border-radius: $border_radius_amount
-      border-radius: $border_radius_amount
-
-      h2
-        font-size: 1.2em
-        font-family: $font_copy
-
-    div.notice
-      background-color: $notice_background
-      color: $notice_text
-
-      h2
-        color: $notice_text
-
-    div.error
-      background-color: $error_background
-      color: $error_text
-
-      h2
-        color: $error_text
-
-      ul
-        margin: 10px 10px 0 18px
-
-        li
-          font-weight: bold
-          list-style-type: disc
-          padding-left: 6px
 
     .image_links
       padding: 10px 30px
@@ -390,3 +396,9 @@ a:hover
     p
       padding-left: 30px
 
+
+  table
+    td.executive
+      font-weight: bold
+      padding: 3px 30px 3px 50px
+      text-align: right

@@ -2,9 +2,12 @@ class Members::PasswordController < ApplicationController
   before_filter :require_member
 
   def index
+    @title = "Change Password"
   end
 
   def create # actually update for current_user
+    @title = "Change Password"
+
     if params[:member].try(:[], :password).blank?
       flash[:error] = "Password cannot be blank."
       render :index
