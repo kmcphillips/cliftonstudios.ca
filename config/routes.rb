@@ -21,11 +21,11 @@ Cliftonstudios::Application.routes.draw do
 
 
   namespace :members do
-    resources :dashboard, :only => [:index]
+    resources :dashboard
     resources :password, :only => [:index, :create]
     resources :profile, :only => [:index, :create]
     resources :contact_list, :only => [:index] do
-      member do
+      collection do
         get 'print'
       end
     end

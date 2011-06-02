@@ -13,8 +13,7 @@
       .datetime= f.datetime_select :starts_at
     %li
       = f.label :duration
-      = f.select options_for_select((1..7).map{|x| [x,x]})
+      = f.select :duration, options_for_select((1..7).map{|x| [x,x]})
       %span Days
 
     = f.item :submit, "Save"
-
