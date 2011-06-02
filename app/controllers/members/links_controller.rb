@@ -1,4 +1,6 @@
 class Members::LinksController < ApplicationController
+  before_filter :require_member
+
   def index
     @links = Link.sorted
   end

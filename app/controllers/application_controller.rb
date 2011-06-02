@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def require_member
     unless current_member
-      flash[:notice] = "You must be logged in to view that page."
+      flash[:error] = "You must be logged in to view that page."
       redirect_to login_path
       return false
     end

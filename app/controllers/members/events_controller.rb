@@ -1,4 +1,6 @@
 class Members::EventsController < ApplicationController
+  before_filter :require_member
+
   def index
     @events = Event.paginate(pagination_params(:order => "created_at DESC"))
   end

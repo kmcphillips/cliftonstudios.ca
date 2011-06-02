@@ -1,4 +1,6 @@
 class Members::PostsController < ApplicationController
+  before_filter :require_member
+
   def index
     @posts = Post.paginate(pagination_params(:order => "created_at DESC"))
   end
