@@ -16,6 +16,7 @@ class Member < ActiveRecord::Base
   
   validates :name, :presence => {:message => "is required"}
   validates :email, :presence => {:message => "is required"}
+  validate :website_begins_with_protocol
 
   attr_accessor :notify_password_change
 
@@ -51,7 +52,7 @@ class Member < ActiveRecord::Base
   end
 
   def website_with_protocol
-    if !website.blank?
+    if website.present? && website != "http://"
       if website =~ /^http/
         website
       else
@@ -73,4 +74,15 @@ class Member < ActiveRecord::Base
       end
     end
   end
+
+  protected
+
+  ## Callbacks
+
+  protected
+
+  def website_begins_with_protocol
+    errors.add(:website, "must begin with 'http://' or 'https://'") unless website =~ /http(s)?:\/\/.+/ || website.blank?
+  end
+
 end

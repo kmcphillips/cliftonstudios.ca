@@ -12,6 +12,17 @@ $(document).ready(function(){
 });
 
 
+
+function preview_link(id)
+{
+  if(!$(id).val().match(/^http(s)?:\/\/.+/))
+    alert("URL must begin with 'http://' or 'https://'");
+  else
+    window.open($(id).val());
+
+  return false;
+}
+
 function stripe_table(table)
 {
   $(table).find("tr").each(function(index, element) {

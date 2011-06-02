@@ -12,7 +12,7 @@
     %br
 
     %ul.form
-      - if @member.website.present?
+      - if @member.website_with_protocol.present?
         %li
           %label Website
           = link_to @member.website, @member.website_with_protocol
