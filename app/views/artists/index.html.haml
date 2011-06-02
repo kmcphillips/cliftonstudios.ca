@@ -10,11 +10,13 @@
 %h1 Executive
 
 .post
-  %ul.form
-    %li
-      %table
-        - @executive.each do |position|
-          %tr
-            %td.executive= position.title
-            %td= position.member.name
-
+  - if @executive.blank?
+    %p The executive  has not been configured.
+  - else
+    %ul.form
+      %li
+        %table
+          - @executive.each do |position|
+            %tr
+              %td.executive= position.title
+              %td= position.member.name

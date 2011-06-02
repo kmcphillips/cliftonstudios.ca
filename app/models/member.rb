@@ -50,6 +50,16 @@ class Member < ActiveRecord::Base
     "#{name} <#{email}>" unless email.blank?
   end
 
+  def website_with_protocol
+    if !website.blank?
+      if website =~ /^http/
+        website
+      else
+        "http://#{website}"
+      end
+    end
+  end
+
   ## Class methods
 
   def self.contact_list_csv

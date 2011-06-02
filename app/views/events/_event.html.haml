@@ -1,5 +1,8 @@
-.post
-  %h2= event.title
-  %h3= event.starts_at.to_s :with_time
-  .body= event.body
-  .userstamp= link_to event.member.name, artist_path(event.member)
+%h1= link_to event.title, event_path(event)
+.subtext_left= event.starts_at.to_s :with_time_no_minutes
+.subtext_right
+  By
+  = link_to event.member.name, artist_path(event.member)
+
+.post.clear_right
+  = simple_format event.body

@@ -8,3 +8,6 @@
       = obfuscated_mail_to @member.email unless @member.email.blank?
       %br
       = simple_format @member.address unless @member.address.blank?
+      - unless @member.website.blank?
+        %br
+        = link_to @member.website, @member.website_with_protocol

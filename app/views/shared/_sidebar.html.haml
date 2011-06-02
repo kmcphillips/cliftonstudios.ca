@@ -1,7 +1,9 @@
 - if (events =  Event.upcoming).any?
+  %h2 Upcoming Events
+
   %ul
     - events.each do |event|
       %li
-        = link_to event.name, event_path(event)
+        = link_to event.title, event_path(event)
         %br
         = event.starts_at.to_s(:with_time)

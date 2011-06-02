@@ -12,10 +12,10 @@ class Members::EventsController < ApplicationController
   end
 
   def create
-    @event = current_member.event.build(params[:event])
+    @event = current_member.events.build(params[:event])
 
     if @event.save
-      redirect_to(member_events_path, :notice => 'News event was successfully created.')
+      redirect_to(members_events_path, :notice => 'News event was successfully created.')
     else
       render :action => "new"
     end
@@ -25,7 +25,7 @@ class Members::EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update_attributes(params[:event])
-      redirect_to(member_events_path, :notice => 'News event was successfully updated.') 
+      redirect_to(members_events_path, :notice => 'News event was successfully updated.')
     else
       render :action => "edit"
     end
