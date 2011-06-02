@@ -3,7 +3,7 @@ $(document).ready(function(){
     dateFormat: "yy-mm-dd"
   });
   
-  $('.datetimepicker').datetimepicker({
+  $('.datetimepicker').datepicker({
     ampm: true,
     stepMinute: 15
   });
@@ -80,7 +80,7 @@ function convert_datetime_select(finder)
               tokens = text.split("/");
               for(i = 0; i <= 2; i++)
               {
-                  $($(id).find("select")[i]).val(tokens[i].replace(/^[0]/g,""));
+                  $($(finder).find("select")[i]).val(tokens[i].replace(/^[0]/g,""));
               }
           }
       });
