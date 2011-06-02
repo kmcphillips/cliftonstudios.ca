@@ -1,13 +1,35 @@
 %h1= @member.name
 
 .post
-  = simple_format @member.bio
+  - if @member.bio.blank?
+    = @member.name
+    does not have a public bio.
+  - else
+    = simple_format @member.bio
 
-  - if current_member
-    .membercontact
-      = obfuscated_mail_to @member.email unless @member.email.blank?
-      %br
-      = simple_format @member.address unless @member.address.blank?
-      - unless @member.website.blank?
-        %br
-        = link_to @member.website, @member.website_with_protocol
+  - if logged_in? || @member.website.present?
+    %br
+    %br
+
+    %ul.form
+      - if @member.website.present?
+        %li
+          %label Website
+          = link_to @member.website, @member.website_with_protocol
+      - if logged_in?
+        %li
+          %label Email
+          = obfuscated_mail_to @member.email unless @member.email.blank?
+        %li
+          %label Address
+          - if @member.address.blank?
+            Blank
+          - else
+            = simple_format @member.address unless @member.address.blank?
+
+%h1 Pictures
+
+.post
+  TODO most recent pictures with count
+  %br
+  TODO link to the rest of their pictures

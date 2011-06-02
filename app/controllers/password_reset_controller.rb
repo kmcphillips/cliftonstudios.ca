@@ -1,13 +1,13 @@
 class PasswordResetController < ApplicationController
 
   def index
-    if current_member
+    if logged_in?
       redirect_to root_url
     end
   end
 
   def create
-    if current_member
+    if logged_in?
       redirect_to root_url
     else
       @member = Member.find_by_email params[:member].try(:[], :email)

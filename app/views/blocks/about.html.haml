@@ -2,6 +2,11 @@
 
 .post= @about.body
 
+- if logged_in?
+  %h1 Studio Bylaws
+  .post
+    = link_to "View studio bylaws", members_bylaws_path
+
 %h1 Contact
 
 .post

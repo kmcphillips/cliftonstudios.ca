@@ -5,7 +5,7 @@ class MemberSessionsController < ApplicationController
   def new
     @title = "Member Login"
 
-    if current_member
+    if logged_in?
       redirect_to members_dashboard_index_path
     else
       @member_session = MemberSession.new

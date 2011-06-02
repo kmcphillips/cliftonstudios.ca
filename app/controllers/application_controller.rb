@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_member_session, :current_member
+  helper_method :current_member_session, :current_member, :logged_in?
 
   private
   
@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
   def current_member
     return @current_member if defined?(@current_member)
     @current_member = current_member_session && current_member_session.member
+  end
+
+  def logged_in?
+    !!@current_member
   end
 
   def require_member
