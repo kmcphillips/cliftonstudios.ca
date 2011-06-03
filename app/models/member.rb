@@ -77,7 +77,7 @@ class Member < ActiveRecord::Base
 
   protected
 
-  ## Callbacks
+  ## Callbacks and validations
 
   protected
 

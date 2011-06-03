@@ -12,14 +12,15 @@
     %br
 
     %ul.form
+      - if logged_in?
+        %li
+          %label Email
+          = obfuscated_mail_to @member.email unless @member.email.blank?
       - if @member.website_with_protocol.present?
         %li
           %label Website
           = link_to @member.website, @member.website_with_protocol
       - if logged_in?
-        %li
-          %label Email
-          = obfuscated_mail_to @member.email unless @member.email.blank?
         %li
           %label Address
           - if @member.address.blank?

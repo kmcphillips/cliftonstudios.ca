@@ -1,8 +1,9 @@
-- content_for :js do
-  :javascript
-    $(document).ready(function(){
-      setTimeout("window.print()", 2000);
-    });
+- unless Rails.env.development?
+  - content_for :js do
+    :javascript
+      $(document).ready(function(){
+        setTimeout("window.print()", 2000);
+      });
 
 %h1 Clifton Studios Members
 %h2
@@ -12,6 +13,5 @@
 %table
   - @members.each_slice(2) do |row|
     %tr
-      %td= row[0]
-      %td= row[1]
-
+      - row.each do |member|
+        %td= render :partial => "member_for_print", :object => member
