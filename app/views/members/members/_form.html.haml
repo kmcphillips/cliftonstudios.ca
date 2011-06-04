@@ -5,8 +5,8 @@
     = render :partial => "members/dashboard/form", :locals => {:f => f}
     = f.item :check_box, :active, :label => "Active?"
     = f.item :check_box, :admin, :label => "Site Administrator?"
-    = f.item :password_field, :password, :size => 12, :note => (@member.new_record? ? "Leave blank to set automatically" : "Leave blank to not change")
-    = f.item :password_field, :password_confirmation, :label => "Password Confirmation", :size => 12
+    = f.item :password_field, :password, :size => 14, :note => (@member.new_record? ? "Leave blank to set automatically" : "Leave blank to not change")
+    = f.item :password_field, :password_confirmation, :label => "Password Confirmation", :size => 14
     = f.item :text_area, :bio, :rows => 5, :cols => 50
     %li
       = f.label :website, "External Website URL"

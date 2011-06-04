@@ -15,7 +15,6 @@ class Member < ActiveRecord::Base
   has_many :titles, :class_name => "Executive", :foreign_key => "member_id"
   
   validates :name, :presence => {:message => "is required"}
-  validates :email, :presence => {:message => "is required"}
   validate :website_begins_with_protocol
 
   before_validation :set_default_password

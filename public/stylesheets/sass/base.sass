@@ -357,13 +357,19 @@ a:hover
           margin-right: 10px
           color: $form_label
 
+        p
+          padding: 0
+          margin: 8px 16px
+
         input, textarea
           font-family: $font_copy
           font-size: 1em
 
-        p
-          padding: 0
-          margin: 8px 16px
+        div.field_with_errors
+          display: inline
+
+          input
+            border: 3px solid $error_background
 
         span.note
           font-size: 0.9em
