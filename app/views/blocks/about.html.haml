@@ -1,6 +1,6 @@
 %h1 About Clifton Studios
 
-.post= @about.body
+.post= simple_format @about.body
 
 - if logged_in?
   %h1 Studio Bylaws
@@ -26,4 +26,4 @@
 
 %h1 How To Join
 
-.post= @availability.body
+.post= simple_format @availability.body

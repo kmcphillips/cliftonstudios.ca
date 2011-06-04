@@ -10,13 +10,17 @@ class Members::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find_by_permalink(params[:id])
   end
 
   def create
     @post = current_member.posts.build(params[:post])
 
-    if @post.save
+    if params[:commit] == "Preview"
+      @preview = true
+      @post.created_at = Time.now
+      render :action => "new"
+    elsif @post.save
       redirect_to(members_posts_path, :notice => 'News post was successfully created.')
     else
       render :action => "new"
@@ -24,9 +28,13 @@ class Members::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find_by_permalink(params[:id])
 
-    if @post.update_attributes(params[:post])
+    if params[:commit] == "Preview"
+      @post.attributes = params[:post]
+      @preview = true
+      render :action => "new"
+    elsif @post.update_attributes(params[:post])
       redirect_to(members_posts_path, :notice => 'News post was successfully updated.') 
     else
       render :action => "edit"

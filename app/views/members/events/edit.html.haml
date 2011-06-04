@@ -11,3 +11,6 @@
     = destroy_entity_image members_event_path(@event), "Delete Event"
     %br
     = show_entity_image event_path(@event), "View Event"
+
+- if @preview
+  = render :partial => "events/event", :object => @event

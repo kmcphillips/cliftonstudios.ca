@@ -15,6 +15,15 @@ class Event < ActiveRecord::Base
   
   scope :upcoming, lambda{ where(["ends_at > ?", Time.now]).order("starts_at DESC") }
 
+  def prefix
+    if Time.now < self.starts_at
+      "Happens on"
+    elsif Time.now >= self.starts_at && Time.now < self.starts_at
+      "Happening now"
+    else
+      "Happened on"
+    end
+  end
 
 protected
   

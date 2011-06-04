@@ -3,7 +3,7 @@
 
   %ul.form
     = f.item :text_field, :title, :size => 40
-    = f.item :text_area, :body, :cols => 30, :rows => 8
+    = f.item :text_area, :body, :cols => 40, :rows => 8
     - if f.object.permalink
       %li
         = f.label :permalink
@@ -17,3 +17,4 @@
       %span Days
 
     = f.item :submit, "Save"
+    = f.item :submit, "Preview"

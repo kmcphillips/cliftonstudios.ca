@@ -1,5 +1,10 @@
-%h1= link_to post.title, post_path(post)
-.subtext_left= post.created_at.to_s :with_time_no_minutes
+%h1
+  - if post.new_record?
+    = post.title
+  else
+    = link_to post.title, post_path(post)
+    
+.subtext_left= post.created_at.try(:to_s, :with_time_no_minutes)
 .subtext_right
   By
   = link_to post.member.name, artist_path(post.member)

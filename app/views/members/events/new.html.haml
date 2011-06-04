@@ -6,3 +6,5 @@
   .image_links
     = index_entity_image members_events_path, "Back to Event Index"
 
+- if @preview
+  = render :partial => "events/event", :object => @event

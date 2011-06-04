@@ -11,3 +11,6 @@
     = destroy_entity_image members_post_path(@post), "Delete News Post"
     %br
     = show_entity_image post_path(@post), "View News Post"
+
+- if @preview
+  = render :partial => "posts/post", :object => @post
