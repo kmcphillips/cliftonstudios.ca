@@ -34,6 +34,7 @@ Cliftonstudios::Application.routes.draw do
     resources :posts, :except => [:show]
     resources :events, :except => [:show]
     resources :pictures, :except => [:show, :new]
+    resources :blocks, :only => [:index, :create]
     
     ['bylaws', 'emails'].each do |block|
       match block => "blocks##{block}"

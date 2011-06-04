@@ -21,12 +21,12 @@ b.description = "The top of the About page, containing the history of the studio
 b.accepts_image = true
 b.save!
 
-puts "Creating 'Members' block"
-b = Block.new
-b.label = "members"
-b.path = "/members"
-b.description = "This text will appear at the top of the members page, describing what our members are entitled to and what they do."
-b.save!
+#puts "Creating 'Members' block"
+#b = Block.new
+#b.label = "members"
+#b.path = "/members"
+#b.description = "This text will appear at the top of the members page, describing what our members are entitled to and what they do."
+#b.save!
 
 puts "Creating 'Availablity' block"
 b = Block.new

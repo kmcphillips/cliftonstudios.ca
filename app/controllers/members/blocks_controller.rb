@@ -1,6 +1,28 @@
 class Members::BlocksController < BlocksController
   before_filter :require_member
 
+  def index
+    @about = Block.find_by_label :about
+    @availability = Block.find_by_label :availability
+  end
+
+  def create  # update without ID
+    @about = Block.find_by_label :about
+    @availability = Block.find_by_label :availability
+
+    @about.body = params[:about]
+    @availability.body = params[:availability]
+
+    if [@about.valid?, @availability.valid?].all?
+      @about.save
+      @availability.save
+      redirect_to members_blocks_path, :notice => "Studio about section updated."
+    else
+      flash[:error] = ["There was an error saving.", @about.errors.full_messages, @availability.errors.full_messages].flatten.to_sentence
+      render :index
+    end
+  end
+
   def bylaws
   end
 

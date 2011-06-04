@@ -1,0 +1,17 @@
+%h1 Manage About the Studio
+
+.post
+  %p
+    These are the blocks of text on the "About" section of the main menu. The first one is general studio information. The second one should describe studio space availability, and how people can become members.
+
+  = form_tag members_blocks_path, :method => :post do
+    %ul.form
+      %li
+        %label About the Studio
+        = text_area_tag :about, @about.body, :cols => 40, :rows => 6
+      %li
+        %label Membership Availability
+        = text_area_tag :availability, @availability.body, :cols => 40, :rows => 6
+      %li
+        %label &nbsp;
+        = submit_tag "Save"
