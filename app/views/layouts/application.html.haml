@@ -37,9 +37,9 @@
           = render :partial => "shared/nav"
           #main
             #sidebar
+              = render :partial => "shared/members/sidebar" if logged_in?
               = render :partial => "shared/members/nav" if logged_in?
               = render :partial => "shared/sidebar"
-              = render :partial => "shared/members/sidebar" if logged_in?
             #content
               = render :partial => "shared/flashes"
               = yield

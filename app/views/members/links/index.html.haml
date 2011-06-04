@@ -11,7 +11,7 @@
       %th Actions
 
     - @links.each do |link|
-      %tr
+      %tr{:class => cycle("odd", "even")}
         %td= link.title
         %td= link_to link.url, link.url
         %td= truncate_for_index link.description

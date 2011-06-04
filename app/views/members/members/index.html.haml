@@ -12,7 +12,7 @@
       %th Address
       %th Actions
     - @active_members.each do |member|
-      %tr
+      %tr{:class => cycle("odd", "even")}
         %td= member.name
         %td= member.address
         %td{:width => 100}
@@ -30,7 +30,7 @@
     %p There are currently no inactive members.
   - else
     %table.data
-      %tr
+      %tr{:class => cycle("odd", "even")}
         %th Name
         %th Address
         %th Actions

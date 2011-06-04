@@ -1,5 +1,13 @@
-%p
-  &copy; #{Time.now.year}
-  = obfuscated_mail_to ADMIN_EMAIL, "Clifton Studios"
-  &
-  = link_to "Kevin McPhillips", "http://kevinmcphillips.ca"
+.float_right.align_right
+  %p
+    &copy; #{Time.now.year}
+    = obfuscated_mail_to ADMIN_EMAIL, "Clifton Studios"
+    %br
+    &
+    = link_to "Kevin McPhillips", "http://kevinmcphillips.ca"
+
+.float_left.align_left
+  %p
+    = render :partial => "shared/address"
+
+.clear

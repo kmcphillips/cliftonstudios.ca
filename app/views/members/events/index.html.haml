@@ -13,7 +13,7 @@
       %th Actions
 
     - @events.each do |event|
-      %tr
+      %tr{:class => cycle("odd", "even")}
         %td= link_to event.title, event_path(event)
         %td= truncate_for_index event.body
         %td= event.starts_at.to_s(:with_time_no_minutes)

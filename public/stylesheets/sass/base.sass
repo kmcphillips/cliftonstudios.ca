@@ -118,6 +118,12 @@ a:hover
 .clear_right
   clear: right
 
+.align_left
+  text-align: left
+
+.align_right
+  text-align: right
+
 
 /* Layout */
 
@@ -214,7 +220,7 @@ a:hover
               float: left
               display: block
               padding: 16px 0
-              font-size: 1em
+              font-size: 1.1em
               width: 100%
             a:hover
               background-color: $nav_background_hover
@@ -239,7 +245,7 @@ a:hover
         #sidebar
           float: left
           width: $sidebar_width - 32px
-          padding: 0 16px 20px 16px
+          padding: 0 16px 20px 0
 
         #content
           margin: 0 20px 20px $sidebar_width
@@ -251,16 +257,41 @@ a:hover
 
 #footer
   clear: both
-  margin: 40px
-  padding: 0px
+  margin: 40px auto
+  width: $column_width
   text-align: center
   color: $footer_text
 
   a
     color: $footer_link
 
+  p
+    padding: 0 25px
+    line-height: 130%
 
 /* Style */
+
+#sidebar
+  font-size: 0.9em
+
+  h2
+    font-family: $font_decorative
+    font-size: 1.2em
+    color: $nav_text
+    background-color: $nav_background
+    padding: 10px 10px 10px 14px
+
+  ul
+    margin: 8px 8px 18px 22px
+
+    li
+      font-family: $font_copy
+      padding: 5px 0
+
+  p
+    font-family: $font_copy
+    margin: 16px
+    line-height: 125%
 
 #content
   h1, h2, h3

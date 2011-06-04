@@ -12,7 +12,7 @@
       %th Actions
 
     - @posts.each do |post|
-      %tr
+      %tr{:class => cycle("odd", "even")}
         %td{:width => 120}= link_to post.title, post_path(post)
         %td{:width => 240}= truncate_for_index post.body
         %td= post.member.name
