@@ -1,0 +1,43 @@
+%h1 Manage Studio Members
+
+.post
+  .image_links
+    = new_entity_image new_members_member_path, 'Create new studio member'
+    %br
+    = show_entity_image members_contact_list_index_path, "View as contact list"
+
+  %table.data
+    %tr
+      %th Name
+      %th Address
+      %th Actions
+    - @active_members.each do |member|
+      %tr
+        %td= member.name
+        %td= member.address
+        %td{:width => 100}
+          = show_entity_image members_member_path(member)
+          = edit_entity_image edit_members_member_path(member)
+
+%h1 Inactive Studio Members
+
+.post
+  %p
+    These are members who have left the studio, permanently or temporarily. They cannot be deleted, but deactivating them will remove them from the public site and from the contact list.
+    They can always be re-activated later and their content will not be lost, in case someone is leaving but is planning on coming back.
+
+  - unless @inactive_members.any?
+    %p There are currently no inactive members.
+  - else
+    %table.data
+      %tr
+        %th Name
+        %th Address
+        %th Actions
+      - @inactive_members.each do |member|
+        %tr
+          %td= member.name
+          %td= member.address
+          %td{:width => 100}
+            = show_entity_image members_member_path(member)
+            = edit_entity_image edit_members_member_path(member)

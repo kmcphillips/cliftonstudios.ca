@@ -1,0 +1,17 @@
+= form_for [:members, @member] do |f|
+  = f.error_messages
+
+  %ul.form
+    = render :partial => "members/dashboard/form", :locals => {:f => f}
+    = f.item :check_box, :active, :label => "Active?"
+    = f.item :check_box, :admin, :label => "Site Administrator?"
+    = f.item :password_field, :password, :size => 12, :note => (@member.new_record? ? "Leave blank to set automatically" : "Leave blank to not change")
+    = f.item :password_field, :password_confirmation, :label => "Password Confirmation", :size => 12
+    = f.item :text_area, :bio, :rows => 5, :cols => 50
+    %li
+      = f.label :website, "External Website URL"
+      = f.text_field :website, :value => (f.object.website.blank? ? "http://" : f.object.website), :size => 40, :id => "website_url"
+      = link_to_function(image_tag("/images/icons/link_preview.png", :alt => "Preview", :class => "no_border") + "&nbsp;Preview".html_safe, "preview_link('#website_url');", :title => "Preview")
+
+    = f.hidden_field :notify_password_change
+    = f.item :submit, "Save"

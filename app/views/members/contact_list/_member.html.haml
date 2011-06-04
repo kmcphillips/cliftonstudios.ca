@@ -1,10 +1,16 @@
-%h3= member.name
-%p= simple_format member.address
-%p
-  - unless member.phone.blank?
-    = member.phone
-    %br
-  = link_to member.email, "mailto:#{member.email}"
-  - unless member.website.blank?
-    %br
-    = link_to member.website, member.website
+.clear
+  .float_left
+    %h3= member.name
+    %p= simple_format member.address
+    %p
+      - unless member.phone.blank?
+        = member.phone
+        %br
+      = link_to member.email, "mailto:#{member.email}"
+      - unless member.website.blank?
+        %br
+        = link_to member.website, member.website
+
+  .float_right
+    = show_entity_image members_member_path(member)
+    = edit_entity_image edit_members_member_path(member)

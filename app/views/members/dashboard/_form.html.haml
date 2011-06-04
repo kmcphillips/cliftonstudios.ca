@@ -4,10 +4,4 @@
 = f.item :text_field, :phone, :size => 12, :label => "Phone number"
 = f.item :text_field, :alternate_phone, :size => 12, :label => "Alternate phone number"
 = f.item :check_box, :receive_emails, :label => "Receive Emails?"
-%li
-  %label Admin User?
-  %span= f.object.admin?.to_yesno
-- unless f.object.active?
-  %li
-    %label Status
-    %span Inactive
+

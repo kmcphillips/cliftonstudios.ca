@@ -9,7 +9,14 @@
     %ul.form
       = render :partial => "form", :locals => {:f => f}
       = f.item :submit, "Save"
-
+      %li
+        %label Site Administrator?
+        %span= f.object.admin?.to_yesno
+      - unless f.object.active?
+        %li
+          %label Status
+          %span Inactive
+          
   %h1 Public Bio
 
   .post
