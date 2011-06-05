@@ -3,7 +3,7 @@ namespace :jobs do
   desc "Send all pending emails"
   task :deliver_email => :environment do
     while message = PendingEmail.next!
-      puts "Delivering #{message.method} to #{message.everyone? ? "everyone" : message.locals[:member].try(:name) || "unknown"}"
+      puts "Delivering #{message.method} to #{message.locals[:member].try(:name) || "everyone"}"
       message.deliver
     end
   end

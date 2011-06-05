@@ -7,6 +7,9 @@
     - @members.each do |member|
       %li= link_to(member.name, artist_path(member))
 
+  - if logged_in?
+    %p= link_to "Click here to view a list of email addresses for all studio members.", members_emails_path
+
 %h1 Executive
 
 .post

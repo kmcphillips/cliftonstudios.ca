@@ -1,18 +1,18 @@
 %h2 Members Area
-
 %ul
   %li= link_to "Dashboard", members_dashboard_index_path
+  %li= link_to "My Pictures", members_pictures_path
   %li= link_to "Change Password", members_password_index_path
   %li= link_to "Contact List", members_contact_list_index_path
   %li= link_to "Studio Bylaws", members_bylaws_path
-  %li= link_to "Manage Pictures", members_pictures_path
+  %li= link_to "All Member Emails", members_emails_path
+  %li= link_to "Pending Mail Queue", members_mail_queue_path
 
 %h2 Site Admin
-
 %ul
-  %li= link_to "Manage About the Studio", members_blocks_path
-  %li= link_to "Manage Studio Members", members_members_path
-  %li= link_to "Manage Executive", members_executive_index_path
-  %li= link_to "Manage Links", members_links_path
-  %li= link_to "Manage News", members_posts_path
-  %li= link_to "Manage Events", members_events_path
+  %li= link_to "News/Blog", members_posts_path
+  %li= link_to "Events", members_events_path
+  %li= link_to "Studio Members", members_members_path
+  %li= link_to "Executive", members_executive_index_path
+  %li= link_to "About the Studio", members_blocks_path
+  %li= link_to "Links", members_links_path

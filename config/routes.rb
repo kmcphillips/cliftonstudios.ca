@@ -37,7 +37,7 @@ Cliftonstudios::Application.routes.draw do
     resources :blocks, :only => [:index, :create]
     resources :members, :except => [:destroy]
 
-    ['bylaws', 'emails'].each do |block|
+    ['bylaws', 'emails', 'mail_queue'].each do |block|
       match block => "blocks##{block}"
     end
   end

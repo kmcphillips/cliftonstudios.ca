@@ -1,13 +1,10 @@
 Layout
   Qtip description over nav links
-  Sidebar
   Images
-  Links
   Admin tables
 
 Admin/Members area
   Suggestions/hints for how to participate and contribute?
-  Other Members
   Images for studio
   Images for each object
   Bi-laws (Enter them)
@@ -15,7 +12,6 @@ Admin/Members area
   Deletion and editing should be restricted by user and type?
   Sortable on links and things
   When changing email, require entering it twice
-  Show mail queue
 
 Images
   Index page showing members, studio pictures
@@ -25,7 +21,6 @@ Images
   Enlarge links
 
 Mailing
-  Script/job to mail out changes
   Link on email to unsubscribe
 
 Social
@@ -44,6 +39,7 @@ Bonus
   Create clifton studios email that forwards to email in db
   Google Site Search inegration
   Images saves across preview
+  Change the column name "method" on pending_email
 
 Post deploy
   Cron job for sitemap generation. Possibly an observer?

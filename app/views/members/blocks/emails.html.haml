@@ -3,5 +3,5 @@
 .post
   %p This is a list of the email addresses for all active Clifton Studios members.
 
-  = text_area_tag :emails, @emails.join(", "), :cols => 40, :rows => 6, :readonly => :readonly
+  = text_area_tag :emails, @emails.join(", "), :rows => 8, :readonly => :readonly, :style => "width: 100%"
 

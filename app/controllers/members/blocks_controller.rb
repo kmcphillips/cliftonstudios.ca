@@ -30,5 +30,9 @@ class Members::BlocksController < BlocksController
     @emails = Member.active.alphabetical.map(&:email)
   end
 
+  def mail_queue
+    @emails = PendingEmail.pending
+  end
+
 end
 

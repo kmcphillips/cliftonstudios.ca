@@ -5,6 +5,8 @@ class PendingEmail < ActiveRecord::Base
 
   validates :method, :presence => true
 
+  scope :pending, where(:processing => false)
+  
   def deliver!
     MemberMailer.send(method, locals).deliver
   end
