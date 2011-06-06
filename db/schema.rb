@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110602032733) do
+ActiveRecord::Schema.define(:version => 20110606133848) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -96,18 +96,20 @@ ActiveRecord::Schema.define(:version => 20110602032733) do
     t.boolean  "password_configured", :default => false
     t.datetime "last_request_at"
     t.string   "alternate_phone"
+    t.string   "legacy_name"
   end
 
   add_index "members", ["active"], :name => "index_members_on_active"
   add_index "members", ["admin"], :name => "index_members_on_admin"
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
+  add_index "members", ["legacy_name"], :name => "index_members_on_legacy_name"
   add_index "members", ["password_configured"], :name => "index_members_on_password_configured"
   add_index "members", ["permalink"], :name => "index_members_on_permalink"
   add_index "members", ["persistence_token"], :name => "index_members_on_persistence_token", :unique => true
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
 
   create_table "pending_emails", :force => true do |t|
-    t.string   "method"
+    t.string   "action"
     t.text     "locals"
     t.boolean  "processing", :default => false
     t.datetime "created_at"

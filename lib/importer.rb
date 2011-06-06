@@ -48,7 +48,7 @@ class Importer
   def import_members
     puts "Importing members..."
     @db.query("SELECT * FROM members AS m LEFT JOIN bio as b ON m.id = b.user WHERE m.id != 1 ORDER BY m.id ASC").each do |result|
-      member = Member.new(:id => result["id"], :visible => result["visible"], :name => result["full_name"], :bio => result["description"], :receive_emails => result["email_notification"], :email => result["email"], :password => result["email"], :password_confirmation => result["email"])
+      member = Member.new(:id => result["id"], :visible => result["visible"], :name => result["full_name"], :bio => result["description"], :receive_emails => result["email_notification"], :email => result["email"], :password => result["email"], :password_confirmation => result["email"], :legacy_name => result[:full_name].downcase.gsub(/[^A-Za-z0-9]/, "+"))
       
       member.status = case result["type"]
         when "ADMIN"

@@ -19,7 +19,6 @@ Cliftonstudios::Application.routes.draw do
   
   resources :password_reset, :only => [:index, :create]
 
-
   namespace :members do
     resources :dashboard
     resources :password, :only => [:index, :create]
@@ -41,6 +40,16 @@ Cliftonstudios::Application.routes.draw do
       match block => "blocks##{block}"
     end
   end
+
+
+  ## Legacy PHP URLs
+  %w[news events about artists pictures login].each do |page|
+    match "#{page}.php" => "legacy_routes##{page}"
+  end
+
+  # Catch all remaining PHP pages and send them somewhere
+  match ":page.php" => "legacy_routes#default"
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

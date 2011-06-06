@@ -39,7 +39,6 @@ Bonus
   Create clifton studios email that forwards to email in db
   Google Site Search inegration
   Images saves across preview
-  Change the column name "method" on pending_email
 
 Post deploy
   Cron job for sitemap generation. Possibly an observer?
@@ -47,5 +46,4 @@ Post deploy
   Meta information
   Search engine reindexing
   Update paperclip once the bug is fixed for :hash_secret
-
 
