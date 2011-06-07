@@ -68,7 +68,7 @@ class Importer
           member.active = false
           member.admin = false
       end
-TODO
+
       # TODO: import picture
 #      if result["picture"].present?
 #        member.image = File.open("#{IMAGE_PATH}/p#{result["picture"]}.jpg")

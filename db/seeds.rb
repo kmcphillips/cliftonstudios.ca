@@ -2,14 +2,6 @@
 raise "Remove this raise to run in production mode" if Rails.env.production?
 
 
-puts "Truncating members"
-ActiveRecord::Base.connection.execute("truncate members")
-
-puts "Creating test member"
-Member.new(:email => 'test@test.test', :password => 'asdfasdf', :password_confirmation => 'asdfasdf', :name => "Test User").save!
-
-
-
 puts "Truncating blocks"
 ActiveRecord::Base.connection.execute("truncate blocks")
 
@@ -29,7 +21,6 @@ b.description = "This section describes studio space availability and how to con
 b.save!
 
 
-
 puts "Truncating executive"
 ActiveRecord::Base.connection.execute("truncate executives")
 
@@ -37,5 +28,3 @@ puts "Creating executive positions"
 Executive::TITLES.each_with_index do |title, index|
   Executive.create! :title => title, :sort_order => index
 end
-
-
