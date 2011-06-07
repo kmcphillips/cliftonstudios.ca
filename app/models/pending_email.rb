@@ -3,12 +3,12 @@ class PendingEmail < ActiveRecord::Base
 
   belongs_to :member
 
-  validates :method, :presence => true
+  validates :action, :presence => true
 
   scope :pending, where(:processing => false)
   
   def deliver!
-    MemberMailer.send(method, locals).deliver
+    MemberMailer.send(action, locals).deliver
   end
 
   ## Class methods

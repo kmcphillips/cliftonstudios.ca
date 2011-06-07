@@ -5,8 +5,8 @@ development:
   database: cliftonstudios_development
   pool: 5
   username: cliftonstudios
-  password: cliftonstudios
-  socket: /tmp/mysql.sock
+  password: 
+  host: localhost
 
 test:
   adapter: mysql2
@@ -15,6 +15,11 @@ test:
   database: cliftonstudios_test
   pool: 5
   username: cliftonstudios
-  password: cliftonstudios
-  socket: /tmp/mysql.sock
+  password: 
+  host: localhost
 
+legacy:
+  database: cliftonstudios_legacy
+  username: cliftonstudios
+  password:
+  host: localhost

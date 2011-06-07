@@ -12,6 +12,10 @@ class BlocksController < ApplicationController
     @title = "Links"
   end
 
+  def search
+    redirect_to "http://www.google.ca/search?q=site%3Acliftonstudios.ca+#{URI.escape(params[:search] || "")}"
+  end
+
   protected
 
   def load_block

@@ -18,6 +18,7 @@ class Member < ActiveRecord::Base
   validate :website_begins_with_protocol
 
   before_validation :set_default_password
+  before_save :create_secret_hash
 
   attr_accessor :notify_password_change
 
@@ -49,6 +50,10 @@ class Member < ActiveRecord::Base
     "#{name} <#{email}>" unless email.blank?
   end
 
+  def last_name
+    name.split(" ").last
+  end
+
   def website_with_protocol
     if website.present? && website != "http://"
       if website =~ /^http/
@@ -73,6 +78,10 @@ class Member < ActiveRecord::Base
     end
   end
 
+  def self.for_artists_index
+    active.sort{|a, b| a.last_name <=> b.last_name }
+  end
+
   protected
 
   def change_password
@@ -91,9 +100,16 @@ class Member < ActiveRecord::Base
   end
 
   def set_default_password
-    if new_record?
+    if new_record? && password.blank? && password_confirmation.blank?
+      self.notify_password_change = nil
       change_password
     end
+    true
+  end
+
+  def create_secret_hash
+    self.secret_hash = Digest::SHA1.hexdigest(rand.to_s) if self.secret_hash.blank?
+    true
   end
 
 end

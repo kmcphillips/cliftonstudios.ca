@@ -4,15 +4,15 @@ class Importer
   IMAGE_PATH = ""
   
   def initialize(config)
-    keys = %w(host username password schema)
+    keys = %w(host username password database)
     raise "Invalid params. Requires: #{keys.join(", ")}." unless keys.inject(true){|acc,key| acc && config[key]}
     
-    puts "Connecting to database '#{config["schema"]}' with user '#{config["username"]}'..."
+    puts "Connecting to database '#{config["database"]}' with user '#{config["username"]}'..."
     @db = Mysql2::Client.new(
         :host => config["host"], 
         :username => config["username"], 
         :password => config["password"], 
-        :database => config["schema"]
+        :database => config["database"]
     )
     puts "Connected"
   end
@@ -26,7 +26,13 @@ class Importer
         import_about
         import_images
         # import_events  # Not going to import events since everything will be past
-        
+
+        puts "Destroying all pending emails created by import"
+        PendingEmail.destroy_all
+        puts ""
+
+        puts "Success!"
+
       end
     rescue => e
       puts "*** ERROR: Transaction rolled back becasue of exception raised! ***"
@@ -47,38 +53,48 @@ class Importer
 
   def import_members
     puts "Importing members..."
-    @db.query("SELECT * FROM members AS m LEFT JOIN bio as b ON m.id = b.user WHERE m.id != 1 ORDER BY m.id ASC").each do |result|
-      member = Member.new(:id => result["id"], :visible => result["visible"], :name => result["full_name"], :bio => result["description"], :receive_emails => result["email_notification"], :email => result["email"], :password => result["email"], :password_confirmation => result["email"], :legacy_name => result[:full_name].downcase.gsub(/[^A-Za-z0-9]/, "+"))
-      
-      member.status = case result["type"]
+    @db.query("SELECT m.id, m.full_name, b.description, m.email_notification, m.email, m.picture, m.type FROM user AS m LEFT JOIN bio as b ON m.id = b.user WHERE m.id != 1 ORDER BY m.id ASC").each do |result|
+      member = Member.new(:name => result["full_name"], :bio => result["description"], :receive_emails => true, :email => result["email"], :legacy_username => result["username"], :legacy_name => result["full_name"].downcase.gsub(/[^A-Za-z0-9]/, "+"))
+      member.id = result["id"]
+
+      case result["type"]
         when "ADMIN"
           member.active = true
           member.admin = true
         when "MEMBER"
           member.active = true
+          member.admin = false
         when "INACTIVE"
           member.active = false
+          member.admin = false
       end
-      
-      if result["image"].present?
-        member.image = File.open("#{IMAGE_PATH}/p#{result["image"]}.jpg")
+TODO
+      # TODO: import picture
+#      if result["picture"].present?
+#        member.image = File.open("#{IMAGE_PATH}/p#{result["picture"]}.jpg")
+#      end
+
+      if member.save
+        puts "  Member ##{member.id} (#{member.name}) created (Legacy ID: #{result["id"]})"
+      else
+        puts "  ERROR: Could not save member #{member.name}: #{member.errors.full_messages.to_sentence}"
       end
-      
-      member.save!
-      puts "  Member ##{member.id} (#{member.name}) created"
     end
+
     puts "Done"
+    puts ""
   end
 
   def import_posts
     puts "Importing news posts..."
     @db.query("SELECT * FROM news WHERE members_only = 0 ORDER BY id ASC").each do |result|
       # no news posts have images so we get off easy by not having to import those
-      post = Post.new(:title => result["post_title"], :member_id => result["post_by"], :body => result["post"], :status => "sent", :updated_at => result["post_date"], :created_at => result["post_date"])
+      post = Post.new(:title => result["post_title"], :member_id => result["post_by"], :body => result["post"], :updated_at => result["post_date"], :created_at => result["post_date"])
       post.save!
       puts "  Post ##{post.id} created"
     end
     puts "Done"
+    puts ""
   end
 
   def import_about
@@ -94,10 +110,12 @@ class Importer
     puts "  Loaded 'availability' block"
     
     puts "Done"
+    puts ""
   end
 
   def import_images
     puts "WARNING: Importing images has not been implemented yet"
+    puts ""
   end
 
 end

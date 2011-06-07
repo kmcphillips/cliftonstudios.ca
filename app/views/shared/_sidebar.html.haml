@@ -1,3 +1,10 @@
+%h2 Site Search
+
+= form_tag search_path do
+  %p
+    = text_field_tag :search, nil, :size => 16
+    = submit_tag "Search", :style => "margin-top: 10px"
+
 - if (events =  Event.upcoming).any?
   %h2 Upcoming Events
 
@@ -7,3 +14,10 @@
         = link_to event.title, event_path(event)
         %br
         = event.starts_at.to_s(:with_time)
+
+%h2 Follow Us
+
+%ul
+  %li= link_to "Facebook", "http://www.facebook.com/pages/Clifton-Studios/111063175627791"
+  %li= link_to "RSS", "/rss.xml"
+  %li TODO: other things

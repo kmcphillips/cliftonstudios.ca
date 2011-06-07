@@ -10,4 +10,4 @@
   = link_to post.member.name, artist_path(post.member)
 
 .post.clear_right
-  = simple_format post.body
+  = auto_link simple_format(post.body)

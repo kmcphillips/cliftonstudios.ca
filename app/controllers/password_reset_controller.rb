@@ -34,5 +34,5 @@ class PasswordResetController < ApplicationController
       end
     end
   end
-end
 
+end

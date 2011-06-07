@@ -12,4 +12,4 @@
   = link_to event.member.name, artist_path(event.member)
 
 .post.clear_right
-  = simple_format event.body
+  = auto_link simple_format(event.body)

@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   
   def index
     @title = "Artists"
-    @members = Member.order("name ASC")
+    @members = Member.for_artists_index
     @executive = Executive.filled.sorted
   end
 
