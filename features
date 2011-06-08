@@ -46,4 +46,5 @@ Post deploy
   Meta information
   Search engine reindexing
   Update paperclip once the bug is fixed for :hash_secret
+  Remove all the dev login stuff
 

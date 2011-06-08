@@ -54,8 +54,16 @@ class Importer
   def import_members
     puts "Importing members..."
     @db.query("SELECT m.id, m.full_name, b.description, m.email_notification, m.email, m.picture, m.type FROM user AS m LEFT JOIN bio as b ON m.id = b.user WHERE m.id != 1 ORDER BY m.id ASC").each do |result|
+      message = ""
+
       member = Member.new(:name => result["full_name"], :bio => result["description"], :receive_emails => true, :email => result["email"], :legacy_username => result["username"], :legacy_name => result["full_name"].downcase.gsub(/[^A-Za-z0-9]/, "+"))
       member.id = result["id"]
+
+      if member.name == "Kevin McPhillips" && Rails.env.development?
+        member.password = member.password_confirmation = DEV_PASSWORD
+        member.email = DEV_USERNAME
+        message = "with dev mode credentials"
+      end
 
       case result["type"]
         when "ADMIN"
@@ -75,7 +83,7 @@ class Importer
 #      end
 
       if member.save
-        puts "  Member ##{member.id} (#{member.name}) created (Legacy ID: #{result["id"]})"
+        puts "  Member ##{member.id} (#{member.name}) created #{message}"
       else
         puts "  ERROR: Could not save member #{member.name}: #{member.errors.full_messages.to_sentence}"
       end
