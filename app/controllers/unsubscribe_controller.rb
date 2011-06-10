@@ -1,11 +1,11 @@
 class UnsubscribeController < ApplicationController
 
   def edit
-    @member = Member.find_by_email_and_secret_hash(params[:id], params[:key])
+    @member = Member.find_by_secret_hash(params[:id])
   end
 
   def update
-    @member = Member.find_by_email_and_secret_hash(params[:id], params[:key])
+    @member = Member.find_by_secret_hash(params[:id])
 
     if @member && @member.update_attribute(:receive_emails, false)
       flash[:notice] = "You have been unsubscribed. Your email preference has been updated in your profile."
