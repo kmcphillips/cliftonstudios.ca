@@ -19,6 +19,8 @@ class LegacyRoutesController < ApplicationController
   def artists
     if !params[:name].blank? && member = Member.find_by_legacy_name(params[:name])
       redirect_to artist_path(member)
+    elsif !params[:artist].blank? && Member.find_by_id(params[:artist])
+      redirect_to artist_path(member)
     else
       redirect_to artsits_path
     end

@@ -1,0 +1,13 @@
+%h1 Unsubscribe from Emails
+
+.post
+  %p
+    If you would like to stop receiving email notifications from Clifton Studios at your #{@member.email} address, please click the unsubscribe button below.
+
+  %p
+    For other inqueries, please contact the administrator.
+    = obfuscated_mail_to ADMIN_EMAIL
+
+    = form_tag edit_unsubscribe_path(@member.email, :key => @member.secret_hash), :method => :put do
+      = submit_tag "Unsubscribe"
+ 

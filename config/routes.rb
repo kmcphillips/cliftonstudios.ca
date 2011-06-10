@@ -17,6 +17,7 @@ Cliftonstudios::Application.routes.draw do
   match 'login' => "member_sessions#new", :as => :login
   match 'logout' => "member_sessions#destroy", :as => :logout
   
+  resources :unsubscribe, :only => [:edit, :update]  
   resources :password_reset, :only => [:index, :create]
 
   namespace :members do
