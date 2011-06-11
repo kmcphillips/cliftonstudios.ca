@@ -1,6 +1,6 @@
 class UnsubscribeController < ApplicationController
 
-  def edit
+  def show
     @member = Member.find_by_secret_hash(params[:id])
   end
 
