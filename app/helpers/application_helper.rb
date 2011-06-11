@@ -97,6 +97,10 @@ module ApplicationHelper
     {:page => params[:page] || 1, :per_page => (members_area? ? PAGINATION_PER_TABLE : PAGINATION_PER_PAGE)}.merge(opts)
   end
 
+  def will_paginate_with_opts(collection)
+    will_paginate(collection, :previous_label => "← Newer", :next_label => "Older →")
+  end
+
   def truncate_for_index(str)
     truncate(str, :length => 120, :omission => " (more..)")
   end

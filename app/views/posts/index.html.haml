@@ -1,4 +1,4 @@
 - @posts.each do |post|
   = render :partial => "post", :object => post
 
-= will_paginate(@posts, :previous_label => "← Newer", :next_label => "Older →")
+= will_paginate_with_opts @posts

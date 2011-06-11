@@ -4,6 +4,6 @@ class Picture < ActiveRecord::Base
   
   belongs_to :member
 
-  
+  scope :sorted, order("created_at DESC")
 
 end

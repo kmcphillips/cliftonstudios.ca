@@ -3,7 +3,7 @@ class Members::PicturesController < ApplicationController
 
   def index
     @picture = Picture.new
-    @pictures = current_member.pictures.paginate pagination_params
+    @pictures = current_member.pictures.sorted.paginate pagination_params(:per_page => 8)
   end
 
   def create

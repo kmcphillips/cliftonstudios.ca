@@ -43,6 +43,9 @@ $table_background: #CCC
 $table_background_alt: #DDD
 $table_background_hover: brown
 
+$img_colour: $very_dark
+$img_hover_colour: $link_hover_color
+
 
 $border_radius_amount: 12px
 
@@ -381,6 +384,28 @@ a:hover
       li
         font-size: 1.2em
         margin-left: 20px
+
+    .picture_index_row
+      padding: 4px 0 0 28px
+
+      a
+        img.thumb
+          border: 6px solid $img_colour
+          margin: 8px 4px
+
+      a:hover
+        img.thumb
+          border: 6px solid $img_hover_colour
+
+    
+    a.inline_image
+      img.inline_image
+        border: 6px solid $img_colour
+        margin: 8px 4px
+
+    a.inline_image:hover
+      img.inline_image
+        border: 6px solid $img_hover_colour
 
     ul.form
       background-color: $form_background
