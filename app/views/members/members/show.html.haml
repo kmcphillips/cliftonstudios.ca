@@ -37,7 +37,7 @@
       = @member.login_count
     %li
       %label Last Login
-      = @member.last_login_at.to_s(:with_time)
+      = @member.last_login_at.blank? ? "Never" : @member.last_login_at.to_s(:with_time)
       &nbsp;
     %li
       %label Profile configured?

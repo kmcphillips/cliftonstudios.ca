@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110606235715) do
+ActiveRecord::Schema.define(:version => 20110611021509) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"

@@ -1,4 +1,4 @@
-= form_for current_member, :url => members_dashboard_path(current_member), :as => :member do |f|
+= form_for current_member, :url => members_dashboard_path(current_member), :as => :member, :html => {:multipart => true} do |f|
   %h1 Your Dashboard
   .post
     %p
@@ -16,7 +16,8 @@
         %li
           %label Status
           %span Inactive
-          
+
+  %a{:name => "bio"}
   %h1 Public Bio
 
   .post
@@ -29,6 +30,7 @@
         = f.label :website, "External Website URL"
         = f.text_field :website, :value => (f.object.website.blank? ? "http://" : f.object.website), :size => 40, :id => "website_url"
         = link_to_function(image_tag("/images/icons/link_preview.png", :alt => "Preview", :class => "no_border") + "&nbsp;Preview".html_safe, "preview_link('#website_url');", :title => "Preview")
+      = f.item :file_field, :image, :label => "Select a Bio image"
 
       = f.item :submit, "Save"
 

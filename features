@@ -7,7 +7,7 @@ Layout
 Admin/Members area
   Suggestions/hints for how to participate and contribute?
   Images for studio
-  Images for each object
+  Image on dashboard/bio
   Bi-laws (Enter them)
   Scope things by admin user
   Deletion and editing should be restricted by user and type?
@@ -18,9 +18,11 @@ Images
   Index page showing members, studio pictures
   Nifty "most recently updated user" and some thumbnails
   Sidebar recent or random images
-  Light box
+  Lightbox
   Enlarge links
-
+  Popup to edit description
+  Delete link
+  
 Social
   Facebook
   Twitter?

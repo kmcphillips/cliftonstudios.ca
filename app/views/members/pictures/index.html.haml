@@ -1,16 +1,28 @@
 %h1 Your Pictures
 
 .post
-  - if current_member.pictures.blank?
+  - if @pictures.blank?
     You have none.
     %br
     Why not upload some?
   - else
-    TODO
+    - @pictures.each_slice(4) do |slice|
+      .picture_index_row
+        - slice.each do |p|
+          = link_to image_tag(p.thumb, :class => "thumb", :alt => p.title), p.full, :rel => "lightbox"
 
+    TODO pagination
 
 %h1 Upload Pictures
 
 .post
-  TODO
-  
+  = form_for [:members, @picture], :html => {:multipart => true} do |f|
+    %ul.form
+      = f.item :file_field, :image, :label => "Select a Picture"
+      = f.item :text_field, :title, :size => 50, :label => "Title or Description"
+      = f.item :submit, "Upload"
+
+  %p
+    Want to upload your bio picture?
+    %br
+    = link_to "Click here to go to manage your picture from your dashboard.", members_dashboard_index_path(:anchor => "bio")
