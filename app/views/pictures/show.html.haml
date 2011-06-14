@@ -1,1 +1,7 @@
-%h1 Picture
+%h1 Pictures for #{@member.name}
+.post
+  - if @pictures.any?
+    = render :partial => "pictures"
+  - else
+    Sorry, but #{@member.name} has not uploaded any pictures.
+

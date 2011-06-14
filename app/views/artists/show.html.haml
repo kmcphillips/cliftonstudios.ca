@@ -31,6 +31,10 @@
 %h1 Pictures
 
 .post
-  TODO most recent pictures with count
-  %br
-  TODO link to the rest of their pictures
+  - if @member.pictures.any?
+    TODO most recent pictures with count
+    %br
+    = link_to "View #{@member.name}'s picture gallery", picture_path(@member.permalink)
+  - else
+    = @member.name
+    has not uploaded any pictures.

@@ -9,7 +9,7 @@
     - @pictures.each_slice(4) do |slice|
       .picture_index_row
         - slice.each do |p|
-          = link_to image_tag(p.thumb, :class => "thumb", :alt => p.title), p.full, :rel => "lightbox", :class => "thumb", :title => p.title
+          = link_to image_tag(p.thumb, :class => "thumb", :alt => p.description), p.full, :rel => "lightbox", :class => "thumb", :title => p.description
 
     = will_paginate_with_opts @pictures
 
