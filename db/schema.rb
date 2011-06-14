@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110611021509) do
+ActiveRecord::Schema.define(:version => 20110614184802) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(:version => 20110611021509) do
 
   create_table "pictures", :force => true do |t|
     t.integer  "member_id"
-    t.string   "title"
     t.text     "description"
     t.string   "image_file_name"
     t.integer  "image_file_size"

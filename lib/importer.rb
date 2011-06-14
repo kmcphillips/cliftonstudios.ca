@@ -1,7 +1,11 @@
 class Importer
   include ActionView::Helpers::SanitizeHelper
-  
-  IMAGE_PATH = ""
+
+  if Rails.env.development?  
+    IMAGE_PATH = "/home/kevin/gleep/cliftonstudios.ca/html/pictures/"
+  else
+    IMAGE_PATH = "/home/kevin/cliftonstudios.ca/html/pictures/"
+  end
   
   def initialize(config)
     keys = %w(host username password database)
@@ -43,7 +47,12 @@ class Importer
   protected
  
   def clear_tables
-    tables = %w(posts members)    
+    puts "Deleting image files for pictures"
+    Picture.all.each do |p|
+      p.destroy
+    end
+
+    tables = %w(posts members pictures)    
     puts "Truncating tables: #{tables.join(", ")}"
 
     tables.each do |table|
@@ -77,10 +86,9 @@ class Importer
           member.admin = false
       end
 
-      # TODO: import picture
-#      if result["picture"].present?
-#        member.image = File.open("#{IMAGE_PATH}/p#{result["picture"]}.jpg")
-#      end
+      if result["picture"].present?
+        member.image = File.open("#{IMAGE_PATH}/p#{result["picture"]}.jpg")
+      end
 
       if member.save
         puts "  Member ##{member.id} (#{member.name}) created #{message}"
@@ -122,7 +130,22 @@ class Importer
   end
 
   def import_images
-    puts "WARNING: Importing images has not been implemented yet"
+    puts "Importing pictures..."
+    @db.query("SELECT * FROM picture").each do |result|
+      description = result["description"].blank? ? result["title"] : "#{result["title"]} #{result["description"]}"
+
+      p = Picture.new :description => description, :member_id => result["post_by"]
+      p.image = File.open("#{IMAGE_PATH}/p#{result["picture"]}.#{result["type"]}")
+
+      if p.save
+        p.update_attribute :created_at, result["post_dat"]
+        puts "  Imported picture ##{result["id"]} as Picture ##{p.id}"
+      else
+        puts "  ERROR importing picture ##{result["id"]}"
+      end
+    end
+
+    puts "Done"
     puts ""
   end
 

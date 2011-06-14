@@ -19,7 +19,7 @@
   = form_for [:members, @picture], :html => {:multipart => true} do |f|
     %ul.form
       = f.item :file_field, :image, :label => "Select a Picture"
-      = f.item :text_field, :title, :size => 50, :label => "Title or Description"
+      = f.item :text_area, :description, :rows => 3, :cols => 50, :label => "Title or Description"
       = f.item :submit, "Upload"
 
   %p

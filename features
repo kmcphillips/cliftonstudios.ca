@@ -18,7 +18,6 @@ Images
   Index page showing members, studio pictures
   Nifty "most recently updated user" and some thumbnails
   Sidebar recent or random images
-  Lightbox
   Enlarge links
   Popup to edit description
   Delete link
@@ -30,10 +29,6 @@ Social
   Mailing list sign up/remove
   Contact form for each member?
   Contact form for general studio/all memebers
-
-Importer
-  Import images
-  Import your mom
 
 Bonus
   Create clifton studios email that forwards to email in db
