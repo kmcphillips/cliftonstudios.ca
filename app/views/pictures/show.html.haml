@@ -1,4 +1,6 @@
-%h1 Pictures for #{@member.name}
+%h1
+  Pictures for
+  = link_to @member.name, artist_path(@member)
 .post
   - if @pictures.any?
     = render :partial => "pictures"

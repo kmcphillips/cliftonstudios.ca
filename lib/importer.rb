@@ -31,9 +31,8 @@ class Importer
         import_images
         # import_events  # Not going to import events since everything will be past
 
-        puts "Destroying all pending emails created by import"
-        PendingEmail.destroy_all
-        puts ""
+        puts "Deleting pending emails"
+        ActiveRecord::Base.connection.execute("TRUNCATE pending_emails")
 
         puts "Success!"
 
@@ -52,7 +51,7 @@ class Importer
       p.destroy
     end
 
-    tables = %w(posts members pictures)    
+    tables = %w(pending_emails posts members)
     puts "Truncating tables: #{tables.join(", ")}"
 
     tables.each do |table|
@@ -135,10 +134,10 @@ class Importer
       description = result["description"].blank? ? result["title"] : "#{result["title"]} #{result["description"]}"
 
       p = Picture.new :description => description, :member_id => result["post_by"]
-      p.image = File.open("#{IMAGE_PATH}/p#{result["picture"]}.#{result["type"]}")
+      p.image = File.open("#{IMAGE_PATH}/p#{result["id"]}.#{result["type"]}")
 
       if p.save
-        p.update_attribute :created_at, result["post_dat"]
+        p.update_attribute :created_at, result["post_date"]
         puts "  Imported picture ##{result["id"]} as Picture ##{p.id}"
       else
         puts "  ERROR importing picture ##{result["id"]}"
