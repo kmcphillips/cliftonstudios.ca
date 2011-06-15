@@ -10,7 +10,11 @@ class Picture < ActiveRecord::Base
 
   ## Class methods
 
-  def self.recently_updated(count=4)
+  def self.members_recently_updated(count=4)
+    
+  end
+
+  def self.members_with_pictures
     
   end
 

@@ -1,9 +1,18 @@
 %h1
   Pictures for
   = link_to @member.name, artist_path(@member)
+
 .post
-  - if @pictures.any?
-    = render :partial => "pictures"
-  - else
+  - if @pictures.blank?
     Sorry, but #{@member.name} has not uploaded any pictures.
+
+  - else
+    %table.pictures
+      - @pictures.each_slice(4) do |slice|
+        %tr
+          - slice.each do |p|
+            %td
+              = link_to image_tag(p.thumb, :class => "thumb", :alt => p.description), p.full, :rel => "lightbox", :class => "thumb", :title => p.description
+
+    = will_paginate_with_opts @pictures
 

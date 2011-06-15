@@ -2,7 +2,7 @@
 
 .post
   - if @member.image.exists?
-    = image_tag(@member.column, :class => "inline", :alt => @member.name)
+    .align_center= image_tag(@member.column, :class => "inline", :alt => @member.name)
 
   - if @member.bio.blank?
     = @member.name

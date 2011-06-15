@@ -22,6 +22,7 @@ class Members::PicturesController < ApplicationController
   end
 
   def destroy
+    raise "TODO: destroy"
   end
 
   def all

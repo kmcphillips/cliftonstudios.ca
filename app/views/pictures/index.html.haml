@@ -1,7 +1,11 @@
-%h1 All Pictures
+%h1 Picture Galleries
 .post
-  - if @pictures.any?
-    = render :partial => "pictures"
-  - else
-    Sorry, no pictures found!
+  %p= link_to "View pictures by all members", picture_path("all")
+  %p.bold OR
+  %p
+    View pictures by one of the artists:
+
+    %ul
+      - @artists.each do |a|
+        %li= picture_path(a.permalink)
 

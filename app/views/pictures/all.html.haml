@@ -1,0 +1,14 @@
+%h1 All Pictures
+.post
+  %table.pictures
+    - @pictures.each_slice(4) do |slice|
+      %tr
+        - slice.each do |p|
+          %td
+            = link_to image_tag(p.thumb, :class => "thumb", :alt => p.description), p.full, :rel => "lightbox", :class => "thumb", :title => p.description
+            %br
+            by
+            = link_to p.member.name, artist_path(p.member)
+
+  = will_paginate_with_opts @pictures
+
