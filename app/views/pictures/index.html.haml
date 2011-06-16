@@ -1,11 +1,10 @@
-%h1 Picture Galleries
+%h1 All Pictures
 .post
-  %p= link_to "View pictures by all members", picture_path("all")
-  %p.bold OR
-  %p
-    View pictures by one of the artists:
+  %ul.members
+    %li= link_to "View pictures by all members", picture_path("all")
 
-    %ul
-      - @artists.each do |a|
-        %li= picture_path(a.permalink)
-
+%h1 Pictures for Artistis
+.post
+  %ul.members
+    - @members.each do |m|
+      %li= link_to m.name, picture_path(m.permalink)

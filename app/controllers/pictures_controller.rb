@@ -2,7 +2,7 @@ class PicturesController < ApplicationController
 
   def index
     @title = "Picture Gallery"
-    @member = Picture.members_with_pictures
+    @members = Picture.members_with_pictures
   end
 
   def show
