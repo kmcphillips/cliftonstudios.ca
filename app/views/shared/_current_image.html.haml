@@ -1,0 +1,10 @@
+- alt ||= nil
+
+- if f.object.image.exists?
+  %li
+    %label Current Image
+    .float_left= link_to image_tag(f.object.thumb, :class => "thumb", :alt => alt), f.object.full, :rel => "lightbox", :class => "thumb"
+    .float_left{:style => "margin: 10px"}
+      = button_to_function "Delete this picture", "if(confirm('Are you sure you want to remove this image?')){ $(this).parent().find('.delete_image').val('1'); }"
+      = f.hidden_field :delete_image, :value => "0", :class => "delete_image"
+    .clear
