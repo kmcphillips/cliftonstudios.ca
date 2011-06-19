@@ -62,7 +62,7 @@ module ApplicationHelper
   end
 
   def collection_index(collection, column_titles, options={}, &block)
-    content_tag(:table, :class => "data") do
+    content_tag(:table, :class => (options[:class] || "data"), :id => options[:id]) do
       content_tag(:tbody) do
         src = ""
 
@@ -71,7 +71,7 @@ module ApplicationHelper
           column_titles.each do |title|
             headers << content_tag(:th, title)
           end
-          headers
+          headers.html_safe
         end
 
         collection.each do |item|
@@ -88,7 +88,7 @@ module ApplicationHelper
           end
         end
 
-        src
+        src.html_safe
       end
     end
   end
@@ -103,6 +103,10 @@ module ApplicationHelper
 
   def truncate_for_index(str)
     truncate(str, :length => 120, :omission => " (more..)")
+  end
+
+  def row_class
+    cycle("odd", "even")
   end
 
   def members_area?

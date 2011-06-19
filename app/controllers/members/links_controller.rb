@@ -39,5 +39,18 @@ class Members::LinksController < ApplicationController
 
     redirect_to(members_links_path)
   end
+
+  def sort
+    if params[:link].try(:is_a?, Array)
+      ActiveRecord::Base.transaction do
+        params[:link].each_with_index do |id, index|
+          ActiveRecord::Base.connection.execute("UPDATE links SET sort_order = #{index + 1} WHERE id = #{id.to_i}")
+        end
+      end
+    end
+
+    render :nothing => true
+  end
+
 end
 

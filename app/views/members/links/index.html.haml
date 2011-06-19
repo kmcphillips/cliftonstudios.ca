@@ -1,21 +1,47 @@
+- content_for :js do
+  :javascript
+    $(document).ready(function(){
+      $("#sortable_table tbody").sortable(
+        {
+          update: function () {
+            // $("#sortable_table tbody").sortable('serialize');  // This does not work. I don't know why. It works for <li> tags on another page.
+            data = "";
+            $("#sortable_table tbody tr").each(function(){
+              val = $(this).attr('data-link-id');
+
+              if(val != undefined)
+                data += "link[]=" + val + "&";
+            });
+
+            $.ajax({
+              url: "/members/links/sort",
+              type: "post",
+              data: data,
+              error: function(){
+                alert("There was an error sorting links. Contact administrator.");
+              }
+            });
+
+            stripe_table(this, "sortable_row");
+          }
+        }).disableSelection();
+    });
+
+
+
 %h1 Manage Links
 
 .post
   .image_links= new_entity_image new_members_link_path, 'Create new link'
 
-  %table.data
-    %tr
-      %th Title
-      %th URL
-      %th Description
-      %th Actions
+  %p Drag and drop links to change their sort order.
 
-    - @links.each do |link|
-      %tr{:class => cycle("odd", "even")}
-        %td= link.title
-        %td= link_to link.url, link.url
-        %td= truncate_for_index link.description
-        %td
-          = edit_entity_image edit_members_link_path(link)
-          = destroy_entity_image members_link_path(link)
+  = collection_index @links, ["Title", "URL", "Description", "Actions"], :id => "sortable_table" do |link|
+    %tr{:class => "#{row_class} sortable_row", :'data-link-id' => link.id}
+      %td= link.title
+      %td= link_to link.url, link.url
+      %td= truncate_for_index link.description
+      %td
+        = edit_entity_image edit_members_link_path(link)
+        = destroy_entity_image members_link_path(link)
 

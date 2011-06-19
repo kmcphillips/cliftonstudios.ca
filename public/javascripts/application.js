@@ -10,4 +10,6 @@ $(document).ready(function(){
         'cyclic' : true,
         'hideOnContentClick' : true
 	});
+
 });
+

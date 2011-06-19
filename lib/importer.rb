@@ -85,7 +85,7 @@ class Importer
           member.admin = false
       end
 
-      if result["picture"].present?
+      if result["picture"].present? && File.exists?(IMAGE_PATH)
         member.image = File.open("#{IMAGE_PATH}/p#{result["picture"]}.jpg")
       end
 
@@ -129,23 +129,28 @@ class Importer
   end
 
   def import_images
-    puts "Importing pictures..."
-    @db.query("SELECT * FROM picture").each do |result|
-      description = result["description"].blank? ? result["title"] : "#{result["title"]} #{result["description"]}"
+    if File.exists?(IMAGE_PATH)
+      puts "Importing pictures..."
+      @db.query("SELECT * FROM picture").each do |result|
+        description = result["description"].blank? ? result["title"] : "#{result["title"]} #{result["description"]}"
 
-      p = Picture.new :description => description, :member_id => result["post_by"]
-      p.image = File.open("#{IMAGE_PATH}/p#{result["id"]}.#{result["type"]}")
+        p = Picture.new :description => description, :member_id => result["post_by"]
+        p.image = File.open("#{IMAGE_PATH}/p#{result["id"]}.#{result["type"]}")
 
-      if p.save
-        p.update_attribute :created_at, result["post_date"]
-        puts "  Imported picture ##{result["id"]} as Picture ##{p.id}"
-      else
-        puts "  ERROR importing picture ##{result["id"]}"
+        if p.save
+          p.update_attribute :created_at, result["post_date"]
+          puts "  Imported picture ##{result["id"]} as Picture ##{p.id}"
+        else
+          puts "  ERROR importing picture ##{result["id"]}"
+        end
       end
-    end
 
-    puts "Done"
-    puts ""
+      puts "Done"
+      puts ""
+    else
+      puts "WARNING: Image path does not exist. Skipping image import."
+      puts ""
+    end
   end
 
 end

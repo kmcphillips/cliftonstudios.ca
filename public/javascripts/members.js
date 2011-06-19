@@ -23,15 +23,19 @@ function preview_link(id)
   return false;
 }
 
-function stripe_table(table)
+function stripe_table(table, klass)
 {
-  $(table).find("tr").each(function(index, element) {
-    $(element).removeClass("odd even")
-    
+  var finder = "tr";
+  if(klass != undefined)
+    finder = finder + "." + klass;
+
+  $(table).find(finder).each(function(index, element) {
+    $(element).removeClass("odd even");
+
     if(index % 2 == 0)
-      $(element).addClass("odd");
-    else
       $(element).addClass("even");
+    else
+      $(element).addClass("odd");
   });
 }
 

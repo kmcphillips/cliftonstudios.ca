@@ -25,7 +25,11 @@ Cliftonstudios::Application.routes.draw do
     resources :password, :only => [:index, :create]
     resources :profile, :only => [:index, :create]
     resources :executive, :only => [:index, :create]
-    resources :links, :except => [:show]
+    resources :links, :except => [:show] do
+      collection do
+        post :sort
+      end
+    end
     resources :posts, :except => [:show]
     resources :events, :except => [:show]
     resources :blocks, :only => [:index, :create]
