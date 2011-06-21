@@ -12,4 +12,7 @@
   = link_to event.member.name, artist_path(event.member)
 
 .post.clear_right
+  = link_to image_tag(event.inline, :class => "inline", :alt => event.title), event.full, :rel => "lightbox", :class => "thumb inline" if event.image.exists?
   = auto_link simple_format(event.body)
+  .clear_right
+

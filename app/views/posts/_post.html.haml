@@ -10,4 +10,6 @@
   = link_to post.member.name, artist_path(post.member)
 
 .post.clear_right
+  = link_to image_tag(post.inline, :class => "inline", :alt => post.title), post.full, :rel => "lightbox", :class => "thumb inline" if post.image.exists?
   = auto_link simple_format(post.body)
+  .clear_right

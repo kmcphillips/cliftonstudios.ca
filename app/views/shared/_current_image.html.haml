@@ -3,8 +3,8 @@
 - if f.object.image.exists?
   %li
     %label Current Image
-    .float_left= link_to image_tag(f.object.thumb, :class => "thumb", :alt => alt), f.object.full, :rel => "lightbox", :class => "thumb"
-    .float_left{:style => "margin: 10px"}
-      = button_to_function "Delete this picture", "if(confirm('Are you sure you want to remove this image?')){ $(this).parent().find('.delete_image').val('1'); }"
-      = f.hidden_field :delete_image, :value => "0", :class => "delete_image"
-    .clear
+    .float_right{:style => "margin: 10px 100px 10px 10px; width: 180px"}
+      = button_to_function "Delete this picture", "if(confirm('Are you sure you want to remove this image?')){ $(this).parent().parent().find('.delete_image').val('1'); $(this).parent().parent().find('a.thumb').hide(); $(this).parent().html('<span class=\"bold\">Image deleted</span>'); }"
+    .float_right= link_to image_tag(f.object.thumb, :class => "thumb", :alt => alt), f.object.full, :rel => "lightbox", :class => "thumb"
+    = f.hidden_field :delete_image, :value => "0", :class => "delete_image"
+    .clear_right

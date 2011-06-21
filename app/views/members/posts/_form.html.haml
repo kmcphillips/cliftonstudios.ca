@@ -1,4 +1,4 @@
-= form_for [:members, @post] do |f|
+= form_for [:members, @post], :html => {:multipart => true} do |f|
   = f.error_messages
 
   %ul.form
@@ -8,6 +8,9 @@
       %li
         = f.label :permalink
         = f.object.permalink
+        
+    = f.item :file_field, :image, :label => "Upload image (optional)"
+    = render :partial => "shared/current_image", :locals => {:f => f}
 
     = f.item :submit, "Save"
     = f.item :submit, "Preview"
