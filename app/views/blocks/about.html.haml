@@ -1,6 +1,9 @@
 %h1 About Clifton Studios
 
-.post= simple_format @about.body
+.post
+  = link_to image_tag(@about.inline, :class => "inline", :alt => "Clifton Studios"), @about.full, :rel => "lightbox", :class => "thumb inline" if @about.image.exists?
+  = simple_format @about.body
+  .clear_right
 
 %h1 Contact
 

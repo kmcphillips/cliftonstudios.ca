@@ -1,6 +1,5 @@
 Layout
   Qtip description over nav links
-  Images
   Admin tables
   Mailers
 
@@ -15,7 +14,6 @@ Images
   Index page showing members, studio pictures
   Nifty "most recently updated user" and some thumbnails
   Sidebar recent or random images
-  Enlarge links
   Popup to edit description
   When you delete a DB picture, does it delete the image data?
   

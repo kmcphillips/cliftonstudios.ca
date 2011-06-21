@@ -4,7 +4,7 @@
   %p
     These are the blocks of text on the "About" section of the main menu. The first one is general studio information. The second one should describe studio space availability, and how people can become members.
 
-  = form_tag members_blocks_path, :method => :post do
+  = form_tag members_blocks_path, :method => :post, :multipart => true do
     %ul.form
       %li
         %label About the Studio
@@ -12,6 +12,13 @@
       %li
         %label Membership Availability
         = text_area_tag :availability, @availability.body, :cols => 45, :rows => 10
+      %li
+        %label Upload image
+        = file_field_tag :image
+      - if @about.image.exists?
+        %li
+          %label Current Image
+          = link_to image_tag(@about.thumb, :class => "thumb", :alt => "Clifton Studios"), @about.full, :rel => "lightbox", :class => "thumb"
       %li
         %label &nbsp;
         = submit_tag "Save"

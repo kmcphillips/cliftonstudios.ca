@@ -11,6 +11,7 @@ class Members::BlocksController < BlocksController
     @availability = Block.find_by_label :availability
 
     @about.body = params[:about]
+    @about.image = params[:image]
     @availability.body = params[:availability]
 
     if [@about.valid?, @availability.valid?].all?
