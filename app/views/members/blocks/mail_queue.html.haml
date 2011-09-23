@@ -10,6 +10,6 @@
       %th Created at
     - @emails.each do |email|
       %tr{:class => cycle("odd", "even")}
-        %td= email.attributes["method"].humanize
+        %td= email.action.humanize
         %td= email.locals[:member].try(:name) || "Everyone"
         %td= email.created_at.to_s(:with_time)

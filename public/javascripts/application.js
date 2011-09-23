@@ -11,5 +11,17 @@ $(document).ready(function(){
         'hideOnContentClick' : true
 	});
 
+    $("#nav ul li a").qtip({
+        position: {
+            my: "top center",
+            at: "bottom center"
+        },
+        show: {
+            delay: 0
+        },
+        style: {
+            classes: "ui-tooltip-youtube ui-tooltip-shadow"
+        }
+    });
 });
 
