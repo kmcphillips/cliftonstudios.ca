@@ -34,7 +34,7 @@ Bonus
 Post deploy
   Cron job for sitemap generation. Possibly an observer?
   Cron job to send pending emails
-  Meta information
+  Meta tags
   Search engine reindexing
   Update paperclip once the bug is fixed for :hash_secret
   Remove all the dev login stuff
