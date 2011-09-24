@@ -47,6 +47,10 @@ Cliftonstudios::Application.routes.draw do
       end
     end
 
+    resources :mailing_list, :only => [:index] do
+
+    end
+
     ['bylaws', 'emails', 'mail_queue'].each do |block|
       match block => "blocks##{block}"
     end

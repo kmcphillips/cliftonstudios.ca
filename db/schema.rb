@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110619135115) do
+ActiveRecord::Schema.define(:version => 20110923163704) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(:version => 20110619135115) do
   end
 
   add_index "links", ["created_at"], :name => "index_links_on_created_at"
+
+  create_table "mailing_list_entries", :force => true do |t|
+    t.string   "email"
+    t.string   "ip_address"
+    t.boolean  "active",     :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mailing_list_entries", ["active"], :name => "index_mailing_list_entries_on_active"
+  add_index "mailing_list_entries", ["ip_address"], :name => "index_mailing_list_entries_on_ip_address"
 
   create_table "members", :force => true do |t|
     t.string   "name"
