@@ -17,9 +17,11 @@
 
 %h2 Follow Us
 %ul
-  %li= link_to "Facebook", "http://www.facebook.com/pages/Clifton-Studios/111063175627791"
-  %li= link_to "RSS", "/rss.xml"
-  %li TODO: other things
+  %li.social
+    %table
+      %tr
+        %td= social_media_icon :facebook, "http://www.facebook.com/pages/Clifton-Studios/111063175627791"
+        %td= social_media_icon :rss, "/rss.xml", :alt => "Follow our RSS feed"
 
 
 %h2 Mailing List

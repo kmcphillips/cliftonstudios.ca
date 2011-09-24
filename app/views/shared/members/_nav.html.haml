@@ -1,19 +1,24 @@
+%h2 Member Profile
+%ul
+  %li.members_nav= link_to "My Dashboard", members_dashboard_index_path, :title => "Manage your contact information, bio, image, and public page."
+  %li.members_nav= link_to "My Pictures", members_pictures_path, :title => "Upload pictures of your work."
+  %li.members_nav= link_to "My Password", members_password_index_path, :title => "Change your login password."
+
+
 %h2 Members Area
 %ul
-  %li= link_to "Dashboard", members_dashboard_index_path
-  %li= link_to "My Pictures", members_pictures_path
-  %li= link_to "Change Password", members_password_index_path
-  %li= link_to "Contact List", members_contact_list_index_path
-  %li= link_to "Studio Bylaws", members_bylaws_path
-  %li= link_to "All Member Emails", members_emails_path
-  %li= link_to "Pending Mail Queue", members_mail_queue_path
-  %li= link_to "Mailing List", members_mailing_list_index_path
+  %li.members_nav= link_to "Contact List", members_contact_list_index_path, :title => "Contact information for all studio members."
+  %li.members_nav= link_to "Studio Bylaws", members_bylaws_path, :title => "The full Clifton Studios Bylaws."
+  %li.members_nav= link_to "News/Blog", members_posts_path, :title => "Create and update main page news posts."
+  %li.members_nav= link_to "Events", members_events_path, :title => "Create and update studio events."
+  %li.members_nav= link_to "Links", members_links_path, :title => "Manage the links page."
+
 
 %h2 Site Admin
 %ul
-  %li= link_to "News/Blog", members_posts_path
-  %li= link_to "Events", members_events_path
-  %li= link_to "Studio Members", members_members_path
-  %li= link_to "Executive", members_executive_index_path
-  %li= link_to "About the Studio", members_blocks_path
-  %li= link_to "Links", members_links_path
+  %li.members_nav= link_to "Studio Members", members_members_path, :title => "Create and manage members and their contact info."
+  %li.members_nav= link_to "About the Studio", members_blocks_path, :title => "Manage the About pages for the studio."
+  %li.members_nav= link_to "Executive", members_executive_index_path, :title => "Update members on the executive"
+  %li.members_nav= link_to "All Member Emails", members_emails_path, :title => "A list of email addresses for all members, copy and paste for mass-mailing."
+  %li.members_nav= link_to "Pending Mail Queue", members_mail_queue_path, :title => "A queue of messages the site has not yet sent out."
+  %li.members_nav= link_to "Mailing List", members_mailing_list_index_path, :title => "Public that has signed up for our email mailing list."

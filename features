@@ -1,9 +1,10 @@
+System
+  Meta tags
+
 Layout
-  Admin tables
   Mailers
 
 Admin/Members area
-  Suggestions/hints for how to participate and contribute?
   Bi-laws (Enter them)
   Scope things by admin user
   Deletion and editing should be restricted by user and type?
@@ -17,9 +18,7 @@ Images
   When you delete a DB picture, does it delete the image data?
   
 Social
-  Facebook
   Twitter?
-  Etcetera?
   Contact form for each member?
   Contact form for general studio/all memebers
 
@@ -30,12 +29,12 @@ Bonus
   Mailing list remove
   Manage mailer
   Send mailer
+  Smart detect pasted links to FB, YT, etc. and embed them
+  Suggestions/hints for how to participate and contribute?
 
 Post deploy
   Cron job for sitemap generation. Possibly an observer?
   Cron job to send pending emails
-  Meta tags
   Search engine reindexing
   Update paperclip once the bug is fixed for :hash_secret
   Remove all the dev login stuff
-

@@ -130,9 +130,16 @@ module ApplicationHelper
     content_tag(:div, nil, :id => :navunder, :style => index ? "margin-left: #{66 + (index * 110)}px" : "background: transparent")
   end
 
+  def social_media_icon(type, path, options={})
+    alt = options[:alt] || "Follow us on #{type.to_s.humanize}"
+
+    link_to image_tag("/images/icons/social/#{type}-32.png", :alt => alt, :class => options[:class]), path, :title => alt
+  end
+
 
 
   ## Overridden paths
+
   def post_path(post)
     "/news/#{post.permalink}"
   end
