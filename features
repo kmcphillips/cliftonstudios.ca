@@ -23,16 +23,13 @@ Social
   Contact form for each member?
   Contact form for general studio/all memebers
 
-Mailing list
-  Mailing list sign up/remove
-  Manage addresses
-  Manage mailer
-  Send mailer
-  
 Bonus
   Create clifton studios email that forwards to email in db
   Google Site Search inegration
   Images saves across preview
+  Mailing list remove
+  Manage mailer
+  Send mailer
 
 Post deploy
   Cron job for sitemap generation. Possibly an observer?

@@ -1,0 +1,17 @@
+%h1 Contact Method Emails
+.post
+  = text_area_tag :emails, @entries.map(&:email).join(", "), :rows => 6, :cols => 60, :readonly => :readonly, :style => "width: 100%"
+
+%h1 Manage Active Emails
+.post
+  %table.data
+    %tr
+      %th Email
+      %th Added Date
+      %th Actions
+
+    - @entries.each do |entry|
+      %tr{:class => cycle("odd", "even")}
+        %td= entry.email
+        %td= entry.created_at.to_s(:with_time_no_minutes)
+        %td.align_center= button_to "Deactivate", members_mailing_list_path(entry), :method => :put, :confirm => "Are you sure you want to deactivate this email address?"

@@ -1,13 +1,12 @@
 %h2 Site Search
-
 = form_tag search_path do
   %p
     = text_field_tag :search, nil, :size => 16
     = submit_tag "Search", :style => "margin-top: 10px"
 
+
 - if (events =  Event.upcoming).any?
   %h2 Upcoming Events
-
   %ul
     - events.each do |event|
       %li
@@ -15,9 +14,18 @@
         %br
         = event.starts_at.to_s(:with_time)
 
-%h2 Follow Us
 
+%h2 Follow Us
 %ul
   %li= link_to "Facebook", "http://www.facebook.com/pages/Clifton-Studios/111063175627791"
   %li= link_to "RSS", "/rss.xml"
   %li TODO: other things
+
+
+%h2 Mailing List
+= form_tag mailing_list_index_path do
+  %p Sign up for our mailing list to be updated on shows and events.
+  %p
+    = text_field_tag :email, nil, :size => 16
+    = submit_tag "Sign Up", :style => "margin-top: 10px"
+    = text_field_tag :validation, nil, :size => 1, :style => "display: none"

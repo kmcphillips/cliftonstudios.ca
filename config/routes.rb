@@ -19,6 +19,7 @@ Cliftonstudios::Application.routes.draw do
   
   resources :unsubscribe, :only => [:show, :update]
   resources :password_reset, :only => [:index, :create]
+  resources :mailing_list, :only => [:create]
 
   namespace :members do
     resources :dashboard
@@ -47,9 +48,7 @@ Cliftonstudios::Application.routes.draw do
       end
     end
 
-    resources :mailing_list, :only => [:index] do
-
-    end
+    resources :mailing_list, :only => [:index, :update]
 
     ['bylaws', 'emails', 'mail_queue'].each do |block|
       match block => "blocks##{block}"
