@@ -7,6 +7,6 @@
     Sorry, but #{@member.name} has not uploaded any pictures.
 
   - else
-    = render :partial => "pictures", :object => @pictures, :locals => {:name => false}
+    = render :partial => "pictures", :object => @pictures
 
   %p= link_to "View #{@member.name}'s profile page", artist_path(@member)

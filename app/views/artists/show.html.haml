@@ -35,7 +35,7 @@
 
 .post
   - if @member.pictures.any?
-    = render :partial => "pictures/pictures", :object => @member.pictures.recent, :locals => {:name => false}
+    = render :partial => "pictures/pictures", :object => @member.pictures.recent
 
     %p= link_to "View all #{@member.pictures.size} of #{@member.name}'s pictures", picture_path(@member.permalink)
   - else

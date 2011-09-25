@@ -12,9 +12,8 @@ Admin/Members area
   Scope things by admin user
   Deletion and editing should be restricted by user and type?
 
-Images
-  Nifty "most recently updated user" and some thumbnails
-  Sidebar recent or random images
+Sidebar
+  Recent activity
 
 Bonus
   Create clifton studios email that forwards to email in db

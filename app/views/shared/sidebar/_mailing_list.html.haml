@@ -1,0 +1,7 @@
+%h2 Mailing List
+= form_tag mailing_list_index_path do
+  %p Sign up for our mailing list to be updated on shows and events.
+  %p
+    = text_field_tag :email, nil, :size => 16
+    = submit_tag "Sign Up", :style => "margin-top: 10px"
+    = text_field_tag :validation, nil, :size => 1, :style => "display: none"

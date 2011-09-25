@@ -1,10 +1,15 @@
-%h1 All Pictures
+%h1 Recently Uploaded Pictures by Artist
 .post
-  %ul.members
-    %li= link_to "View pictures by all members", picture_path("all")
+  = render :partial => "pictures", :object => Picture.recent_grouped_by_artist, :locals => {:name => true}
+  %p= link_to "View all recent pictures by all artists", picture_path("all")
 
 %h1 Pictures for Artistis
 .post
   %ul.members
     - @members.each do |m|
       %li= link_to m.name, picture_path(m.permalink)
+
+%h1 All Pictures
+.post
+  %ul.members
+    %li= link_to "View pictures by all artists", picture_path("all")

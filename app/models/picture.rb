@@ -16,6 +16,10 @@ class Picture < ActiveRecord::Base
     Member.joins(:pictures).order("pictures.created_at desc").uniq.first(count)
   end
 
+  def self.recent_grouped_by_artist(count=4)
+    members_recently_updated(count).map{|m| m.pictures.first }
+  end
+
   def self.members_with_pictures
     Member.select("distinct members.*").joins(:pictures).sort{|a, b| a.last_name <=> b.last_name }
   end
