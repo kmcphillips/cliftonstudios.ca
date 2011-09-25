@@ -16,7 +16,7 @@ $(document).ready(function(){
 function preview_link(id)
 {
   if(!$(id).val().match(/^http(s)?:\/\/.+/))
-    alert("URL must begin with 'http://' or 'https://'");
+    alert("URL must be valid and begin with 'http://' or 'https://'");
   else
     window.open($(id).val());
 

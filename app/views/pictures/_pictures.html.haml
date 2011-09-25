@@ -1,0 +1,23 @@
+- name = true if local_assigns[:name].nil?
+
+%table.pictures
+  - pictures.each_slice(4) do |slice|
+    %tr
+      - slice.each do |p|
+        %td
+          = link_to image_tag(p.thumb, :class => "thumb", :alt => p.description), p.full, :rel => "lightbox", :class => "thumb", :title => p.description
+          - if name
+            %br
+            by
+            = link_to p.member.name, artist_path(p.member)
+
+  - if pictures.respond_to?(:total_pages) && pictures.total_pages > 1
+    %tr
+      %td
+      %td
+      %td
+      %td
+    %tr
+      %th{:colspan => 4}
+        Page #{pictures.current_page} of #{pictures.total_pages}
+        = will_paginate_with_opts pictures

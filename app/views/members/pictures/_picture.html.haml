@@ -1,0 +1,5 @@
+= link_to image_tag(picture.thumb, :class => "thumb", :alt => picture.description), picture.full, :rel => "lightbox", :class => "thumb", :title => picture.description
+%br
+= destroy_entity_image members_picture_path(picture), "Delete"
+%br
+= edit_entity_image edit_members_picture_path(picture), "Edit Description"

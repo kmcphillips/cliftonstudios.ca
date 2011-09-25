@@ -7,13 +7,6 @@
     Sorry, but #{@member.name} has not uploaded any pictures.
 
   - else
-    %table.pictures
-      - @pictures.each_slice(4) do |slice|
-        %tr
-          - slice.each do |p|
-            %td
-              = link_to image_tag(p.thumb, :class => "thumb", :alt => p.description), p.full, :rel => "lightbox", :class => "thumb", :title => p.description
+    = render :partial => "pictures", :object => @pictures, :locals => {:name => false}
 
-    = will_paginate_with_opts @pictures
-
-  = link_to "Back to all pictures", pictures_path
+  %p= link_to "View #{@member.name}'s profile page", artist_path(@member)

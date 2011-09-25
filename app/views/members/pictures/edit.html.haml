@@ -1,0 +1,16 @@
+%h1
+  Editing Picture Description
+
+.post
+  = form_for [:members, @picture] do |f|
+    = f.error_messages
+
+    %ul.form
+      = f.item :text_area, :description, :rows => 5, :cols => 50
+      %li
+        = label_tag "For Selected Image"
+        = link_to image_tag(@picture.thumb, :class => "thumb"), @picture.full, :rel => "lightbox", :class => "thumb"
+      = f.item :submit, "Save"
+
+  .image_links
+    = index_entity_image members_pictures_path, "Back to your pictures"

@@ -3,24 +3,18 @@ System
 
 Layout
   Mailers
+  Fix colours
+  Fix background image
+  Test in IE
 
 Admin/Members area
-  Bi-laws (Enter them)
+  Bi-laws, Enter and style them
   Scope things by admin user
   Deletion and editing should be restricted by user and type?
-  When changing email, require entering it twice
 
 Images
-  Index page showing members, studio pictures
   Nifty "most recently updated user" and some thumbnails
   Sidebar recent or random images
-  Popup to edit description
-  When you delete a DB picture, does it delete the image data?
-  
-Social
-  Twitter?
-  Contact form for each member?
-  Contact form for general studio/all memebers
 
 Bonus
   Create clifton studios email that forwards to email in db
@@ -31,6 +25,12 @@ Bonus
   Send mailer
   Smart detect pasted links to FB, YT, etc. and embed them
   Suggestions/hints for how to participate and contribute?
+  Twitter?
+  Contact form for each member?
+  Contact form for general studio/all memebers
+  When changing email, require entering it twice
+  Draggable on pictures to sort them, possibly another "sort" page so that the index page isn't too cluttered.
+  Shinier artist index page, rather than a list of names
 
 Post deploy
   Cron job for sitemap generation. Possibly an observer?

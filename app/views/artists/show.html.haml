@@ -31,13 +31,13 @@
           - else
             = simple_format @member.address unless @member.address.blank?
 
-%h1 Pictures
+%h1 Recent Pictures
 
 .post
   - if @member.pictures.any?
-    TODO most recent pictures with count
-    %br
-    = link_to "View #{@member.name}'s picture gallery", picture_path(@member.permalink)
+    = render :partial => "pictures/pictures", :object => @member.pictures.recent, :locals => {:name => false}
+
+    %p= link_to "View all #{@member.pictures.size} of #{@member.name}'s pictures", picture_path(@member.permalink)
   - else
     = @member.name
     has not uploaded any pictures.

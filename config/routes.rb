@@ -36,7 +36,7 @@ Cliftonstudios::Application.routes.draw do
     resources :blocks, :only => [:index, :create]
     resources :members, :except => [:destroy]
 
-    resources :pictures, :only => [:index, :create, :update, :destroy] do
+    resources :pictures, :only => [:index, :create, :update, :destroy, :edit] do
       collection do
         get 'all'
       end

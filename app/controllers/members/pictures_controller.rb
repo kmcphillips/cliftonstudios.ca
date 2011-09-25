@@ -10,19 +10,30 @@ class Members::PicturesController < ApplicationController
     @picture = current_member.pictures.build(params[:picture])
 
     if @picture.save
-      flash[:notice] = "Picture uploaded successfully!"
-      redirect_to members_pictures_path
+      redirect_to members_pictures_path, :notice => "Picture uploaded successfully!"
     else
       @pictures = current_member.pictures.paginate pagination_params
       render :index
     end
   end
 
+  def edit
+    @picture = current_member.pictures.find params[:id]
+  end
+
   def update
+    @picture = current_member.pictures.find params[:id]
+
+    if @picture.update_attributes(params[:picture])
+      redirect_to members_pictures_path, :notice => "Picture description updated successfully"
+    else
+      render :edit
+    end
   end
 
   def destroy
-    raise "TODO: destroy"
+    current_member.pictures.find(params[:id]).destroy
+    redirect_to members_pictures_path, :notice => "Picture deleted successfully"
   end
 
   def all

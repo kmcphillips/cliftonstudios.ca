@@ -30,12 +30,12 @@
     %p There are currently no inactive members.
   - else
     %table.data
-      %tr{:class => cycle("odd", "even")}
+      %tr
         %th Name
         %th Address
         %th Actions
       - @inactive_members.each do |member|
-        %tr
+        %tr{:class => cycle("odd", "even")}
           %td= member.name
           %td= member.address
           %td{:width => 100}

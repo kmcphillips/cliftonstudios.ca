@@ -6,16 +6,21 @@
     %br
     Why not upload some?
   - else
-    %td
+    %table.pictures_edit
       - @pictures.each_slice(4) do |slice|
         %tr
           - slice.each do |p|
-            %td
-              = link_to image_tag(p.thumb, :class => "thumb", :alt => p.description), p.full, :rel => "lightbox", :class => "thumb", :title => p.description
-              %br
-              = destroy_entity_image members_picture_path, "Delete"
-
-    = will_paginate_with_opts @pictures
+            %td= render :partial => "picture", :object => p
+      - unless @pictures.total_pages <= 1
+        %tr
+          %td
+          %td
+          %td
+          %td
+        %tr
+          %th{:colspan => 4}
+            Page #{@pictures.current_page} of #{@pictures.total_pages}
+            = will_paginate_with_opts @pictures
 
 %h1 Upload Pictures
 

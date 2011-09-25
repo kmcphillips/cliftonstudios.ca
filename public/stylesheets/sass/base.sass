@@ -43,8 +43,8 @@ $table_background: #CCC
 $table_background_alt: #DDD
 $table_background_hover: $very_light
 
-$img_colour: $very_dark
-$img_hover_colour: $link_hover_color
+$img_colour: $link_hover_color
+$img_hover_colour: $link_hover_color + #111
 
 
 $border_radius_amount: 12px
@@ -392,6 +392,7 @@ a:hover
       li
         font-size: 1.2em
         margin-left: 20px
+        padding-bottom: 4px
 
     a.inline
       padding-top: 14px
@@ -507,6 +508,22 @@ a:hover
       padding: 6px
       width: 144px
       text-align: center
+
+    th
+      text-align: center
+      padding-top: 10px
+
+  table.pictures_edit
+    padding: 0
+    margin: 0
+    width: 100%
+
+    td
+      padding: 6px
+
+    th
+      text-align: center
+      padding-top: 16px
 
   table
     td.executive
