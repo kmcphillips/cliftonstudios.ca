@@ -27,9 +27,9 @@ class Importer
         clear_tables
         import_members
         import_posts
+        import_events
         import_about
         import_images
-        # import_events  # Not going to import events since everything will be past
 
         puts "Deleting pending emails"
         ActiveRecord::Base.connection.execute("TRUNCATE pending_emails")
@@ -51,7 +51,7 @@ class Importer
       p.destroy
     end
 
-    tables = %w(pending_emails posts members)
+    tables = %w(pending_emails posts members events)
     puts "Truncating tables: #{tables.join(", ")}"
 
     tables.each do |table|
@@ -64,13 +64,13 @@ class Importer
     @db.query("SELECT m.id, m.full_name, b.description, m.email_notification, m.email, m.picture, m.type FROM user AS m LEFT JOIN bio as b ON m.id = b.user WHERE m.id != 1 ORDER BY m.id ASC").each do |result|
       message = ""
 
-      member = Member.new(:name => result["full_name"], :bio => result["description"], :receive_emails => true, :email => result["email"], :legacy_username => result["username"], :legacy_name => result["full_name"].downcase.gsub(/[^A-Za-z0-9]/, "+"))
+      member = Member.new(:name => result["full_name"], :contact_method => "email", :bio => result["description"], :receive_emails => true, :email => result["email"], :legacy_username => result["username"], :legacy_name => result["full_name"].downcase.gsub(/[^A-Za-z0-9]/, "+"))
       member.id = result["id"]
 
       if member.name == "Kevin McPhillips" && Rails.env.development?
         member.password = member.password_confirmation = DEV_PASSWORD
         member.email = DEV_USERNAME
-        message = "with dev mode credentials"
+        message = " with dev mode credentials"
       end
 
       case result["type"]
@@ -90,7 +90,7 @@ class Importer
       end
 
       if member.save
-        puts "  Member ##{member.id} (#{member.name}) created #{message}"
+        puts "  Member ##{member.id} (#{member.name}) created#{message}#{member.image.exists? ? " with picture" : ""}"
       else
         puts "  ERROR: Could not save member #{member.name}: #{member.errors.full_messages.to_sentence}"
       end
@@ -108,6 +108,24 @@ class Importer
       post.save!
       puts "  Post ##{post.id} created"
     end
+    puts "Done"
+    puts ""
+  end
+
+  def import_events
+    puts "Importing events..."
+    @db.query("SELECT e.id AS id, event_date, post_title, e.post_by, post, e.post_date, p.id AS picture, p.type FROM event AS e LEFT JOIN picture AS p ON e.picture = p.id WHERE members_only = 0 ORDER BY e.id ASC").each do |result|
+      event = Event.new(:title => result["post_title"], :member_id => result["post_by"], :body => result["post"], :starts_at => result["event_date"], :updated_at => result["post_date"], :created_at => result["post_date"])
+
+      if result["picture"].present?
+        event.image = File.open("#{IMAGE_PATH}/p#{result["picture"]}.#{result["type"]}")
+      end
+
+      event.save!
+
+      puts "  Event ##{event.id} created#{event.image.exists? ? " with picture" : ""}"
+    end
+    
     puts "Done"
     puts ""
   end

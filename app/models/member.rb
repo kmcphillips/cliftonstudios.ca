@@ -1,5 +1,7 @@
 class Member < ActiveRecord::Base
-  
+
+  CONTACT_METHODS = %w[email phone]
+
   acts_as_authentic do |config|
     config.logged_in_timeout = 1.day
     config.merge_validates_length_of_password_field_options :within => PASSWORD_MIN_LENGTH..20
@@ -14,7 +16,8 @@ class Member < ActiveRecord::Base
   has_many :pictures
   has_many :titles, :class_name => "Executive", :foreign_key => "member_id"
   
-  validates :name, :presence => {:message => "is required"}
+  validates :name, :presence => true
+  validates :contact_method, :inclusion => CONTACT_METHODS
   validate :website_begins_with_protocol
 
   before_validation :set_default_password
@@ -52,6 +55,10 @@ class Member < ActiveRecord::Base
 
   def last_name
     name.split(" ").last
+  end
+
+  def phone_numbers
+    [phone, alternate_phone].reject(&:blank?).join(" or ")
   end
 
   def website_with_protocol

@@ -36,10 +36,10 @@
 
       = f.item :submit, "Save"
 
-%h1 Pictures
+%h1 Recent Pictures
 .post
   - if current_member.pictures.any?
-    %p TODO show recent pictures
+    = render :partial => "pictures/pictures", :object => current_member.pictures.recent
     %p= link_to "Add more pictures", members_pictures_path
   - else
     %p

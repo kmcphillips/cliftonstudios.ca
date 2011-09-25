@@ -15,15 +15,21 @@
     %br
 
     %ul.form
-      - if logged_in?
-        %li
-          %label Email
-          = obfuscated_mail_to @member.email unless @member.email.blank?
       - if @member.website_with_protocol.present?
         %li
           %label Website
           = link_to @member.website, @member.website_with_protocol
+
       - if logged_in?
+        %li
+          %label Email
+          = obfuscated_mail_to @member.email unless @member.email.blank?
+        %li
+          %label Phone Numbers
+          = @member.phone_numbers.blank? ? "Blank" : @member.phone_numbers
+        %li
+          %label Preferred Contact Method
+          = @member.contact_method.humanize
         %li
           %label Address
           - if @member.address.blank?

@@ -1,0 +1,23 @@
+- name = false if local_assigns[:name].nil?
+
+%table.pictures_edit
+  - pictures.each_slice(4) do |slice|
+    %tr
+      - slice.each do |p|
+        %td
+          = render :partial => "picture", :object => p
+          - if name
+            %br
+            By
+            = link_to p.member.name, artist_path(p.member)
+
+  - unless pictures.total_pages <= 1
+    %tr
+      %td
+      %td
+      %td
+      %td
+    %tr
+      %th{:colspan => 4}
+        Page #{pictures.current_page} of #{pictures.total_pages}
+        = will_paginate_with_opts pictures

@@ -10,3 +10,14 @@
     %p
       Keep an eye out for our next events or
       = link_to "subscribe to our RSS feed", "/rss.xml"
+
+%h1 Past Events
+.post
+  - @past_events.each_pair do |year, events|
+    %h2= year
+    %ul.past_events
+      - events.each do |event|
+        %li
+          %span.date= link_to "#{event.starts_at.to_s(:without_year)}", event_path(event)
+          = ":"
+          = link_to event.title, event_path(event)

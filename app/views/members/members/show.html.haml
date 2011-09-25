@@ -1,8 +1,6 @@
 %h1= @member.name
 
 .post
-  TODO picture?
-
   %ul.form
     %li
       %label Email Address
@@ -48,7 +46,12 @@
         = link_to "View #{@member.pictures.size} pictures", pictures_path(@member)
       - else
         None
-
+    %li
+      %label Bio Picture
+      - if @member.image.exists?
+        = link_to image_tag(@member.thumb, :class => "thumb"), @member.full, :rel => "lightbox", :class => "thumb"
+      - else
+        None set
 
   .image_links
     = index_entity_image members_members_path, "Back to Studio Members Index"

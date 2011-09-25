@@ -1,37 +1,30 @@
-%h1 Setup Profile
+%h1 Please Setup Your Profile
 
 .post
   = form_for current_member, :url => members_profile_index_path, :html => {:method => :post} do |f|
     = f.error_messages
 
-    - if !current_member.profile_configured?
-      %p
-        It looks like you haven't entered some of the required personal information. It helps the studio contact you and helps members keep in touch with you.
-        All your private information stays private to everyone except Clifton Studios members. Don't worry!
+    %p
+      %span.bold Important! 
+      It looks like you haven't entered some of the required personal information. It helps the studio contact you and helps members keep in touch with you. Without it you may miss important meetings or events.
 
-    %div.required
-      = f.label :name, "Full Name"
-      = f.text_field :name
-    %div.required
-      = f.label :email, "Email Address"
-      = f.text_field :email
-    %div.required
-      = f.label :receive_emails, "Receive automated emails?"
-      = f.check_box :receive_emails
-    %div.required
-      = f.label :phone, "Phone Number"
-      = f.text_field :phone
-    %div.required
-      = f.label :address
-      = f.text_area :address, :rows => 5, :cols => 40
-    %div
-      = f.label :website
-      = f.text_field :website, :size => 50
-    %div
-      = f.label :bio, "A short bio about yourself"
-      = f.text_field :bio, :rows => 8, :cols => 40
-    %div
-      TODO: picture
-    %div
-      = f.submit "Save"
+    %p
+      All your
+      %span.bold private information stays private
+      to everyone except Clifton Studios members. Don't worry!
 
+    %p
+      You can always update this information later from your dashboard page.
+
+    %ul.form
+      = f.item :text_field, :name, :size => 40, :label => "Full Name"
+      = f.item :text_field, :email, :label => "Email Address", :size => 30
+      = f.item :text_area, :address, :rows => 5, :cols => 40
+      = f.item :text_field, :phone, :size => 12, :label => "Phone number"
+      = f.item :text_field, :alternate_phone, :size => 12, :label => "Alternate phone number"
+      %li
+        = f.label :contact_method, "Preferred Contact Method"
+        = f.select :contact_method, options_for_select(Member::CONTACT_METHODS.map{|c| [c.humanize, c]}, :selected => f.object.contact_method)
+        %span.note Please only select 'Phone' if email is not possible
+      = f.item :check_box, :receive_emails, :label => "Receive Emails?", :note => "Occasional emails about updates to the site, shows, and news"
+      = f.item :submit, "Save"

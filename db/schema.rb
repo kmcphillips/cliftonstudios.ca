@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110923163704) do
+ActiveRecord::Schema.define(:version => 20110925220520) do
 
   create_table "blocks", :force => true do |t|
     t.text     "body"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20110923163704) do
     t.string   "legacy_name"
     t.string   "secret_hash"
     t.string   "legacy_username"
+    t.string   "contact_method"
   end
 
   add_index "members", ["active"], :name => "index_members_on_active"

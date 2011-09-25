@@ -6,21 +6,7 @@
     %br
     Why not upload some?
   - else
-    %table.pictures_edit
-      - @pictures.each_slice(4) do |slice|
-        %tr
-          - slice.each do |p|
-            %td= render :partial => "picture", :object => p
-      - unless @pictures.total_pages <= 1
-        %tr
-          %td
-          %td
-          %td
-          %td
-        %tr
-          %th{:colspan => 4}
-            Page #{@pictures.current_page} of #{@pictures.total_pages}
-            = will_paginate_with_opts @pictures
+    = render :partial => "members/pictures/pictures", :object => @pictures
 
 %h1 Upload Pictures
 

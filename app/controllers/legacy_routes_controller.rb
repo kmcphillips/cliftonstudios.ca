@@ -27,21 +27,17 @@ class LegacyRoutesController < ApplicationController
   end
 
   def pictures
-    case params[:browse]
-      when "artist"
-        picture = Picture.find_by_id(params[:id])
-        member = picture.member || Member.find_by_id(params[:artist])
+    if params[:browse] == "artist"
+      picture = Picture.find_by_id(params[:id])
+      member = picture.member || Member.find_by_id(params[:artist])
 
-        raise "TODO: pictures legacy routes"
- 
-      when "studio"
-        raise "TODO: pictures legacy routes"
-
-      when "all"
-        raise "TODO: pictures legacy routes"
-
+      if member
+        redirect_to picture_path(member.permalink)
       else
         redirect_to pictures_path
+      end
+    else
+      redirect_to pictures_path
     end
   end
 

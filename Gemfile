@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
 
+gem 'rake', '0.9.2'
+
 gem 'capistrano'
 gem 'mysql2', '<0.3.0'
 gem 'haml'

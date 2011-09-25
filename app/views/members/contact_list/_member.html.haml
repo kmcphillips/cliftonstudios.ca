@@ -6,6 +6,9 @@
       - unless member.phone.blank?
         = member.phone
         %br
+      - unless member.alternate_phone.blank?
+        = member.alternate_phone
+        %br
       = link_to member.email, "mailto:#{member.email}"
       - unless member.website.blank?
         %br

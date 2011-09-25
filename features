@@ -37,3 +37,5 @@ Post deploy
   Search engine reindexing
   Update paperclip once the bug is fixed for :hash_secret
   Remove all the dev login stuff
+  Clean up the "about" syntax problems
+  Move the links from "about" to the links page

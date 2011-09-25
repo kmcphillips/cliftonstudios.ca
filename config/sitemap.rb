@@ -10,14 +10,18 @@ SitemapGenerator::Sitemap.create do
     add post_path(post), :lastmod => post.updated_at
   end
 
-  # TODO: events. past?
+  add events_path
 
-  # TODO: pictures
+  Event.sorted.each do |event|
+    add event_path :lastmod => event.updated_at
+  end
 
+  add pictures_path
   add artists_path
 
   Member.alphabetical.active.each do |member|
     add artist_path(member), :lastmod => member.updated_at
+    add picture_path(member.permalink)
   end
 
   add "/about", :lastmod => Block.find_by_label("about").updated_at
