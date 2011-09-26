@@ -6,10 +6,10 @@
   %table.data
     %tr
       %th Message Type
-      %th Recepient
+      %th Recepients
       %th Created at
     - @emails.each do |email|
       %tr{:class => cycle("odd", "even")}
         %td= email.action.humanize
-        %td= email.locals[:member].try(:name) || "Everyone"
+        %td= email.recipients_description
         %td= email.created_at.to_s(:with_time)

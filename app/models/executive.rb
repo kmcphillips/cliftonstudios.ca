@@ -10,6 +10,12 @@ class Executive < ActiveRecord::Base
   scope :sorted, order("sort_order ASC")
   scope :filled, where("member_id IS NOT NULL")
   scope :vacant, where("member_id IS NULL")
-  
+
+  ## class methods
+
+  def self.emails
+    all.map(&:member).compact.map(&:email)
+  end
+
 end
 

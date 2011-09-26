@@ -2,15 +2,18 @@ System
   Meta tags
 
 Layout
-  Mailers
+  Create text/html views for mailers
   Fix colours
   Fix background image
   Test in IE
+  404/500 static pages
 
 Admin/Members area
   Bi-laws, Enter and style them
   Scope things by admin user
   Deletion and editing should be restricted by user and type?
+  Space number for members
+  Add emails manually to mailing list
 
 Sidebar
   Recent activity
@@ -30,6 +33,7 @@ Bonus
   When changing email, require entering it twice
   Draggable on pictures to sort them, possibly another "sort" page so that the index page isn't too cluttered.
   Shinier artist index page, rather than a list of names
+  Keep addresses for snail mailing list
 
 Post deploy
   Cron job for sitemap generation. Possibly an observer?

@@ -1,5 +1,9 @@
 Cliftonstudios::Application.routes.draw do
 
+  get "contact_executive/create"
+
+  get "contact_executive/index"
+
   root :to => "posts#index"
   match 'news/:id' => 'posts#show'
   match 'rss.:format' => 'posts#rss'
@@ -35,20 +39,18 @@ Cliftonstudios::Application.routes.draw do
     resources :events, :except => [:show]
     resources :blocks, :only => [:index, :create]
     resources :members, :except => [:destroy]
-
     resources :pictures, :only => [:index, :create, :update, :destroy, :edit] do
       collection do
         get 'all'
       end
     end
-
     resources :contact_list, :only => [:index] do
       collection do
         get 'print'
       end
     end
-
     resources :mailing_list, :only => [:index, :update]
+    resources :contact_executive, :only => [:index, :create]
 
     ['bylaws', 'emails', 'mail_queue'].each do |block|
       match block => "blocks##{block}"
