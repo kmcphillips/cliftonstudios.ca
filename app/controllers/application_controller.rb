@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_member_session, :current_member, :logged_in?
 
+  before_filter :set_member_tracker
+
   private
   
   def pagination_params(opts={})
@@ -31,6 +33,10 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
       return false
     end
+  end
+
+  def set_member_tracker
+    MemberTracker.current = current_member
   end
 
 end

@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110925220520) do
+ActiveRecord::Schema.define(:version => 20110926202028) do
+
+  create_table "audits", :force => true do |t|
+    t.integer  "auditable_id"
+    t.string   "auditable_type"
+    t.integer  "member_id"
+    t.string   "action",         :default => "update"
+    t.string   "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "audits", ["auditable_id"], :name => "index_audits_on_auditable_id"
+  add_index "audits", ["auditable_type", "auditable_id"], :name => "index_audits_on_auditable_type_and_auditable_id"
+  add_index "audits", ["auditable_type"], :name => "index_audits_on_auditable_type"
+  add_index "audits", ["member_id"], :name => "index_audits_on_member_id"
 
   create_table "blocks", :force => true do |t|
     t.text     "body"

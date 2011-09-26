@@ -7,6 +7,7 @@ Layout
   Fix background image
   Test in IE
   404/500 static pages
+  Pagination on news posts
 
 Admin/Members area
   Bi-laws, Enter and style them
@@ -14,9 +15,7 @@ Admin/Members area
   Deletion and editing should be restricted by user and type?
   Space number for members
   Add emails manually to mailing list
-
-Sidebar
-  Recent activity
+  Recent activity show page
 
 Bonus
   Create clifton studios email that forwards to email in db

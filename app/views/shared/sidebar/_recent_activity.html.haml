@@ -1,0 +1,32 @@
+%h2 Recent Activity
+- Audit.recent(4).each do |audit|
+  %p
+    - if audit.member
+      = link_to audit.member.name, artist_path(audit.member)
+    - else
+      Someone
+    = audit.action_verb
+
+    - case audit.auditable
+      - when Post
+        = link_to "a news post", post_path(audit.auditable)
+      - when Event
+        = link_to "an event", event_path(audit.auditable)
+      - when Member
+        - if audit.auditable == audit.member
+          = link_to "their profile", artist_path(audit.member)
+        - else
+          = link_to "#{audit.auditable.name}'s profile", artist_path(audit.auditable)
+      - when Picture
+          = "a picture", picture_path(audit.auditable.member.permalink)
+      - when Block
+        = link_to "the #{audit.auditable.label} section", about_path           
+      - when Link
+        = link_to "a link", links_path
+      - when Executive
+        = link_to "the executive", about_path
+      - else
+        something
+
+    = time_ago_in_words audit.created_at      
+
