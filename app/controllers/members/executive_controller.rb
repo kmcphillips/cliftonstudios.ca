@@ -1,5 +1,5 @@
 class Members::ExecutiveController < ApplicationController
-  before_filter :require_member
+  before_filter :require_admin_member
 
   def index
     @title = "Manage Executive"

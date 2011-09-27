@@ -1,5 +1,6 @@
 class Members::PicturesController < ApplicationController
-  before_filter :require_member
+  before_filter :require_member, :except => [:all]
+  before_filter :require_admin_member, :only => [:all]
 
   def index
     @picture = Picture.new
@@ -32,7 +33,13 @@ class Members::PicturesController < ApplicationController
   end
 
   def destroy
-    current_member.pictures.find(params[:id]).destroy
+    # This should probably be two methods, but the public interface is cleaner. Only admin can delete someone else's pictures.
+    if current_member.admin?
+      Picture.find(params[:id]).destroy
+    else
+      current_member.pictures.find(params[:id]).destroy
+    end
+
     redirect_to members_pictures_path, :notice => "Picture deleted successfully"
   end
 

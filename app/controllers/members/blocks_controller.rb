@@ -1,5 +1,6 @@
 class Members::BlocksController < BlocksController
-  before_filter :require_member
+  before_filter :require_member, :except => [:create, :index, :mail_queue, :audits]
+  before_filter :require_admin_member, :only => [:create, :index, :mail_queue, :audits]
 
   def index
     @about = Block.find_by_label :about

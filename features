@@ -11,9 +11,9 @@ Layout
 
 Admin/Members area
   Bi-laws, Enter and style them
-  Scope things by admin user
   Deletion and editing should be restricted by user and type?
   Space number for members
+  Renting vs non renting members, with attached to.
 
 Bonus
   Create clifton studios email that forwards to email in db

@@ -1,5 +1,5 @@
 class Members::MembersController < ApplicationController
-  before_filter :require_member
+  before_filter :require_admin_member
 
   def index
     @active_members = Member.active.alphabetical

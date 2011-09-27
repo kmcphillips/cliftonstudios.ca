@@ -33,6 +33,20 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
       return false
     end
+
+    true
+  end
+
+  def require_admin_member
+    if require_member
+      if !current_member.admin?
+        flash[:error] = "You must be a site administrator view that page."
+        redirect_to members_dashboard_index_path
+        return false
+      end
+    end
+
+    true
   end
 
   def set_member_tracker
