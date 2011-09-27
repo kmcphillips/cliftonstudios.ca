@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_member_session, :current_member, :logged_in?
 
-  before_filter :set_member_tracker
+  append_before_filter :set_member_tracker
 
   private
   
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_member_tracker
-    MemberTracker.current = current_member
+    MemberTracker.current = MemberSession.find.try(:member)
   end
 
 end

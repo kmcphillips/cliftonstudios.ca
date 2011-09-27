@@ -14,8 +14,6 @@ Admin/Members area
   Scope things by admin user
   Deletion and editing should be restricted by user and type?
   Space number for members
-  Add emails manually to mailing list
-  Recent activity show page
 
 Bonus
   Create clifton studios email that forwards to email in db

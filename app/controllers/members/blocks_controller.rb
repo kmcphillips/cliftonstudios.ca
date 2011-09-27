@@ -35,5 +35,9 @@ class Members::BlocksController < BlocksController
     @emails = PendingEmail.pending
   end
 
+  def audits
+    @audits = Audit.paginate(pagination_params(:order => "created_at DESC", :per_page => 20))
+  end
+
 end
 

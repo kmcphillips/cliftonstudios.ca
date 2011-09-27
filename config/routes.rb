@@ -49,10 +49,10 @@ Cliftonstudios::Application.routes.draw do
         get 'print'
       end
     end
-    resources :mailing_list, :only => [:index, :update]
+    resources :mailing_list, :only => [:index, :update, :create]
     resources :contact_executive, :only => [:index, :create]
 
-    ['bylaws', 'emails', 'mail_queue'].each do |block|
+    ['bylaws', 'emails', 'mail_queue', 'audits'].each do |block|
       match block => "blocks##{block}"
     end
   end

@@ -14,11 +14,11 @@
         = link_to "an event", event_path(audit.auditable)
       - when Member
         - if audit.auditable == audit.member
-          = link_to "their profile", artist_path(audit.member)
+          = link_to "his/her profile", artist_path(audit.member)
         - else
           = link_to "#{audit.auditable.name}'s profile", artist_path(audit.auditable)
       - when Picture
-          = "a picture", picture_path(audit.auditable.member.permalink)
+        = link_to "a picture", picture_path(audit.auditable.member.permalink)
       - when Block
         = link_to "the #{audit.auditable.label} section", about_path           
       - when Link
@@ -28,5 +28,8 @@
       - else
         something
 
-    = time_ago_in_words audit.created_at      
+    = time_ago_in_words audit.created_at
+    ago.
 
+    - if audit.auditable.is_a?(Picture)
+      = link_to image_tag(audit.auditable.thumb, :class => "thumb", :alt => audit.auditable.description), picture_path(audit.auditable.member.permalink)

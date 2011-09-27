@@ -1,0 +1,28 @@
+%h1 Audits
+.post
+  %p This is a detailed history of all the changes that have happened on the site.
+
+  = collection_index(@audits, ["Object", "Action", "Member", "Date"]) do |audit|
+    %tr{:class => cycle("odd", "even")}
+      %td
+        - case audit.auditable
+          - when Post
+            = link_to "Post ##{audit.auditable_id}", post_path(audit.auditable)
+          - when Event
+            = link_to "Event ##{audit.auditable_id}", event_path(audit.auditable)
+          - when Member
+            = link_to "Member #{audit.auditable.name}", artist_path(audit.auditable)
+          - when Picture
+            = link_to "Picture ##{audit.auditable_id}", picture_path(audit.auditable.member.permalink)
+          - when Block
+            = link_to "Block '#{audit.auditable.label}'", about_path
+          - when Link
+            = link_to "Link ##{audit.auditable_id}", links_path
+          - when Executive
+            = link_to "Executive title '#{audit.auditable.title}'", members_path
+          - else
+            Deleted #{audit.auditable_type} ##{audit.auditable_id}
+
+      %td= audit.action.humanize
+      %td= audit.member ? link_to(audit.member.name, artist_path(audit.member)) : "Unknown"
+      %td= audit.created_at.to_s :with_time

@@ -4,7 +4,6 @@ class MailingListEntry < ActiveRecord::Base
 
   scope :active, where(:active => true)
   scope :by_ip, lambda{|ip| where("ip_address LIKE ?", ip)}
-  scope :for_index, active.order("created_at DESC")
 
   def deactivate!
     update_attribute(:active, false)
