@@ -8,7 +8,22 @@
 
     %ul.form
       = render :partial => "form", :locals => {:f => f}
-      = f.item :submit, "Save"
+      %li
+        %label Space Number
+        %span
+          = f.object.space_number
+          &nbsp;
+      %li
+        %label Renting Member?
+        %span= f.object.renting?.to_yesno
+      - if f.object.renting?
+        %li
+          %label Dependent Members
+          %span= f.object.dependent_members.any? ? f.object.dependent_members.map(&:name).to_sentence : "No"
+      - else
+        %li
+          %label Subletting From
+          %span= f.object.subletting_member.try(:name) || "Nobody"
       %li
         %label Site Administrator?
         %span= f.object.admin?.to_yesno
@@ -16,6 +31,7 @@
         %li
           %label Status
           %span Inactive/
+      = f.item :submit, "Save"
 
   %a{:name => "bio"}
   %h1 Public Bio

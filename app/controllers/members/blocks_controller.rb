@@ -30,6 +30,7 @@ class Members::BlocksController < BlocksController
 
   def emails
     @emails = Member.active.alphabetical.map(&:email)
+    @phone = Member.active.alphabetical.contact_by_phone
   end
 
   def mail_queue

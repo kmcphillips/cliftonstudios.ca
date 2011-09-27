@@ -36,6 +36,23 @@
             Blank
           - else
             = simple_format @member.address unless @member.address.blank?
+        %li
+          %label Space Number
+          = @member.space_number
+          &nbsp;
+        %li
+          %label Member Type
+          = @member.renting_type
+        - if @member.renting? && @member.dependent_members.any?
+          %li
+            %label Dependent Members
+            %span= @member.dependent_members.map(&:name).to_sentence
+        - elsif @member.subletting_member
+          %li
+            %label Subletting From
+            %span= @member.subletting_member.name
+
+
 
 %h1 Recent Pictures
 

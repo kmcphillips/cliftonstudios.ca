@@ -10,15 +10,20 @@ class Member < ActiveRecord::Base
   acts_as_permalink :from => :name
   
   include AttachedImage
-  
+
+  belongs_to :subletting_member, :class_name => "Member", :foreign_key => "subletting_member_id"
+
   has_many :posts
   has_many :events
   has_many :pictures
   has_many :titles, :class_name => "Executive", :foreign_key => "member_id"
+  has_many :dependent_members, :class_name => "Member", :foreign_key => "subletting_member_id"
   
   validates :name, :presence => true
   validates :contact_method, :inclusion => CONTACT_METHODS
+  validates :renting, :inclusion => [true, false]
   validate :website_begins_with_protocol
+  validate :subletting_and_associated
 
   before_validation :set_default_password
   before_save :create_secret_hash
@@ -30,6 +35,7 @@ class Member < ActiveRecord::Base
   scope :active, where(:active => true)
   scope :inactive, where(:active => false)
   scope :emailable, where(:receive_emails => true, :active => true)
+  scope :contact_by_phone, where(:contact_method => "phone")
 
   def reset_password!
     change_password
@@ -69,6 +75,10 @@ class Member < ActiveRecord::Base
         "http://#{website}"
       end
     end
+  end
+
+  def renting_type
+    renting? ? "Renting Member" : "Non-Renting/Subletting"
   end
 
   ## Class methods
@@ -117,6 +127,12 @@ class Member < ActiveRecord::Base
   def create_secret_hash
     self.secret_hash = Digest::SHA1.hexdigest(rand.to_s) if self.secret_hash.blank?
     true
+  end
+
+  def subletting_and_associated
+    if renting?
+      self.errors[:base] << "A renting member must not also be marked as subletting" if subletting_member
+    end
   end
 
 end

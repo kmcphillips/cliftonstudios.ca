@@ -1,0 +1,9 @@
+= collection_index(members, ["Name", "Space Number", "Type", "Subletter", "Actions"]) do |member|
+  %tr{:class => cycle("odd", "even")}
+    %td= member.name
+    %td= member.space_number
+    %td= member.renting_type
+    %td= member.subletting_member.try(:name)
+    %td
+      = show_entity_image members_member_path(member)
+      = edit_entity_image edit_members_member_path(member)

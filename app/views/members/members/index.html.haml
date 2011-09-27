@@ -6,18 +6,7 @@
     %br
     = show_entity_image members_contact_list_index_path, "View as contact list"
 
-  %table.data
-    %tr
-      %th Name
-      %th Address
-      %th Actions
-    - @active_members.each do |member|
-      %tr{:class => cycle("odd", "even")}
-        %td= member.name
-        %td= member.address
-        %td{:width => 100}
-          = show_entity_image members_member_path(member)
-          = edit_entity_image edit_members_member_path(member)
+  = render :partial => "members", :object => @active_members
 
 %h1 Inactive Studio Members
 
@@ -29,15 +18,4 @@
   - unless @inactive_members.any?
     %p There are currently no inactive members.
   - else
-    %table.data
-      %tr
-        %th Name
-        %th Address
-        %th Actions
-      - @inactive_members.each do |member|
-        %tr{:class => cycle("odd", "even")}
-          %td= member.name
-          %td= member.address
-          %td{:width => 100}
-            = show_entity_image members_member_path(member)
-            = edit_entity_image edit_members_member_path(member)
+    = render :partial => "members", :object => @inactive_members

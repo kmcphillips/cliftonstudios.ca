@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926202028) do
+ActiveRecord::Schema.define(:version => 20110927040407) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -103,30 +103,33 @@ ActiveRecord::Schema.define(:version => 20110926202028) do
     t.text     "address"
     t.string   "permalink"
     t.text     "bio"
-    t.boolean  "receive_emails",      :default => true
+    t.boolean  "receive_emails",       :default => true
     t.string   "image_file_name"
     t.integer  "image_file_size"
     t.string   "image_content_type"
     t.string   "image_updated_at"
-    t.string   "email",                                  :null => false
-    t.string   "crypted_password",                       :null => false
-    t.string   "password_salt",                          :null => false
-    t.string   "persistence_token",                      :null => false
-    t.integer  "login_count",         :default => 0,     :null => false
+    t.string   "email",                                   :null => false
+    t.string   "crypted_password",                        :null => false
+    t.string   "password_salt",                           :null => false
+    t.string   "persistence_token",                       :null => false
+    t.integer  "login_count",          :default => 0,     :null => false
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "website"
-    t.boolean  "admin",               :default => false
-    t.boolean  "active",              :default => true
-    t.boolean  "password_configured", :default => false
+    t.boolean  "admin",                :default => false
+    t.boolean  "active",               :default => true
+    t.boolean  "password_configured",  :default => false
     t.datetime "last_request_at"
     t.string   "alternate_phone"
     t.string   "legacy_name"
     t.string   "secret_hash"
     t.string   "legacy_username"
     t.string   "contact_method"
+    t.boolean  "renting",              :default => true
+    t.integer  "subletting_member_id"
+    t.string   "space_number"
   end
 
   add_index "members", ["active"], :name => "index_members_on_active"
@@ -137,6 +140,8 @@ ActiveRecord::Schema.define(:version => 20110926202028) do
   add_index "members", ["permalink"], :name => "index_members_on_permalink"
   add_index "members", ["persistence_token"], :name => "index_members_on_persistence_token", :unique => true
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
+  add_index "members", ["renting"], :name => "index_members_on_renting"
+  add_index "members", ["subletting_member_id"], :name => "index_members_on_subletting_member_id"
 
   create_table "pending_emails", :force => true do |t|
     t.string   "action"

@@ -1,6 +1,12 @@
 %h1 Member Email List
-
 .post
   %p This is a list of the email addresses for all active Clifton Studios members.
 
   = text_area_tag :emails, @emails.join(", "), :rows => 12, :cols => 60, :readonly => :readonly, :style => "width: 100%"
+
+%h1 Member Phone List
+.post
+  %p The following members prefer to be phoned rather than emailed.
+  %ul
+    - @phone.each do |member|
+      %li= link_to member.name, artist_path(member)
