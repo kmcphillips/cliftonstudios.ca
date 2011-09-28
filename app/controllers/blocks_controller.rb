@@ -7,6 +7,9 @@ class BlocksController < ApplicationController
     @title = "About"
   end
 
+  def contact
+  end
+
   def links
     @links = Link.order("created_at ASC")
     @title = "Links"

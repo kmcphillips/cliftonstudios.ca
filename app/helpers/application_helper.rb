@@ -120,10 +120,12 @@ module ApplicationHelper
       when "artists" then 2
       when "pictures" then 3
       when "blocks"
-        if params[:action] == "about"
+        if params[:action] == "links"
           4
-        elsif params[:action] == "links"
+        elsif params[:action] == "about"
           5
+        elsif params[:action] == "contact"
+          6
         end
     end
 

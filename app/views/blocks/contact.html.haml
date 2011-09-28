@@ -1,0 +1,11 @@
+%h1 Location and Contact Information
+.post
+  Clifton Studios is located half a block off Portage Avenue, just past Erin and Wall.
+  %br
+  %br
+  = render :partial => "shared/address"
+  %br
+  = obfuscated_mail_to ADMIN_EMAIL
+  %br
+  %br
+  = render :partial => 'map'
