@@ -13,7 +13,7 @@ Cliftonstudios::Application.routes.draw do
   resources :events, :only => [:index, :show]
   resources :pictures, :only => [:index, :show]
 
-  ['about', 'links', 'search'].each do |block|
+  ['about', 'contact', 'links', 'search'].each do |block|
     match block => "blocks##{block}"
   end
 
