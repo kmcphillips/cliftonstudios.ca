@@ -1,16 +1,17 @@
 System
   Meta tags
+  Post deploy job to notify and send all new passwords
 
 Layout
   Create text/html views for mailers
   Fix colours
-  Fix background image
   Test in IE
 
 Admin/Members area
   Bi-laws, Enter and style them
 
 Bonus
+  Change background image
   Create clifton studios email that forwards to email in db
   Google Site Search inegration
   Images saves across preview
@@ -27,11 +28,20 @@ Bonus
   Shinier artist index page, rather than a list of names
   Keep addresses for snail mailing list
 
+Deploy Time
+  Backup old DB
+  Move old DB to legacy schema
+  Configure DB schemas
+  Configure Mail
+  Run golive
+  Clean up the "about" syntax problems
+  Move the links from "about" to the links page
+  Set admin privileges
+
 Post deploy
+  An account for Norma.
   Cron job for sitemap generation. Possibly an observer?
   Cron job to send pending emails
   Search engine reindexing
   Update paperclip once the bug is fixed for :hash_secret
   Remove all the dev login stuff
-  Clean up the "about" syntax problems
-  Move the links from "about" to the links page
