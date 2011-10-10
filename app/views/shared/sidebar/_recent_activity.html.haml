@@ -10,7 +10,7 @@
 
     - case audit.auditable
       - when Member
-        = "#{link_to(audit.member.name, artist_path(audit.member))}'s #{link_to('profile', artist_path(audit.member))} was #{audit.action_verb}".html_safe
+        = "#{link_to(audit.auditable.name, artist_path(audit.auditable))}'s #{link_to('profile', artist_path(audit.auditable))} was #{audit.action_verb}".html_safe
       - when Post
         = link_to "a news post", post_path(audit.auditable)
       - when Event

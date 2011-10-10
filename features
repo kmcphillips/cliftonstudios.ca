@@ -4,11 +4,7 @@ System
 
 Layout
   Create text/html views for mailers
-  Fix colours
   Better print layout
-
-Admin/Members area
-  Bi-laws, Enter and style them
 
 Bonus
   Change background image
@@ -27,6 +23,7 @@ Bonus
   Draggable on pictures to sort them, possibly another "sort" page so that the index page isn't too cluttered.
   Shinier artist index page, rather than a list of names
   Keep addresses for snail mailing list
+  Bi-laws, Enter and style them
 
 Deploy Time
   Backup old DB
