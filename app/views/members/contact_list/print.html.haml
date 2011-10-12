@@ -2,7 +2,7 @@
   - content_for :js do
     :javascript
       $(document).ready(function(){
-        setTimeout("window.print()", 2000);
+        setTimeout("window.print()", 1000);
       });
 
 %h1 Clifton Studios Members
@@ -11,7 +11,11 @@
   = Time.now.to_s(:words)
 
 %table
-  - @members.each_slice(2) do |row|
+  - @members.each do |member|
     %tr
-      - row.each do |member|
-        %td= render :partial => "member_for_print", :object => member
+      %td
+        %h3= member.name
+        = member.phone_numbers
+        %br
+        = member.email
+      %td= simple_format member.address

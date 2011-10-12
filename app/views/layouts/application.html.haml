@@ -19,8 +19,8 @@
     %link{:rel => "shortcut icon", :type => "image/x-icon", :href => "/favicon.ico"}
 
     = csrf_meta_tag
-    %meta{:name => "keywords", :content => META[:keywords] || ""}
-    %meta{:name => "description", :content => META[:description] || ""}
+    - META.each_pair do |key, value|
+      %meta{:name => key, :content => value}
 
   %body
     #bgwrapper

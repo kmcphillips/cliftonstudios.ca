@@ -1,19 +1,21 @@
-.clear
-  .float_left
-    %h3= member.name
-    %p= simple_format member.address
-    %p
-      - unless member.phone.blank?
-        = member.phone
-        %br
-      - unless member.alternate_phone.blank?
-        = member.alternate_phone
-        %br
-      = link_to member.email, "mailto:#{member.email}"
-      - unless member.website.blank?
-        %br
-        = link_to member.website, member.website
-
+.contact_list_entry
   .float_right
     = show_entity_image members_member_path(member)
     = edit_entity_image edit_members_member_path(member)
+
+  %h3= member.name
+  %p= simple_format member.address
+  %p
+    - unless member.phone.blank?
+      = member.phone
+      %br
+    - unless member.alternate_phone.blank?
+      = member.alternate_phone
+      %br
+  %p
+    = link_to member.email, "mailto:#{member.email}"
+    - if member.website?
+      %br
+      = link_to member.website_with_protocol, member.website
+
+  .clear_right

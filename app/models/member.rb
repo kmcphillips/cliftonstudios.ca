@@ -77,6 +77,10 @@ class Member < ActiveRecord::Base
     end
   end
 
+  def website?
+    website.present? && website != "http://"
+  end
+
   def renting_type
     renting? ? "Renting Member" : "Non-Renting/Subletting"
   end
