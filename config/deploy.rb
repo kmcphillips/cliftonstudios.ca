@@ -22,7 +22,7 @@ namespace :deploy do
 end
 
 ## Callbacks
-after "deploy", "symlink_shared_files", "generate_sitemaps"
+after "deploy", "symlink_shared_files" ##, "generate_sitemaps" # This was nothing but a hassle. do it manually
 
 task :symlink_shared_files do
   run "ln -s #{shared_path}/assets #{release_path}/public/assets"
