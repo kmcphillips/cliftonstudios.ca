@@ -1,5 +1,5 @@
 class Members::MailingListController < ApplicationController
-  before_filter :require_admin_member
+  before_filter :require_member
 
   def index
     @entries = MailingListEntry.active.paginate(pagination_params(:order => "created_at DESC", :per_page => 20))

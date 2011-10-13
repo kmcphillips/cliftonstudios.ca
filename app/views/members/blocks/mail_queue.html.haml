@@ -3,13 +3,8 @@
 .post
   %p All emails in this list are waiting to be sent automatically by the system.
 
-  %table.data
-    %tr
-      %th Message Type
-      %th Recepients
-      %th Created at
-    - @emails.each do |email|
-      %tr{:class => cycle("odd", "even")}
-        %td= email.action.humanize
-        %td= email.recipients_description
-        %td= email.created_at.to_s(:with_time)
+  = collection_index(@emails, ["Message Type", "Recepients", "Created At"]) do |email|
+    %tr{:class => cycle("odd", "even")}
+      %td= email.action.humanize
+      %td= email.recipients_description
+      %td= email.created_at.to_s(:with_time)

@@ -3,7 +3,6 @@
 $background: #E2CB92
 $white: #FFF
 $black: #000
-/* $very_light: #E6F9BC */
 $very_light: #D3DEAE
 $very_dark: #332b30
 $dark_accent: #5F231E
@@ -389,11 +388,6 @@ a:hover
     a, em, span
       margin: 0 8px
 
-    .next_page
-
-    .previous_page
-
-
   .post
     padding: 16px 0 56px 0
     line-height: 140%
@@ -489,6 +483,20 @@ a:hover
         font-weight: bold
         background-color: $table_head_background
         color: $table_head_text  /* Needed to override the hover */
+
+        div.pagination
+          border: none
+          text-align: center
+
+          em
+            font-style: normal
+            font-weight: bold
+
+          a, em, span
+            margin: 0 8px
+
+          a, a:visited
+            color: $very_light !important
 
       td
         padding: 8px

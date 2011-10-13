@@ -5,16 +5,18 @@ body {
 h1 {
   font-family: MuseoSans500, helvetica, sans-serif;
   font-weight: normal;
-  font-size: 3em;
+  font-size: 2.4em;
   margin: 3px 0; }
 
 h2 {
   font-weight: normal;
-  margin: 0 0 30px 0; }
+  margin: 0 0 20px 0;
+  font-size: 1.2em; }
 
 h3 {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  font-size: 1em; }
 
 table {
   border-width: 1px;
@@ -22,14 +24,19 @@ table {
   border-style: outset;
   border-color: black;
   border-collapse: collapse;
-  width: 100%; }
-  table tr td {
-    width: 49%;
-    border-width: thin;
-    padding: 5px;
-    border-style: inset;
-    border-color: black;
-    text-align: top; }
-    table tr td p {
-      padding: 0;
-      margin: 0; }
+  width: 100%;
+  page-break-inside: auto; }
+  table tr {
+    page-break-inside: avoid;
+    page-break-after: auto; }
+    table tr td {
+      width: 49%;
+      border-width: thin;
+      padding: 5px;
+      border-style: inset;
+      border-color: black;
+      text-align: top;
+      font-size: 0.8em; }
+      table tr td p {
+        padding: 0;
+        margin: 0; }

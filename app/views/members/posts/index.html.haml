@@ -3,21 +3,13 @@
 .post
   = new_entity_image new_members_post_path, 'Create New News Post'
 
-  %table.data
-    %tr
-      %th Title
-      %th Body
-      %th Created By
-      %th Created At
-      %th Actions
-
-    - @posts.each do |post|
-      %tr{:class => cycle("odd", "even")}
-        %td{:width => 120}= link_to post.title, post_path(post)
-        %td{:width => 240}= truncate_for_index post.body
-        %td= post.member.name
-        %td= post.created_at.to_s(:with_time_no_minutes)
-        %td{:width => 64}
-          = edit_entity_image edit_members_post_path(post)
-          = destroy_entity_image members_post_path(post)
-          = show_entity_image post_path(post)
+  = collection_index(@posts, ["Title", "Body", "Created By", "Created At", "Actions"]) do |post|
+    %tr{:class => cycle("odd", "even")}
+      %td{:width => 120}= link_to post.title, post_path(post)
+      %td{:width => 240}= truncate_for_index post.body
+      %td= post.member.name
+      %td= post.created_at.to_s(:with_time_no_minutes)
+      %td{:width => 64}
+        = edit_entity_image edit_members_post_path(post)
+        = destroy_entity_image members_post_path(post)
+        = show_entity_image post_path(post)

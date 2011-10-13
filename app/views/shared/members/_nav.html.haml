@@ -12,6 +12,7 @@
   %li.members_nav= link_to "News/Blog", members_posts_path, :title => "Create and update main page news posts."
   %li.members_nav= link_to "Events", members_events_path, :title => "Create and update studio events."
   %li.members_nav= link_to "Links", members_links_path, :title => "Manage the links page."
+  %li.members_nav= link_to "Public Mailing List", members_mailing_list_index_path, :title => "Public that has signed up for our email mailing list."
   %li.members_nav= link_to "All Member Emails", members_emails_path, :title => "A list of email addresses for all members, copy and paste for mass-mailing."
 
 - if current_member.admin?
@@ -22,5 +23,4 @@
     %li.members_nav= link_to "Executive", members_executive_index_path, :title => "Update members on the executive"
     %li.members_nav= link_to "Manage All Pictures", all_members_pictures_path, :title => "Modify or delete pictures uploaded by all members."
     %li.members_nav= link_to "Pending Mail Queue", members_mail_queue_path, :title => "A queue of messages the site has not yet sent out."
-    %li.members_nav= link_to "Mailing List", members_mailing_list_index_path, :title => "Public that has signed up for our email mailing list."
-    %li.members_nav= link_to "Audits", members_audits_path, :title => "History of all actions on the site."
+    %li.members_nav= link_to "Website Audits", members_audits_path, :title => "History of all actions on the site."
