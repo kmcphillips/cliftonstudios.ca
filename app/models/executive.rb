@@ -17,5 +17,10 @@ class Executive < ActiveRecord::Base
     all.map(&:member).compact.map(&:email)
   end
 
+  def self.to_sentence
+    s = sorted.map{|e| e.member.try(:name)}.compact.to_sentence
+    s.blank? ? "nobody" : s
+  end
+
 end
 

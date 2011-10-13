@@ -1,0 +1,16 @@
+= render :partial => "header", :object => "Contact Executive"
+
+%p A studio member has sent a message to the executive:
+
+%p
+  From:
+  %span{:style => "font-weight: bold"}
+    = @view_from
+  %br
+  %br
+  %span{:style => "font-weight: bold; font-size: 1.2em"}= @view_subject
+  %br
+
+%p
+  = simple_format @message
+  %br

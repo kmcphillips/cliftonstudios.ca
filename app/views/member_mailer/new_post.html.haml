@@ -1,0 +1,11 @@
+= render :partial => "header", :object => "New News Post"
+
+%p A new news post has been added to the Clifton Studos website.
+
+%p
+  %span{:style => "font-weight: bold"}= @post.title
+  %br
+  %a{:href => "http://cliftonstudios.ca/"} http://cliftonstudios.ca/
+  %br
+
+= render :partial => "footer"

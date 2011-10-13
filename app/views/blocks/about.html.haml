@@ -5,8 +5,7 @@
   = simple_format @about.body
   .clear_right
 
-%h1 How To Join
-.post= simple_format @availability.body
+= render :partial => "how_to_join"
 
 - if logged_in?
   %h1 Studio Bylaws

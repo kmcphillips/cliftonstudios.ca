@@ -1,12 +1,12 @@
 %h1 Contact The Executive
 .post
-  %p Send a message directly to The Executive with questions or problems regarding anything at Clifton Studios. The Executive is currently #{@executive.map{|e| e.member.try(:name)}.compact.to_sentence}.
+  %p Send a message directly to The Executive with questions or problems regarding anything at Clifton Studios. The Executive is currently #{Executive.to_sentence}.
 
   = form_tag members_contact_executive_index_path, :method => :post do
     %ul.form
       %li
         %label Subject
-        = text_field_tag :subject, params[:subject]
+        = text_field_tag :subject, params[:subject], :size => 50
       %li
         %label Message
         = text_area_tag :message, params[:message], :rows => 12, :cols => 50

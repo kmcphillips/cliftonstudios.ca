@@ -1,0 +1,11 @@
+= render :partial => "header", :object => "New Event"
+
+%p A event post has been added to the Clifton Studos website.
+
+%p
+  %span{:style => "font-weight: bold"}= @event.title
+  %br
+  %a{:href => "http://cliftonstudios.ca/events"} http://cliftonstudios.ca/events
+  %br
+
+= render :partial => "footer"

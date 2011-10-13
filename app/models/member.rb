@@ -52,7 +52,7 @@ class Member < ActiveRecord::Base
   end
 
   def to_csv
-    [name, address, phone, email]
+    [name, address, phone, alternate_phone, email]
   end
 
   def email_with_name
@@ -92,7 +92,7 @@ class Member < ActiveRecord::Base
       csv << ["Clifton Studios Contact List"]
       csv << ["Generated: #{Time.now.to_s(:with_time)}"]
       csv <<
-      csv << %w[name address phone email]
+      csv << ["Name", "Address", "Phone", "Alternate Phone", "Email Address"]
       Member.active.alphabetical.each do |member|
         csv << member.to_csv
       end

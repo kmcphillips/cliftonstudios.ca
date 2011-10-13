@@ -1,7 +1,3 @@
-Deploy features
-  Post deploy job to notify and send all new passwords
-  Create text/html views for mailers
-
 Bonus
   Change background image
   Create clifton studios email that forwards to email in db
@@ -25,6 +21,7 @@ Deploy Time
   Configure DB schemas
   Configure Mail
   Run golive
+  Create the sitemap
   Clean up the "about" syntax problems
   Move the links from "about" to the links page
   Set admin privileges

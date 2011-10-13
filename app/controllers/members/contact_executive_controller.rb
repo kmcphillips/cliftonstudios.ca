@@ -2,7 +2,6 @@ class Members::ContactExecutiveController < ApplicationController
   before_filter :require_member
 
   def index
-    @executive = Executive.sorted
   end
 
   def create

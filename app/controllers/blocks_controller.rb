@@ -8,6 +8,7 @@ class BlocksController < ApplicationController
   end
 
   def contact
+    @availability = Block.find_by_label("availability")
   end
 
   def links
