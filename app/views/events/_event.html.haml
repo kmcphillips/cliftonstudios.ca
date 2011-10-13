@@ -13,6 +13,6 @@
 
 .post.clear_right
   = link_to image_tag(event.inline, :class => "inline", :alt => event.title), event.full, :rel => "lightbox", :class => "thumb inline" if event.image.exists?
-  = auto_link simple_format(event.body)
+  = auto_link(simple_format(event.body)).html_safe
   .clear_right
 
