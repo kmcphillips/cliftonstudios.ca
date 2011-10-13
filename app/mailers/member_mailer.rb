@@ -8,6 +8,13 @@ class MemberMailer < ActionMailer::Base
     mail(:to => "#{@member.name} <#{@member.email}>", :subject => "Clifton Studios: Password reset")
   end
 
+  def new_member(opts)
+    @member = opts[:member]
+    @password = opts[:password]
+
+    mail(:to => "#{@member.name} <#{@member.email}>", :subject => "Welcome to Clifton Studios")
+  end
+
   def new_post(opts)
     @post = opts[:object]
 

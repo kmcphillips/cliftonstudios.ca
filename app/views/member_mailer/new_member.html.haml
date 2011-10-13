@@ -1,0 +1,19 @@
+= render :partial => "header", :object => "New Member"
+
+%p= "Hello #{@member.name},"
+
+%p Welcome to Clifton Studios. Your profile has just been created on the studio website. From there you can post photos, update your profile, change your address and contact information, contact other members, keep up with studio events, and more. It's easy to use and full of resources for all members of Clifton Studios.
+
+%p
+  Your username is your email address: 
+  %span{:style => "font-weight: bold"}= @member.email
+  %br 
+  Your password is:
+  %span{:style => "font-weight: bold"}= @password
+
+%p
+  To login, go here:
+  %br
+  %a{:href => "http://cliftonstudios.ca/login"} http://cliftonstudios.ca/login
+
+= render :partial => "footer"

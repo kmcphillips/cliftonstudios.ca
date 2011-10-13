@@ -1,0 +1,14 @@
+Clifton Studios - New Member
+----------------------------
+
+Hello <%= @member.name %>
+
+Welcome to Clifton Studios. Your profile has just been created on the studio website. From there you can post photos, update your profile, change your address and contact information, contact other members, keep up with studio events, and more. It's easy to use and full of resources for all members of Clifton Studios.
+
+Your username is your email address:    <%= @member.email %>
+Your password is:                       <%= @password %>
+
+To login, go here:
+http://cliftonstudios.ca/login
+
+<%= render :partial => "footer_text" %>

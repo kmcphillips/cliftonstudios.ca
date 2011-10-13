@@ -38,13 +38,14 @@
     %li#dependent_members
       %label Dependent Members
       %span= f.object.dependent_members.any? ? f.object.dependent_members.map(&:name).to_sentence : "No"
-    = f.item :password_field, :password, :size => 14, :note => (@member.new_record? ? "Leave blank to set automatically" : "Leave blank to not change")
-    = f.item :password_field, :password_confirmation, :label => "Password Confirmation", :size => 14
-    = f.item :text_area, :bio, :rows => 5, :cols => 50
-    %li
-      = f.label :website, "External Website URL"
-      = f.text_field :website, :value => (f.object.website.blank? ? "http://" : f.object.website), :size => 40, :id => "website_url"
-      = link_to_function(image_tag("/images/icons/link_preview.png", :alt => "Preview", :class => "no_border") + "&nbsp;Preview".html_safe, "preview_link('#website_url');", :title => "Preview")
+    - unless f.object.new_record?
+      = f.item :password_field, :password, :size => 14, :note => (@member.new_record? ? "Leave blank to set automatically" : "Leave blank to not change")
+      = f.item :password_field, :password_confirmation, :label => "Password Confirmation", :size => 14
+      = f.item :text_area, :bio, :rows => 5, :cols => 50
+      %li
+        = f.label :website, "External Website URL"
+        = f.text_field :website, :value => (f.object.website.blank? ? "http://" : f.object.website), :size => 40, :id => "website_url"
+        = link_to_function(image_tag("/images/icons/link_preview.png", :alt => "Preview", :class => "no_border") + "&nbsp;Preview".html_safe, "preview_link('#website_url');", :title => "Preview")
 
     = f.hidden_field :notify_password_change
     = f.item :submit, "Save"

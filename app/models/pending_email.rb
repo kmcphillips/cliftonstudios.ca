@@ -1,5 +1,5 @@
 class PendingEmail < ActiveRecord::Base
-  TYPES = %w[new_event new_post reset_password contact_executive]
+  TYPES = %w[new_member new_event new_post reset_password contact_executive]
 
   serialize :locals, Hash
 
@@ -17,7 +17,7 @@ class PendingEmail < ActiveRecord::Base
     case action
       when "new_event", "new_post"
         "Everyone"
-      when "reset_password"
+      when "reset_password", "new_member"
         locals[:member].try(:name)
       when "contact_executive"
         "The Executive"

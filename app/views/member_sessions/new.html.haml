@@ -19,7 +19,7 @@
         = f.submit "Login"
 
   .image_links
-    %p= link_to "Click here if you have forgotten your password", password_reset_index_path
+    %p= link_to "Forget your password?", password_reset_index_path
     - if Rails.env.development?
       %p
         = form_for @member_session, :url => {:action => "create"} do |f|
