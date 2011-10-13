@@ -13,7 +13,7 @@ SitemapGenerator::Sitemap.create do
   add events_path
 
   Event.sorted.each do |event|
-    add event_path :lastmod => event.updated_at
+    add event_path(event), :lastmod => event.updated_at
   end
 
   add pictures_path
