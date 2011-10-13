@@ -18,6 +18,10 @@
       = @member.alternate_phone
       &nbsp;
     %li
+      %label Preferred Contact Method
+      = @member.contact_method.humanize
+      &nbsp;
+    %li
       %label Website
       = link_to @member.website, @member.website_with_protocol if @member.website_with_protocol.present?
       &nbsp;
@@ -54,6 +58,8 @@
         None set
 
   .image_links
+    = show_entity_image artist_path(@member), "View Public Profile"
+    %br
     = index_entity_image members_members_path, "Back to Studio Members Index"
     %br
     = edit_entity_image edit_members_member_path(@member), "Edit #{@member.name}'s Profile"

@@ -85,6 +85,10 @@ class Member < ActiveRecord::Base
     renting? ? "Renting Member" : "Non-Renting/Subletting"
   end
 
+  def prefers_email?
+    contact_method == 'email'
+  end
+
   ## Class methods
 
   def self.contact_list_csv

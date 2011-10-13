@@ -18,4 +18,7 @@
       %br
       = link_to member.website_with_protocol, member.website
 
+  - unless member.prefers_email?
+    %em="(Prefers to be contacted by #{member.contact_method})"
+
   .clear_right
