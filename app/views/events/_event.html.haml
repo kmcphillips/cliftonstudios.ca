@@ -1,4 +1,24 @@
-%h1
+%h1password"],
+        :database => config["database"]
+    )
+    puts "Connected"
+  end
+
+  def import!
+    begin
+      ActiveRecord::Base.transaction do
+        clear_tables
+        import_members
+        import_posts
+        import_events
+        import_about
+        import_images
+
+        puts "Deleting pending emails"
+        ActiveRecord::Base.connection.execute("TRUNCATE pending_emails")
+
+        puts "Success!"
+
   - if event.new_record?
     = event.title
   - else
