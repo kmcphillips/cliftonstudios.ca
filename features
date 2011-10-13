@@ -16,9 +16,6 @@ Bonus
   Bi-laws, Enter and style them
 
 Deploy Time
-  Backup old DB
-  Move old DB to legacy schema
-  Configure DB schemas
   Configure Mail
   Run golive
   Create the sitemap
