@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
   
   def rss
-    @items = (Post.sorted + Event.order("starts_at DESC")).sort{|x,y| x.sort_by <=> y.sort_by}
+    @items = (Post.sorted + Event.order("starts_at DESC")).sort{|x,y| y.sort_by <=> x.sort_by}
 
     respond_to do |wants|
       wants.xml do
