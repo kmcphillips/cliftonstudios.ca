@@ -47,5 +47,4 @@
         = f.text_field :website, :value => (f.object.website.blank? ? "http://" : f.object.website), :size => 40, :id => "website_url"
         = link_to_function(image_tag("/images/icons/link_preview.png", :alt => "Preview", :class => "no_border") + "&nbsp;Preview".html_safe, "preview_link('#website_url');", :title => "Preview")
 
-    = f.hidden_field :notify_password_change
     = f.item :submit, "Save"

@@ -22,7 +22,7 @@ Cliftonstudios::Application.routes.draw do
   match 'logout' => "member_sessions#destroy", :as => :logout
   
   resources :unsubscribe, :only => [:show, :update]
-  resources :password_reset, :only => [:index, :create]
+  resources :password_reset, :only => [:index, :create, :show]
   resources :mailing_list, :only => [:create]
 
   namespace :members do

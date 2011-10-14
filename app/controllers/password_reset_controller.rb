@@ -1,6 +1,8 @@
 class PasswordResetController < ApplicationController
 
   def index
+    @title = "Forgotten Password"
+    
     if logged_in?
       redirect_to root_url
     end
@@ -15,11 +17,9 @@ class PasswordResetController < ApplicationController
       begin
         ActiveRecord::Base.transaction do
           if @member
-            password = @member.reset_password!
+            @member.deliver_forgotten_password!
 
-            MemberMailer.reset_password(:member => @member, :password => password).deliver
-
-            flash[:notice] = "Your password has been reset. A new password has been emailed to you. Please check your email."
+            flash[:notice] = "Instructions for retrieving your password have been sent to you. Please check your email."
             redirect_to login_path
           else
             flash[:error] = "Could not find a member with that email address."
@@ -29,9 +29,24 @@ class PasswordResetController < ApplicationController
       rescue => e
         flash[:error] = "There was an error resetting your password. Sorry about that. Please contact the administrator."
         logger.error "Could not reset password: #{e.message}"
-        
+
         render :action => :index
       end
+    end
+  end
+
+  def show
+    @member = Member.find_by_perishable_token(params[:id])
+
+    if @member
+      MemberSession.create(@member)
+      @member.update_attribute(:password_configured, false)
+
+      flash[:notice] = "Hello #{@member.name}. Try to set your new password to something you will remember this time!"
+      redirect_to members_password_index_path
+    else
+      flash[:error] = "Could not log you in with that token. It may have expired. Please try again or contact the administrator."
+      redirect_to password_reset_index_path
     end
   end
 

@@ -28,8 +28,6 @@ class Member < ActiveRecord::Base
   before_validation :set_default_password
   before_save :create_secret_hash
 
-  attr_accessor :notify_password_change
-
   scope :alphabetical, order("name ASC")
   scope :sorted, alphabetical
   scope :active, where(:active => true)
@@ -37,14 +35,9 @@ class Member < ActiveRecord::Base
   scope :emailable, where(:receive_emails => true, :active => true)
   scope :contact_by_phone, where(:contact_method => "phone")
 
-  def reset_password!
-    change_password
-
-    if save
-      password
-    else
-      self.notify_password_change = nil
-    end
+  def deliver_forgotten_password!
+    reset_perishable_token!
+    MemberMailer.forgot_password(:member => self).deliver
   end
 
   def profile_configured?
@@ -107,16 +100,17 @@ class Member < ActiveRecord::Base
     active.sort{|a, b| a.last_name <=> b.last_name }
   end
 
-  protected
-
-  def change_password
+  def change_password!
     password = MemorablePassword.generate :min_length => PASSWORD_MIN_LENGTH
 
     self.password = password
     self.password_confirmation = password
     self.password_configured = false
-    self.notify_password_change = true
+
+    password
   end
+
+  protected
 
   ## Callbacks and validations
 
@@ -126,8 +120,7 @@ class Member < ActiveRecord::Base
 
   def set_default_password
     if new_record? && password.blank? && password_confirmation.blank?
-      self.notify_password_change = nil
-      change_password
+      change_password!
     end
     true
   end

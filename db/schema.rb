@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927040407) do
+ActiveRecord::Schema.define(:version => 20111014002500) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20110927040407) do
     t.boolean  "renting",              :default => true
     t.integer  "subletting_member_id"
     t.string   "space_number"
+    t.string   "perishable_token"
   end
 
   add_index "members", ["active"], :name => "index_members_on_active"
@@ -137,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20110927040407) do
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
   add_index "members", ["legacy_name"], :name => "index_members_on_legacy_name"
   add_index "members", ["password_configured"], :name => "index_members_on_password_configured"
+  add_index "members", ["perishable_token"], :name => "index_members_on_perishable_token"
   add_index "members", ["permalink"], :name => "index_members_on_permalink"
   add_index "members", ["persistence_token"], :name => "index_members_on_persistence_token", :unique => true
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"

@@ -1,11 +1,17 @@
 class MemberMailer < ActionMailer::Base
   default :from => ROBOT_EMAIL
 
-  def reset_password(opts)
+  def first_login(opts)
     @member = opts[:member]
     @password = opts[:password]
 
-    mail(:to => "#{@member.name} <#{@member.email}>", :subject => "Clifton Studios: Password reset")
+    mail(:to => "#{@member.name} <#{@member.email}>", :subject => "Clifton Studios: Forgotten Password")
+  end
+
+  def forgot_password(opts)
+    @member = opts[:member]
+
+    mail(:to => "#{@member.name} <#{@member.email}>", :subject => "Clifton Studios: Forgotten Password")
   end
 
   def new_member(opts)
