@@ -4,6 +4,7 @@ class BlocksController < ApplicationController
   def about
     @about = @block
     @availability = Block.find_by_label("availability")
+    @executive = Executive.filled.sorted
     @title = "About"
   end
 

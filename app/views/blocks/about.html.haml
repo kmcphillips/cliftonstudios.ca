@@ -5,6 +5,18 @@
   = simple_format @about.body
   .clear_right
 
+- unless @executive.blank?
+  %h1 Clifton Studios Co-op Executive
+  .post
+    %ul.form
+      %li
+        %table
+          - @executive.each do |position|
+            %tr
+              %td.executive= position.title
+              %td= position.member.name
+
+
 = render :partial => "how_to_join"
 
 - if logged_in?

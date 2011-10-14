@@ -9,17 +9,3 @@
 
   - if logged_in?
     %p= link_to "Click here to view a list of email addresses for all studio members.", members_emails_path
-
-%h1 Executive
-
-.post
-  - if @executive.blank?
-    %p The executive has not been configured.
-  - else
-    %ul.form
-      %li
-        %table
-          - @executive.each do |position|
-            %tr
-              %td.executive= position.title
-              %td= position.member.name
