@@ -5,7 +5,7 @@ class MemberMailer < ActionMailer::Base
     @member = opts[:member]
     @password = opts[:password]
 
-    mail(:to => "#{@member.name} <#{@member.email}>", :subject => "Clifton Studios: Forgotten Password")
+    mail(:to => "#{@member.name} <#{@member.email}>", :subject => "Clifton Studios: Important Password Correction")
   end
 
   def forgot_password(opts)
