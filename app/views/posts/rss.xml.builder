@@ -16,7 +16,7 @@ xml.rss :version => "2.0" do
       elsif item.is_a?(Event)
         xml.item do
           xml.title item.title
-          xml.description simple_format(item.starts_at.to_s(:with_time) + "\n\n" + item.description)
+          xml.description simple_format(item.starts_at.to_s(:with_time) + "\n\n" + item.body)
           xml.pubDate item.created_at.to_s(:rfc822)
           xml.link "http://cliftonstudios.ca/events/#{item.permalink}"
         end
