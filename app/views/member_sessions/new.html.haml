@@ -20,10 +20,3 @@
 
   .image_links
     %p= link_to "Forget your password?", password_reset_index_path
-    - if Rails.env.development?
-      %p
-        = form_for @member_session, :url => {:action => "create"} do |f|
-          = f.hidden_field :email, :value => DEV_USERNAME
-          = f.hidden_field :password, :value => DEV_PASSWORD
-          = f.submit "Login as a developer"
-

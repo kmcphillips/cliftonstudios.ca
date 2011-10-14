@@ -1,30 +1,6 @@
 = render :partial => "header", :object => "New Website Login"
 
-%p= "Hello #{@member.name},"
-
-%p The new Clifton Studios website is live! It's like the old one, except much better.
-
-%p If you weren't familliar with the old website, it's somewhere where all members can upload their pictures, type up a bio, and keep track of studo news and events. Non-members can use it to contact the studio, to look at images, find out when show/sales/workshops are happening, and other general Clifton Studios information.
-
-%p
-  New features include:
-  %ul
-    %li Easier to use
-    %li Nicer layout
-    %li Better management of users
-    %li More detailed information
-    %li Executive information and contact
-    %li Easier and cleaner image uploading
-    %li Public mailing list
-
-%h2 The Important Bits
-
-%p
-  The website is here (still):
-  %br
-  %a{:href => "http://cliftonstudios.ca"}= "http://cliftonstudios.ca"
-
-%p You now login with your email address so it should be easy to remember. You have also been given a default password. You will be asked to change it on first login.
+%p Oops! That last password you were sent was incorrect. Your ACTUAL login is:
 
 %p
   Username:
@@ -33,8 +9,9 @@
   Password:
   %span{:style => "font-weight: bold"}=  @password
 
-%p You can login anytime. All your old information and images were imported. There is plenty of great stuff to explore and try out.
+%p Sorry about the confusion.
 
 %p
-  If you have any problems, bugs, questions, or feedback just contact Kevin.
+  Kevin,
+  %br
   kevin@cliftonstudios.ca

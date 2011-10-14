@@ -15,20 +15,7 @@ Bonus
   Keep addresses for snail mailing list
   Bi-laws, Enter and style them
 
-Deploy Time
-  Configure Mail
-  Run golive
-  Create the sitemap
-  Clean up the "about" syntax problems
-  Move the links from "about" to the links page
-  Set admin privileges
-  Run job to set everyone's password and send out an email.
-  Schedule delivery job for pending emails
-
 Post deploy
   An account for Norma.
-  Cron job for sitemap generation. Possibly an observer?
-  Search engine reindexing
-  Update paperclip once the bug is fixed for :hash_secret
-  Remove all the dev login stuff
-
+  Schedule delivery job for pending emails
+  Cron job for sitemap generation.

@@ -107,6 +107,8 @@ class Member < ActiveRecord::Base
     self.password_confirmation = password
     self.password_configured = false
 
+    save!
+
     password
   end
 
