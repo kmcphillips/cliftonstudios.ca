@@ -35,7 +35,8 @@
           - if @member.address.blank?
             Blank
           - else
-            = simple_format @member.address unless @member.address.blank?
+            %div.address
+              = simple_format @member.address unless @member.address.blank?
         %li
           %label Space Number
           = @member.space_number
