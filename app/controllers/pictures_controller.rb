@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
   def show
     if params[:id] == "all"
       @title = "All Pictures"
-      @pictures = Picture.sorted.paginate pagination_params(:per_page => 16)
+      @pictures = Picture.active.sorted.paginate pagination_params(:per_page => 16)
       render "all"
     else
       @member = Member.find_by_permalink params[:id]

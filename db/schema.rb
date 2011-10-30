@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014002500) do
+ActiveRecord::Schema.define(:version => 20111030185204) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -131,6 +131,8 @@ ActiveRecord::Schema.define(:version => 20111014002500) do
     t.integer  "subletting_member_id"
     t.string   "space_number"
     t.string   "perishable_token"
+    t.integer  "member_since_year"
+    t.string   "member_since_month"
   end
 
   add_index "members", ["active"], :name => "index_members_on_active"

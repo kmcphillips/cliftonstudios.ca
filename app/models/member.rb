@@ -22,6 +22,7 @@ class Member < ActiveRecord::Base
   validates :name, :presence => true
   validates :contact_method, :inclusion => CONTACT_METHODS
   validates :renting, :inclusion => [true, false]
+  validate :member_since_format
   validate :website_begins_with_protocol
   validate :subletting_and_associated
 
@@ -58,6 +59,10 @@ class Member < ActiveRecord::Base
 
   def phone_numbers
     [phone, alternate_phone].reject(&:blank?).join(" or ")
+  end
+
+  def member_since
+    [member_since_month, member_since_year].join(" ")
   end
 
   def website_with_protocol
@@ -136,6 +141,10 @@ class Member < ActiveRecord::Base
     if renting?
       self.errors[:base] << "A renting member must not also be marked as subletting" if subletting_member
     end
+  end
+
+  def member_since_format
+    errors.add(:member_since_year, "must be set if a month is selected") if member_since_year.blank? && member_since_month.present?
   end
 
 end

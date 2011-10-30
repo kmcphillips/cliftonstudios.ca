@@ -11,11 +11,11 @@ Bonus
   Contact form for general studio/all memebers
   When changing email, require entering it twice
   Draggable on pictures to sort them, possibly another "sort" page so that the index page isn't too cluttered.
-  Shinier artist index page, rather than a list of names
+  Shinier artist index page, rather than a list of names. Thumbnails for artist index page (camera to show/meeting?)
   Keep addresses for snail mailing list
   Bi-laws, Enter and style them
+  
 
-Post deploy
-  An account for Norma.
-  Schedule delivery job for pending emails
-  Cron job for sitemap generation.
+Features
+  Add back the random images on the sidebar
+

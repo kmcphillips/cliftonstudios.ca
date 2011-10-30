@@ -14,6 +14,11 @@
           = f.object.space_number
           &nbsp;
       %li
+        %label Member Since
+        %span
+          = f.object.member_since
+          &nbsp;
+      %li
         %label Renting Member?
         %span= f.object.renting?.to_yesno
       - if f.object.renting?

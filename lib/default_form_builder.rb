@@ -19,5 +19,15 @@ class DefaultFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  def member_since
+    raise "member_since can only be called on members" unless self.object.is_a?(Member)
+
+    @template.content_tag(:li) do
+      @template.content_tag(:label, "Member Since") +
+      select(:member_since_month, @template.options_for_select(Date::MONTHNAMES.map{|m| m ? [m,m] : ["Select Month...", nil]}, :selected => object.member_since_month)) +
+      select(:member_since_year, @template.options_for_select([["Select Year...", nil]] + ((Date.today.year - 20)..Date.today.year).to_a.reverse.map{|y| [y,y]}, :selected => object.member_since_year))
+    end
+  end
+
 end
 

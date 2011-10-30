@@ -7,6 +7,7 @@ class Picture < ActiveRecord::Base
   validates :member, :presence => true
 
   scope :sorted, order("created_at DESC")
+  scope :active, where("members.active = 1").joins(:member)
   scope :recent, sorted.limit(4)
 
   ## Class methods

@@ -36,6 +36,14 @@
       %label Receive emails?
       = @member.receive_emails?.to_yesno
     %li
+      %label Space Number
+      = @member.space_number
+      &nbsp;
+    %li
+      %label Member Since
+      = @member.member_since
+      &nbsp;
+    %li
       %label Number of logins
       = @member.login_count
     %li
