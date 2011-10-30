@@ -28,6 +28,7 @@ class Member < ActiveRecord::Base
 
   before_validation :set_default_password
   before_save :create_secret_hash
+  before_create :set_member_since
 
   scope :alphabetical, order("name ASC")
   scope :sorted, alphabetical
@@ -127,7 +128,11 @@ class Member < ActiveRecord::Base
 
   def set_default_password
     if new_record? && password.blank? && password_confirmation.blank?
-      change_password!
+      password = MemorablePassword.generate :min_length => PASSWORD_MIN_LENGTH
+
+      self.password = password
+      self.password_confirmation = password
+      self.password_configured = false
     end
     true
   end
@@ -145,6 +150,11 @@ class Member < ActiveRecord::Base
 
   def member_since_format
     errors.add(:member_since_year, "must be set if a month is selected") if member_since_year.blank? && member_since_month.present?
+  end
+
+  def set_member_since
+    self.member_since_month = Date::MONTHNAMES[Date.today.month]
+    self.member_since_year = Date.today.year
   end
 
 end

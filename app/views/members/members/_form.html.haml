@@ -28,13 +28,14 @@
     = f.item :check_box, :active, :label => "Active?"
     = f.item :check_box, :admin, :label => "Site Administrator?"
     = f.item :text_field, :space_number, :size => 4
-    %li
-      - if current_member.admin?
-        = f.member_since
-      - else
-        %label Member Since
-        = f.object.member_since
-        &nbsp;
+    - unless f.object.new_record?
+      %li
+        - if current_member.admin?
+          = f.member_since
+        - else
+          %label Member Since
+          = f.object.member_since
+          &nbsp;
     %li
       = f.label :renting, "Type"
       = f.select :renting, options_for_select([["Renting Member", "true"], ["Non-Renting/Subletting", "false"]], :selected => f.object.renting?.to_s), {}, :id => "renting_select"
