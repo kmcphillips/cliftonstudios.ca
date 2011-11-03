@@ -3,6 +3,6 @@
   %ul
     - events.each do |event|
       %li
-        = link_to event.title, event_path(event)
+        = event.starts_at.to_s(:with_time_condensed)
         %br
-        = event.starts_at.to_s(:with_time)
+        = link_to event.title, event_path(event)
