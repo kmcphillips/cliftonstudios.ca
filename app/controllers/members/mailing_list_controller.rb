@@ -2,6 +2,7 @@ class Members::MailingListController < ApplicationController
   before_filter :require_member
 
   def index
+    @all_entries = MailingListEntry.active
     @entries = MailingListEntry.active.paginate(pagination_params(:order => "created_at DESC", :per_page => 20))
   end
 
