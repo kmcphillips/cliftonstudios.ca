@@ -1,5 +1,5 @@
 %h2 Recent Activity
-- Audit.recent(4).each do |audit|
+- Audit.recent(3).each do |audit|
   %p
     - unless audit.auditable.is_a?(Member)
       - if audit.member

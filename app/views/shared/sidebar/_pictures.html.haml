@@ -1,0 +1,7 @@
+%h2 Member Pictures
+%ul
+  - @random_pictures.each do |picture|
+    = link_to image_tag(picture.thumb, :class => "thumb", :alt => picture.description), picture.full, :rel => "sidebar", :class => "thumb", :title => picture.description
+    %br
+    by
+    = link_to picture.member.name, artist_path(picture.member)

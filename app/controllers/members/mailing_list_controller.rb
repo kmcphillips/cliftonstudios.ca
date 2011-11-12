@@ -30,4 +30,16 @@ class Members::MailingListController < ApplicationController
     redirect_to members_mailing_list_index_path
   end
 
+  def bulk_create
+    count = MailingListEntry.bulk_create(params[:emails])
+
+    if count > 0
+      flash[:notice] = "Added #{count} emails to the mailing list."
+    else
+      flash[:error] = "Added 0 emails. Either the format is incorrect, or all these emails have already been added."
+    end
+
+    redirect_to members_mailing_list_index_path
+  end
+
 end

@@ -17,4 +17,12 @@ class MailingListEntry < ActiveRecord::Base
     end.size
   end
 
+  def self.bulk_create(data)
+    data.downcase.split(/[\s,]/).reject{|x| x.blank? }.map do |email|
+      unless find_by_email(email)
+        MailingListEntry.create(:email => email)
+      end
+    end.compact.size
+  end
+
 end

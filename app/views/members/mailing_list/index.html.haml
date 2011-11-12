@@ -13,6 +13,18 @@
         %label &nbsp;
         = submit_tag "Add"
 
+%h1 Add Multiple Emails
+.post
+  %p You can upload multiple email addresses at once from this form. Just make sure there is a space, new line, or comma between all of them.
+  - form_tag bulk_create_members_mailing_list_index_path, :method => :post do
+    %ul.form
+      %li
+        %label Email Addresses
+        = text_area_tag :emails, nil, :rows => 4, :cols => 40
+      %li
+        %label &nbsp;
+        = submit_tag "Add All"
+
 %h1 Manage Active Emails
 .post
   = collection_index(@entries, ["Email", "Added Date", "Actions"]) do |entry|

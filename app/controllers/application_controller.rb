@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_member_session, :current_member, :logged_in?
 
-  append_before_filter :set_member_tracker
+  append_before_filter :set_member_tracker, :find_random_pictures
 
   private
   
@@ -51,6 +51,10 @@ class ApplicationController < ActionController::Base
 
   def set_member_tracker
     MemberTracker.current = MemberSession.find.try(:member)
+  end
+
+  def find_random_pictures
+    @random_pictures = Picture.random(3)
   end
 
 end

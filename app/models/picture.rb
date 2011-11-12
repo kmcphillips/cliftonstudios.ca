@@ -8,6 +8,7 @@ class Picture < ActiveRecord::Base
 
   scope :sorted, order("created_at DESC")
   scope :active, where("members.active = 1").joins(:member)
+  scope :random, lambda {|size| active.order("RAND()").limit(size || 4) }
   scope :recent, sorted.limit(4)
 
   ## Class methods

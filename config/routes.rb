@@ -49,7 +49,11 @@ Cliftonstudios::Application.routes.draw do
         get 'print'
       end
     end
-    resources :mailing_list, :only => [:index, :update, :create]
+    resources :mailing_list, :only => [:index, :update, :create] do
+      collection do
+        post 'bulk_create'
+      end
+    end
     resources :contact_executive, :only => [:index, :create]
 
     ['bylaws', 'emails', 'mail_queue', 'audits'].each do |block|
