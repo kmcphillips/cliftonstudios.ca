@@ -27,6 +27,16 @@
 
 %h1 Manage Active Emails
 .post
+  - form_tag members_mailing_list_index_path, :method => :get do
+    %ul.form
+      %li
+        %label Search by email
+        = text_field_tag :search, params[:search], :size => 24
+        %span.note Full or partial email
+      %li
+        %label &nbsp;
+        = submit_tag "Search"
+        
   = collection_index(@entries, ["Email", "Added Date", "Actions"]) do |entry|
     %tr{:class => cycle("odd", "even")}
       %td= entry.email
