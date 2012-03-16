@@ -26,7 +26,13 @@
           = obfuscated_mail_to @member.email unless @member.email.blank?
         %li
           %label Phone Numbers
-          = @member.phone_numbers.blank? ? "Blank" : @member.phone_numbers
+          - if @member.phone_numbers.blank?
+            Blank
+          - else
+            - @member.phone_numbers.each_with_index do |number, index|
+              - if index != 0
+                or
+              %span= number
         %li
           %label Preferred Contact Method
           = @member.contact_method.humanize

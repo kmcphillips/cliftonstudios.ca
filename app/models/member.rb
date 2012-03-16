@@ -59,7 +59,11 @@ class Member < ActiveRecord::Base
   end
 
   def phone_numbers
-    [phone, alternate_phone].reject(&:blank?).join(" or ")
+    [phone, alternate_phone].reject(&:blank?)
+  end
+
+  def phone_numbers_formatted
+    phone_numbers.join(" or ")
   end
 
   def member_since
