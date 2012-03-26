@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111030185204) do
+ActiveRecord::Schema.define(:version => 20120326011159) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20111030185204) do
     t.string   "perishable_token"
     t.integer  "member_since_year"
     t.string   "member_since_month"
+    t.boolean  "system",               :default => false
   end
 
   add_index "members", ["active"], :name => "index_members_on_active"
@@ -186,5 +187,12 @@ ActiveRecord::Schema.define(:version => 20111030185204) do
   add_index "posts", ["created_at"], :name => "index_posts_on_created_at"
   add_index "posts", ["member_id"], :name => "index_posts_on_member_id"
   add_index "posts", ["permalink"], :name => "index_posts_on_permalink"
+
+  create_table "system_variables", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -2,6 +2,9 @@
   - if logged_in?
     Hello
     = current_member.name
+    - if SystemVariable.readonly?
+      &nbsp;
+      %em (Read Only Mode)  
     &nbsp;&nbsp;&nbsp;
     = link_to "Logout", "/logout"
   - else

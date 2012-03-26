@@ -83,7 +83,7 @@ module ApplicationHelper
         if collection.paginate?
           src << content_tag(:tr) do
             content_tag(:th, :colspan => column_titles.size) do
-              will_paginate(collection, :previous_label => "← Newer", :next_label => "Older →")
+              will_paginate_with_opts collection
             end
           end
         end
@@ -98,7 +98,7 @@ module ApplicationHelper
   end
 
   def will_paginate_with_opts(collection)
-    will_paginate(collection, :previous_label => "← Newer", :next_label => "Older →")
+    will_paginate(collection, :previous_label => "&lt;%nbsp;Newer", :next_label => "Older&nbsp;&gt;")
   end
 
   def truncate_for_index(str)

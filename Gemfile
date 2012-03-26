@@ -18,12 +18,13 @@ gem 'fastercsv'
 gem 'sitemap_generator'
 
 group :development, :test do
-  gem "mongrel"
+  gem "thin"
   gem "rspec", ">= 2.0.0"
   gem "rspec-rails", ">= 2.0.0"
   gem "haml-rails"
   gem "jquery-rails"
   gem "awesome_print"
   gem "tlsmail"
+  gem "pry"
 end
 

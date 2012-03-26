@@ -1,0 +1,9 @@
+%h1 System Variables
+.post
+  - if @readonly
+    %p
+      Readonly mode will allow the site to operate as normal for the public. It will force logout all users that are not flagged as 'system' and prevent anyone but system users from logging in.
+    %p
+      = form_for [:members, @readonly] do |f|
+        = f.hidden_field :value, :value => (!SystemVariable.readonly?).to_s
+        = f.submit "Turn #{SystemVariable.readonly? ? "OFF" : "ON"} readonly mode", :confirm => "Are you sure you want to toggle readonly mode?"

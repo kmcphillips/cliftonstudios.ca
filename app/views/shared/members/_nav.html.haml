@@ -24,3 +24,5 @@
     %li.members_nav= link_to "Manage All Pictures", all_members_pictures_path, :title => "Modify or delete pictures uploaded by all members."
     %li.members_nav= link_to "Pending Mail Queue", members_mail_queue_path, :title => "A queue of messages the site has not yet sent out."
     %li.members_nav= link_to "Website Audits", members_audits_path, :title => "History of all actions on the site."
+    - if current_member.system?
+      %li.members_nav= link_to "System Variables", members_system_variables_path, :title => "If you don't know what this is then click it."

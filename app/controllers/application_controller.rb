@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_member_session, :current_member, :logged_in?
 
+  prepend_before_filter :readonly_mode_check
   append_before_filter :set_member_tracker, :find_random_pictures
 
   private
@@ -55,6 +56,15 @@ class ApplicationController < ActionController::Base
 
   def find_random_pictures
     @random_pictures = Picture.random(3)
+  end
+
+  def readonly_mode_check
+    if SystemVariable.readonly? && current_member_session && !current_member_session.member.system?
+      current_member_session.destroy
+      redirect_to login_path
+    end
+
+    true
   end
 
 end

@@ -26,3 +26,6 @@ Cliftonstudios::Application.configure do
   DEV_PASSWORD = "asdfasdf"
 end
 
+silence_warnings do
+  IRB = Pry
+end
