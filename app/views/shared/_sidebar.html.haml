@@ -1,6 +1,2 @@
-= render :partial => "shared/sidebar/search"
-= render :partial => "shared/sidebar/upcoming_events"
-= render :partial => "shared/sidebar/follow"
-= render :partial => "shared/sidebar/mailing_list"
-= render :partial => "shared/sidebar/pictures"
-= render :partial => "shared/sidebar/recent_activity"
+- [:search, :upcoming_events, :follow, :mailing_list, :pictures, :recent_activity].each do |partial|
+  = render :partial => "shared/sidebar/#{partial}"

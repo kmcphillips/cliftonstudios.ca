@@ -35,8 +35,8 @@ class PendingEmail < ActiveRecord::Base
     end
   end
 
-  def self.create_executive_message!(subject, body, from=nil)
-    create! :action => "contact_executive", :locals => {:subject => subject, :body => body, :from => from}
+  def self.create_executive_message!(subject, body, from, anonymous=nil)
+    create! :action => "contact_executive", :locals => {:subject => subject, :body => body, :from => from, :anonymous => anonymous}
   end
 
 end

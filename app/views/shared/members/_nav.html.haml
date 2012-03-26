@@ -8,12 +8,12 @@
 %h2 Members Area
 %ul
   %li.members_nav= link_to "Contact List", members_contact_list_index_path, :title => "Contact information for all studio members."
+  %li.members_nav= link_to "All Member Emails", members_emails_path, :title => "A list of email addresses for all members, copy and paste for mass-mailing."
   %li.members_nav= link_to "Studio Bylaws", members_bylaws_path, :title => "The full Clifton Studios Bylaws."
-  %li.members_nav= link_to "News/Blog", members_posts_path, :title => "Create and update main page news posts."
+  %li.members_nav= link_to "News", members_posts_path, :title => "Create and update main page news posts."
   %li.members_nav= link_to "Events", members_events_path, :title => "Create and update studio events."
   %li.members_nav= link_to "Links", members_links_path, :title => "Manage the links page."
   %li.members_nav= link_to "Public Mailing List", members_mailing_list_index_path, :title => "Public that has signed up for our email mailing list."
-  %li.members_nav= link_to "All Member Emails", members_emails_path, :title => "A list of email addresses for all members, copy and paste for mass-mailing."
 
 - if current_member.admin?
   %h2 Site Admin
