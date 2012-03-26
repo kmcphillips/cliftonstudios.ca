@@ -2,6 +2,7 @@
 .post
   %p= link_to "Print contact sheet for posting by the phone", print_members_contact_list_index_path, :target => "_blank"
   %p= link_to "Download spreadsheet (.csv)", members_contact_list_index_path(:format => "csv")
+  %p= link_to "View all member email addresses", members_emails_path
 
 %h1 Contact List
 .post

@@ -35,7 +35,7 @@ class MemberMailer < ActionMailer::Base
 
   def contact_executive(opts)
     @message = opts[:message]
-    @view_from = opts[:from]
+    @view_from = opts[:anonymous] ? "anonymous@cliftonstudios.ca" : opts[:from]
     @view_subject = opts[:subject]
 
     mail(:to => executive, :bcc => admin, :subject => "Website Message: #{opts[:subject]}", :from => opts[:from] || ROBOT_EMAIL)
