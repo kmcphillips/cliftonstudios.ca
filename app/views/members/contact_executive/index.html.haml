@@ -12,8 +12,8 @@
         = text_area_tag :message, params[:message], :rows => 12, :cols => 50
       %li
         %label Send Anonymously
-        = checkbox_tag :anonymous
-        %span.note Your name will not be attached to the message
+        = check_box_tag :anonymous
+        %span.note If checked, your name will not be attached to the message
       %li
         %label &nbsp;
         = submit_tag "Send"
