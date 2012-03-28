@@ -9,4 +9,7 @@
   %p The following members prefer to be phoned rather than emailed.
   %ul
     - @phone.each do |member|
-      %li= link_to member.name, artist_path(member)
+      %li
+        = link_to member.name, artist_path(member)
+        at
+        = member.phone_numbers_formatted
