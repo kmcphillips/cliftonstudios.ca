@@ -34,7 +34,7 @@ class MemberMailer < ActionMailer::Base
   end
 
   def contact_executive(opts)
-    @message = opts[:message]
+    @message = opts[:body]
     @view_from = opts[:anonymous] ? "anonymous@cliftonstudios.ca" : opts[:from]
     @view_subject = opts[:subject]
 
