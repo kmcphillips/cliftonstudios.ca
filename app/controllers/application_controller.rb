@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
   end
 
   def readonly_mode_check
-    if SystemVariable.readonly? && current_member_session && !current_member_session.member.system?
+    if SystemVariable.readonly? && @current_member_session && !@current_member_session.member.system?
       current_member_session.destroy
       redirect_to login_path
     end
