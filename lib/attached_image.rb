@@ -15,7 +15,7 @@ module AttachedImage
 
       before_validation :maybe_delete_image
 
-      validates_attachment_size :image, :in => 1..2.megabytes
+      validates_attachment_size :image, :in => 1..6.megabytes
       validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/pjpeg", "image/png", "image/tiff", "image/x-png", "image/gif"]
 
       IMAGE_SIZES.each_key do |key|
