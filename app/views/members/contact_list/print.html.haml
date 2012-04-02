@@ -15,6 +15,9 @@
     %tr
       %td
         %h3= member.name
+        - unless member.space_number.blank?
+          = "Space ##{member.space_number}"
+          %br
         = member.phone_numbers_formatted
         %br
         = member.email
