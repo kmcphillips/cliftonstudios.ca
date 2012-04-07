@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120326011159) do
+ActiveRecord::Schema.define(:version => 20120407121933) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -147,6 +147,21 @@ ActiveRecord::Schema.define(:version => 20120326011159) do
   add_index "members", ["receive_emails"], :name => "index_members_on_receive_emails"
   add_index "members", ["renting"], :name => "index_members_on_renting"
   add_index "members", ["subletting_member_id"], :name => "index_members_on_subletting_member_id"
+
+  create_table "minutes", :force => true do |t|
+    t.string   "description"
+    t.datetime "recorded_at"
+    t.integer  "member_id"
+    t.string   "file_file_name"
+    t.integer  "file_file_size"
+    t.string   "file_content_type"
+    t.string   "file_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "minutes", ["member_id"], :name => "index_minutes_on_member_id"
+  add_index "minutes", ["recorded_at"], :name => "index_minutes_on_recorded_at"
 
   create_table "pending_emails", :force => true do |t|
     t.string   "action"

@@ -1,3 +1,12 @@
+- content_for :js do
+  :javascript
+    $(document).ready(function(){
+      if($('#login_email').val() != undefined && $('#login_email').val().length > 0)
+        $('#login_password').focus();
+      else
+        $('#login_email').focus();
+    });
+
 %h1 Member Login
 
 .post
@@ -7,10 +16,10 @@
     %ul.form
       %li
         = f.label :email
-        = f.text_field :email
+        = f.text_field :email, :id => "login_email"
       %li
         = f.label :password
-        = f.password_field :password
+        = f.password_field :password, :id => "login_password"
       %li
         = f.label :remember_me
         = f.check_box :remember_me

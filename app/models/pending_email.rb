@@ -1,5 +1,5 @@
 class PendingEmail < ActiveRecord::Base
-  TYPES = %w[new_member new_event new_post contact_executive]
+  TYPES = %w[new_member new_event new_post contact_executive new_minutes]
 
   serialize :locals, Hash
 

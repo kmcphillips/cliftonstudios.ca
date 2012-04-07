@@ -16,6 +16,7 @@ class Member < ActiveRecord::Base
   has_many :posts
   has_many :events
   has_many :pictures
+  has_many :minutes
   has_many :titles, :class_name => "Executive", :foreign_key => "member_id"
   has_many :dependent_members, :class_name => "Member", :foreign_key => "subletting_member_id"
   

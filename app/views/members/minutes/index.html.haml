@@ -1,0 +1,32 @@
+%h1 Meeting Minutes
+
+.post
+  - if @existing_minutes.blank?
+    None have been uploaded
+  - else
+    %ul
+      - @existing_minutes.each do |m|
+        %li
+          %span.bold
+            = m.recorded_at.to_s(:without_time)
+            = ":"
+          = link_to m.description, m.file.url
+          - if current_member.admin?
+            &nbsp;&nbsp;&nbsp;
+            = link_to "(Delete)", members_minutes_path(m), :method => :delete, :confirm => "Are you sure you want to delete this file?"
+
+- if current_member.admin?
+  %h1 Upload New Minutes
+
+  .post
+    %p Only administrators (don't worry, you are one) can upload new meeting minutes.
+    %p Please upload only PDF file is possible.
+
+    = form_for [:members, @minutes], :url => members_minutes_index_path, :html => {:multipart => true, :method => :post} do |f|
+      = f.error_messages
+
+      %ul.form
+        = f.item :file_field, :file, :label => "Minutes Document"
+        = f.item :text_field, :description, :rows => 3, :cols => 50, :label => "Description"
+        = f.item :text_field, :recorded_at, :class => "datepicker", :size => "12", :note => "YY-MM-DD", :label => "Meeting Date"
+        = f.item :submit, "Upload"

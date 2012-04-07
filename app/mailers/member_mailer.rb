@@ -33,6 +33,10 @@ class MemberMailer < ActionMailer::Base
     mail(:to => ROBOT_EMAIL, :bcc => everyone, :subject => "Clifton Studios Event: #{@event.title}")
   end
 
+  def new_minutes(opts)
+    mail(:to => ROBOT_EMAIL, :bcc => everyone, :subject => "Clifton Studios Meeting Minutes Added")
+  end
+
   def contact_executive(opts)
     @message = opts[:body]
     @view_from = opts[:anonymous] ? "anonymous@cliftonstudios.ca" : opts[:from]
