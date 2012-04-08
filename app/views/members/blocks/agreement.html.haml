@@ -1,0 +1,13 @@
+- unless current_member.agreement_signed?
+  %h1 Agreement Must Be Signed
+  .post
+    %p All members must sign the membership agreement below. Please read the agreement and return a signed copy of it to the membership/rental officer #{Executive.membership_officer.try(:name)}.
+
+    %p
+      = link_to "Continue on to dashboard", members_dashboard_index_path
+
+%h1 Member Agreement
+.post
+  %p
+    TODO: Enter the agreement.
+    

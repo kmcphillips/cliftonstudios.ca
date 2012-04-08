@@ -41,5 +41,8 @@ class Members::BlocksController < BlocksController
     @audits = Audit.paginate(pagination_params(:order => "created_at DESC", :per_page => 20))
   end
 
+  def agreement
+  end
+
 end
 

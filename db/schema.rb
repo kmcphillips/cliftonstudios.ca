@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120407121933) do
+ActiveRecord::Schema.define(:version => 20120408130041) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -134,10 +134,12 @@ ActiveRecord::Schema.define(:version => 20120407121933) do
     t.integer  "member_since_year"
     t.string   "member_since_month"
     t.boolean  "system",               :default => false
+    t.boolean  "agreement_signed",     :default => false
   end
 
   add_index "members", ["active"], :name => "index_members_on_active"
   add_index "members", ["admin"], :name => "index_members_on_admin"
+  add_index "members", ["agreement_signed"], :name => "index_members_on_agreement_signed"
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
   add_index "members", ["legacy_name"], :name => "index_members_on_legacy_name"
   add_index "members", ["password_configured"], :name => "index_members_on_password_configured"

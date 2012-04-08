@@ -58,7 +58,7 @@ Cliftonstudios::Application.routes.draw do
     resources :system_variables, :only => [:index, :update]
     resources :minutes, :only => [:index, :create, :destroy]
 
-    ['bylaws', 'emails', 'mail_queue', 'audits'].each do |block|
+    ['bylaws', 'emails', 'mail_queue', 'audits', 'agreement'].each do |block|
       match block => "blocks##{block}"
     end
   end

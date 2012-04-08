@@ -5,6 +5,11 @@
       This is where you can manage your personal information. Please keep it up to date! It is used to generate the contact list and to email you about meetings and events at the studio.
     %p
       Your personal information is kept private. Phone number, email address, and home address are only shown to other members who have logged in to the website. Never to the public.
+    - unless current_member.agreement_signed?
+      %p
+        %span.bold Note:
+        You have not yet signed the rental agreement.
+        = link_to "Click here to read it.", members_agreement_path
 
     %ul.form
       = render :partial => "form", :locals => {:f => f}
@@ -32,6 +37,9 @@
       %li
         %label Site Administrator?
         %span= f.object.admin?.to_yesno
+      %li
+        %label Agreement Signed?
+        %span= f.object.agreement_signed?.to_yesno
       - unless f.object.active?
         %li
           %label Status

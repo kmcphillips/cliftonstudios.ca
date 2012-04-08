@@ -35,6 +35,8 @@ class MemberSessionsController < ApplicationController
         redirect_to members_password_index_path
       elsif !@member_session.member.profile_configured?
         redirect_to members_profile_index_path
+      elsif !@member_session.member.agreement_signed?
+        redirect_to members_agreement_path
       else
         redirect_to members_dashboard_index_path
       end

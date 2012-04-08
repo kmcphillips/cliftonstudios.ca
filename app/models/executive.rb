@@ -22,5 +22,15 @@ class Executive < ActiveRecord::Base
     s.blank? ? "nobody" : s
   end
 
+  def self.method_missing(method, *args)
+    TITLES.each do |title|
+      if title.downcase.gsub(/[^a-z0-9]/, "_").to_sym == method
+        return where(:title => title).first.try(:member)
+      end
+    end
+
+    super(method, args)
+  end
+
 end
 

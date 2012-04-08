@@ -33,6 +33,9 @@
       %label Site Administrator?
       = @member.admin?.to_yesno
     %li
+      %label Agreement Signed?
+      = @member.agreement_signed?.to_yesno
+    %li
       %label Receive emails?
       = @member.receive_emails?.to_yesno
     %li

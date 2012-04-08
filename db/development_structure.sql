@@ -126,6 +126,8 @@ CREATE TABLE `members` (
   `perishable_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `member_since_year` int(11) DEFAULT NULL,
   `member_since_month` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `system` tinyint(1) DEFAULT '0',
+  `agreement_signed` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_members_on_email` (`email`),
   UNIQUE KEY `index_members_on_persistence_token` (`persistence_token`),
@@ -137,8 +139,25 @@ CREATE TABLE `members` (
   KEY `index_members_on_legacy_name` (`legacy_name`),
   KEY `index_members_on_renting` (`renting`),
   KEY `index_members_on_subletting_member_id` (`subletting_member_id`),
-  KEY `index_members_on_perishable_token` (`perishable_token`)
+  KEY `index_members_on_perishable_token` (`perishable_token`),
+  KEY `index_members_on_agreement_signed` (`agreement_signed`)
 ) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `minutes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) DEFAULT NULL,
+  `recorded_at` datetime DEFAULT NULL,
+  `member_id` int(11) DEFAULT NULL,
+  `file_file_name` varchar(255) DEFAULT NULL,
+  `file_file_size` int(11) DEFAULT NULL,
+  `file_content_type` varchar(255) DEFAULT NULL,
+  `file_updated_at` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_minutes_on_recorded_at` (`recorded_at`),
+  KEY `index_minutes_on_member_id` (`member_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `pending_emails` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -149,7 +168,7 @@ CREATE TABLE `pending_emails` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_pending_emails_on_created_at` (`created_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `pictures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -254,3 +273,7 @@ INSERT INTO schema_migrations (version) VALUES ('20111014002500');
 INSERT INTO schema_migrations (version) VALUES ('20111030185204');
 
 INSERT INTO schema_migrations (version) VALUES ('20120326011159');
+
+INSERT INTO schema_migrations (version) VALUES ('20120407121933');
+
+INSERT INTO schema_migrations (version) VALUES ('20120408130041');
