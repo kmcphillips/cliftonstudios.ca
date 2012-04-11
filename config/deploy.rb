@@ -6,6 +6,8 @@ set :use_sudo, false
 set :scm, "git"
 set :keep_releases, 5
 
+set :rake, "bundle exec rake"
+
 default_run_options[:pty] = true
 
 role :web, "68.169.58.121"
