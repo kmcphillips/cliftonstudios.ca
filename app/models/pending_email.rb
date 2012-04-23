@@ -10,6 +10,7 @@ class PendingEmail < ActiveRecord::Base
   scope :pending, where(:processing => false)
   
   def deliver!
+    # TODO: This should rescue errors and have a state more than just true/false
     MemberMailer.send(action, locals).deliver
   end
 
