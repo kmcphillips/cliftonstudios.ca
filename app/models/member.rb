@@ -40,7 +40,7 @@ class Member < ActiveRecord::Base
 
   def deliver_forgotten_password!
     reset_perishable_token!
-    MemberMailer.forgot_password(:member => self).deliver
+    MemberMailer.forgot_password(:id => self.id).deliver
   end
 
   def profile_configured?

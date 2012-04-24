@@ -11,7 +11,7 @@ task :reset_all_passwords => :environment do
         password = member.change_password!
       end
 
-      MemberMailer.first_login(:member => member, :password => password).deliver
+      MemberMailer.first_login(:id => member.id, :password => password).deliver
 
       puts "   Done"
     rescue => e

@@ -2,16 +2,18 @@ namespace :jobs do
 
   desc "Send all pending emails"
   task :deliver_email => :environment do
-    while message = PendingEmail.next!
-      if message.locals[:member].try(:name)
-        puts "Delivering #{message.action} to #{message.locals[:member].name}"
-      elsif message.action == "contact_executive"
-        puts "Delivering #{message.action} to executive"
-      else
-        puts "Delivering #{message.action} to everyone"
+    if PendingEmail.processing.any?
+      puts "Aborting since there is still a message in processing."
+
+    else
+      begin
+        while message = PendingEmail.next!
+          puts "Delivering #{message.action} to #{message.recipients_description}"
+          message.deliver!
+        end
+      rescue => e
+        MemberMailer.delivery_error e
       end
-      
-      message.deliver!
     end
   end
 end

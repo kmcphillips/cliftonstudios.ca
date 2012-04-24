@@ -3,7 +3,7 @@ class EmailProfileUpdateObserver < ActiveRecord::Observer
 
   def after_create(member)
     if member.password
-      PendingEmail.create! :action => "new_member", :locals => {:password => member.password, :member => member}
+      PendingEmail.create! :action => "new_member", :locals => {:password => member.password, :id => member.id}
     end
   end
 

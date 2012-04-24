@@ -1,25 +1,28 @@
 class PendingEmail < ActiveRecord::Base
   TYPES = %w[new_member new_event new_post contact_executive new_minutes]
+  STATUSES = %w[pending processing complete]
 
   serialize :locals, Hash
 
   belongs_to :member
 
   validates :action, :inclusion => TYPES
+  validates :status, :inclusion => STATUSES
 
-  scope :pending, where(:processing => false)
+  scope :pending, where(:status => "pending")
+  scope :processing, where(:status => "processing")
   
   def deliver!
-    # TODO: This should rescue errors and have a state more than just true/false
     MemberMailer.send(action, locals).deliver
+    update_attribute :status, "complete"
   end
 
   def recipients_description
     case action
-      when "new_event", "new_post"
+      when "new_event", "new_post", "new_minutes"
         "Everyone"
       when "new_member"
-        locals[:member].try(:name)
+        Member.find_by_id(locals[:id]).try(:name)
       when "contact_executive"
         "The Executive"
       else
@@ -30,8 +33,8 @@ class PendingEmail < ActiveRecord::Base
   ## Class methods
 
   def self.next!
-    if message = where(:processing => false).order("created_at ASC").first
-      message.update_attribute :processing, true
+    if message = pending.order("created_at ASC").first
+      message.update_attribute :status, "processing"
       message
     end
   end

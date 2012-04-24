@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120407121933) do
+ActiveRecord::Schema.define(:version => 20120424013502) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -166,12 +166,13 @@ ActiveRecord::Schema.define(:version => 20120407121933) do
   create_table "pending_emails", :force => true do |t|
     t.string   "action"
     t.text     "locals"
-    t.boolean  "processing", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",     :default => "pending"
   end
 
   add_index "pending_emails", ["created_at"], :name => "index_pending_emails_on_created_at"
+  add_index "pending_emails", ["status"], :name => "index_pending_emails_on_status"
 
   create_table "pictures", :force => true do |t|
     t.integer  "member_id"
