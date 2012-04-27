@@ -7,9 +7,7 @@
 
 ## About
 
-This is a Rails 3 site for the Winnipeg Manitoba based artist co-op.
-
-NOTE: This site is going to replace the legacy PHP site which is currently live.
+This is a Rails 3 site for the Winnipeg Manitoba based artist co-op. I don't know why you'd want to set up your own copy of this website, but if you do for some reason here's how.
 
 ## Quick Setup
 
