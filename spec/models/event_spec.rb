@@ -12,8 +12,19 @@ describe Event do
       event.ends_at.should == (Time.now.beginning_of_day + 1.day)
     end
   end
-  
+ 
   after(:each) do
     Event.destroy_all
+  end
+
+  describe "class method" do
+    describe "#next_two_meetings" do
+      it "should calculate the next two meetings" do
+        date = Date.parse("01/09/2012")
+        Date.stub(:today => date)
+
+        Date.next_two_meetings.should eq([Date.parse("04/10/2012"), Date.parse("04/04/2013")])
+      end
+    end
   end
 end

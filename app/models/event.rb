@@ -27,7 +27,32 @@ class Event < ActiveRecord::Base
     end
   end
 
-protected
+  class << self
+
+    def next_two_meetings
+      result = []
+      date = Date.today.beginning_of_month
+
+      while result.size != 2
+        if date.month == 10 || date.month == 4
+          meeting = date
+
+          while meeting.cwday != 4
+            meeting = meeting + 1.day
+          end
+
+          result << meeting if meeting >= Date.today
+        end
+
+        date = date + 1.month
+      end
+
+      result
+    end
+
+  end
+
+  protected
   
   def set_ends_at
     self.ends_at = self.starts_at.beginning_of_day + duration.days

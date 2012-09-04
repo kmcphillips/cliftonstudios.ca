@@ -1,3 +1,15 @@
+%h1 General Meetings
+
+%p
+  Membership meetings take place twice a year, on the first Tuesday in April and the first Tuesday in October, at 7:00PM.
+
+%p
+  The next two meetings will be:
+  %br
+  = Event.next_two_meetings.first.to_s(:without_time)
+  %br
+  = Event.next_two_meetings.last.to_s(:without_time)
+
 - if @events.any?
   - @events.each do |event|
     = render :partial => "event", :object => event
