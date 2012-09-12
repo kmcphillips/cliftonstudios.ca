@@ -29,6 +29,7 @@ class Event < ActiveRecord::Base
 
   class << self
 
+    # The first Thursday in April and October
     def next_two_meetings
       result = []
       date = Date.today.beginning_of_month
@@ -42,6 +43,42 @@ class Event < ActiveRecord::Base
           end
 
           result << meeting if meeting >= Date.today
+        end
+
+        date = date + 1.month
+      end
+
+      result
+    end
+
+    # Saturday the week before Mother's Day. Mother's day is the second sunday in May. This makes the sale the first Sunday in May minus one day.
+    # Last Saturday of November and the Sunday immediately after
+    def next_two_sales
+      result = []
+      date = Date.today.beginning_of_month
+
+      while result.size != 2
+        if date.month == 5
+          meeting = date
+
+          while meeting.cwday != 7
+            meeting = meeting + 1.day
+          end
+
+          meeting = meeting - 1.day
+
+          result << meeting if meeting >= Date.today
+
+        elsif date.month == 12
+          meeting = date - 1.day
+
+          while meeting.cwday != 6
+            meeting = meeting - 1.day
+          end
+
+          if meeting + 1.day >= Date.today
+            result << [meeting, meeting + 1.day]
+          end
         end
 
         date = date + 1.month

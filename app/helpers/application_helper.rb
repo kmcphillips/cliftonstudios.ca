@@ -13,6 +13,17 @@ module ApplicationHelper
     end
   end
 
+  def format_recurring_dates(dates)
+    dates.map do |event|
+      case event
+      when Array
+        event.map{|e| e.to_time.to_s(:without_time) }.join(" - ")
+      else
+        event.to_time.to_s(:without_time)
+      end
+    end.join(" and ")
+  end
+
   def index_entity_image(path, label=nil, args={})
     path = polymorphic_path(path) if path.is_a?(Array)
     html = link_to image_tag("/images/icons/index.png", :alt => "Index"), path, :title => "Index", :class => "action-image"
