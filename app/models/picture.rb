@@ -1,6 +1,7 @@
 class Picture < ActiveRecord::Base
 
   include AttachedImage
+  include Audited
   
   belongs_to :member
 

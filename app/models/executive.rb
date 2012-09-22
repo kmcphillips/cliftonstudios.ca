@@ -2,6 +2,8 @@ class Executive < ActiveRecord::Base
 
   TITLES = ["President", "Vice President", "Vice President", "Membership Officer", "Secretary", "Treasurer"]
 
+  include Audited
+  
   belongs_to :member
 
   validates :title, :inclusion => {:in => TITLES, :message => "is not a valid executive title"}

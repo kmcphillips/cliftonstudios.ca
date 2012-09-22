@@ -5,5 +5,6 @@ class Block < ActiveRecord::Base
   attr_protected :label, :path
   
   include AttachedImage
+  include Audited
 
 end

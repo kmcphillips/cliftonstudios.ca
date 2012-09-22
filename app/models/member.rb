@@ -10,6 +10,7 @@ class Member < ActiveRecord::Base
   acts_as_permalink :from => :name
   
   include AttachedImage
+  include Audited
 
   belongs_to :subletting_member, :class_name => "Member", :foreign_key => "subletting_member_id"
 
@@ -30,6 +31,7 @@ class Member < ActiveRecord::Base
   before_validation :set_default_password
   before_save :create_secret_hash
   before_create :set_member_since
+  after_create :email_new_member
 
   scope :alphabetical, order("name ASC")
   scope :sorted, alphabetical
@@ -160,6 +162,12 @@ class Member < ActiveRecord::Base
   def set_member_since
     self.member_since_month = Date::MONTHNAMES[Date.today.month]
     self.member_since_year = Date.today.year
+  end
+
+  def email_new_member
+    if self.password
+      PendingEmail.create! :action => "new_member", :locals => {:password => self.password, :id => self.id}
+    end
   end
 
 end

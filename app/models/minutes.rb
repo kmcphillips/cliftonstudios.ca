@@ -1,5 +1,8 @@
 class Minutes < ActiveRecord::Base
 
+  include Audited
+  include EmailOnCreate
+
   belongs_to :member
 
   has_attached_file :file,

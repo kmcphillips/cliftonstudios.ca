@@ -2,6 +2,8 @@ class Post < ActiveRecord::Base
 
   acts_as_permalink
   include AttachedImage
+  include Audited
+  include EmailOnCreate
   
   belongs_to :member
   
