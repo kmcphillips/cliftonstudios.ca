@@ -58,7 +58,13 @@ class Member < ActiveRecord::Base
   end
 
   def last_name
-    name.split(" ").last
+    pieces = name.split(" ")
+
+    if ["de", "von", "le"].include?(pieces.last(2).first.downcase)
+      pieces.last(2).join(" ")
+    else
+      pieces.last
+    end
   end
 
   def phone_numbers
