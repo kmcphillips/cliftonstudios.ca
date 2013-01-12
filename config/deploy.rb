@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "Clifton Studios"
 set :repository,  "git://github.com/kimos/cliftonstudios.ca.git"
 set :deploy_to, "/var/www/kevin/data/www/cliftonstudios.ca"
@@ -6,7 +8,7 @@ set :use_sudo, false
 set :scm, "git"
 set :keep_releases, 5
 
-set :rake, "bundle exec rake"
+#set :rake, "bundle exec rake"
 
 default_run_options[:pty] = true
 
@@ -37,6 +39,6 @@ task :symlink_shared_files do
 end
 
 task :generate_sitemaps do
-  run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh" 
+  run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
 end
 
