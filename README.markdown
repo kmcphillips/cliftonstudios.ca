@@ -11,11 +11,11 @@ This is a Rails 3 site for the Winnipeg Manitoba based artist co-op. I don't kno
 
 ## Quick Setup
 
-With an OS X or Linux machine with ruby and rubygems and bundler installed, you should be able to go from 0 to running in under three minutes. 
+With an OS X or Linux machine with ruby and rubygems and bundler installed, you should be able to go from 0 to running in under three minutes.
 
 ### For the impatient
 
-    $ git clone git://github.com/kimos/cliftonstudios.ca.git
+    $ git clone git://github.com/kmcphillips/cliftonstudios.ca.git
     $ cd cliftonstudios
     $ bundle install
     $ cp config/database.yml.example config/database.yml
@@ -29,7 +29,7 @@ You'll need to create a MySQL database matching the credentials in the database.
 
 Clone the git repo to get the source.
 
-    $ git clone git://github.com/kimos/cliftonstudios.ca.git
+    $ git clone git://github.com/kmcphillips/cliftonstudios.ca.git
 
 ### Install the required gems
 
@@ -37,11 +37,11 @@ Bundler to the rescue!
 
     $ bundle install
 
-The only tricky on is rmagick which depends on ImageMagick locally. On Linux it's usually just installing a package, but on OS X it's a little more intense.  
+The only tricky on is rmagick which depends on ImageMagick locally. On Linux it's usually just installing a package, but on OS X it's a little more intense.
 
     $ sudo gem install haml will_paginate rmagick sqlite3-ruby
 
-If rmagick won't install, then just comment it out from the Gemfile. The app will run but image uploads will not work. On linux you'll have to install the ImageMagick dev libraries that should be in the repo for your distro. On OS X try something like this:  
+If rmagick won't install, then just comment it out from the Gemfile. The app will run but image uploads will not work. On linux you'll have to install the ImageMagick dev libraries that should be in the repo for your distro. On OS X try something like this:
 
 [http://github.com/masterkain/ImageMagick-sl](http://github.com/masterkain/ImageMagick-sl)
 

@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 
 set :application, "Clifton Studios"
-set :repository,  "git://github.com/kimos/cliftonstudios.ca.git"
+set :repository,  "git://github.com/kmcphillips/cliftonstudios.ca.git"
 set :deploy_to, "/var/www/kevin/data/www/cliftonstudios.ca"
 set :user, "kevin"
 set :use_sudo, false
