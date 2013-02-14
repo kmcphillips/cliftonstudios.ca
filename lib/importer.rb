@@ -1,26 +1,26 @@
 class Importer
   include ActionView::Helpers::SanitizeHelper
 
-  if Rails.env.development?  
+  if Rails.env.development?
     IMAGE_PATH = "/home/kevin/gleep/cliftonstudios.ca/html/pictures/"
   else
     IMAGE_PATH = "/home/kevin/cliftonstudios.ca/html/pictures/"
   end
-  
+
   def initialize(config)
     keys = %w(host username password database)
     raise "Invalid params. Requires: #{keys.join(", ")}." unless keys.inject(true){|acc,key| acc && config[key]}
-    
+
     puts "Connecting to database '#{config["database"]}' with user '#{config["username"]}'..."
     @db = Mysql2::Client.new(
-        :host => config["host"], 
-        :username => config["username"], 
-        :password => config["password"], 
+        :host => config["host"],
+        :username => config["username"],
+        :password => config["password"],
         :database => config["database"]
     )
     puts "Connected"
   end
-  
+
   def import!
     begin
       ActiveRecord::Base.transaction do
@@ -42,9 +42,9 @@ class Importer
       raise e
     end
   end
-  
+
   protected
- 
+
   def clear_tables
     puts "Deleting image files for pictures"
     Picture.all.each do |p|
@@ -68,8 +68,8 @@ class Importer
       member.id = result["id"]
 
       if member.name == "Kevin McPhillips" && Rails.env.development?
-        member.password = member.password_confirmation = DEV_PASSWORD
-        member.email = DEV_USERNAME
+        member.password = member.password_confirmation = ""
+        member.email = ""
         message = " with dev mode credentials"
       end
 
@@ -125,7 +125,7 @@ class Importer
 
       puts "  Event ##{event.id} created#{event.image.exists? ? " with picture" : ""}"
     end
-    
+
     puts "Done"
     puts ""
   end
@@ -141,7 +141,7 @@ class Importer
     b.body = @db.query("SELECT * FROM about WHERE title LIKE '%How to Join%' LIMIT 1").first["description"]
     b.save!
     puts "  Loaded 'availability' block"
-    
+
     puts "Done"
     puts ""
   end
