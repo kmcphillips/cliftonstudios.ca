@@ -3,7 +3,7 @@ module ApplicationHelper
   def page_title
     title = "Clifton Studios"
     title << " :: Members Area" if members_area?
-    
+
     if @title
       @title.blank? ? title : "#{title} :: #{@title}"
     elsif params[:controller] =~ /blocks$/
@@ -90,6 +90,8 @@ module ApplicationHelper
             yield(item)
           end
         end
+
+        src << content_tag(:tr){ content_tag(:td, "None", colspan: column_titles.size) } if collection.blank?
 
         if collection.paginate?
           src << content_tag(:tr) do

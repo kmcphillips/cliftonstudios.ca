@@ -1,19 +1,15 @@
 %h1 Meeting Minutes
 
 .post
-  - if @existing_minutes.blank?
-    None have been uploaded
-  - else
-    %ul
-      - @existing_minutes.each do |m|
-        %li
-          %span.bold
-            = m.recorded_at.to_s(:without_time)
-            = ":"
-          = link_to m.description, m.file.url
-          - if current_member.admin?
-            &nbsp;&nbsp;&nbsp;
-            = link_to "(Delete)", members_minutes_path(m), :method => :delete, :confirm => "Are you sure you want to delete this file?"
+  = collection_index(@existing_minutes, ["Recorded Date", "File", "Actions"]) do |m|
+    %tr{:class => cycle("odd", "even")}
+      %td=m.recorded_at.to_s(:without_time)
+      %td= link_to m.description, m.file.url
+      %td
+        = show_entity_image m.file.url, "Download"
+        - if current_member.admin?
+          %br
+          = destroy_entity_image members_minutes_path(m), "Delete"
 
 - if current_member.admin?
   %h1 Upload New Minutes
