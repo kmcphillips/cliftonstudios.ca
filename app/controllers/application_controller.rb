@@ -1,19 +1,25 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_member_session, :current_member, :logged_in?
+  helper_method :current_member_session, :current_member, :logged_in?, :mobile_device?
 
   prepend_before_filter :readonly_mode_check
   append_before_filter :set_member_tracker, :find_random_pictures
 
+
+  # A very crude and easy way to detect mobile devices. It's not super important, but just cleans up some UI stuff.
+  def mobile_device?
+    request.user_agent =~ /Mobile|webOS/
+  end
+
   private
-  
+
   def pagination_params(opts={})
     {:page => params[:page] || 1, :per_page => PAGINATION_PER_PAGE}.merge(opts)
   end
-  
+
   ## AuthLogic
-  
+
   def current_member_session
     return @current_member_session if defined?(@current_member_session)
     @current_member_session = MemberSession.find

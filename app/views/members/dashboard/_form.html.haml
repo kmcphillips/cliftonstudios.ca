@@ -1,11 +1,10 @@
 = f.item :text_field, :name, :size => 40, :label => "Full Name"
-= f.item :text_field, :email, :label => "Email Address", :size => 30
+= f.item :email_field, :email, :label => "Email Address", :size => 30
 = f.item :text_area, :address, :rows => 5, :cols => 40
-= f.item :text_field, :phone, :size => 12, :label => "Phone number"
-= f.item :text_field, :alternate_phone, :size => 12, :label => "Alternate phone number"
+= f.item :text_field, :phone, :size => 12, :label => "Phone number", note: "Formatted 204-555-5555 or (204) 555-5555"
+= f.item :text_field, :alternate_phone, :size => 12, :label => "Alternate phone number", note: "Formatted 204-555-5555 or (204) 555-5555"
 %li
   = f.label :contact_method, "Preferred Contact Method"
   = f.select :contact_method, options_for_select(Member::CONTACT_METHODS.map{|c| [c.humanize, c]}, :selected => f.object.contact_method)
   %span.note Please only select 'Phone' if email is not possible
 = f.item :check_box, :receive_emails, :label => "Receive Emails?"
-

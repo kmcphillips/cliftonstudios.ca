@@ -8,7 +8,7 @@ class Member < ActiveRecord::Base
   end
 
   acts_as_permalink :from => :name
-  
+
   include AttachedImage
   include Audited
 
@@ -20,15 +20,16 @@ class Member < ActiveRecord::Base
   has_many :minutes
   has_many :titles, :class_name => "Executive", :foreign_key => "member_id"
   has_many :dependent_members, :class_name => "Member", :foreign_key => "subletting_member_id"
-  
+
   validates :name, :presence => true
   validates :contact_method, :inclusion => CONTACT_METHODS
   validates :renting, :inclusion => [true, false]
+  validates :phone, :alternate_phone, length: {minimum: 9, allow_nil: true, allow_blank: true, message: "must include the area code"}
   validate :member_since_format
   validate :website_begins_with_protocol
   validate :subletting_and_associated
 
-  before_validation :set_default_password
+  before_validation :set_default_password, :format_phone_numbers
   before_save :create_secret_hash
   before_create :set_member_since
   after_create :email_new_member
@@ -120,7 +121,7 @@ class Member < ActiveRecord::Base
   end
 
   def change_password!
-    password = MemorablePassword.generate :min_length => PASSWORD_MIN_LENGTH
+    password = MemorablePassword.new.generate :min_length => PASSWORD_MIN_LENGTH
 
     self.password = password
     self.password_confirmation = password
@@ -141,7 +142,7 @@ class Member < ActiveRecord::Base
 
   def set_default_password
     if new_record? && password.blank? && password_confirmation.blank?
-      password = MemorablePassword.generate :min_length => PASSWORD_MIN_LENGTH
+      password = MemorablePassword.new.generate :min_length => PASSWORD_MIN_LENGTH
 
       self.password = password
       self.password_confirmation = password
@@ -174,6 +175,20 @@ class Member < ActiveRecord::Base
     if self.password
       PendingEmail.create! :action => "new_member", :locals => {:password => self.password, :id => self.id}
     end
+  end
+
+  def format_phone_numbers
+    [:phone, :alternate_phone].each do |field|
+      if self.send(field).present?
+        formatted = self.send(field).gsub(/[^0-9]/, "").gsub(/^1/, "")
+        formatted = formatted.insert(-5, " ") if formatted.length >= 5
+        formatted = formatted.insert(-9, " ") if formatted.length >= 9
+
+        self.send("#{field}=", formatted)
+      end
+    end
+
+    true
   end
 
 end
