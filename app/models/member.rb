@@ -181,8 +181,8 @@ class Member < ActiveRecord::Base
     [:phone, :alternate_phone].each do |field|
       if self.send(field).present?
         formatted = self.send(field).gsub(/[^0-9]/, "").gsub(/^1/, "")
-        formatted = formatted.insert(-5, " ") if formatted.length >= 5
-        formatted = formatted.insert(-9, " ") if formatted.length >= 9
+        formatted = formatted.insert(-5, "-") if formatted.length >= 5
+        formatted = formatted.insert(-9, "-") if formatted.length >= 9
 
         self.send("#{field}=", formatted)
       end

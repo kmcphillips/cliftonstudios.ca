@@ -42,13 +42,13 @@ describe Member do
       it "should strip the leading 1" do
         member.phone = "1-222-333-4444"
         member.send(:format_phone_numbers)
-        member.phone.should eq("222 333 4444")
+        member.phone.should eq("222-333-4444")
       end
 
       it "should strip special characters" do
         member.phone = " (222) -333-4444.. "
         member.send(:format_phone_numbers)
-        member.phone.should eq("222 333 4444")
+        member.phone.should eq("222-333-4444")
       end
     end
   end
