@@ -4,9 +4,9 @@ class Event < ActiveRecord::Base
   include AttachedImage
   include Audited
   include EmailOnCreate
-  
+
   belongs_to :member
-  
+
   validates :title, :presence => true
   validates :member, :presence => true
   validates :body, :presence => true
@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   before_save :set_ends_at
 
   def sort_by; starts_at; end
-  
+
   scope :upcoming, lambda{ where(["ends_at > ?", Time.now]).order("starts_at DESC") }
   scope :past, lambda{ where(["ends_at < ?", Time.now]).order("starts_at DESC") }
   scope :sorted, order("created_at DESC")
@@ -92,8 +92,8 @@ class Event < ActiveRecord::Base
   end
 
   protected
-  
+
   def set_ends_at
-    self.ends_at = self.starts_at.beginning_of_day + duration.days
+    self.ends_at = self.starts_at.beginning_of_day + duration.days if self.starts_at
   end
 end

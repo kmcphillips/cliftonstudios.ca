@@ -2,25 +2,22 @@ require 'spec_helper'
 
 describe ArtistsController do
 
-  def mock_member(stubs={})
-    (@mock_member ||= mock_model(Member).as_null_object).tap do |member|
-      member.stub(stubs) unless stubs.empty?
-    end
-  end
+  let(:member){ FactoryGirl.create(:member) }
 
   describe "GET index" do
     it "assigns all members as @members" do
-      Member.stub(:order) { [mock_member] }
+      Member.should_receive(:for_artists_index).and_return([member])
       get :index
-      assigns(:members).should eq([mock_member])
+      assigns(:members).should eq([member])
     end
   end
 
   describe "GET show" do
     it "assigns the requested member as @member" do
-      Member.stub(:find_by_permalink).with("37") { mock_member }
-      get :show, :id => "37"
-      assigns(:member).should be(mock_member)
+      Member.stub(:find_by_permalink).with(member.permalink).and_return(member)
+      get :show, id: member.permalink
+      assigns(:member).should be(member)
+      assigns(:title).should eq(member.name)
     end
   end
 

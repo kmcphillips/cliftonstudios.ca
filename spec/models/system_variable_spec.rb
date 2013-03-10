@@ -7,7 +7,7 @@ describe SystemVariable do
     describe "#get" do
       it "should get the value if the record is present" do
         SystemVariable.should_receive(:find_by_key).with(system_variable.key).and_return(system_variable)
-        SystemVariable.get(system_variable.key).should system_variable.value
+        SystemVariable.get(system_variable.key).should eq(system_variable.value)
       end
 
       it "should return nil if the record does not exist" do
