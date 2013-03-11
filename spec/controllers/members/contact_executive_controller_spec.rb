@@ -2,17 +2,14 @@ require 'spec_helper'
 
 describe Members::ContactExecutiveController do
 
-  describe "GET 'create'" do
-    it "should be successful" do
-      get 'create'
-      response.should be_success
-    end
+  before(:each) do
+    member_login
   end
 
-  describe "GET 'index'" do
+  describe "GET index" do
     it "should be successful" do
-      get 'index'
-      response.should be_success
+      get :index
+      response.should render_template(:index)
     end
   end
 
