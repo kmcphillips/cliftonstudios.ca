@@ -105,7 +105,7 @@ class Member < ActiveRecord::Base
   ## Class methods
 
   def self.contact_list_csv
-    FasterCSV.generate do |csv|
+    CSV.generate do |csv|
       csv << ["Clifton Studios Contact List"]
       csv << ["Generated: #{Time.now.to_s(:with_time)}"]
       csv <<
