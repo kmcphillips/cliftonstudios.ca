@@ -1,20 +1,19 @@
 require "bundler/capistrano"
+require "rvm/capistrano"
 
 set :application, "Clifton Studios"
 set :repository,  "git://github.com/kmcphillips/cliftonstudios.ca.git"
-set :deploy_to, "/var/www/kevin/data/www/cliftonstudios.ca"
+set :deploy_to, "/home/kevin/cliftonstudios.ca"
 set :user, "kevin"
 set :use_sudo, false
 set :scm, "git"
 set :keep_releases, 5
 
-#set :rake, "bundle exec rake"
-
 default_run_options[:pty] = true
 
-role :web, "68.169.58.121"
-role :app, "68.169.58.121"
-role :db,  "68.169.58.121", :primary => true
+role :web, "198.211.110.159"
+role :app, "198.211.110.159"
+role :db,  "198.211.110.159", :primary => true
 
 
 namespace :deploy do

@@ -142,6 +142,8 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+    rvm-capistrano (1.2.7)
+      capistrano (>= 2.0.0)
     sass (3.2.5)
     sitemap_generator (3.4)
       builder
@@ -189,6 +191,7 @@ DEPENDENCIES
   rmagick (>= 2.13.1)
   rspec
   rspec-rails
+  rvm-capistrano
   sass
   sitemap_generator
   thin
