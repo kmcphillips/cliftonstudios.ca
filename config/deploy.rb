@@ -1,6 +1,9 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
 
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+
 set :application, "Clifton Studios"
 set :repository,  "git://github.com/kmcphillips/cliftonstudios.ca.git"
 set :deploy_to, "/home/kevin/cliftonstudios.ca"

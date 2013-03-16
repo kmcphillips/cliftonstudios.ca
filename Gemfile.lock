@@ -44,6 +44,7 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    chronic (0.9.1)
     cocaine (0.4.2)
     coderay (1.0.8)
     daemons (1.1.9)
@@ -164,6 +165,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.35)
+    whenever (0.8.2)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
     will_paginate (3.0.4)
 
 PLATFORMS
@@ -196,4 +200,5 @@ DEPENDENCIES
   sitemap_generator
   thin
   tlsmail
+  whenever
   will_paginate
