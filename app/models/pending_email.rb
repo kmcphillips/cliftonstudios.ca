@@ -1,6 +1,6 @@
 class PendingEmail < ActiveRecord::Base
   TYPES = %w[new_member new_event new_post contact_executive new_minutes]
-  STATUSES = %w[pending processing complete]
+  STATUSES = %w[pending processing complete failed]
 
   serialize :locals, Hash
 
@@ -11,7 +11,9 @@ class PendingEmail < ActiveRecord::Base
 
   scope :pending, where(:status => "pending")
   scope :processing, where(:status => "processing")
-  
+  scope :failed, where(:status => "failed")
+  scope :incomplete, where("status != 'complete'")
+
   def deliver!
     MemberMailer.send(action, locals).deliver
     update_attribute :status, "complete"

@@ -2,8 +2,15 @@ namespace :jobs do
 
   desc "Send all pending emails"
   task :deliver_email => :environment do
-    if PendingEmail.processing.any?
-      puts "Aborting since there is still a message in processing."
+    pending = PendingEmail.processing.last
+    if pending
+      if pending.created_at < (Time.now - 2.hours)
+        puts "Job has been runing an abnormally long time."
+        ErrorMailer.pending_email.deliver
+        pending.update_attribute :status, "failed"
+      else
+        puts "Aborting since there is still a message in processing."
+      end
 
     else
       begin

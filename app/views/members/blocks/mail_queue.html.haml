@@ -3,8 +3,9 @@
 .post
   %p All emails in this list are waiting to be sent automatically by the system.
 
-  = collection_index(@emails, ["Message Type", "Recepients", "Created At"]) do |email|
+  = collection_index(@emails, ["Message Type", "Recepients", "Status", "Created At"]) do |email|
     %tr{:class => cycle("odd", "even")}
       %td= email.action.humanize
       %td= email.recipients_description
+      %td= email.status.try(:humanize)
       %td= email.created_at.to_s(:with_time)

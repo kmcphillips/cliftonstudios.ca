@@ -34,7 +34,7 @@ class Members::BlocksController < BlocksController
   end
 
   def mail_queue
-    @emails = PendingEmail.pending
+    @emails = PendingEmail.incomplete
   end
 
   def audits
