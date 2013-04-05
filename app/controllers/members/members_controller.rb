@@ -38,4 +38,10 @@ class Members::MembersController < ApplicationController
     end
   end
 
+  def password_reset
+    @member = Member.find_by_permalink(params[:id])
+    @member.deliver_forgotten_password!
+    redirect_to(members_member_path(@member), notice: "A password reset email has been sent!")
+  end
+
 end

@@ -1,6 +1,6 @@
 = collection_index(members, ["Name", "Space Number", "Type", "Subletter", "Member Since", "Actions"]) do |member|
   %tr{:class => cycle("odd", "even")}
-    %td= member.name
+    %td= link_to member.name, members_member_path(member)
     %td= member.space_number
     %td= member.renting_type
     %td= member.subletting_member.try(:name)

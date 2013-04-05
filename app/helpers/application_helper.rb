@@ -59,6 +59,14 @@ module ApplicationHelper
     html
   end
 
+  def custom_icon_entity_image(icon, path, label=nil, args={})
+    method = args[:method] || :get
+    path = polymorphic_path(path) if path.is_a?(Array)
+    html = link_to image_tag(icon, :alt => label), path, :method => method, :title => label, :class => "action-image"
+    html += "&nbsp;".html_safe + link_to(label, path, :method => method) if label
+    html
+  end
+
   def enlarge_button
     "Enlarge&nbsp;" + image_tag("/images/icons/magnify.png", :alt => "Enlarge", :class => :magnify)
   end

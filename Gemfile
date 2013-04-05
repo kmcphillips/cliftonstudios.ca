@@ -21,6 +21,10 @@ gem 'acts_as_permalink'
 gem 'rvm-capistrano'
 gem 'whenever', require: false
 
+group :development do
+  gem "letter_opener"
+end
+
 group :development, :test do
   gem "thin"
   gem "rspec"

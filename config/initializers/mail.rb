@@ -3,21 +3,7 @@ if File.exists?("#{Rails.root}/config/mail.yml") && !Rails.env.test?
   config = file[Rails.env] if file
 
   if config
-    if Rails.env.development?
-      require 'tlsmail'
-      Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
-
-      ActionMailer::Base.delivery_method = :smtp
-      ActionMailer::Base.perform_deliveries = true
-      ActionMailer::Base.smtp_settings = config["smtp_settings"].symbolize_keys || {}
-      ActionMailer::Base.default_url_options[:host] = config["host"]
-
-      (config["register_interceptors"] || []).each do |i|
-        ActionMailer::Base.register_interceptor i
-      end
-
-      BypassMailInterceptor.email = config["bypass"] unless config["bypass"].blank?
-    elsif Rails.env.production?
+    if Rails.env.production?
       ActionMailer::Base.smtp_settings = config["smtp_settings"].symbolize_keys || {}
     end
 

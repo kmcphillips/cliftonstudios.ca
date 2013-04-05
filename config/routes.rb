@@ -20,7 +20,7 @@ Cliftonstudios::Application.routes.draw do
   resources :member_sessions, :only => [:new, :create, :destroy]
   match 'login' => "member_sessions#new", :as => :login
   match 'logout' => "member_sessions#destroy", :as => :logout
-  
+
   resources :unsubscribe, :only => [:show, :update]
   resources :password_reset, :only => [:index, :create, :show]
   resources :mailing_list, :only => [:create]
@@ -38,7 +38,11 @@ Cliftonstudios::Application.routes.draw do
     resources :posts, :except => [:show]
     resources :events, :except => [:show]
     resources :blocks, :only => [:index, :create]
-    resources :members, :except => [:destroy]
+    resources :members, :except => [:destroy] do
+      member do
+        post 'password_reset'
+      end
+    end
     resources :pictures, :only => [:index, :create, :update, :destroy, :edit] do
       collection do
         get 'all'
