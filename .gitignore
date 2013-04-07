@@ -10,4 +10,4 @@ public/assets
 public/stylesheets/base.css
 public/sitemap1.xml.gz
 public/sitemap_index.xml.gz
-
+.DS_Store
