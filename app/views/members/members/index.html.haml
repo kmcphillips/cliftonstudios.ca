@@ -5,6 +5,8 @@
     = new_entity_image new_members_member_path, 'Create new studio member'
     %br
     = show_entity_image members_contact_list_index_path, "View as contact list"
+    %br
+    = link_to "Download spreadsheet (.csv)", members_contact_list_index_path(:format => "csv")
 
   = render :partial => "members", :object => @active_members
 
