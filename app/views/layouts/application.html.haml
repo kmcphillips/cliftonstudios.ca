@@ -32,7 +32,10 @@
             %td
               %h1= link_to "Clifton Studios", root_path
             %td
-              %h2 Artist Co-op
+              %h2
+                Artist Co-op
+                - if Rails.env.development?
+                  %span.warning (Development)
       #column
         #borderwrapper
           = render :partial => "shared/nav"
