@@ -44,7 +44,7 @@ class Members::PicturesController < ApplicationController
   end
 
   def all
-    @pictures = Picture.paginate pagination_params(:per_page => 16)
+    @pictures = Picture.sorted.paginate pagination_params(:per_page => 16)
   end
 end
 
