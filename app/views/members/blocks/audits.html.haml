@@ -19,7 +19,7 @@
           - when Link
             = link_to "Link ##{audit.auditable_id}", links_path
           - when Executive
-            = link_to "Executive title '#{audit.auditable.title}'", members_path
+            = link_to "Executive title '#{audit.auditable.title}'", about_path
           - else
             Deleted #{audit.auditable_type} ##{audit.auditable_id}
 
