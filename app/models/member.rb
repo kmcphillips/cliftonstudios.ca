@@ -4,26 +4,26 @@ class Member < ActiveRecord::Base
 
   acts_as_authentic do |config|
     config.logged_in_timeout = 1.day
-    config.merge_validates_length_of_password_field_options :within => PASSWORD_MIN_LENGTH..20
+    config.merge_validates_length_of_password_field_options within: PASSWORD_MIN_LENGTH..20
   end
 
-  acts_as_permalink :from => :name
+  acts_as_permalink from: :name
 
   include AttachedImage
   include Audited
 
-  belongs_to :subletting_member, :class_name => "Member", :foreign_key => "subletting_member_id"
+  belongs_to :subletting_member, class_name: "Member", foreign_key: "subletting_member_id"
 
   has_many :posts
   has_many :events
   has_many :pictures
   has_many :minutes
-  has_many :titles, :class_name => "Executive", :foreign_key => "member_id"
-  has_many :dependent_members, :class_name => "Member", :foreign_key => "subletting_member_id"
+  has_many :titles, class_name: "Executive", foreign_key: "member_id"
+  has_many :dependent_members, class_name: "Member", foreign_key: "subletting_member_id"
 
-  validates :name, :presence => true
-  validates :contact_method, :inclusion => CONTACT_METHODS
-  validates :renting, :inclusion => [true, false]
+  validates :name, presence: true
+  validates :contact_method, inclusion: CONTACT_METHODS
+  validates :renting, inclusion: [true, false]
   validates :phone, :alternate_phone, length: {minimum: 9, allow_nil: true, allow_blank: true, message: "must include the area code"}
   validate :member_since_format
   validate :website_begins_with_protocol
@@ -34,17 +34,17 @@ class Member < ActiveRecord::Base
   before_create :set_member_since
   after_create :email_new_member
 
-  scope :alphabetical, order("name ASC")
-  scope :sorted, alphabetical
-  scope :active, where(:active => true)
-  scope :inactive, where(:active => false)
-  scope :emailable, where(:receive_emails => true, :active => true)
-  scope :contact_by_phone, where(:contact_method => "phone")
+  scope :alphabetical, -> { order("name ASC") }
+  scope :sorted, -> { alphabetical }
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
+  scope :emailable, -> { where(receive_emails: true, active: true) }
+  scope :contact_by_phone, -> { where(contact_method: "phone") }
   scope :public, ->{ where(superuser: false) }
 
   def deliver_forgotten_password!
     reset_perishable_token!
-    MemberMailer.forgot_password(:id => self.id).deliver
+    MemberMailer.forgot_password(id: self.id).deliver
   end
 
   def profile_configured?
@@ -122,7 +122,7 @@ class Member < ActiveRecord::Base
   end
 
   def change_password!
-    password = MemorablePassword.new.generate :min_length => PASSWORD_MIN_LENGTH
+    password = MemorablePassword.new.generate min_length: PASSWORD_MIN_LENGTH
 
     self.password = password
     self.password_confirmation = password
@@ -143,7 +143,7 @@ class Member < ActiveRecord::Base
 
   def set_default_password
     if new_record? && password.blank? && password_confirmation.blank?
-      password = MemorablePassword.new.generate :min_length => PASSWORD_MIN_LENGTH
+      password = MemorablePassword.new.generate min_length: PASSWORD_MIN_LENGTH
 
       self.password = password
       self.password_confirmation = password
@@ -174,7 +174,7 @@ class Member < ActiveRecord::Base
 
   def email_new_member
     if self.password
-      PendingEmail.create! :action => "new_member", :locals => {:password => self.password, :id => self.id}
+      PendingEmail.create! action: "new_member", locals: {password: self.password, id: self.id}
     end
   end
 
