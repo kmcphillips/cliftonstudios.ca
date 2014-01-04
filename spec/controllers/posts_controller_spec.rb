@@ -10,7 +10,7 @@ describe PostsController do
 
   describe "GET index" do
     it "assigns all posts as @posts" do
-      sorted_mock = mock :sorted
+      sorted_mock = double :sorted
       sorted_mock.stub(:paginate) { [mock_post] }
       Post.stub(:sorted).and_return(sorted_mock)
       get :index

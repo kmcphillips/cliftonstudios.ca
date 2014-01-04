@@ -4,9 +4,9 @@ describe BlocksController do
 
   describe "GET about" do
     it "assigns the requested block as @block" do
-      about = mock :about
-      availability = mock :availability
-      executive = mock :executive
+      about = double :about
+      availability = double :availability
+      executive = double :executive
       Block.should_receive(:find_by_label).with("about").and_return(about)
       Block.should_receive(:find_by_label).with("availability").and_return(availability)
       Executive.should_receive(:filled).and_return(executive)
@@ -37,8 +37,8 @@ describe BlocksController do
     end
 
     it "should find the block" do
-      availability = mock :availability
-      contact = mock :contact
+      availability = double :availability
+      contact = double :contact
       Block.should_receive(:find_by_label).with("availability").and_return(availability)
       Block.should_receive(:find_by_label).with("contact").and_return(contact)
       get :contact
