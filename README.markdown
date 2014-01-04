@@ -1,5 +1,7 @@
 # Clifton Studios
 
+[![Build Status](https://travis-ci.org/kmcphillips/cliftonstudios.ca.png)](https://travis-ci.org/kmcphillips/cliftonstudios.ca)
+
 [Kevin McPhillips](mailto:github@kevinmcphillips.ca)
 
 [http://cliftonstudios.ca](http://cliftonstudios.ca)
