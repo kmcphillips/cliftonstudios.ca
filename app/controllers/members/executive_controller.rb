@@ -3,7 +3,7 @@ class Members::ExecutiveController < ApplicationController
 
   def index
     @title = "Manage Executive"
-    @members = Member.alphabetical.active
+    @members = Member.alphabetical.active.public
     @executive = Executive.sorted
   end
 

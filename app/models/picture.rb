@@ -24,7 +24,7 @@ class Picture < ActiveRecord::Base
   end
 
   def self.members_with_pictures
-    Member.select("distinct members.*").joins(:pictures).sort{|a, b| a.last_name <=> b.last_name }
+    Member.select("distinct members.*").joins(:pictures).sort{|a, b| a.last_name <=> b.last_name }.select{|m| m.visible? }
   end
 
 end

@@ -16,7 +16,6 @@ FactoryGirl.define do
     member_since_year "1990"
     system false
     contact_method "email"
-    superuser false
 
     password "asdfasdf"
     password_confirmation "asdfasdf"

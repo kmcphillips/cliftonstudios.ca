@@ -2,8 +2,8 @@ class Members::MembersController < ApplicationController
   before_filter :require_admin_member
 
   def index
-    @active_members = Member.active.alphabetical
-    @inactive_members = Member.inactive.alphabetical
+    @active_members = Member.public.active.alphabetical
+    @inactive_members = Member.public.inactive.alphabetical
   end
 
   def new
@@ -11,11 +11,11 @@ class Members::MembersController < ApplicationController
   end
 
   def show
-    @member = Member.find_by_permalink(params[:id])
+    @member = Member.public.find_by_permalink!(params[:id])
   end
 
   def edit
-    @member = Member.find_by_permalink(params[:id])
+    @member = Member.public.find_by_permalink!(params[:id])
   end
 
   def create
@@ -29,7 +29,7 @@ class Members::MembersController < ApplicationController
   end
 
   def update
-    @member = Member.find_by_permalink(params[:id])
+    @member = Member.public.find_by_permalink!(params[:id])
 
     if @member.update_attributes(params[:member])
       redirect_to(members_members_path, :notice => "#{@member.name} was successfully updated.")
@@ -39,7 +39,7 @@ class Members::MembersController < ApplicationController
   end
 
   def password_reset
-    @member = Member.find_by_permalink(params[:id])
+    @member = Member.public.find_by_permalink!(params[:id])
     @member.deliver_forgotten_password!
     redirect_to(members_member_path(@member), notice: "A password reset email has been sent!")
   end

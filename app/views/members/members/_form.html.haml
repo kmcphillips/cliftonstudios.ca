@@ -27,6 +27,10 @@
     = render :partial => "members/dashboard/form", :locals => {:f => f}
     = f.item :check_box, :active, :label => "Active?"
     = f.item :check_box, :admin, :label => "Site Administrator?"
+    - if f.object.system?
+      %li
+        %label System user?
+        %em Yes
     = f.item :text_field, :space_number, :size => 4
     - unless f.object.new_record?
       %li

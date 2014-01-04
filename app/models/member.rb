@@ -40,7 +40,7 @@ class Member < ActiveRecord::Base
   scope :inactive, -> { where(active: false) }
   scope :emailable, -> { where(receive_emails: true, active: true) }
   scope :contact_by_phone, -> { where(contact_method: "phone") }
-  scope :public, ->{ where(superuser: false) }
+  scope :public, ->{ where(system: false) }
 
   def deliver_forgotten_password!
     reset_perishable_token!
@@ -103,6 +103,10 @@ class Member < ActiveRecord::Base
     contact_method == 'email'
   end
 
+  def visible?
+    active? && !system?
+  end
+
   ## Class methods
 
   def self.contact_list_csv
@@ -111,7 +115,7 @@ class Member < ActiveRecord::Base
       csv << ["Generated: #{Time.now.to_s(:with_time)}"]
       csv <<
       csv << ["Name", "Address", "Phone", "Alternate Phone", "Email Address"]
-      Member.active.alphabetical.each do |member|
+      Member.public.active.alphabetical.each do |member|
         csv << member.to_csv
       end
     end

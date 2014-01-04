@@ -29,8 +29,8 @@ class Members::BlocksController < BlocksController
   end
 
   def emails
-    @emails = Member.active.alphabetical.map(&:email)
-    @phone = Member.active.alphabetical.contact_by_phone
+    @emails = Member.public.active.alphabetical.map(&:email)
+    @phone = Member.public.active.alphabetical.contact_by_phone
   end
 
   def mail_queue

@@ -7,7 +7,7 @@
 .subtext_left= post.created_at.try(:to_s, :with_time_no_minutes)
 .subtext_right
   By
-  = link_to post.member.name, artist_path(post.member)
+  = member_link post.member
 
 .post.clear_right
   = link_to image_tag(post.inline, :class => "inline", :alt => post.title), post.full, :rel => "lightbox", :class => "thumb inline" if post.image.exists?

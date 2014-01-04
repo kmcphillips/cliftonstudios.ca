@@ -5,7 +5,7 @@ class Members::ContactListController < ApplicationController
     respond_to do |format|
       format.html do
         @title = "Contact List"
-        @members = Member.active.alphabetical
+        @members = Member.public.active.alphabetical
       end
       
       format.csv do
@@ -17,7 +17,7 @@ class Members::ContactListController < ApplicationController
   end
 
   def print
-    @members = Member.active.alphabetical
+    @members = Member.public.active.alphabetical
 
     render :layout => "print_contact_list"
   end

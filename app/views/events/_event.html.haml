@@ -9,7 +9,7 @@
   = event.starts_at.to_s :with_time_no_minutes
 .subtext_right
   By
-  = link_to event.member.name, artist_path(event.member)
+  = member_link event.member
 
 .post.clear_right
   = link_to image_tag(event.inline, :class => "inline", :alt => event.title), event.full, :rel => "lightbox", :class => "thumb inline" if event.image.exists?

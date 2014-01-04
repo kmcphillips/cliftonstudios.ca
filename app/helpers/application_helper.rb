@@ -159,7 +159,13 @@ module ApplicationHelper
     link_to image_tag("/images/icons/social/#{type}-32.png", :alt => alt, :class => options[:class]), path, :title => alt
   end
 
-
+  def member_link(member)
+    if member.visible?
+      link_to member.name, artist_path(member)
+    else
+      member.name
+    end
+  end
 
   ## Overridden paths
 
