@@ -32,6 +32,10 @@
       %li
         %label Site Administrator?
         %span= f.object.admin?.to_yesno
+      - if f.object.superuser?
+        %li
+          %label Superuser?
+          %em Yes
       - unless f.object.active?
         %li
           %label Status

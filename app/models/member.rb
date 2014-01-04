@@ -40,6 +40,7 @@ class Member < ActiveRecord::Base
   scope :inactive, where(:active => false)
   scope :emailable, where(:receive_emails => true, :active => true)
   scope :contact_by_phone, where(:contact_method => "phone")
+  scope :public, ->{ where(superuser: false) }
 
   def deliver_forgotten_password!
     reset_perishable_token!

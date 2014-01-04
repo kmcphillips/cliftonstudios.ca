@@ -6,7 +6,7 @@ FactoryGirl.define do
     address "123 Fake street"
     bio "A studio member"
     receive_emails true
-    email "example@test.com"
+    sequence(:email){|n| "example#{ n }@test.com" }
     website "http://www.example.com"
     admin false
     active true
@@ -16,6 +16,7 @@ FactoryGirl.define do
     member_since_year "1990"
     system false
     contact_method "email"
+    superuser false
 
     password "asdfasdf"
     password_confirmation "asdfasdf"

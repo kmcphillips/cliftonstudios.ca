@@ -53,4 +53,15 @@ describe Member do
     end
   end
 
+  describe "scopes" do
+    describe "#public" do
+      it "should not include superusers" do
+        FactoryGirl.create_list(:member, 3)
+        FactoryGirl.create(:member, superuser: true)
+        expect(Member.count).to eq(4)
+        expect(Member.public.count).to eq(3)
+      end
+    end
+  end
+
 end

@@ -32,6 +32,10 @@
     %li
       %label Site Administrator?
       = @member.admin?.to_yesno
+    - if @member.superuser?
+      %li
+        %label Superuser?
+        %em Yes
     %li
       %label Receive emails?
       = @member.receive_emails?.to_yesno
