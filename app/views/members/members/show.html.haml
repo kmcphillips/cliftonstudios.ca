@@ -32,9 +32,9 @@
     %li
       %label Site Administrator?
       = @member.admin?.to_yesno
-    - if @member.superuser?
+    - if @member.system?
       %li
-        %label Superuser?
+        %label System user?
         %em Yes
     %li
       %label Receive emails?
