@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140104223901) do
+ActiveRecord::Schema.define(:version => 20140721191606) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
     t.string   "auditable_type"
     t.integer  "member_id"
     t.string   "action",         :default => "update"
-    t.string   "details"
+    t.text     "details"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
