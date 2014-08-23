@@ -1,4 +1,8 @@
-%h1 Change Password
+%h1
+  - if params[:forgotten]
+    Reset Forgotten Password
+  - else
+    Change Password
 
 .post
   = form_for current_member, :url => members_password_index_path, :html => {:method => :post} do |f|
@@ -7,8 +11,12 @@
     %ul.form
       - if !current_member.password_configured?
         %li
-          %p Your password is set to something temporary and must be changed.
-      
+          %p
+            - if params[:forgotten]
+              Your account has been reset. Please enter your new password here.
+            - else
+              Your password is set to something temporary and must be changed.
+
       = f.item :password_field, :password, :size => 16
       = f.item :password_field, :password_confirmation, :size => 16, :label => "Re-type password"
       = f.item :submit, "Save"

@@ -2,7 +2,7 @@ class PasswordResetController < ApplicationController
 
   def index
     @title = "Forgotten Password"
-    
+
     if logged_in?
       redirect_to root_url
     end
@@ -42,8 +42,8 @@ class PasswordResetController < ApplicationController
       MemberSession.create(@member)
       @member.update_attribute(:password_configured, false)
 
-      flash[:notice] = "Hello #{@member.name}. Try to set your new password to something you will remember this time!"
-      redirect_to members_password_index_path
+      flash[:notice] = "Hello #{@member.name}. Please enter a new password for your account."
+      redirect_to members_password_index_path(forgotten: true)
     else
       flash[:error] = "Could not log you in with that token. It may have expired. Please try again or contact the administrator."
       redirect_to password_reset_index_path

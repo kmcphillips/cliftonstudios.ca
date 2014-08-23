@@ -2,7 +2,11 @@ class Members::PasswordController < ApplicationController
   before_filter :require_member
 
   def index
-    @title = "Change Password"
+    @title = if params[:forgotten]
+      "Reset Forgotten Password"
+    else
+      "Change Password"
+    end
   end
 
   def create # actually update for current_user
