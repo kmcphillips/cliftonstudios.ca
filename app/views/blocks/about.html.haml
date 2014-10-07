@@ -22,4 +22,12 @@
 - if logged_in?
   %h1 Studio Bylaws
   .post
-    = link_to "View studio bylaws", members_bylaws_path
+    %ul.links
+      - @bylaws.each do |bylaw|
+        %li
+          %h3= link_to bylaw.name, bylaw.file.url, target: '_new'
+          %span
+            Last updated
+            = bylaw.updated_at.to_s(:words)
+            %br
+            %br

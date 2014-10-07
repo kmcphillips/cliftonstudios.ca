@@ -1,10 +1,11 @@
 class BlocksController < ApplicationController
-  before_filter :load_block  
+  before_filter :load_block
 
   def about
     @about = @block
     @availability = Block.find_by_label("availability")
     @executive = Executive.filled.sorted
+    @bylaws = Document.bylaws.sorted
     @title = "About"
   end
 
