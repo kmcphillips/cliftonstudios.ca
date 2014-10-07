@@ -2,6 +2,7 @@ class Document < ActiveRecord::Base
 
   include Audited
   include EmailOnCreate
+  after_update :create_email
 
   KINDS = ['bylaw'].freeze
 
