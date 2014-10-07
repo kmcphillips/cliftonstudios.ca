@@ -61,8 +61,9 @@ Cliftonstudios::Application.routes.draw do
     resources :contact_executive, :only => [:index, :create]
     resources :system_variables, :only => [:index, :update]
     resources :minutes, :only => [:index, :create, :destroy]
+    resources :bylaws, only: [:index, :new, :edit, :create, :update, :destroy]
 
-    ['bylaws', 'emails', 'mail_queue', 'audits'].each do |block|
+    ['emails', 'mail_queue', 'audits'].each do |block|
       match block => "blocks##{block}"
     end
   end

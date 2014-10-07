@@ -1,6 +1,6 @@
 class Members::BlocksController < BlocksController
-  before_filter :require_member, :except => [:create, :index, :mail_queue, :audits]
-  before_filter :require_admin_member, :only => [:create, :index, :mail_queue, :audits]
+  before_filter :require_member, except: [:create, :index, :mail_queue, :audits]
+  before_filter :require_admin_member, only: [:create, :index, :mail_queue, :audits]
 
   def index
     @about = Block.find_by_label :about
@@ -23,10 +23,6 @@ class Members::BlocksController < BlocksController
       flash[:error] = ["There was an error saving.", @about.errors.full_messages, @availability.errors.full_messages].flatten.to_sentence
       render :index
     end
-  end
-
-  def bylaws
-    @bylaws = Document.bylaws.sorted
   end
 
   def emails
