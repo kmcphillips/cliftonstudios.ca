@@ -1,0 +1,9 @@
+- url = @bylaw.persisted? ? members_bylaw_path(@bylaw) : members_bylaws_path
+
+= form_for [:members, @bylaw], url: url, html: {multipart: true} do |f|
+  = f.error_messages
+
+  %ul.form
+    = f.item :text_field, :name, size: 40
+    = f.item :file_field, :file, label: "Document", note: "PDF documetns only"
+    = f.item :submit, "Save"

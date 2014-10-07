@@ -1,11 +1,16 @@
-%h1 Clifton Studios By-laws
+%h1 Clifton Studios Bylaws
 
 .post
-  = collection_index(@bylaws, ["Document", "Actions"]) do |bylaw|
+  - if current_member.admin?
+    = new_entity_image new_members_bylaw_path, 'Create New Bylaw Document'
+
+  = collection_index(@bylaws, ["Document", "Last Updated", "Actions"]) do |bylaw|
     %tr{class: cycle("odd", "even")}
       %td= link_to bylaw.name, bylaw.file.url
+      %td= bylaw.updated_at.to_s(:words)
       %td
         = show_entity_image bylaw.file.url, "Download"
         - if current_member.admin?
           %br
-          TODO
+          = edit_entity_image edit_members_bylaw_path(bylaw)
+          = destroy_entity_image members_bylaw_path(bylaw)

@@ -1,0 +1,11 @@
+%h1
+  Edit Bylaw Document:
+  = @bylaw.name
+
+.post
+  = render 'form'
+
+  .image_links
+    = index_entity_image members_bylaws_path, "Back to Bylaw"
+    %br
+    = destroy_entity_image members_bylaw_path(@bylaw), "Delete Bylaw"

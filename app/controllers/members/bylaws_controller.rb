@@ -15,7 +15,7 @@ class Members::BylawsController < ApplicationController
   end
 
   def create
-    @bylaw = current_member.documents.build(params[:bylaws])
+    @bylaw = current_member.documents.build(params[:document])
     @bylaw.kind = 'bylaw'
 
     if @bylaw.save
@@ -26,7 +26,7 @@ class Members::BylawsController < ApplicationController
   end
 
   def update
-    if @bylaw.update_attributes(params[:bylaws])
+    if @bylaw.update_attributes(params[:document])
       redirect_to members_bylaws_path, notice: "Bylaws updated successfully!"
     else
       render :edit
