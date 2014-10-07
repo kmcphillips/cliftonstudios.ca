@@ -26,6 +26,7 @@ class Members::BlocksController < BlocksController
   end
 
   def bylaws
+    @bylaws = Document.bylaws.sorted
   end
 
   def emails

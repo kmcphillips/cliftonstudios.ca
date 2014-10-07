@@ -18,6 +18,7 @@ class Document < ActiveRecord::Base
   validates_attachment_presence :file
 
   scope :sorted, order('name DESC')
+  scope :bylaws, where(kind: 'bylaw')
 
   def bylaw?
     kind == 'bylaw'
