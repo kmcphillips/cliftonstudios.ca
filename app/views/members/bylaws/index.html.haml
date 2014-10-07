@@ -6,10 +6,10 @@
 
   = collection_index(@bylaws, ["Document", "Last Updated", "Actions"]) do |bylaw|
     %tr{class: cycle("odd", "even")}
-      %td= link_to bylaw.name, bylaw.file.url
+      %td= link_to bylaw.name, bylaw.file.url, target: '_blank'
       %td= bylaw.updated_at.to_s(:words)
       %td
-        = show_entity_image bylaw.file.url, "Download"
+        = show_entity_image bylaw.file.url, "Download", target: '_blank'
         - if current_member.admin?
           %br
           = edit_entity_image edit_members_bylaw_path(bylaw)

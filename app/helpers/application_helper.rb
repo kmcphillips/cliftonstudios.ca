@@ -54,8 +54,8 @@ module ApplicationHelper
 
   def show_entity_image(path, label=nil, args={})
     path = polymorphic_path(path) if path.is_a?(Array)
-    html = link_to image_tag("/images/icons/show.png", :alt => "Show"), path, :title => "Show", :class => "action-image"
-    html += "&nbsp;".html_safe + link_to(label, path) if label
+    html = link_to image_tag("/images/icons/show.png", :alt => "Show"), path, :title => "Show", :class => "action-image", target: args[:target]
+    html += "&nbsp;".html_safe + link_to(label, path, target: args[:target]) if label
     html
   end
 
