@@ -1,5 +1,5 @@
 class PendingEmail < ActiveRecord::Base
-  TYPES = %w[new_member new_event new_post contact_executive new_minutes]
+  TYPES = %w[new_member new_event new_post contact_executive new_minutes bylaw]
   STATUSES = %w[pending processing complete failed]
 
   serialize :locals, Hash
@@ -21,7 +21,7 @@ class PendingEmail < ActiveRecord::Base
 
   def recipients_description
     case action
-      when "new_event", "new_post", "new_minutes"
+      when "new_event", "new_post", "new_minutes", "bylaw"
         "Everyone"
       when "new_member"
         Member.find_by_id(locals[:id]).try(:name)

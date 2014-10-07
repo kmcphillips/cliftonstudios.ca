@@ -17,9 +17,11 @@ module EmailOnCreate
   def create_email
     case self
       when Post, Event
-        PendingEmail.create! :action => "new_#{self.class.to_s.downcase}", :locals => {:id => self.id}
+        PendingEmail.create! action: "new_#{self.class.to_s.downcase}", locals: {id: self.id}
       when Minutes
-        PendingEmail.create! :action => "new_minutes"
+        PendingEmail.create! action: "new_minutes"
+      when Document
+        PendingEmail.create! action: "bylaw" if bylaw?
     end
 
     true
