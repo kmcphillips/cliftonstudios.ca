@@ -27,8 +27,7 @@ end
 
 after "deploy:update", "deploy:cleanup"
 
-## Callbacks
-after "deploy", "symlink_shared_files" ##, "generate_sitemaps" # This was nothing but a hassle. do it manually
+after "deploy:finalize_update", "symlink_shared_files"
 
 task :symlink_shared_files do
   run "ln -s #{shared_path}/assets #{release_path}/public/assets"
@@ -38,6 +37,7 @@ task :symlink_shared_files do
   end
 end
 
+# after "deploy:finalize_update", "generate_sitemaps"
 task :generate_sitemaps do
   run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
 end
