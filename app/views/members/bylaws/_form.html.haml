@@ -5,5 +5,9 @@
 
   %ul.form
     = f.item :text_field, :name, size: 40
-    = f.item :file_field, :file, label: "Document", note: "PDF documetns only"
+    = f.item :file_field, :file, label: "Document", note: "PDFs only"
+    - if @bylaw.persisted?
+      %li
+        %label Current Document
+        = show_entity_image @bylaw.file.url, "Preview", target: '_blank'
     = f.item :submit, "Save"
