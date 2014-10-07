@@ -1,66 +1,65 @@
 Cliftonstudios::Application.routes.draw do
 
   get "contact_executive/create"
-
   get "contact_executive/index"
 
-  root :to => "posts#index"
+  root to: "posts#index"
   match 'news/:id' => 'posts#show'
   match 'rss.:format' => 'posts#rss'
 
-  resources :artists, :only => [:index, :show]
-  resources :posts, :only => [:index, :show]
-  resources :events, :only => [:index, :show]
-  resources :pictures, :only => [:index, :show]
+  resources :artists, only: [:index, :show]
+  resources :posts, only: [:index, :show]
+  resources :events, only: [:index, :show]
+  resources :pictures, only: [:index, :show]
 
   ['about', 'contact', 'links', 'search'].each do |block|
     match block => "blocks##{block}"
   end
 
-  resources :member_sessions, :only => [:new, :create, :destroy]
-  match 'login' => "member_sessions#new", :as => :login
-  match 'logout' => "member_sessions#destroy", :as => :logout
+  resources :member_sessions, only: [:new, :create, :destroy]
+  match 'login' => "member_sessions#new", as: :login
+  match 'logout' => "member_sessions#destroy", as: :logout
 
-  resources :unsubscribe, :only => [:show, :update]
-  resources :password_reset, :only => [:index, :create, :show]
-  resources :mailing_list, :only => [:create]
+  resources :unsubscribe, only: [:show, :update]
+  resources :password_reset, only: [:index, :create, :show]
+  resources :mailing_list, only: [:create]
 
   namespace :members do
     resources :dashboard
-    resources :password, :only => [:index, :create]
-    resources :profile, :only => [:index, :create]
-    resources :executive, :only => [:index, :create]
-    resources :links, :except => [:show] do
+    resources :password, only: [:index, :create]
+    resources :profile, only: [:index, :create]
+    resources :executive, only: [:index, :create]
+    resources :links, except: [:show] do
       collection do
         post :sort
       end
     end
-    resources :posts, :except => [:show]
-    resources :events, :except => [:show]
-    resources :blocks, :only => [:index, :create]
-    resources :members, :except => [:destroy] do
+    resources :posts, except: [:show]
+    resources :events, except: [:show]
+    resources :blocks, only: [:index, :create]
+    resources :members, except: [:destroy] do
       member do
         post 'password_reset'
       end
     end
-    resources :pictures, :only => [:index, :create, :update, :destroy, :edit] do
+    resources :pictures, only: [:index, :create, :update, :destroy, :edit] do
       collection do
         get 'all'
       end
     end
-    resources :contact_list, :only => [:index] do
+    resources :contact_list, only: [:index] do
       collection do
         get 'print'
       end
     end
-    resources :mailing_list, :only => [:index, :update, :create] do
+    resources :mailing_list, only: [:index, :update, :create] do
       collection do
         post 'bulk_create'
       end
     end
-    resources :contact_executive, :only => [:index, :create]
-    resources :system_variables, :only => [:index, :update]
-    resources :minutes, :only => [:index, :create, :destroy]
+    resources :contact_executive, only: [:index, :create]
+    resources :system_variables, only: [:index, :update]
+    resources :minutes, only: [:index, :create, :destroy]
     resources :bylaws, only: [:index, :new, :edit, :create, :update, :destroy]
 
     ['emails', 'mail_queue', 'audits'].each do |block|
