@@ -5,50 +5,50 @@ describe Member do
 
   describe "validations" do
     it "should be valid from the factory" do
-      member.should be_valid
+      expect(member).to be_valid
     end
 
     it "should check that the phone has an area code" do
       member.phone = "123-1234"
-      member.should_not be_valid
+      expect(member).not_to be_valid
     end
 
     it "should check that the alternate_phone has an area code" do
       member.alternate_phone = "123-1234"
-      member.should_not be_valid
+      expect(member).not_to be_valid
     end
 
     it "should allow blank phones" do
       member.phone = nil
       member.alternate_phone = ""
-      member.should be_valid
+      expect(member).to be_valid
     end
   end
 
   describe "callbacks" do
     describe "#format_phone_numbers" do
       it "should return true" do
-        member.send(:format_phone_numbers).should be_true
+        expect(member.send(:format_phone_numbers)).to be_true
       end
 
       it "should skip blank numbers" do
         member.phone = nil
         member.alternate_phone = ""
         member.send(:format_phone_numbers)
-        member.phone.should be_nil
-        member.alternate_phone.should eq("")
+        expect(member.phone).to be_nil
+        expect(member.alternate_phone).to eq("")
       end
 
       it "should strip the leading 1" do
         member.phone = "1-222-333-4444"
         member.send(:format_phone_numbers)
-        member.phone.should eq("222-333-4444")
+        expect(member.phone).to eq("222-333-4444")
       end
 
       it "should strip special characters" do
         member.phone = " (222) -333-4444.. "
         member.send(:format_phone_numbers)
-        member.phone.should eq("222-333-4444")
+        expect(member.phone).to eq("222-333-4444")
       end
     end
   end

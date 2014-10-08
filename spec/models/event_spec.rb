@@ -9,7 +9,7 @@ describe Event do
   describe "ends_at" do
     it "should be set on save" do
       event = Event.create!(@valid_attributes)
-      event.ends_at.should == (Time.zone.now.beginning_of_day + 1.day)
+      expect(event.ends_at).to eq(Time.zone.now.beginning_of_day + 1.day)
     end
   end
  
@@ -24,13 +24,13 @@ describe Event do
 
     describe "#next_two_meetings" do
       it "should calculate the next two meetings" do
-        Event.next_two_meetings.should eq([Date.parse("04/10/2012"), Date.parse("04/04/2013")])
+        expect(Event.next_two_meetings).to eq([Date.parse("04/10/2012"), Date.parse("04/04/2013")])
       end
     end
 
     describe "#next_two_sales" do
       it "should calculate the next two sales" do
-        Event.next_two_sales.should eq([[Date.parse("24/11/2012"), Date.parse("25/11/2012")], Date.parse("04/05/2013")])
+        expect(Event.next_two_sales).to eq([[Date.parse("24/11/2012"), Date.parse("25/11/2012")], Date.parse("04/05/2013")])
       end
     end
 
