@@ -27,7 +27,7 @@ end
 
 group :development, :test do
   gem "thin"
-  gem "rspec", '2.14.1'
+  gem "rspec"
   gem "rspec-rails"
   gem "jquery-rails"
   gem "awesome_print"

@@ -28,7 +28,7 @@ describe Member do
   describe "callbacks" do
     describe "#format_phone_numbers" do
       it "should return true" do
-        expect(member.send(:format_phone_numbers)).to be_true
+        expect(member.send(:format_phone_numbers)).to be_truthy
       end
 
       it "should skip blank numbers" do

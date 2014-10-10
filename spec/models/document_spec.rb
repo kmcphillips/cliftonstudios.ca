@@ -11,9 +11,9 @@ describe Document do
 
   describe "#bylaw?" do
     it "should know if the kind if a bylaw" do
-      expect(bylaw.bylaw?).to be_true
+      expect(bylaw.bylaw?).to be_truthy
       bylaw.kind = 'pie'
-      expect(bylaw.bylaw?).to be_false
+      expect(bylaw.bylaw?).to be_falsey
     end
   end
 end

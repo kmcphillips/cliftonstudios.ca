@@ -8,11 +8,11 @@ describe Link do
   describe "validations" do
     it "should fail with an invalid url" do
       @link.url = "pie"
-      expect(@link.valid?).to be_false
+      expect(@link.valid?).to be_falsey
     end
 
     it "should be ok with a valid url" do
-      expect(@link.valid?).to be_true
+      expect(@link.valid?).to be_truthy
     end
   end
 

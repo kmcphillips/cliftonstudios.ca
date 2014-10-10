@@ -19,7 +19,7 @@ describe SystemVariable do
     describe "#readonly?" do
       it "should return the value from the get() call" do
         expect(SystemVariable).to receive(:get).with("readonly").and_return("true")
-        expect(SystemVariable.readonly?).to be_true
+        expect(SystemVariable.readonly?).to be_truthy
       end
     end
   end
