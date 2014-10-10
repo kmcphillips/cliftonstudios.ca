@@ -3,5 +3,5 @@
 //= require vendor/jquery.fancybox
 //= require vendor/jquery.qtip
 //= require rails
-//= require lightbox
 //= require initializers
+//= require members
