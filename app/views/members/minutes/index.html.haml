@@ -4,9 +4,9 @@
   = collection_index(@existing_minutes, ["Recorded Date", "File", "Actions"]) do |m|
     %tr{:class => cycle("odd", "even")}
       %td=m.recorded_at.to_s(:without_time)
-      %td= link_to m.description, m.file.url
+      %td= link_to m.description, m.file.url, target: '_blank'
       %td
-        = show_entity_image m.file.url, "Download"
+        = show_entity_image m.file.url, "Download", target: '_blank'
         - if current_member.admin?
           %br
           = destroy_entity_image members_minutes_path(m), "Delete"
