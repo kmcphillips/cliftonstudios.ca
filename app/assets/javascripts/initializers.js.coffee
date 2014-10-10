@@ -5,6 +5,7 @@ $ ->
   setupSortableTables()
   setupRentingSelects()
   setupLinkPreview()
+  setupDeleteCurrentImage()
 
 setupLoginFocus = ->
   if $('#login_email').val()? && $('#login_email').val()?.length > 0
@@ -40,6 +41,19 @@ setupLinkPreview = ->
       window.open(link)
     else
       alert "URL must be valid and begin with 'http://' or 'https://'"
+
+    false
+
+setupDeleteCurrentImage = ->
+  $("[data-delete-current-image]").click ->
+    if confirm("Are you sure you want to remove this image?")
+      container = $(this).closest('li')
+
+      container.find(".delete_image").val "1"
+      container.find("a.thumb").hide()
+      container.find('.delete_image_notice').show()
+
+      $(this).hide()
 
     false
 
