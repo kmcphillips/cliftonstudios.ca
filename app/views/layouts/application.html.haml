@@ -5,8 +5,7 @@
 
     = auto_discovery_link_tag(:rss, '/rss.xml')
 
-    - ["fonts", "base", "jquery-ui", "jquery.fancybox", "jquery.qtip"].each do |stylesheet|
-      = stylesheet_link_tag "/stylesheets/#{ stylesheet }.css"
+    = stylesheet_link_tag "application"
 
     = javascript_include_tag "application"
     = javascript_include_tag "tooltips" if !mobile_device?
