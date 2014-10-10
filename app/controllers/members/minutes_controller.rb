@@ -8,7 +8,7 @@ class Members::MinutesController < ApplicationController
   end
 
   def create
-    @minutes = current_member.minutes.build(params[:minutes])
+    @minutes = current_member.minutes.build(minutes_params)
 
     if @minutes.save
       redirect_to members_minutes_index_path, :notice => "Minutes uploaded successfully!"
@@ -24,4 +24,9 @@ class Members::MinutesController < ApplicationController
     redirect_to members_minutes_index_path, :notice => "Minutes deleted successfully!"
   end
 
+  private
+
+  def minutes_params
+    params.require(:minutes).permit(:file, :description, :recorded_at)
+  end
 end
