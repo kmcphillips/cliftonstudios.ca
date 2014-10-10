@@ -1,25 +1,3 @@
-- content_for :js do
-  :javascript
-    $(document).ready(function(){
-      update_renting_fields();
-
-      $("#renting_select").change(function(){
-        update_renting_fields();
-      });
-    });
-
-    function update_renting_fields(){
-      if($("#renting_select").val() == "true"){
-        $("#subletting_member_fields").hide();
-        $("#dependent_members").show();
-        $("#subletting_member").val("");
-      }
-      else{
-        $("#subletting_member_fields").show();
-        $("#dependent_members").hide();
-      }
-    }
-
 = form_for [:members, @member] do |f|
   = f.error_messages
 

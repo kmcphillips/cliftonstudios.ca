@@ -6,6 +6,12 @@ $ ->
     ampm: true
     stepMinute: 15
 
+  if $("#renting_select")
+    update_renting_fields()
+
+    $("#renting_select").change ->
+      update_renting_fields()
+
 
 window.preview_link = (id) ->
   link = $(id).val()
@@ -28,3 +34,12 @@ window.stripe_table = (table, klass) ->
       $(element).addClass "odd"
     else
       $(element).addClass "even"
+
+update_renting_fields = ->
+  if $("#renting_select").val() == "true"
+    $("#subletting_member_fields").hide()
+    $("#dependent_members").show()
+    $("#subletting_member").val("")
+  else
+    $("#subletting_member_fields").show()
+    $("#dependent_members").hide()
