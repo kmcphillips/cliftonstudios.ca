@@ -1,16 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_member_session, :current_member, :logged_in?, :mobile_device?
+  helper_method :current_member_session, :current_member, :logged_in?
 
   prepend_before_filter :readonly_mode_check
   append_before_filter :set_member_tracker, :find_random_pictures
-
-
-  # A very crude and easy way to detect mobile devices. It's not super important, but just cleans up some UI stuff.
-  def mobile_device?
-    request.user_agent =~ /Mobile|webOS/
-  end
 
   private
 

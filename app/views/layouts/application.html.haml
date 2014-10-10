@@ -8,10 +8,8 @@
     = stylesheet_link_tag "application"
 
     = javascript_include_tag "application"
-    = javascript_include_tag "tooltips" if !mobile_device?
-
     <!--[if IE]>
-    = javascript_include_tag 'jquery.corner', 'ie'
+    = javascript_include_tag 'ie'
     <![endif]-->
 
     = yield :js
