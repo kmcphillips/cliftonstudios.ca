@@ -19,7 +19,7 @@ class MemberSessionsController < ApplicationController
   def create
     @title = "Member Login"
 
-    @member_session = MemberSession.new(params[:member_session])
+    @member_session = MemberSession.new(member_session_params)
 
     if @member_session.save
 
@@ -47,6 +47,12 @@ class MemberSessionsController < ApplicationController
     current_member_session.destroy
     flash[:notice] = "You have been logged out."
     redirect_to root_path
+  end
+
+  private
+
+  def member_session_params
+    params.require(:member_session).permit(:email, :password, :remember_me)
   end
 
 end

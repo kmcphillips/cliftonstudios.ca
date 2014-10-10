@@ -1,4 +1,6 @@
 = form_for current_member, url: members_dashboard_path(current_member), as: :member, html: {multipart: true} do |f|
+  = f.error_messages
+
   %h1 Your Dashboard
   .post
     %p

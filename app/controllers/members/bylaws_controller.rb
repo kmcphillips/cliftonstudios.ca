@@ -15,7 +15,7 @@ class Members::BylawsController < ApplicationController
   end
 
   def create
-    @bylaw = current_member.documents.build(params[:document])
+    @bylaw = current_member.documents.build(document_params)
     @bylaw.kind = 'bylaw'
 
     if @bylaw.save
@@ -26,7 +26,7 @@ class Members::BylawsController < ApplicationController
   end
 
   def update
-    if @bylaw.update_attributes(params[:document])
+    if @bylaw.update_attributes(document_params)
       redirect_to members_bylaws_path, notice: "Bylaws updated successfully!"
     else
       render :edit
@@ -43,6 +43,12 @@ class Members::BylawsController < ApplicationController
 
   def load_bylaw
     @bylaw = Document.bylaws.find(params[:id])
+  end
+
+  private
+
+  def document_params
+    params.require(:document).permit(:name, :file)
   end
 
 end
