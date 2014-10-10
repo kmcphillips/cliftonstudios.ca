@@ -1,5 +1,5 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require fancybox
-//= require vendor/jquery-ui
 //= require initializers
