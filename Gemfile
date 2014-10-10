@@ -28,6 +28,7 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'fancybox-rails'
 
 group :development do
   gem 'letter_opener'
