@@ -19,6 +19,7 @@ gem 'rinku', require: 'rails_rinku'
 gem 'acts_as_permalink'
 gem 'rvm-capistrano'
 gem 'whenever', require: false
+gem 'strong_parameters'
 
 gem 'execjs'
 gem 'therubyracer'
