@@ -8,6 +8,7 @@ db/structure.sql
 .idea
 .idea/*
 public/assets
+public/attachments
 public/stylesheets/base.css
 public/sitemap1.xml.gz
 public/sitemap_index.xml.gz

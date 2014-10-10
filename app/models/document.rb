@@ -10,8 +10,8 @@ class Document < ActiveRecord::Base
 
   has_attached_file :file,
     whiny: true,
-    path: ":rails_root/public/assets/documents/:filename",
-    url: "/assets/documents/:filename"
+    path: ":rails_root/public/attachments/documents/:filename",
+    url: "/attachments/documents/:filename"
 
   validates :name, presence: true
   validates :kind, inclusion: {in: KINDS}

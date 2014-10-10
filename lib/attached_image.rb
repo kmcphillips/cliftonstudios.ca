@@ -8,8 +8,8 @@ module AttachedImage
         :styles => IMAGE_SIZES,
         :default_style => :full,
         :whiny => true,
-        :path => ":rails_root/public/assets/images/:class/:id_:style.:extension",
-        :url => "/assets/images/:class/:id_:style.:extension"
+        :path => ":rails_root/public/attachments/images/:class/:id_:style.:extension",
+        :url => "/attachments/images/:class/:id_:style.:extension"
 
       attr_accessor :delete_image
 

@@ -30,7 +30,7 @@ after "deploy:update", "deploy:cleanup"
 after "deploy:finalize_update", "symlink_shared_files"
 
 task :symlink_shared_files do
-  run "ln -s #{shared_path}/assets #{release_path}/public/assets"
+  run "ln -s #{shared_path}/assets #{release_path}/public/attachments"
 
   %w{database.yml mail.yml}.each do |config|
     run "ln -s #{shared_path}/#{config} #{release_path}/config/#{config}"
