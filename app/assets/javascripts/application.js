@@ -1,8 +1,8 @@
-//= require jquery
-//= require jquery-ui
+//= require vendor/jquery
+//= require vendor/jquery-ui
+//= require vendor/jquery.fancybox
+//= require vendor/jquery.qtip
 //= require rails
-//= require jquery.fancybox
-//= require jquery.qtip
 
 $(document).ready(function(){
   $("a.thumb").fancybox({
