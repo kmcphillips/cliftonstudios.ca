@@ -3,17 +3,17 @@
   %head
     %title Clifton Studios Members List
 
-    = stylesheet_link_tag ["fonts", "print_contact_list"]
-    = stylesheet_link_tag ["fonts", "print_contact_list"], :media => :print
+    - ["fonts", "print_contact_list"].each do |stylesheet|
+      = stylesheet_link_tag "/stylesheets/#{ stylesheet }.css"
+      = stylesheet_link_tag "/stylesheets/#{ stylesheet }.css", media: :print
 
-    = javascript_include_tag :defaults
+    = javascript_include_tag "application"
 
     = yield :js
-       
-    %link{:rel => "shortcut icon", :type => "image/x-icon", :href => "/favicon.ico"}
+
+    %link{rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico"}
 
     = csrf_meta_tag
 
   %body
     = yield
-

@@ -19,7 +19,7 @@ window.preview_link = (id) ->
 
 window.stripe_table = (table, klass) ->
   finder = "tr"
-  finder = finder + "." + klass  if klass?
+  finder = finder + "." + klass if klass?
 
   $(table).find(finder).each (index, element) ->
     $(element).removeClass "odd even"

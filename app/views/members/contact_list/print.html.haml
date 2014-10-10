@@ -1,9 +1,4 @@
-- unless Rails.env.development?
-  - content_for :js do
-    :javascript
-      $(document).ready(function(){
-        setTimeout("window.print()", 1000);
-      });
+- print_on_page_load
 
 %h1 Clifton Studios Members
 %h2

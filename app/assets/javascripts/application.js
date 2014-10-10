@@ -4,3 +4,4 @@
 //= require vendor/jquery.qtip
 //= require rails
 //= require lightbox
+//= require initializers

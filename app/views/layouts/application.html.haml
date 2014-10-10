@@ -18,15 +18,15 @@
 
     = yield :js
 
-    %link{:rel => "shortcut icon", :type => "image/x-icon", :href => "/favicon.ico"}
+    %link{rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico"}
 
     = csrf_meta_tag
     - META.each_pair do |key, value|
-      %meta{:name => key, :content => value}
+      %meta{name: key, content: value}
 
   %body
     #bgwrapper
-      #top= render :partial => "shared/top"
+      #top= render partial: "shared/top"
       #header
         %table
           %tr
@@ -39,14 +39,14 @@
                   %span.warning (Development)
       #column
         #borderwrapper
-          = render :partial => "shared/nav"
+          = render partial: "shared/nav"
           #main
             #sidebar
-              = render :partial => "shared/members/sidebar" if logged_in?
-              = render :partial => "shared/members/nav" if logged_in?
-              = render :partial => "shared/sidebar"
+              = render partial: "shared/members/sidebar" if logged_in?
+              = render partial: "shared/members/nav" if logged_in?
+              = render partial: "shared/sidebar"
             #content
-              = render :partial => "shared/flashes"
+              = render partial: "shared/flashes"
               = yield
             .clear
-    #footer= render :partial => "shared/footer"
+    #footer= render partial: "shared/footer"
