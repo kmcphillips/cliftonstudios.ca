@@ -20,7 +20,7 @@ describe EventsController do
       allow(Event).to receive(:find_by_permalink).with(event.permalink).and_return(event)
       get :show, id: event.permalink
       expect(assigns(:event)).to eq(event)
-      expect(assigns(:title)).to eq("Event :: #{event.title}")
+      expect(assigns(:title)).to eq("Event - #{event.title}")
     end
   end
 

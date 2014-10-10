@@ -7,9 +7,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_permalink(params[:id])
-    @title = "News :: #{@post.title}"
+    @title = "News - #{@post.title}"
   end
-  
+
   def rss
     @items = (Post.sorted + Event.order("starts_at DESC")).sort{|x,y| y.sort_by <=> x.sort_by}
 

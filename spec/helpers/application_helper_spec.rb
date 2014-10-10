@@ -8,23 +8,23 @@ describe ApplicationHelper do
 
     it "should generate the page title with an @title" do
       instance_variable_set('@title', "Pie")
-      expect(helper.page_title).to eq("Clifton Studios :: Pie")
+      expect(helper.page_title).to eq("Clifton Studios - Pie")
     end
 
     it "should know the members area" do
       expect(helper).to receive(:members_area?).and_return(true)
-      expect(helper.page_title).to eq("Clifton Studios :: Members Area")
+      expect(helper.page_title).to eq("Clifton Studios - Members Area")
     end
 
     it "should handle the blocks controller" do
       allow(helper).to receive(:params).and_return(controller: "blocks", action: "cake")
-      expect(helper.page_title).to eq("Clifton Studios :: Cake")
+      expect(helper.page_title).to eq("Clifton Studios - Cake")
     end
 
     it "should handle the most complex case" do
       expect(helper).to receive(:members_area?).and_return(true)
       instance_variable_set('@title', "Delicious")
-      expect(helper.page_title).to eq("Clifton Studios :: Members Area :: Delicious")
+      expect(helper.page_title).to eq("Clifton Studios - Members Area - Delicious")
     end
   end
 

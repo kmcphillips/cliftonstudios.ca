@@ -2,12 +2,12 @@ module ApplicationHelper
 
   def page_title
     title = "Clifton Studios"
-    title << " :: Members Area" if members_area?
+    title << " - Members Area" if members_area?
 
     if @title
-      @title.blank? ? title : "#{title} :: #{@title}"
+      @title.blank? ? title : "#{title} - #{@title}"
     elsif params[:controller] =~ /blocks$/
-      "#{title} :: #{params[:action].humanize}"
+      "#{title} - #{params[:action].humanize}"
     else
       title
     end
