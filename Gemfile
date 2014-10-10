@@ -1,16 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.19'
+gem 'rails', '4.2.0.beta2'
 
-gem 'rake', '0.9.2'
-
-gem 'capistrano'
 gem 'mysql2'
-gem 'haml'
+
+gem 'rake'
+gem 'capistrano'
 gem 'haml-rails'
 gem 'will_paginate'
 gem 'paperclip'
-gem 'rmagick', '>= 2.13.1'
+gem 'rmagick'
 gem 'authlogic'
 gem 'rails3-generators'
 gem 'memorable_password'
@@ -22,9 +21,8 @@ gem 'whenever', require: false
 
 gem 'execjs'
 gem 'therubyracer'
-gem 'sprockets', '2.2.2'
-gem 'sass'
-gem 'sass-rails'
+gem 'sprockets-rails', '3.0.0.beta1'
+gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
@@ -37,9 +35,7 @@ end
 
 group :development, :test do
   gem 'thin'
-  gem 'rspec'
   gem 'rspec-rails'
-  gem 'pry'
   gem 'pry-rails'
   gem 'factory_girl'
   gem 'factory_girl_rails'
