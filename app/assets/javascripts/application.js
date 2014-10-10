@@ -4,4 +4,3 @@
 //= require vendor/jquery.qtip
 //= require rails
 //= require initializers
-//= require members

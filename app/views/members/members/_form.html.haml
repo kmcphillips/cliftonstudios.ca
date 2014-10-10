@@ -2,14 +2,14 @@
   = f.error_messages
 
   %ul.form
-    = render :partial => "members/dashboard/form", :locals => {:f => f}
-    = f.item :check_box, :active, :label => "Active?"
-    = f.item :check_box, :admin, :label => "Site Administrator?"
+    = render partial: "members/dashboard/form", locals: {f: f}
+    = f.item :check_box, :active, label: "Active?"
+    = f.item :check_box, :admin, label: "Site Administrator?"
     - if f.object.system?
       %li
         %label System user?
         %em Yes
-    = f.item :text_field, :space_number, :size => 4
+    = f.item :text_field, :space_number, size: 4
     - unless f.object.new_record?
       %li
         - if current_member.admin?
@@ -20,21 +20,21 @@
           &nbsp;
     %li
       = f.label :renting, "Type"
-      = f.select :renting, options_for_select([["Renting Member", "true"], ["Non-Renting/Subletting", "false"]], :selected => f.object.renting?.to_s), {}, :id => "renting_select"
+      = f.select :renting, options_for_select([["Renting Member", "true"], ["Non-Renting/Subletting", "false"]], selected: f.object.renting?.to_s), {}, id: "renting_select"
     %li#subletting_member_fields
       = f.label :subletting_member_id
-      = f.select :subletting_member_id, options_for_select([["(None)", ""]] + Member.active.alphabetical.map{|m| [m.name, m.id]}, :selected => f.object.subletting_member_id), {}, :id => "subletting_member"
+      = f.select :subletting_member_id, options_for_select([["(None)", ""]] + Member.active.alphabetical.map{|m| [m.name, m.id]}, selected: f.object.subletting_member_id), {}, id: "subletting_member"
       %span.note Who's space are they sharing?
     %li#dependent_members
       %label Dependent Members
       %span= f.object.dependent_members.any? ? f.object.dependent_members.map(&:name).to_sentence : "No"
     - unless f.object.new_record?
-      = f.item :password_field, :password, :size => 14, :note => (@member.new_record? ? "Leave blank to set automatically" : "Leave blank to not change")
-      = f.item :password_field, :password_confirmation, :label => "Password Confirmation", :size => 14
-      = f.item :text_area, :bio, :rows => 5, :cols => 50
+      = f.item :password_field, :password, size: 14, note: (@member.new_record? ? "Leave blank to set automatically" : "Leave blank to not change")
+      = f.item :password_field, :password_confirmation, label: "Password Confirmation", size: 14
+      = f.item :text_area, :bio, rows: 5, cols: 50
       %li
         = f.label :website, "External Website URL"
-        = f.text_field :website, :value => (f.object.website.blank? ? "http://" : f.object.website), :size => 40, :id => "website_url"
-        = link_to_function(image_tag("/images/icons/link_preview.png", :alt => "Preview", :class => "no_border") + "&nbsp;Preview".html_safe, "preview_link('#website_url');", :title => "Preview")
+        = f.text_field :website, value: (f.object.website.blank? ? "http://" : f.object.website), size: 40, id: "website_url"
+        = link_to(image_tag("/images/icons/link_preview.png", alt: "Preview", class: "no_border") + "&nbsp;Preview".html_safe, '#', data: {'link-preview' => "#website_url"}, title: "Preview")
 
     = f.item :submit, "Save"

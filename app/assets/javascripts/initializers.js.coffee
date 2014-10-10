@@ -4,6 +4,7 @@ $ ->
   setupLightbox()
   setupSortableTables()
   setupRentingSelects()
+  setupLinkPreview()
 
 setupLoginFocus = ->
   if $('#login_email').val()? && $('#login_email').val()?.length > 0
@@ -31,6 +32,17 @@ setupDatepickers = ->
     ampm: true
     stepMinute: 15
 
+setupLinkPreview = ->
+  $("[data-link-preview]").click ->
+    link = $($(this).data().linkPreview).val() || ''
+
+    if link.match(/^http(s)?:\/\/.+/)
+      window.open(link)
+    else
+      alert "URL must be valid and begin with 'http://' or 'https://'"
+
+    false
+
 setupSortableTables = ->
   if $("#sortable_table")
     $("#sortable_table tbody").sortable(update: ->
@@ -51,13 +63,6 @@ setupSortableTables = ->
 
     ).disableSelection()
 
-setupRentingSelects = ->
-  if $("#renting_select")
-    updateRentingSelects()
-
-    $("#renting_select").change ->
-      updateRentingSelects()
-
 stripeTable = (table, klass) ->
   finder = "tr"
   finder = finder + "." + klass if klass?
@@ -69,6 +74,13 @@ stripeTable = (table, klass) ->
       $(element).addClass "odd"
     else
       $(element).addClass "even"
+
+setupRentingSelects = ->
+  if $("#renting_select")
+    updateRentingSelects()
+
+    $("#renting_select").change ->
+      updateRentingSelects()
 
 updateRentingSelects = ->
   if $("#renting_select").val() == "true"

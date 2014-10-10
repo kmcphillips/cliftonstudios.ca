@@ -1,4 +1,4 @@
-= form_for current_member, :url => members_dashboard_path(current_member), :as => :member, :html => {:multipart => true} do |f|
+= form_for current_member, url: members_dashboard_path(current_member), as: :member, html: {multipart: true} do |f|
   %h1 Your Dashboard
   .post
     %p
@@ -7,7 +7,7 @@
       Your personal information is kept private. Phone number, email address, and home address are only shown to other members who have logged in to the website. Never to the public.
 
     %ul.form
-      = render :partial => "form", :locals => {:f => f}
+      = render partial: "form", locals: {f: f}
       %li
         %label Space Number
         %span
@@ -42,7 +42,7 @@
           %span Inactive/
       = f.item :submit, "Save"
 
-  %a{:name => "bio"}
+  %a{name: "bio"}
   %h1 Public Bio
 
   .post
@@ -50,21 +50,21 @@
       This is your bio information that visitors to the Clifton Studios website will be able to see. Please fill out something about you and your work, even if it is just brief. You can also enter your website URL if you have a site where you display your work other than this one.
 
     %ul.form
-      = f.item :text_area, :bio, :rows => 10, :cols => 50
+      = f.item :text_area, :bio, rows: 10, cols: 50
       %li
         = f.label :website, "External Website URL"
-        = f.text_field :website, :value => (f.object.website.blank? ? "http://" : f.object.website), :size => 40, :id => "website_url"
-        = link_to_function(image_tag("/images/icons/link_preview.png", :alt => "Preview", :class => "no_border") + "&nbsp;Preview".html_safe, "preview_link('#website_url');", :title => "Preview")
+        = f.text_field :website, value: (f.object.website.blank? ? "http://" : f.object.website), size: 40, id: "website_url"
+        = link_to(image_tag("/images/icons/link_preview.png", alt: "Preview", class: "no_border") + "&nbsp;Preview".html_safe, '#', data: {'link-preview' => "#website_url"}, title: "Preview")
 
-      = f.item :file_field, :image, :label => "Select a Bio image"
-      = render :partial => "shared/current_image", :locals => {:f => f, :alt => f.object.name}
+      = f.item :file_field, :image, label: "Select a Bio image"
+      = render partial: "shared/current_image", locals: {f: f, alt: f.object.name}
 
       = f.item :submit, "Save"
 
 %h1 Recent Pictures
 .post
   - if current_member.pictures.any?
-    = render :partial => "pictures/pictures", :object => current_member.pictures.recent
+    = render partial: "pictures/pictures", object: current_member.pictures.recent
     %p= link_to "Add more pictures", members_pictures_path
   - else
     %p

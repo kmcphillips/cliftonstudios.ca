@@ -2,10 +2,10 @@
   = f.error_messages
 
   %ul.form
-    = f.item :text_field, :title, :size => 40
+    = f.item :text_field, :title, size: 40
     %li
       = f.label :url, "Link URL"
-      = f.text_field :url, :value => (f.object.url.blank? ? "http://" : f.object.url), :size => 40
-      = link_to_function(image_tag("/images/icons/link_preview.png", :alt => "Preview", :class => "no_border") + "&nbsp;Preview".html_safe, "preview_link('#link_url');", :title => "Preview")
-    = f.item :text_area, :description, :cols => 40, :rows => 4
+      = f.text_field :url, value: (f.object.url.blank? ? "http://" : f.object.url), size: 40
+      = link_to(image_tag("/images/icons/link_preview.png", alt: "Preview", class: "no_border") + "&nbsp;Preview".html_safe, '#', title: "Preview", data: {'link-preview' => "#link_url"})
+    = f.item :text_area, :description, cols: 40, rows: 4
     = f.item :submit, "Save"
