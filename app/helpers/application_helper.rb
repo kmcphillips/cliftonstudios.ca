@@ -26,35 +26,35 @@ module ApplicationHelper
 
   def index_entity_image(path, label=nil, args={})
     path = polymorphic_path(path) if path.is_a?(Array)
-    html = link_to image_tag("/images/icons/index.png", :alt => "Index"), path, :title => "Index", :class => "action-image"
+    html = link_to image_tag("icons/index.png", :alt => "Index"), path, :title => "Index", :class => "action-image"
     html += "&nbsp;".html_safe + link_to(label, path) if label
     html
   end
 
   def new_entity_image(path, label=nil, args={})
     path = polymorphic_path(path) if path.is_a?(Array)
-    html = link_to image_tag("/images/icons/new.png", :alt => "New"), path, :title => "New", :class => "action-image"
+    html = link_to image_tag("icons/new.png", :alt => "New"), path, :title => "New", :class => "action-image"
     html += "&nbsp;".html_safe + link_to(label, path) if label
     html
   end
 
   def destroy_entity_image(path, label=nil, args={})
     path = polymorphic_path(path) if path.is_a?(Array)
-    html = link_to image_tag("/images/icons/delete.png", :alt => "Delete"), path, :method => :delete, :confirm => "Are you sure you want to delete this?", :title => "Delete", :class => "action-image"
+    html = link_to image_tag("icons/delete.png", :alt => "Delete"), path, :method => :delete, :confirm => "Are you sure you want to delete this?", :title => "Delete", :class => "action-image"
     html += "&nbsp;".html_safe + link_to(label, path, :method => :delete, :confirm => "Are you sure you want to delete this?") if label
     html
   end
 
   def edit_entity_image(path, label=nil, args={})
     path = polymorphic_path(path) if path.is_a?(Array)
-    html = link_to image_tag("/images/icons/edit.png", :alt => "Edit"), path, :title => "Edit", :class => "action-image"
+    html = link_to image_tag("icons/edit.png", :alt => "Edit"), path, :title => "Edit", :class => "action-image"
     html += "&nbsp;".html_safe + link_to(label, path) if label
     html
   end
 
   def show_entity_image(path, label=nil, args={})
     path = polymorphic_path(path) if path.is_a?(Array)
-    html = link_to image_tag("/images/icons/show.png", :alt => "Show"), path, :title => "Show", :class => "action-image", target: args[:target]
+    html = link_to image_tag("icons/show.png", :alt => "Show"), path, :title => "Show", :class => "action-image", target: args[:target]
     html += "&nbsp;".html_safe + link_to(label, path, target: args[:target]) if label
     html
   end
@@ -68,11 +68,11 @@ module ApplicationHelper
   end
 
   def enlarge_button
-    "Enlarge&nbsp;" + image_tag("/images/icons/magnify.png", :alt => "Enlarge", :class => :magnify)
+    "Enlarge&nbsp;" + image_tag("icons/magnify.png", :alt => "Enlarge", :class => :magnify)
   end
 
   def boolean_image(value)
-    image_tag("/images/icons/#{!!value}.png", :alt => (!!value).to_s.humanize)
+    image_tag("icons/#{!!value}.png", :alt => (!!value).to_s.humanize)
   end
 
   def collection_index(collection, column_titles, options={}, &block)
@@ -151,7 +151,7 @@ module ApplicationHelper
   def social_media_icon(type, path, options={})
     alt = options[:alt] || "Follow us on #{type.to_s.humanize}"
 
-    link_to image_tag("/images/icons/social/#{type}-32.png", :alt => alt, :class => options[:class]), path, :title => alt
+    link_to image_tag("icons/social/#{type}-32.png", :alt => alt, :class => options[:class]), path, :title => alt
   end
 
   def member_link(member)

@@ -6,6 +6,6 @@
     %li
       = f.label :url, "Link URL"
       = f.text_field :url, value: (f.object.url.blank? ? "http://" : f.object.url), size: 40
-      = link_to(image_tag("/images/icons/link_preview.png", alt: "Preview", class: "no_border") + "&nbsp;Preview".html_safe, '#', title: "Preview", data: {'link-preview' => "#link_url"})
+      = link_to(image_tag("icons/link_preview.png", alt: "Preview", class: "no_border") + "&nbsp;Preview".html_safe, '#', title: "Preview", data: {'link-preview' => "#link_url"})
     = f.item :text_area, :description, cols: 40, rows: 4
     = f.item :submit, "Save"

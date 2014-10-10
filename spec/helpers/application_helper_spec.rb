@@ -48,24 +48,24 @@ describe ApplicationHelper do
 
   describe "boolean_image" do
     it "should generate for true" do
-      expect(helper).to receive(:image_tag).with("/images/icons/true.png", alt: "True").and_return("pie")
+      expect(helper).to receive(:image_tag).with("icons/true.png", alt: "True").and_return("pie")
       expect(helper.boolean_image(true)).to eq("pie")
     end
 
     it "should generate for false" do
-      expect(helper).to receive(:image_tag).with("/images/icons/false.png", alt: "False").and_return("pie")
+      expect(helper).to receive(:image_tag).with("icons/false.png", alt: "False").and_return("pie")
       expect(helper.boolean_image(false)).to eq("pie")
     end
 
     it "should generate false for nil" do
-      expect(helper).to receive(:image_tag).with("/images/icons/false.png", alt: "False").and_return("pie")
+      expect(helper).to receive(:image_tag).with("icons/false.png", alt: "False").and_return("pie")
       expect(helper.boolean_image(nil)).to eq("pie")
     end
   end
 
   describe "enlarge_button" do
     it "should generate the button and image" do
-      expect(helper).to receive(:image_tag).with("/images/icons/magnify.png", alt: "Enlarge", class: :magnify).and_return("pie")
+      expect(helper).to receive(:image_tag).with("icons/magnify.png", alt: "Enlarge", class: :magnify).and_return("pie")
       expect(helper.enlarge_button).to eq("Enlarge&nbsp;pie")
     end
   end

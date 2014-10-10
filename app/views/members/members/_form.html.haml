@@ -35,6 +35,6 @@
       %li
         = f.label :website, "External Website URL"
         = f.text_field :website, value: (f.object.website.blank? ? "http://" : f.object.website), size: 40, id: "website_url"
-        = link_to(image_tag("/images/icons/link_preview.png", alt: "Preview", class: "no_border") + "&nbsp;Preview".html_safe, '#', data: {'link-preview' => "#website_url"}, title: "Preview")
+        = link_to(image_tag("icons/link_preview.png", alt: "Preview", class: "no_border") + "&nbsp;Preview".html_safe, '#', data: {'link-preview' => "#website_url"}, title: "Preview")
 
     = f.item :submit, "Save"

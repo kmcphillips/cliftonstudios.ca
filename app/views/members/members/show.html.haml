@@ -79,4 +79,4 @@
     = edit_entity_image edit_members_member_path(@member), "Edit #{@member.name}'s Profile"
     - if current_member.admin?
       %br
-      = custom_icon_entity_image "/images/icons/link_preview.png", password_reset_members_member_path(@member), "Send Password Reset Email", method: :post
+      = custom_icon_entity_image "icons/link_preview.png", password_reset_members_member_path(@member), "Send Password Reset Email", method: :post
