@@ -12,9 +12,10 @@ Cliftonstudios::Application.routes.draw do
   resources :events, only: [:index, :show]
   resources :pictures, only: [:index, :show]
 
-  ['about', 'contact', 'links', 'search'].each do |block|
+  ['about', 'contact', 'links'].each do |block|
     get block => "blocks##{block}"
   end
+  match 'search' => "blocks#search", via: [:get, :post]
 
   resources :member_sessions, only: [:new, :create, :destroy]
   get 'login' => "member_sessions#new", as: :login
