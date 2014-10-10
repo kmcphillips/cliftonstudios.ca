@@ -9,7 +9,8 @@
 
 ## About
 
-This is a Rails 3 site for the Winnipeg Manitoba based artist co-op. I don't know why you'd want to set up your own copy of this website, but if you do for some reason here's how.
+This is a Rails site for the Winnipeg Manitoba based artist co-op. I don't know why you'd want to set up your own copy of this website, but if you do for some reason here's how.
+
 
 ## Quick Setup
 
@@ -21,9 +22,9 @@ With an OS X or Linux machine with ruby and rubygems and bundler installed, you 
     $ cd cliftonstudios
     $ bundle install
     $ cp config/database.yml.example config/database.yml
-    $ rake db:migrate
-    $ rake db:populate
-    $ rails server
+    $ bundle exec rake db:migrate
+    $ bundle exec rake db:populate
+    $ bundle exec rails server
 
 You'll need to create a MySQL database matching the credentials in the database.yml example file. After that, point your browser to [http://localhost:3000/](http://localhost:3000/) and you should be set to go.
 
@@ -35,17 +36,11 @@ Clone the git repo to get the source.
 
 ### Install the required gems
 
-Bundler to the rescue!
-
     $ bundle install
 
 The only tricky on is rmagick which depends on ImageMagick locally. On Linux it's usually just installing a package, but on OS X it's a little more intense.
 
-    $ sudo gem install haml will_paginate rmagick sqlite3-ruby
-
-If rmagick won't install, then just comment it out from the Gemfile. The app will run but image uploads will not work. On linux you'll have to install the ImageMagick dev libraries that should be in the repo for your distro. On OS X try something like this:
-
-[http://github.com/masterkain/ImageMagick-sl](http://github.com/masterkain/ImageMagick-sl)
+If rmagick won't install, then just comment it out from the Gemfile. The app will run but image uploads will not work. On linux you'll have to install the ImageMagick dev libraries that should be in the repo for your distro. On OS X it is provided through Homebrew.
 
 
 ### Create a Database
@@ -62,15 +57,15 @@ Create the DB:
 
 After the migrations, db:populate will seed required data, including a test user.
 
-    $ rake db:migrate
-    $ rake db:populate
+    $ bundle exec rake db:migrate
+    $ bundle exec rake db:populate
 
 
 ### Done
 
 Start the server and direct your browser to [http://localhost:3000/](http://localhost:3000/)
 
-    $ rails server
+    $ bundle exec rails server
 
 The admin area can be reached at [http://localhost:3000/admin/](http://localhost:3000/admin/) and the username and password that were created with the populate are test/test.
 
@@ -85,11 +80,11 @@ There's a suite of spec tests for all models and helpers and some of the control
 
 Next, clone your current database into your test database.
 
-    $ rake db:test:clone
+    $ bundle exec rake db:test:clone
 
 Then run them!
 
-    $ rake spec
+    $ bundle exec rake spec
 
 
 ## Feedback
