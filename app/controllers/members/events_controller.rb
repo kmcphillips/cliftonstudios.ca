@@ -14,7 +14,7 @@ class Members::EventsController < ApplicationController
   end
 
   def create
-    @event = current_member.events.build(params[:event])
+    @event = current_member.events.build(event_params)
 
     if params[:commit] == "Preview"
       @preview = true
@@ -31,10 +31,10 @@ class Members::EventsController < ApplicationController
     @event = Event.find_by_permalink(params[:id])
 
     if params[:commit] == "Preview"
-      @event.attributes = params[:event]
+      @event.attributes = event_params
       @preview = true
       render :action => "new"
-    elsif @event.update_attributes(params[:event])
+    elsif @event.update_attributes(event_params)
       redirect_to(members_events_path, :notice => 'News event was successfully updated.')
     else
       render :action => "edit"
@@ -46,6 +46,12 @@ class Members::EventsController < ApplicationController
     @event.destroy
 
     redirect_to(members_events_path)
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:title, :body, :starts_at, :duration, :image)
   end
 end
 

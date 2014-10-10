@@ -19,7 +19,7 @@ class Members::MembersController < ApplicationController
   end
 
   def create
-    @member = Member.new(params[:member])
+    @member = Member.new(member_params)
 
     if @member.save
       redirect_to(members_members_path, :notice => "#{@member.name} was successfully created.")
@@ -31,7 +31,7 @@ class Members::MembersController < ApplicationController
   def update
     @member = Member.public.find_by_permalink!(params[:id])
 
-    if @member.update_attributes(params[:member])
+    if @member.update_attributes(member_params)
       redirect_to(members_members_path, :notice => "#{@member.name} was successfully updated.")
     else
       render :action => "edit"
@@ -44,4 +44,9 @@ class Members::MembersController < ApplicationController
     redirect_to(members_member_path(@member), notice: "A password reset email has been sent!")
   end
 
+  private
+
+  def member_params
+    params.require(:member).permit(:name, :email, :address, :phone, :alternate_phone, :contact_method, :receive_emails, :active, :admin, :space_number, :member_since_month, :member_since_year, :renting, :subletting_member_id, :password, :password_confirmation, :bio, :website)
+  end
 end
