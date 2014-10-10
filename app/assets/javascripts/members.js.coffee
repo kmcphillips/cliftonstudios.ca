@@ -12,6 +12,25 @@ $ ->
     $("#renting_select").change ->
       update_renting_fields()
 
+  if $("#sortable_table")
+    $("#sortable_table tbody").sortable(update: ->
+      data = ""
+
+      $("#sortable_table tbody tr").each ->
+        val = $(this).attr("data-link-id")
+        data += "link[]=" + val + "&"  if val?
+
+      $.ajax
+        url: "/members/links/sort"
+        type: "post"
+        data: data
+        error: ->
+          alert "There was an error sorting links. Contact administrator."
+
+      stripe_table(this, "sortable_row")
+
+    ).disableSelection()
+
 
 window.preview_link = (id) ->
   link = $(id).val()
