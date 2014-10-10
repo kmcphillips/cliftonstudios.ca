@@ -2,7 +2,7 @@ $(document).ready(function(){
   $('.datepicker').datepicker({
     dateFormat: "yy-mm-dd"
   });
-  
+
   $('.datetimepicker').datepicker({
     ampm: true,
     stepMinute: 15
@@ -10,7 +10,6 @@ $(document).ready(function(){
 
   convert_datetime_select("ul.form .datetime");
 });
-
 
 
 function preview_link(id)
@@ -44,7 +43,7 @@ function convert_datetime_select(finder)
     year = 0;
     month = 0;
     day = 0;
-    
+
     $(finder).each(function(){
       $(this).find("select").each(function(index, select){
           switch(index)

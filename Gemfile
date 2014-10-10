@@ -8,7 +8,6 @@ gem 'capistrano'
 gem 'mysql2'
 gem 'haml'
 gem 'haml-rails'
-gem 'sass'
 gem 'will_paginate'
 gem 'paperclip'
 gem 'rmagick', '>= 2.13.1'
@@ -21,6 +20,15 @@ gem 'acts_as_permalink'
 gem 'rvm-capistrano'
 gem 'whenever', require: false
 
+gem 'execjs'
+gem 'therubyracer'
+gem 'sprockets', '2.2.2'
+gem 'sass'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'jquery-rails'
+
 group :development do
   gem 'letter_opener'
 end
@@ -29,8 +37,6 @@ group :development, :test do
   gem 'thin'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'jquery-rails'
-  gem 'awesome_print'
   gem 'pry'
   gem 'pry-rails'
   gem 'factory_girl'
