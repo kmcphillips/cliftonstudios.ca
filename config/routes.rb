@@ -4,8 +4,8 @@ Cliftonstudios::Application.routes.draw do
   get "contact_executive/index"
 
   root to: "posts#index"
-  match 'news/:id' => 'posts#show'
-  match 'rss.:format' => 'posts#rss'
+  get 'news/:id' => 'posts#show'
+  get 'rss.:format' => 'posts#rss'
 
   resources :artists, only: [:index, :show]
   resources :posts, only: [:index, :show]
@@ -13,12 +13,12 @@ Cliftonstudios::Application.routes.draw do
   resources :pictures, only: [:index, :show]
 
   ['about', 'contact', 'links', 'search'].each do |block|
-    match block => "blocks##{block}"
+    get block => "blocks##{block}"
   end
 
   resources :member_sessions, only: [:new, :create, :destroy]
-  match 'login' => "member_sessions#new", as: :login
-  match 'logout' => "member_sessions#destroy", as: :logout
+  get 'login' => "member_sessions#new", as: :login
+  get 'logout' => "member_sessions#destroy", as: :logout
 
   resources :unsubscribe, only: [:show, :update]
   resources :password_reset, only: [:index, :create, :show]
@@ -63,16 +63,16 @@ Cliftonstudios::Application.routes.draw do
     resources :bylaws, only: [:index, :new, :edit, :create, :update, :destroy]
 
     ['emails', 'mail_queue', 'audits'].each do |block|
-      match block => "blocks##{block}"
+      get block => "blocks##{block}"
     end
   end
 
   ## Legacy PHP URLs
   %w[news events about artists pictures login].each do |page|
-    match "#{page}.php" => "legacy_routes##{page}"
+    get "#{page}.php" => "legacy_routes##{page}"
   end
 
   # Catch all remaining PHP pages and send them somewhere
-  match ":page.php" => "legacy_routes#default"
+  get ":page.php" => "legacy_routes#default"
 
 end
