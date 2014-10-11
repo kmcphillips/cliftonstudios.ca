@@ -8,10 +8,17 @@ class Members::DashboardController < ApplicationController
   def update
     @title = "Dashboard"
 
-    if current_member.update_attributes(params[:member])
+    if current_member.update_attributes(member_params)
       redirect_to members_dashboard_index_path, :notice => "Your profile has been updated"
     else
       render :index
     end
   end
+
+  private
+
+  def member_params
+    params.require(:member).permit(:name, :email, :address, :phone, :alternate_phone, :contact_method, :receive_emails, :bio, :website, :delete_image, :image)
+  end
+
 end

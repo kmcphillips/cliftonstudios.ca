@@ -14,7 +14,7 @@ class Members::PostsController < ApplicationController
   end
 
   def create
-    @post = current_member.posts.build(params[:post])
+    @post = current_member.posts.build(post_params)
 
     if params[:commit] == "Preview"
       @preview = true
@@ -31,11 +31,11 @@ class Members::PostsController < ApplicationController
     @post = Post.find_by_permalink(params[:id])
 
     if params[:commit] == "Preview"
-      @post.attributes = params[:post]
+      @post.attributes = post_params
       @preview = true
       render :action => "new"
-    elsif @post.update_attributes(params[:post])
-      redirect_to(members_posts_path, :notice => 'News post was successfully updated.') 
+    elsif @post.update_attributes(post_params)
+      redirect_to(members_posts_path, :notice => 'News post was successfully updated.')
     else
       render :action => "edit"
     end
@@ -46,6 +46,12 @@ class Members::PostsController < ApplicationController
     @post.destroy
 
     redirect_to(members_posts_path)
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :body, :image, :delete_image)
   end
 end
 

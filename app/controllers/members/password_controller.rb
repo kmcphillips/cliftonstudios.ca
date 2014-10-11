@@ -15,7 +15,7 @@ class Members::PasswordController < ApplicationController
     if params[:member].try(:[], :password).blank?
       flash[:error] = "Password cannot be blank."
       render :index
-    elsif current_member.update_attributes(params[:member])
+    elsif current_member.update_attributes(member_params)
       current_member.update_attribute(:password_configured, true)
       flash[:notice] = "Password has been updated."
 
@@ -28,5 +28,11 @@ class Members::PasswordController < ApplicationController
     else
       render :index
     end
+  end
+
+  private
+
+  def member_params
+    params.require(:member).permit(:password, :password_confirmation)
   end
 end

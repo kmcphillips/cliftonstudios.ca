@@ -8,7 +8,7 @@ class Members::PicturesController < ApplicationController
   end
 
   def create
-    @picture = current_member.pictures.build(params[:picture])
+    @picture = current_member.pictures.build(picture_params)
 
     if @picture.save
       redirect_to members_pictures_path, :notice => "Picture uploaded successfully!"
@@ -25,7 +25,7 @@ class Members::PicturesController < ApplicationController
   def update
     @picture = current_member.pictures.find params[:id]
 
-    if @picture.update_attributes(params[:picture])
+    if @picture.update_attributes(picture_params)
       redirect_to members_pictures_path, :notice => "Picture description updated successfully"
     else
       render :edit
@@ -45,6 +45,12 @@ class Members::PicturesController < ApplicationController
 
   def all
     @pictures = Picture.sorted.paginate pagination_params(:per_page => 16)
+  end
+
+  private
+
+  def picture_params
+    params.require(:picture).permit(:image, :description)
   end
 end
 

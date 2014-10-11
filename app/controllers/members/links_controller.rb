@@ -14,7 +14,7 @@ class Members::LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(params[:link])
+    @link = Link.new(link_params)
 
     if @link.save
       redirect_to(members_links_path, :notice => 'Link was successfully created.')
@@ -26,7 +26,7 @@ class Members::LinksController < ApplicationController
   def update
     @link = Link.find(params[:id])
 
-    if @link.update_attributes(params[:link])
+    if @link.update_attributes(link_params)
       redirect_to(members_links_path, :notice => 'Link was successfully updated.')
     else
       render :action => "edit"
@@ -52,5 +52,10 @@ class Members::LinksController < ApplicationController
     render :nothing => true
   end
 
+  private
+
+  def link_params
+    params.require(:link).permit(:title, :url, :description)
+  end
 end
 

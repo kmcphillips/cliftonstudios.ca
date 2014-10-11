@@ -36,6 +36,9 @@ module Cliftonstudios
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
+    # Strong params
+    config.active_record.whitelist_attributes = false
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
