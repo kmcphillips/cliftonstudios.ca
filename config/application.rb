@@ -34,10 +34,10 @@ module Cliftonstudios
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
 
-    # Strong params
-    config.active_record.whitelist_attributes = false
+    # In attached_image.rb
+    config.active_record.raise_in_transactional_callbacks = true
 
     # Enable the asset pipeline
     config.assets.enabled = true
