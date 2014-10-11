@@ -18,11 +18,16 @@
       - when Picture
         = link_to "a picture", picture_path(audit.auditable.member.permalink)
       - when Block
-        = link_to "the #{audit.auditable.label} section", about_path           
+        = link_to "the #{audit.auditable.label} section", about_path
       - when Link
         = link_to "a link", links_path
       - when Executive
         = link_to "the executive", about_path
+      - when Document
+        - if audit.auditable.bylaw?
+          the bylaws
+        - else
+          a document
       - else
         something
 
