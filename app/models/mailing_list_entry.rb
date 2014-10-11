@@ -2,9 +2,9 @@ class MailingListEntry < ActiveRecord::Base
 
   validates :email, :presence => true
 
-  scope :active, where(:active => true)
-  scope :search, lambda{|search| where("email like ?", "%#{search}%") }
-  scope :by_ip, lambda{|ip| where("ip_address LIKE ?", ip) }
+  scope :active, ->{ where(active: true) }
+  scope :search, ->(search){ where("email like ?", "%#{search}%") }
+  scope :by_ip, ->(ip){ where("ip_address LIKE ?", ip) }
 
   def deactivate!
     update_attribute(:active, false)

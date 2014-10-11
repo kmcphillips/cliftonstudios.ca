@@ -15,9 +15,9 @@ class Event < ActiveRecord::Base
 
   def sort_by; starts_at; end
 
-  scope :upcoming, lambda{ where(["ends_at > ?", Time.now]).order("starts_at DESC") }
-  scope :past, lambda{ where(["ends_at < ?", Time.now]).order("starts_at DESC") }
-  scope :sorted, order("created_at DESC")
+  scope :upcoming, ->{ where(["ends_at > ?", Time.now]).order("starts_at DESC") }
+  scope :past, ->{ where(["ends_at < ?", Time.now]).order("starts_at DESC") }
+  scope :sorted, ->{ order("created_at DESC") }
 
   def prefix
     if Time.now < self.starts_at

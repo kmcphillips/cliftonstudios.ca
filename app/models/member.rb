@@ -35,12 +35,12 @@ class Member < ActiveRecord::Base
   before_create :set_member_since
   after_create :email_new_member
 
-  scope :alphabetical, -> { order("name ASC") }
-  scope :sorted, -> { alphabetical }
-  scope :active, -> { where(active: true) }
-  scope :inactive, -> { where(active: false) }
-  scope :emailable, -> { where(receive_emails: true, active: true) }
-  scope :contact_by_phone, -> { where(contact_method: "phone") }
+  scope :alphabetical, ->{ order("name ASC") }
+  scope :sorted, ->{ alphabetical }
+  scope :active, ->{ where(active: true) }
+  scope :inactive, ->{ where(active: false) }
+  scope :emailable, ->{ where(receive_emails: true, active: true) }
+  scope :contact_by_phone, ->{ where(contact_method: "phone") }
   scope :public, ->{ where(system: false) }
 
   def deliver_forgotten_password!

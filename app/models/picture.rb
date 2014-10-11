@@ -2,15 +2,15 @@ class Picture < ActiveRecord::Base
 
   include AttachedImage
   include Audited
-  
+
   belongs_to :member
 
   validates :member, :presence => true
 
-  scope :sorted, order("created_at DESC")
-  scope :active, where("members.active = 1").joins(:member)
-  scope :random, lambda {|size| active.order("RAND()").limit(size || 4) }
-  scope :recent, sorted.limit(4)
+  scope :sorted, ->{ order("created_at DESC") }
+  scope :active, ->{ where("members.active = 1").joins(:member) }
+  scope :random, ->(size=4){ active.order("RAND()").limit(size) }
+  scope :recent, ->{ sorted.limit(4) }
 
   ## Class methods
 
