@@ -40,7 +40,7 @@ class Event < ActiveRecord::Base
         if date.month == 10 || date.month == 4
           meeting = date
 
-          while meeting.cwday != 4
+          while meeting.cwday != 2
             meeting = meeting + 1.day
           end
 
