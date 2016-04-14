@@ -20,7 +20,7 @@ class MemberSessionsController < ApplicationController
     @title = "Member Login"
 
     @member_session = MemberSession.new(member_session_params)
-
+    binding.pry
     if @member_session.save
 
       if SystemVariable.readonly? && !@member_session.member.system?

@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_member_tracker
-    MemberTracker.current = MemberSession.find.try(:member)
+    # MemberTracker.current = MemberSession.find.try(:member)
   end
 
   def find_random_pictures
