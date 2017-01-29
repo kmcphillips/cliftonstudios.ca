@@ -22,7 +22,7 @@ describe Event do
 
     describe "#next_two_meetings" do
       it "should calculate the next two meetings" do
-        expect(Event.next_two_meetings).to eq([Date.parse("04/10/2012"), Date.parse("04/04/2013")])
+        expect(Event.next_two_meetings).to eq([Date.parse("02/10/2012"), Date.parse("02/04/2013")])
       end
     end
 
