@@ -15,6 +15,6 @@ class Minutes < ActiveRecord::Base
   validates_attachment_size :file, :in => 1..10.megabytes
   validates_attachment_presence :file
 
-  scope :sorted, order("recorded_at DESC")
+  scope :sorted, -> { order("recorded_at DESC") }
 
 end

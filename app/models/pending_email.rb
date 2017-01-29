@@ -9,10 +9,10 @@ class PendingEmail < ActiveRecord::Base
   validates :action, :inclusion => TYPES
   validates :status, :inclusion => STATUSES
 
-  scope :pending, where(:status => "pending")
-  scope :processing, where(:status => "processing")
-  scope :failed, where(:status => "failed")
-  scope :incomplete, where("status != 'complete'")
+  scope :pending, ->{ where(:status => "pending") }
+  scope :processing, ->{ where(:status => "processing") }
+  scope :failed, ->{ where(:status => "failed") }
+  scope :incomplete, ->{ where("status != 'complete'") }
 
   def deliver!
     MemberMailer.send(action, locals).deliver
