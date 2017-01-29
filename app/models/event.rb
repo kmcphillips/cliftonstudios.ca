@@ -36,18 +36,20 @@ class Event < ActiveRecord::Base
       result = []
       date = Date.today.beginning_of_month
 
-      while result.size != 2
-        if date.month == 10 || date.month == 4
-          meeting = date
+      while result.size < 2
+        if date.month == 4 || date.month == 10
+          event = date
 
-          while meeting.cwday != 2
-            meeting = meeting + 1.day
+          while !event.tuesday?
+            event = event + 1.day
           end
 
-          result << meeting if meeting >= Date.today
+          if event >= Date.today
+            result << event
+          end
         end
 
-        date = date + 1.month
+        date = date.end_of_month + 1.day
       end
 
       result
@@ -59,31 +61,31 @@ class Event < ActiveRecord::Base
       result = []
       date = Date.today.beginning_of_month
 
-      while result.size != 2
+      while result.size < 2
         if date.month == 5
-          meeting = date
+          event = date
 
-          while meeting.cwday != 7
-            meeting = meeting + 1.day
+          while !event.sunday?
+            event = event + 1.day
           end
 
-          meeting = meeting - 1.day
+          event = event - 1.day
 
-          result << meeting if meeting >= Date.today
+          result << event if event >= Date.today
 
         elsif date.month == 12
-          meeting = date - 1.day
+          event = date - 1.day
 
-          while meeting.cwday != 6
-            meeting = meeting - 1.day
+          while !event.saturday?
+            event = event - 1.day
           end
 
-          if meeting + 1.day >= Date.today
-            result << [meeting, meeting + 1.day]
+          if event + 1.day >= Date.today
+            result << [event, event + 1.day]
           end
         end
 
-        date = date + 1.month
+        date = date.end_of_month + 1.day
       end
 
       result
