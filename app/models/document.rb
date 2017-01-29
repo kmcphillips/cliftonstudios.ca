@@ -17,6 +17,7 @@ class Document < ActiveRecord::Base
   validates :kind, inclusion: {in: KINDS}
   validates_attachment_size :file, in: 1..10.megabytes
   validates_attachment_presence :file
+  do_not_validate_attachment_file_type :file
 
   scope :sorted, ->{ order('name DESC') }
   scope :bylaws, ->{ where(kind: 'bylaw') }
