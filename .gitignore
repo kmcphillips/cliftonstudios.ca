@@ -13,4 +13,5 @@ public/attachments
 public/stylesheets/base.css
 public/sitemap1.xml.gz
 public/sitemap_index.xml.gz
+public/sitemap.xml.gz
 .DS_Store
