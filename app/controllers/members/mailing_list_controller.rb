@@ -4,13 +4,13 @@ class Members::MailingListController < ApplicationController
   def index
     @all_entries = MailingListEntry.active
 
-    scope = MailingListEntry.active
+    scope = MailingListEntry.active.sorted
 
     unless params[:search].blank?
       scope = scope.search(params[:search])
     end
 
-    @entries = scope.paginate(pagination_params(:order => "created_at DESC", :per_page => 20))
+    @entries = scope.paginate(pagination_params(per_page: 20))
   end
 
   def update

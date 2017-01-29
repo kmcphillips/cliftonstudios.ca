@@ -5,6 +5,7 @@ class MailingListEntry < ActiveRecord::Base
   scope :active, -> { where(:active => true) }
   scope :search, ->(search){ where("email like ?", "%#{search}%") }
   scope :by_ip, ->(ip){ where("ip_address LIKE ?", ip) }
+  scope :sorted, -> { order("created_at DESC") }
 
   def deactivate!
     update_attribute(:active, false)

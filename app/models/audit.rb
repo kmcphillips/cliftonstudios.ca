@@ -6,6 +6,8 @@ class Audit < ActiveRecord::Base
 
   validates :action, :inclusion => ["update", "create"]
 
+  scope :sorted, -> { order("created_at DESC") }
+
   def action_verb
     action + "d"
   end

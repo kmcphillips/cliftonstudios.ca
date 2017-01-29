@@ -35,7 +35,7 @@ class Members::BlocksController < BlocksController
   end
 
   def audits
-    @audits = Audit.paginate(pagination_params(:order => "created_at DESC", :per_page => 20))
+    @audits = Audit.sorted.paginate(pagination_params(per_page: 20))
   end
 
 end
