@@ -6,4 +6,4 @@
     %p
       = form_for [:members, @readonly] do |f|
         = f.hidden_field :value, :value => (!SystemVariable.readonly?).to_s
-        = f.submit "Turn #{SystemVariable.readonly? ? "OFF" : "ON"} readonly mode", :confirm => "Are you sure you want to toggle readonly mode?"
+        = f.submit "Turn #{SystemVariable.readonly? ? "OFF" : "ON"} readonly mode", data: { :confirm => "Are you sure you want to toggle readonly mode?" }

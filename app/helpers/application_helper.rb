@@ -40,8 +40,8 @@ module ApplicationHelper
 
   def destroy_entity_image(path, label=nil, args={})
     path = polymorphic_path(path) if path.is_a?(Array)
-    html = link_to image_tag("icons/delete.png", :alt => "Delete"), path, :method => :delete, :confirm => "Are you sure you want to delete this?", :title => "Delete", :class => "action-image"
-    html += "&nbsp;".html_safe + link_to(label, path, :method => :delete, :confirm => "Are you sure you want to delete this?") if label
+    html = link_to image_tag("icons/delete.png", :alt => "Delete"), path, :method => :delete, data: { :confirm => "Are you sure you want to delete this?" }, :title => "Delete", :class => "action-image"
+    html += "&nbsp;".html_safe + link_to(label, path, :method => :delete, data: { :confirm => "Are you sure you want to delete this?" }) if label
     html
   end
 
