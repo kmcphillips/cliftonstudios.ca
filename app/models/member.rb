@@ -5,6 +5,7 @@ class Member < ActiveRecord::Base
   acts_as_authentic do |config|
     config.logged_in_timeout = 1.day
     config.merge_validates_length_of_password_field_options within: PASSWORD_MIN_LENGTH..20
+    config.crypto_provider = Authlogic::CryptoProviders::Sha512
   end
 
   acts_as_permalink from: :name
