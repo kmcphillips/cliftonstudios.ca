@@ -16,9 +16,6 @@ gem 'rinku', require: 'rails_rinku'
 gem 'acts_as_permalink'
 gem 'whenever', require: false
 
-gem 'capistrano', require: false
-gem 'rvm-capistrano', require: false
-
 gem 'execjs'
 gem 'therubyracer'
 gem 'sprockets'
@@ -31,6 +28,11 @@ gem 'fancybox-rails'
 
 group :development do
   gem 'letter_opener'
+
+  gem 'capistrano', '3.6.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :development, :test do
@@ -42,4 +44,8 @@ end
 
 group :test do
   gem 'timecop'
+end
+
+group :production do
+  gem 'unicorn'
 end
