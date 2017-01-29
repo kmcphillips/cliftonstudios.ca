@@ -26,6 +26,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'fancybox-rails'
 
+
 group :development do
   gem 'letter_opener'
 
@@ -47,5 +48,6 @@ group :test do
 end
 
 group :production do
+  gem 'mailgun_rails'
   gem 'unicorn'
 end
