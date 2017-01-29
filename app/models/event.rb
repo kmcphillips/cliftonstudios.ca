@@ -55,32 +55,20 @@ class Event < ActiveRecord::Base
       result
     end
 
-    # Saturday the week before Mother's Day. Mother's day is the second sunday in May. This makes the sale the first Sunday in May minus one day.
-    # Last Saturday of November and the Sunday immediately after
+    # The first Friday in May and December, and the Saturday after
     def next_two_sales
       result = []
       date = Date.today.beginning_of_month
 
       while result.size < 2
-        if date.month == 5
+        if date.month == 5 || date.month == 12
           event = date
 
-          while !event.sunday?
+          while !event.friday?
             event = event + 1.day
           end
 
-          event = event - 1.day
-
-          result << event if event >= Date.today
-
-        elsif date.month == 12
-          event = date - 1.day
-
-          while !event.saturday?
-            event = event - 1.day
-          end
-
-          if event + 1.day >= Date.today
+          if event >= Date.today
             result << [event, event + 1.day]
           end
         end

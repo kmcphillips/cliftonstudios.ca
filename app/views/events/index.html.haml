@@ -1,16 +1,26 @@
-%h1 Sales and General Membership Meetings
+%h1 Sale and Open House
 
 .post
   %p
-    The studio show and sale takes place twice a year. In spring it is on the Saturday before Mother's Day. In winter it is the last Saturday in November and the Sunday directly after it. Sales run from 11:00AM to 5:00PM. They are open to everyone and have no cost. Membership meetings take place twice a year, on the first Tuesday in April and the first Tuesday in October, at 7:00PM.
+    The studio show and sale takes place twice a year, May and December, on the first Friday and Saturday. They are open to everyone and have no cost.
 
   %p
-    The next two sales will take place on
-    = format_recurring_dates Event.next_two_sales
+    Upcoming sales:
+    %ul.events
+      - Event.next_two_sales.flatten.each do |date|
+        %li= format_sale_dates date
+
+%h1 Membership Meetings
+
+.post
+  %p
+    Membership meetings take place twice a year and are for all studio members. They happen on the first Tuesday in April and the first Tuesday in October at 7:00PM.
 
   %p
-    The next two meetings will take place on
-    = format_recurring_dates Event.next_two_meetings
+    Upcoming meetings:
+    %ul.events
+      - Event.next_two_meetings.flatten.each do |date|
+        %li= format_meeting_dates date
 
 - if @events.any?
   - @events.each do |event|

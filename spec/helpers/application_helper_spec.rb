@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ApplicationHelper do
-  describe "page_title" do
+  describe "#page_title" do
     it "should generate the default title" do
       expect(helper.page_title).to eq("Clifton Studios")
     end
@@ -28,7 +28,7 @@ describe ApplicationHelper do
     end
   end
 
-  describe "members_area?" do
+  describe "#members_area?" do
     it "should know if it is not members area" do
       allow(helper).to receive(:params).and_return(controller: "posts")
       expect(helper.members_area?).to be_falsey
@@ -40,13 +40,13 @@ describe ApplicationHelper do
     end
   end
 
-  describe "truncate_for_index" do
+  describe "#truncate_for_index" do
     it "should shorten the string" do
       expect(helper.truncate_for_index("a" * 200)).to eq(("a" * 111) + " (more..)")
     end
   end
 
-  describe "boolean_image" do
+  describe "#boolean_image" do
     it "should generate for true" do
       expect(helper).to receive(:image_tag).with("icons/true.png", alt: "True").and_return("pie")
       expect(helper.boolean_image(true)).to eq("pie")
@@ -63,11 +63,26 @@ describe ApplicationHelper do
     end
   end
 
-  describe "enlarge_button" do
+  describe "#enlarge_button" do
     it "should generate the button and image" do
       expect(helper).to receive(:image_tag).with("icons/magnify.png", alt: "Enlarge", class: :magnify).and_return("pie")
       expect(helper.enlarge_button).to eq("Enlarge&nbsp;pie")
     end
   end
 
+  describe "#format_meeting_dates" do
+    it "returns formatted date and time" do
+      expect(helper.format_meeting_dates(Date.parse("31/1/2017"))).to eq("Tuesday January 31, 2017 at 7:00 PM")
+    end
+  end
+
+  describe "#format_sale_dates" do
+    it "returns formatted date and time for Saturday" do
+      expect(helper.format_sale_dates(Date.parse("28/1/2017"))).to eq("Saturday January 28, 2017 at 11:00 AM to 5:00 PM")
+    end
+
+    it "returns formatted date and time for Friday" do
+      expect(helper.format_sale_dates(Date.parse("27/1/2017"))).to eq("Friday January 27, 2017 at 5:00 PM to 10:00 PM")
+    end
+  end
 end

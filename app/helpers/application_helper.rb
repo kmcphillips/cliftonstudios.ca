@@ -13,15 +13,18 @@ module ApplicationHelper
     end
   end
 
-  def format_recurring_dates(dates)
-    dates.map do |event|
-      case event
-      when Array
-        event.map{|e| e.to_time.to_s(:without_time) }.join(" - ")
-      else
-        event.to_time.to_s(:without_time)
-      end
-    end.join(" and ")
+  def format_meeting_dates(date)
+    "#{ date.to_time.to_s(:words) } at 7:00 PM"
+  end
+
+  def format_sale_dates(date)
+    time = if date.friday?
+      "5:00 PM to 10:00 PM"
+    else
+      "11:00 AM to 5:00 PM"
+    end
+
+    "#{ date.to_time.to_s(:words) } at #{ time }"
   end
 
   def index_entity_image(path, label=nil, args={})
