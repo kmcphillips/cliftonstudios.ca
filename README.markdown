@@ -22,6 +22,7 @@ With an OS X or Linux machine with ruby and rubygems and bundler installed, you 
     $ cd cliftonstudios
     $ bundle install
     $ cp config/database.yml.example config/database.yml
+    $ cp config/secrets.yml.example config/secrets.yml
     $ bundle exec rake db:migrate
     $ bundle exec rake db:populate
     $ bundle exec rails server
@@ -59,6 +60,15 @@ After the migrations, db:populate will seed required data, including a test user
 
     $ bundle exec rake db:migrate
     $ bundle exec rake db:populate
+
+
+### Create secrets file
+
+Create a secrets file:
+
+    $ cp config/secrets.yml.example config/secrets.yml
+
+Populate it from a value generated from `rake secret`.
 
 
 ### Done

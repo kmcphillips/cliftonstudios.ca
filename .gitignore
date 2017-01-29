@@ -4,6 +4,7 @@ tmp/**/*
 tmp/*
 config/database.yml
 config/mail.yml
+config/secrets.yml
 db/structure.sql
 .idea
 .idea/*
