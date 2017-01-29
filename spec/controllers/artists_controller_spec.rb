@@ -5,7 +5,7 @@ describe ArtistsController do
 
   describe "GET index" do
     it "assigns all members as @members" do
-      expect(Member).to receive(:public).and_return(Member)
+      expect(Member).to receive(:visible).and_return(Member)
       expect(Member).to receive(:for_artists_index).and_return([member])
       get :index
       expect(assigns(:members)).to eq([member])
