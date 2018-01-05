@@ -1,4 +1,5 @@
 Cliftonstudios::Application.routes.draw do
+  get "ping" => "ping#index"
 
   get "contact_executive/create"
   get "contact_executive/index"
