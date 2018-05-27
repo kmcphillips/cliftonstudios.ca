@@ -31,30 +31,6 @@ class Event < ActiveRecord::Base
 
   class << self
 
-    # The first Thursday in April and October
-    def next_two_meetings
-      result = []
-      date = Date.today.beginning_of_month
-
-      while result.size < 2
-        if date.month == 4 || date.month == 10
-          event = date
-
-          while !event.tuesday?
-            event = event + 1.day
-          end
-
-          if event >= Date.today
-            result << event
-          end
-        end
-
-        date = date.end_of_month + 1.day
-      end
-
-      result
-    end
-
     # The first Friday in May and December, and the Saturday after
     def next_two_sales
       result = []

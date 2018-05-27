@@ -10,18 +10,6 @@
       - Event.next_two_sales.flatten.each do |date|
         %li= format_sale_dates date
 
-%h1 Membership Meetings
-
-.post
-  %p
-    Membership meetings take place twice a year and are for all studio members. They happen on the first Tuesday in April and the first Tuesday in October at 7:00PM.
-
-  %p
-    Upcoming meetings:
-    %ul.events
-      - Event.next_two_meetings.flatten.each do |date|
-        %li= format_meeting_dates date
-
 - if @events.any?
   - @events.each do |event|
     = render :partial => "event", :object => event
