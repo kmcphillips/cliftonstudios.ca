@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.2.7.1'
-
+gem 'rails', '~> 4.2.11.1'
+gem 'rack', '~> 1.6.11'
+gem 'puma'
 gem 'rake'
-
 gem 'mysql2'
 gem 'haml-rails'
 gem 'will_paginate'
@@ -31,15 +31,13 @@ gem 'fancybox-rails'
 
 group :development do
   gem 'letter_opener'
-
   gem 'capistrano', '3.6.1'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano3-puma'
 end
 
 group :development, :test do
-  gem 'thin'
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'factory_girl_rails'
@@ -51,5 +49,4 @@ end
 
 group :production do
   gem 'mailgun_rails'
-  gem 'unicorn'
 end
