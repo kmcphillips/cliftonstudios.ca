@@ -2,13 +2,7 @@
 
 .post
   %p
-    The studio show and sale takes place twice a year, May and December, on the first Friday and Saturday. They are open to everyone and have no cost.
-
-  %p
-    Upcoming sales:
-    %ul.events
-      - Event.next_two_sales.flatten.each do |date|
-        %li= format_sale_dates date
+    The studio show and sale takes place twice a year in May and December. They are open to everyone and have no cost.
 
 - if @events.any?
   - @events.each do |event|
