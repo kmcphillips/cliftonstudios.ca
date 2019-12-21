@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '~> 4.2.11.1'
-gem 'rack', '~> 1.6.11'
+gem 'rack', '~> 1.6.12'
 gem 'puma'
 gem 'rake'
 gem 'mysql2'
