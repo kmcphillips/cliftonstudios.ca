@@ -46,7 +46,3 @@ end
 group :test do
   gem 'timecop'
 end
-
-group :production do
-  gem 'mailgun_rails'
-end
