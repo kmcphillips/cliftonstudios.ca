@@ -16,7 +16,7 @@ gem 'rinku', require: 'rails_rinku'
 gem 'acts_as_permalink'
 gem 'whenever', require: false
 gem 'rails-html-sanitizer', '~> 1.0.4'
-gem 'nokogiri', '~> 1.10.8'
+gem 'nokogiri', '~> 1.12.5'
 
 gem 'execjs'
 gem 'therubyracer'
